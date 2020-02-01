@@ -655,8 +655,7 @@ ImageClassificationModelDeploymentMetadata = _reflection.GeneratedProtocolMessag
     dict(
         DESCRIPTOR=_IMAGECLASSIFICATIONMODELDEPLOYMENTMETADATA,
         __module__="google.cloud.automl_v1beta1.proto.image_pb2",
-        __doc__="""Model deployment metadata specific to Image
-  Classification.
+        __doc__="""Model deployment metadata specific to Image Classification.
   
   
   Attributes:

@@ -974,7 +974,6 @@ CreateModelOperationMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_CREATEMODELOPERATIONMETADATA,
         __module__="google.cloud.automl_v1.proto.operations_pb2",
         __doc__="""Details of CreateModel operation.
-  
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1.CreateModelOperationMetadata)
     ),

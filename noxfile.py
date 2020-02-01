@@ -72,7 +72,7 @@ def default(session):
     session.run(
         "py.test",
         "--quiet",
-        "--cov=google.cloud",
+        "--cov=google.cloud.automl",
         "--cov=tests.unit",
         "--cov-append",
         "--cov-config=.coveragerc",

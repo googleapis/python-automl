@@ -23,7 +23,7 @@ import six
 from google.api_core.gapic_v1 import client_info
 from google.api_core import exceptions
 from google.cloud.automl_v1beta1 import gapic
-from google.cloud.automl_v1beta1.proto import data_types_pb2, data_items_pb2
+from google.cloud.automl_v1beta1.proto import data_items_pb2
 from google.cloud.automl_v1beta1.tables import gcs_client
 from google.protobuf import struct_pb2
 

@@ -39,7 +39,7 @@ def to_proto_value(value):
   value: The Python value to be translated.
 
   Returns:
-  The translated google.protobuf.Value.
+  Tuple of the translated google.protobuf.Value and error if any.
   """
     # possible Python types (this is a Python3 module):
     # https://simplejson.readthedocs.io/en/latest/#encoders-and-decoders

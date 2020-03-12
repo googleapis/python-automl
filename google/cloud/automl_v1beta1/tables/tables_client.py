@@ -59,7 +59,7 @@ def to_proto_value(value):
         # This check needs to happen before isinstance(value, int),
         # isinstance(value, int) returns True when value is bool.
         return struct_pb2.Value(bool_value=value), None
-    if isinstance(value, six.integer_types) or isinstance(value, float):
+    elif isinstance(value, six.integer_types) or isinstance(value, float):
         return struct_pb2.Value(number_value=value), None
     elif isinstance(value, six.string_types) or isinstance(value, six.text_type):
         return struct_pb2.Value(string_value=value), None

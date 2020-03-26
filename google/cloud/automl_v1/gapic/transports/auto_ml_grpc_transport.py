@@ -184,7 +184,14 @@ class AutoMlGrpcTransport(object):
     def import_data(self):
         """Return the gRPC stub for :meth:`AutoMlClient.import_data`.
 
-        Imports data into a dataset.
+        Imports data into a dataset. For Tables this method can only be called
+        on an empty Dataset.
+
+        For Tables:
+
+        -  A ``schema_inference_version`` parameter must be explicitly set.
+           Returns an empty response in the ``response`` field when it
+           completes.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -301,8 +308,9 @@ class AutoMlGrpcTransport(object):
         ``node_number``) will reset the deployment state without pausing the
         model's availability.
 
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection ,
+        Tables, and Image Segmentation; all other domains manage deployment
+        automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 
@@ -320,8 +328,8 @@ class AutoMlGrpcTransport(object):
         Undeploys a model. If the model is not deployed this method has no
         effect.
 
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection and
+        Tables; all other domains manage deployment automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 

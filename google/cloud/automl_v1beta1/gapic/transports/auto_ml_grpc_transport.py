@@ -282,8 +282,9 @@ class AutoMlGrpcTransport(object):
         ``node_number``) will reset the deployment state without pausing the
         model's availability.
 
-        Only applicable for Text Classification, Image Object Detection and
-        Tables; all other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection ,
+        Tables, and Image Segmentation; all other domains manage deployment
+        automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 

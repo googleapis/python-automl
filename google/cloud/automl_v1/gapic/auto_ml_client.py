@@ -296,8 +296,8 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            parent (str): The resource name of the project to create the dataset for.
-            dataset (Union[dict, ~google.cloud.automl_v1.types.Dataset]): The dataset to create.
+            parent (str): Required. The resource name of the project to create the dataset for.
+            dataset (Union[dict, ~google.cloud.automl_v1.types.Dataset]): Required. The dataset to create.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1.types.Dataset`
@@ -380,7 +380,7 @@ class AutoMlClient(object):
             >>> response = client.update_dataset(dataset, update_mask)
 
         Args:
-            dataset (Union[dict, ~google.cloud.automl_v1.types.Dataset]): The dataset which replaces the resource on the server.
+            dataset (Union[dict, ~google.cloud.automl_v1.types.Dataset]): Required. The dataset which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1.types.Dataset`
@@ -458,7 +458,7 @@ class AutoMlClient(object):
             >>> response = client.get_dataset(name)
 
         Args:
-            name (str): The resource name of the dataset to retrieve.
+            name (str): Required. The resource name of the dataset to retrieve.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -541,7 +541,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): The resource name of the project from which to list datasets.
+            parent (str): Required. The resource name of the project from which to list datasets.
             filter_ (str): An expression for filtering the results of the request.
 
                 -  ``dataset_metadata`` - for existence of the case (e.g.
@@ -650,7 +650,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): The resource name of the dataset to delete.
+            name (str): Required. The resource name of the dataset to delete.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -714,7 +714,14 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Imports data into a dataset.
+        Imports data into a dataset. For Tables this method can only be called
+        on an empty Dataset.
+
+        For Tables:
+
+        -  A ``schema_inference_version`` parameter must be explicitly set.
+           Returns an empty response in the ``response`` field when it
+           completes.
 
         Example:
             >>> from google.cloud import automl_v1
@@ -912,7 +919,7 @@ class AutoMlClient(object):
             >>> response = client.get_annotation_spec(name)
 
         Args:
-            name (str): The resource name of the annotation spec to retrieve.
+            name (str): Required. The resource name of the annotation spec to retrieve.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -997,8 +1004,8 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            parent (str): Resource name of the parent project where the model is being created.
-            model (Union[dict, ~google.cloud.automl_v1.types.Model]): The model to create.
+            parent (str): Required. Resource name of the parent project where the model is being created.
+            model (Union[dict, ~google.cloud.automl_v1.types.Model]): Required. The model to create.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1.types.Model`
@@ -1076,7 +1083,7 @@ class AutoMlClient(object):
             >>> response = client.get_model(name)
 
         Args:
-            name (str): Resource name of the model.
+            name (str): Required. Resource name of the model.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1150,7 +1157,7 @@ class AutoMlClient(object):
             >>> response = client.update_model(model, update_mask)
 
         Args:
-            model (Union[dict, ~google.cloud.automl_v1.types.Model]): The model which replaces the resource on the server.
+            model (Union[dict, ~google.cloud.automl_v1.types.Model]): Required. The model which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1.types.Model`
@@ -1240,11 +1247,11 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): Resource name of the project, from which to list the models.
+            parent (str): Required. Resource name of the project, from which to list the models.
             filter_ (str): An expression for filtering the results of the request.
 
                 -  ``model_metadata`` - for existence of the case (e.g.
-                   image\_classification\_model\_metadata:\*).
+                   video\_classification\_model\_metadata:\*).
 
                 -  ``dataset_id`` - for = or !=. Some examples of using the filter are:
 
@@ -1352,7 +1359,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model being deleted.
+            name (str): Required. Resource name of the model being deleted.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1424,8 +1431,9 @@ class AutoMlClient(object):
         ``node_number``) will reset the deployment state without pausing the
         model's availability.
 
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection ,
+        Tables, and Image Segmentation; all other domains manage deployment
+        automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 
@@ -1448,7 +1456,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model to deploy.
+            name (str): Required. Resource name of the model to deploy.
             image_object_detection_model_deployment_metadata (Union[dict, ~google.cloud.automl_v1.types.ImageObjectDetectionModelDeploymentMetadata]): Model deployment metadata specific to Image Object Detection.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -1533,8 +1541,8 @@ class AutoMlClient(object):
         Undeploys a model. If the model is not deployed this method has no
         effect.
 
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection and
+        Tables; all other domains manage deployment automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 
@@ -1557,7 +1565,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model to undeploy.
+            name (str): Required. Resource name of the model to undeploy.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1728,7 +1736,7 @@ class AutoMlClient(object):
             >>> response = client.get_model_evaluation(name)
 
         Args:
-            name (str): Resource name for the model evaluation.
+            name (str): Required. Resource name for the model evaluation.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1814,10 +1822,10 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): Resource name of the model to list the model evaluations for.
+            parent (str): Required. Resource name of the model to list the model evaluations for.
                 If modelId is set as "-", this will list model evaluations from across all
                 models of the parent location.
-            filter_ (str): An expression for filtering the results of the request.
+            filter_ (str): Required. An expression for filtering the results of the request.
 
                 -  ``annotation_spec_id`` - for =, != or existence. See example below
                    for the last.

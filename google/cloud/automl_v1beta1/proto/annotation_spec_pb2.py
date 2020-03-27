@@ -15,6 +15,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
@@ -26,9 +27,12 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1"
     ),
     serialized_pb=_b(
-        '\n7google/cloud/automl_v1beta1/proto/annotation_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto"K\n\x0e\x41nnotationSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x15\n\rexample_count\x18\t \x01(\x05\x42\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
+        '\n7google/cloud/automl_v1beta1/proto/annotation_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x19google/api/resource.proto\x1a\x1cgoogle/api/annotations.proto"\xd6\x01\n\x0e\x41nnotationSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x15\n\rexample_count\x18\t \x01(\x05:\x88\x01\xea\x41\x84\x01\n$automl.googleapis.com/AnnotationSpec\x12\\projects/{project}/locations/{location}/datasets/{dataset}/annotationSpecs/{annotation_spec}B\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
     ),
-    dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR],
+    dependencies=[
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
+        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
+    ],
 )
 
 
@@ -97,13 +101,15 @@ _ANNOTATIONSPEC = _descriptor.Descriptor(
     extensions=[],
     nested_types=[],
     enum_types=[],
-    serialized_options=None,
+    serialized_options=_b(
+        "\352A\204\001\n$automl.googleapis.com/AnnotationSpec\022\\projects/{project}/locations/{location}/datasets/{dataset}/annotationSpecs/{annotation_spec}"
+    ),
     is_extendable=False,
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=118,
-    serialized_end=193,
+    serialized_start=146,
+    serialized_end=360,
 )
 
 DESCRIPTOR.message_types_by_name["AnnotationSpec"] = _ANNOTATIONSPEC
@@ -126,8 +132,7 @@ AnnotationSpec = _reflection.GeneratedProtocolMessageType(
       display_name:
           Required. The name of the annotation spec to show in the
           interface. The name can be up to 32 characters long and must
-          match the regexp ``[a-zA-Z0-9_]+``. (\_), and ASCII digits
-          0-9.
+          match the regexp ``[a-zA-Z0-9_]+``.
       example_count:
           Output only. The number of examples in the parent dataset
           labeled by the annotation spec.
@@ -139,4 +144,5 @@ _sym_db.RegisterMessage(AnnotationSpec)
 
 
 DESCRIPTOR._options = None
+_ANNOTATIONSPEC._options = None
 # @@protoc_insertion_point(module_scope)

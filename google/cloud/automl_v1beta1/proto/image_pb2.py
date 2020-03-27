@@ -15,7 +15,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.cloud.automl_v1beta1.proto import (
     annotation_spec_pb2 as google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_annotation__spec__pb2,
 )
@@ -23,6 +23,7 @@ from google.cloud.automl_v1beta1.proto import (
     classification_pb2 as google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_classification__pb2,
 )
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -33,13 +34,14 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\037com.google.cloud.automl.v1beta1B\nImageProtoP\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1"
     ),
     serialized_pb=_b(
-        '\n-google/cloud/automl_v1beta1/proto/image.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x37google/cloud/automl_v1beta1/proto/annotation_spec.proto\x1a\x36google/cloud/automl_v1beta1/proto/classification.proto\x1a\x1fgoogle/protobuf/timestamp.proto"r\n"ImageClassificationDatasetMetadata\x12L\n\x13\x63lassification_type\x18\x01 \x01(\x0e\x32/.google.cloud.automl.v1beta1.ClassificationType"%\n#ImageObjectDetectionDatasetMetadata"\xb2\x01\n ImageClassificationModelMetadata\x12\x15\n\rbase_model_id\x18\x01 \x01(\t\x12\x14\n\x0ctrain_budget\x18\x02 \x01(\x03\x12\x12\n\ntrain_cost\x18\x03 \x01(\x03\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12\x12\n\nmodel_type\x18\x07 \x01(\t\x12\x10\n\x08node_qps\x18\r \x01(\x01\x12\x12\n\nnode_count\x18\x0e \x01(\x03"\xbe\x01\n!ImageObjectDetectionModelMetadata\x12\x12\n\nmodel_type\x18\x01 \x01(\t\x12\x12\n\nnode_count\x18\x03 \x01(\x03\x12\x10\n\x08node_qps\x18\x04 \x01(\x01\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12%\n\x1dtrain_budget_milli_node_hours\x18\x06 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x07 \x01(\x03"@\n*ImageClassificationModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03"A\n+ImageObjectDetectionModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03\x42\xb1\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\nImageProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
+        '\n-google/cloud/automl_v1beta1/proto/image.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x19google/api/resource.proto\x1a\x37google/cloud/automl_v1beta1/proto/annotation_spec.proto\x1a\x36google/cloud/automl_v1beta1/proto/classification.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto"r\n"ImageClassificationDatasetMetadata\x12L\n\x13\x63lassification_type\x18\x01 \x01(\x0e\x32/.google.cloud.automl.v1beta1.ClassificationType"%\n#ImageObjectDetectionDatasetMetadata"\xb2\x01\n ImageClassificationModelMetadata\x12\x15\n\rbase_model_id\x18\x01 \x01(\t\x12\x14\n\x0ctrain_budget\x18\x02 \x01(\x03\x12\x12\n\ntrain_cost\x18\x03 \x01(\x03\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12\x12\n\nmodel_type\x18\x07 \x01(\t\x12\x10\n\x08node_qps\x18\r \x01(\x01\x12\x12\n\nnode_count\x18\x0e \x01(\x03"\xbe\x01\n!ImageObjectDetectionModelMetadata\x12\x12\n\nmodel_type\x18\x01 \x01(\t\x12\x12\n\nnode_count\x18\x03 \x01(\x03\x12\x10\n\x08node_qps\x18\x04 \x01(\x01\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12%\n\x1dtrain_budget_milli_node_hours\x18\x06 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x07 \x01(\x03"@\n*ImageClassificationModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03"A\n+ImageObjectDetectionModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03\x42\xb1\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\nImageProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
     ),
     dependencies=[
-        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_annotation__spec__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_classification__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,
+        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
     ],
 )
 
@@ -78,8 +80,8 @@ _IMAGECLASSIFICATIONDATASETMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=254,
-    serialized_end=368,
+    serialized_start=281,
+    serialized_end=395,
 )
 
 
@@ -98,8 +100,8 @@ _IMAGEOBJECTDETECTIONDATASETMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=370,
-    serialized_end=407,
+    serialized_start=397,
+    serialized_end=434,
 )
 
 
@@ -245,8 +247,8 @@ _IMAGECLASSIFICATIONMODELMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=410,
-    serialized_end=588,
+    serialized_start=437,
+    serialized_end=615,
 )
 
 
@@ -374,8 +376,8 @@ _IMAGEOBJECTDETECTIONMODELMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=591,
-    serialized_end=781,
+    serialized_start=618,
+    serialized_end=808,
 )
 
 
@@ -413,8 +415,8 @@ _IMAGECLASSIFICATIONMODELDEPLOYMENTMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=783,
-    serialized_end=847,
+    serialized_start=810,
+    serialized_end=874,
 )
 
 
@@ -452,8 +454,8 @@ _IMAGEOBJECTDETECTIONMODELDEPLOYMENTMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=849,
-    serialized_end=914,
+    serialized_start=876,
+    serialized_end=941,
 )
 
 _IMAGECLASSIFICATIONDATASETMETADATA.fields_by_name[
@@ -609,6 +611,22 @@ ImageObjectDetectionModelMetadata = _reflection.GeneratedProtocolMessageType(
           other models. \* ``cloud-low-latency-1`` - A model to be used
           via prediction calls to AutoML API. Expected to have low
           latency, but may have lower prediction quality than other
+          models. \* ``mobile-low-latency-1`` - A model that, in
+          addition to providing prediction via AutoML API, can also be
+          exported (see [AutoMl.ExportModel][google.cloud.automl.v1beta1
+          .AutoMl.ExportModel]) and used on a mobile or edge device with
+          TensorFlow afterwards. Expected to have low latency, but may
+          have lower prediction quality than other models. \* ``mobile-
+          versatile-1`` - A model that, in addition to providing
+          prediction via AutoML API, can also be exported (see [AutoMl.E
+          xportModel][google.cloud.automl.v1beta1.AutoMl.ExportModel])
+          and used on a mobile or edge device with TensorFlow
+          afterwards. \* ``mobile-high-accuracy-1`` - A model that, in
+          addition to providing prediction via AutoML API, can also be
+          exported (see [AutoMl.ExportModel][google.cloud.automl.v1beta1
+          .AutoMl.ExportModel]) and used on a mobile or edge device with
+          TensorFlow afterwards. Expected to have a higher latency, but
+          should also have a higher prediction quality than other
           models.
       node_count:
           Output only. The number of nodes this model is deployed on. A

@@ -15,6 +15,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.cloud.automl_v1beta1.proto import (
     io_pb2 as google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_io__pb2,
 )
@@ -29,9 +30,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1"
     ),
     serialized_pb=_b(
-        '\n2google/cloud/automl_v1beta1/proto/table_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a\x1cgoogle/api/annotations.proto"\xc7\x01\n\tTableSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1b\n\x13time_column_spec_id\x18\x02 \x01(\t\x12\x11\n\trow_count\x18\x03 \x01(\x03\x12\x17\n\x0fvalid_row_count\x18\x04 \x01(\x03\x12\x14\n\x0c\x63olumn_count\x18\x07 \x01(\x03\x12?\n\rinput_configs\x18\x05 \x03(\x0b\x32(.google.cloud.automl.v1beta1.InputConfig\x12\x0c\n\x04\x65tag\x18\x06 \x01(\tB\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
+        '\n2google/cloud/automl_v1beta1/proto/table_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x19google/api/resource.proto\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a\x1cgoogle/api/annotations.proto"\xc1\x02\n\tTableSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1b\n\x13time_column_spec_id\x18\x02 \x01(\t\x12\x11\n\trow_count\x18\x03 \x01(\x03\x12\x17\n\x0fvalid_row_count\x18\x04 \x01(\x03\x12\x14\n\x0c\x63olumn_count\x18\x07 \x01(\x03\x12?\n\rinput_configs\x18\x05 \x03(\x0b\x32(.google.cloud.automl.v1beta1.InputConfig\x12\x0c\n\x04\x65tag\x18\x06 \x01(\t:x\xea\x41u\n\x1f\x61utoml.googleapis.com/TableSpec\x12Rprojects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}B\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
     ),
     dependencies=[
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_io__pb2.DESCRIPTOR,
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
     ],
@@ -175,13 +177,15 @@ _TABLESPEC = _descriptor.Descriptor(
     extensions=[],
     nested_types=[],
     enum_types=[],
-    serialized_options=None,
+    serialized_options=_b(
+        "\352Au\n\037automl.googleapis.com/TableSpec\022Rprojects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}"
+    ),
     is_extendable=False,
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=158,
-    serialized_end=357,
+    serialized_start=185,
+    serialized_end=506,
 )
 
 _TABLESPEC.fields_by_name[
@@ -241,4 +245,5 @@ _sym_db.RegisterMessage(TableSpec)
 
 
 DESCRIPTOR._options = None
+_TABLESPEC._options = None
 # @@protoc_insertion_point(module_scope)

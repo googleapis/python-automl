@@ -312,8 +312,8 @@ class AutoMlClient(object):
             >>> response = client.create_dataset(parent, dataset)
 
         Args:
-            parent (str): The resource name of the project to create the dataset for.
-            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): The dataset to create.
+            parent (str): Required. The resource name of the project to create the dataset for.
+            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): Required. The dataset to create.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.Dataset`
@@ -387,7 +387,7 @@ class AutoMlClient(object):
             >>> response = client.update_dataset(dataset)
 
         Args:
-            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): The dataset which replaces the resource on the server.
+            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): Required. The dataset which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.Dataset`
@@ -465,7 +465,7 @@ class AutoMlClient(object):
             >>> response = client.get_dataset(name)
 
         Args:
-            name (str): The resource name of the dataset to retrieve.
+            name (str): Required. The resource name of the dataset to retrieve.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -548,7 +548,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): The resource name of the project from which to list datasets.
+            parent (str): Required. The resource name of the project from which to list datasets.
             filter_ (str): An expression for filtering the results of the request.
 
                 -  ``dataset_metadata`` - for existence of the case (e.g.
@@ -657,7 +657,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): The resource name of the dataset to delete.
+            name (str): Required. The resource name of the dataset to delete.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -942,8 +942,8 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            parent (str): Resource name of the parent project where the model is being created.
-            model (Union[dict, ~google.cloud.automl_v1beta1.types.Model]): The model to create.
+            parent (str): Required. Resource name of the parent project where the model is being created.
+            model (Union[dict, ~google.cloud.automl_v1beta1.types.Model]): Required. The model to create.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.Model`
@@ -1021,7 +1021,7 @@ class AutoMlClient(object):
             >>> response = client.get_model(name)
 
         Args:
-            name (str): Resource name of the model.
+            name (str): Required. Resource name of the model.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1104,7 +1104,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): Resource name of the project, from which to list the models.
+            parent (str): Required. Resource name of the project, from which to list the models.
             filter_ (str): An expression for filtering the results of the request.
 
                 -  ``model_metadata`` - for existence of the case (e.g.
@@ -1216,7 +1216,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model being deleted.
+            name (str): Required. Resource name of the model being deleted.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1288,8 +1288,9 @@ class AutoMlClient(object):
         ``node_number``) will reset the deployment state without pausing the
         model's availability.
 
-        Only applicable for Text Classification, Image Object Detection and
-        Tables; all other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection ,
+        Tables, and Image Segmentation; all other domains manage deployment
+        automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 
@@ -1312,7 +1313,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model to deploy.
+            name (str): Required. Resource name of the model to deploy.
             image_object_detection_model_deployment_metadata (Union[dict, ~google.cloud.automl_v1beta1.types.ImageObjectDetectionModelDeploymentMetadata]): Model deployment metadata specific to Image Object Detection.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -1421,7 +1422,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model to undeploy.
+            name (str): Required. Resource name of the model to undeploy.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1496,7 +1497,7 @@ class AutoMlClient(object):
             >>> response = client.get_model_evaluation(name)
 
         Args:
-            name (str): Resource name for the model evaluation.
+            name (str): Required. Resource name for the model evaluation.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1783,7 +1784,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): Resource name of the model to list the model evaluations for.
+            parent (str): Required. Resource name of the model to list the model evaluations for.
                 If modelId is set as "-", this will list model evaluations from across all
                 models of the parent location.
             filter_ (str): An expression for filtering the results of the request.
@@ -1886,7 +1887,7 @@ class AutoMlClient(object):
             >>> response = client.get_annotation_spec(name)
 
         Args:
-            name (str): The resource name of the annotation spec to retrieve.
+            name (str): Required. The resource name of the annotation spec to retrieve.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1956,7 +1957,7 @@ class AutoMlClient(object):
             >>> response = client.get_table_spec(name)
 
         Args:
-            name (str): The resource name of the table spec to retrieve.
+            name (str): Required. The resource name of the table spec to retrieve.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2044,7 +2045,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): The resource name of the dataset to list table specs from.
+            parent (str): Required. The resource name of the dataset to list table specs from.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2141,7 +2142,7 @@ class AutoMlClient(object):
             >>> response = client.update_table_spec(table_spec)
 
         Args:
-            table_spec (Union[dict, ~google.cloud.automl_v1beta1.types.TableSpec]): The table spec which replaces the resource on the server.
+            table_spec (Union[dict, ~google.cloud.automl_v1beta1.types.TableSpec]): Required. The table spec which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.TableSpec`
@@ -2220,7 +2221,7 @@ class AutoMlClient(object):
             >>> response = client.get_column_spec(name)
 
         Args:
-            name (str): The resource name of the column spec to retrieve.
+            name (str): Required. The resource name of the column spec to retrieve.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2308,7 +2309,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): The resource name of the table spec to list column specs from.
+            parent (str): Required. The resource name of the table spec to list column specs from.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2405,7 +2406,7 @@ class AutoMlClient(object):
             >>> response = client.update_column_spec(column_spec)
 
         Args:
-            column_spec (Union[dict, ~google.cloud.automl_v1beta1.types.ColumnSpec]): The column spec which replaces the resource on the server.
+            column_spec (Union[dict, ~google.cloud.automl_v1beta1.types.ColumnSpec]): Required. The column spec which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.ColumnSpec`

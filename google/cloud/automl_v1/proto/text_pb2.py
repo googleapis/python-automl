@@ -15,10 +15,10 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.cloud.automl_v1.proto import (
     classification_pb2 as google_dot_cloud_dot_automl__v1_dot_proto_dot_classification__pb2,
 )
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -29,11 +29,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\032com.google.cloud.automl.v1B\tTextProtoP\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1"
     ),
     serialized_pb=_b(
-        '\n\'google/cloud/automl_v1/proto/text.proto\x12\x16google.cloud.automl.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x31google/cloud/automl_v1/proto/classification.proto"l\n!TextClassificationDatasetMetadata\x12G\n\x13\x63lassification_type\x18\x01 \x01(\x0e\x32*.google.cloud.automl.v1.ClassificationType"j\n\x1fTextClassificationModelMetadata\x12G\n\x13\x63lassification_type\x18\x03 \x01(\x0e\x32*.google.cloud.automl.v1.ClassificationType"\x1f\n\x1dTextExtractionDatasetMetadata"\x1d\n\x1bTextExtractionModelMetadata"5\n\x1cTextSentimentDatasetMetadata\x12\x15\n\rsentiment_max\x18\x01 \x01(\x05"\x1c\n\x1aTextSentimentModelMetadataB\xb5\x01\n\x1a\x63om.google.cloud.automl.v1B\tTextProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3'
+        '\n\'google/cloud/automl_v1/proto/text.proto\x12\x16google.cloud.automl.v1\x1a\x31google/cloud/automl_v1/proto/classification.proto\x1a\x1cgoogle/api/annotations.proto"l\n!TextClassificationDatasetMetadata\x12G\n\x13\x63lassification_type\x18\x01 \x01(\x0e\x32*.google.cloud.automl.v1.ClassificationType"j\n\x1fTextClassificationModelMetadata\x12G\n\x13\x63lassification_type\x18\x03 \x01(\x0e\x32*.google.cloud.automl.v1.ClassificationType"\x1f\n\x1dTextExtractionDatasetMetadata"\x1d\n\x1bTextExtractionModelMetadata"5\n\x1cTextSentimentDatasetMetadata\x12\x15\n\rsentiment_max\x18\x01 \x01(\x05"\x1c\n\x1aTextSentimentModelMetadataB\xb5\x01\n\x1a\x63om.google.cloud.automl.v1B\tTextProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3'
     ),
     dependencies=[
-        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1_dot_proto_dot_classification__pb2.DESCRIPTOR,
+        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
     ],
 )
 
@@ -251,8 +251,6 @@ TextClassificationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTCLASSIFICATIONDATASETMETADATA,
         __module__="google.cloud.automl_v1.proto.text_pb2",
         __doc__="""Dataset metadata for classification.
-  
-  
   Attributes:
       classification_type:
           Required. Type of the classification problem.
@@ -269,8 +267,6 @@ TextClassificationModelMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTCLASSIFICATIONMODELMETADATA,
         __module__="google.cloud.automl_v1.proto.text_pb2",
         __doc__="""Model metadata that is specific to text classification.
-  
-  
   Attributes:
       classification_type:
           Output only. Classification type of the dataset used to train
@@ -287,9 +283,7 @@ TextExtractionDatasetMetadata = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_TEXTEXTRACTIONDATASETMETADATA,
         __module__="google.cloud.automl_v1.proto.text_pb2",
-        __doc__="""Dataset metadata that is specific to text extraction
-  
-  """,
+        __doc__="""Dataset metadata that is specific to text extraction""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1.TextExtractionDatasetMetadata)
     ),
 )
@@ -301,9 +295,7 @@ TextExtractionModelMetadata = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_TEXTEXTRACTIONMODELMETADATA,
         __module__="google.cloud.automl_v1.proto.text_pb2",
-        __doc__="""Model metadata that is specific to text extraction.
-  
-  """,
+        __doc__="""Model metadata that is specific to text extraction.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1.TextExtractionModelMetadata)
     ),
 )
@@ -316,8 +308,6 @@ TextSentimentDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTSENTIMENTDATASETMETADATA,
         __module__="google.cloud.automl_v1.proto.text_pb2",
         __doc__="""Dataset metadata for text sentiment.
-  
-  
   Attributes:
       sentiment_max:
           Required. A sentiment is expressed as an integer ordinal,
@@ -339,9 +329,7 @@ TextSentimentModelMetadata = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_TEXTSENTIMENTMODELMETADATA,
         __module__="google.cloud.automl_v1.proto.text_pb2",
-        __doc__="""Model metadata that is specific to text sentiment.
-  
-  """,
+        __doc__="""Model metadata that is specific to text sentiment.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1.TextSentimentModelMetadata)
     ),
 )

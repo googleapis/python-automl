@@ -261,7 +261,7 @@ class PredictionServiceClient(object):
             >>> response = client.predict(name, payload)
 
         Args:
-            name (str): Name of the model requested to serve the prediction.
+            name (str): Required. Name of the model requested to serve the prediction.
             payload (Union[dict, ~google.cloud.automl_v1beta1.types.ExamplePayload]): Required. Payload to perform a prediction on. The payload must match the
                 problem type that the model was trained to solve.
 
@@ -283,13 +283,9 @@ class PredictionServiceClient(object):
                    this number of bounding boxes will be returned in the response.
                    Default is 100, the requested value may be limited by server.
 
-                -  For Tables: ``feature_importance`` - (boolean) Whether
-
-                [feature\_importance][[google.cloud.automl.v1beta1.TablesModelColumnInfo.feature\_importance]
-                should be populated in the returned
-
-                [TablesAnnotation(-s)][[google.cloud.automl.v1beta1.TablesAnnotation].
-                The default is false.
+                -  For Tables: feature\_importance - (boolean) Whether feature
+                   importance should be populated in the returned TablesAnnotation. The
+                   default is false.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -345,7 +341,7 @@ class PredictionServiceClient(object):
         name,
         input_config,
         output_config,
-        params=None,
+        params,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
         metadata=None,
@@ -377,7 +373,10 @@ class PredictionServiceClient(object):
             >>> # TODO: Initialize `output_config`:
             >>> output_config = {}
             >>>
-            >>> response = client.batch_predict(name, input_config, output_config)
+            >>> # TODO: Initialize `params`:
+            >>> params = {}
+            >>>
+            >>> response = client.batch_predict(name, input_config, output_config, params)
             >>>
             >>> def callback(operation_future):
             ...     # Handle result.
@@ -389,7 +388,7 @@ class PredictionServiceClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Name of the model requested to serve the batch prediction.
+            name (str): Required. Name of the model requested to serve the batch prediction.
             input_config (Union[dict, ~google.cloud.automl_v1beta1.types.BatchPredictInputConfig]): Required. The input configuration for batch prediction.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -399,8 +398,8 @@ class PredictionServiceClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.BatchPredictOutputConfig`
-            params (dict[str -> str]): Additional domain-specific parameters for the predictions, any string
-                must be up to 25000 characters long.
+            params (dict[str -> str]): Required. Additional domain-specific parameters for the predictions, any
+                string must be up to 25000 characters long.
 
                 -  For Text Classification:
 
@@ -423,22 +422,24 @@ class PredictionServiceClient(object):
                    bounding boxes will be produced per image. Default is 100, the
                    requested value may be limited by server.
 
-                -  For Video Classification : ``score_threshold`` - (float) A value from
-                   0.0 to 1.0. When the model makes predictions for a video, it will
-                   only produce results that have at least this confidence score. The
-                   default is 0.5. ``segment_classification`` - (boolean) Set to true to
-                   request segment-level classification. AutoML Video Intelligence
-                   returns labels and their confidence scores for the entire segment of
-                   the video that user specified in the request configuration. The
-                   default is "true". ``shot_classification`` - (boolean) Set to true to
-                   request shot-level classification. AutoML Video Intelligence
-                   determines the boundaries for each camera shot in the entire segment
-                   of the video that user specified in the request configuration. AutoML
-                   Video Intelligence then returns labels and their confidence scores
-                   for each detected shot, along with the start and end time of the
-                   shot. WARNING: Model evaluation is not done for this classification
-                   type, the quality of it depends on training data, but there are no
-                   metrics provided to describe that quality. The default is "false".
+                -  For Video Classification :
+
+                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
+                   makes predictions for a video, it will only produce results that have
+                   at least this confidence score. The default is 0.5.
+                   ``segment_classification`` - (boolean) Set to true to request
+                   segment-level classification. AutoML Video Intelligence returns
+                   labels and their confidence scores for the entire segment of the
+                   video that user specified in the request configuration. The default
+                   is "true". ``shot_classification`` - (boolean) Set to true to request
+                   shot-level classification. AutoML Video Intelligence determines the
+                   boundaries for each camera shot in the entire segment of the video
+                   that user specified in the request configuration. AutoML Video
+                   Intelligence then returns labels and their confidence scores for each
+                   detected shot, along with the start and end time of the shot.
+                   WARNING: Model evaluation is not done for this classification type,
+                   the quality of it depends on training data, but there are no metrics
+                   provided to describe that quality. The default is "false".
                    ``1s_interval_classification`` - (boolean) Set to true to request
                    classification for a video at one-second intervals. AutoML Video
                    Intelligence returns labels and their confidence scores for each
@@ -448,15 +449,22 @@ class PredictionServiceClient(object):
                    there are no metrics provided to describe that quality. The default
                    is "false".
 
-                -  For Video Object Tracking: ``score_threshold`` - (float) When Model
-                   detects objects on video frames, it will only produce bounding boxes
-                   which have at least this confidence score. Value in 0 to 1 range,
-                   default is 0.5. ``max_bounding_box_count`` - (int64) No more than
-                   this number of bounding boxes will be returned per frame. Default is
-                   100, the requested value may be limited by server.
-                   ``min_bounding_box_size`` - (float) Only bounding boxes with shortest
-                   edge at least that long as a relative value of video frame size will
-                   be returned. Value in 0 to 1 range. Default is 0.
+                -  For Tables:
+
+                   feature\_importance - (boolean) Whether feature importance should be
+                   populated in the returned TablesAnnotations. The default is false.
+
+                -  For Video Object Tracking:
+
+                   ``score_threshold`` - (float) When Model detects objects on video
+                   frames, it will only produce bounding boxes which have at least this
+                   confidence score. Value in 0 to 1 range, default is 0.5.
+                   ``max_bounding_box_count`` - (int64) No more than this number of
+                   bounding boxes will be returned per frame. Default is 100, the
+                   requested value may be limited by server. ``min_bounding_box_size`` -
+                   (float) Only bounding boxes with shortest edge at least that long as
+                   a relative value of video frame size will be returned. Value in 0 to
+                   1 range. Default is 0.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.

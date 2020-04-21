@@ -121,22 +121,48 @@ class PredictionServiceGrpcTransport(object):
     def predict(self):
         """Return the gRPC stub for :meth:`PredictionServiceClient.predict`.
 
-        Perform an online prediction. The prediction result will be directly
-        returned in the response. Available for following ML problems, and their
+        Perform an online prediction. The prediction result is directly returned
+        in the response. Available for following ML scenarios, and their
         expected request payloads:
 
-        -  Image Classification - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Image Object Detection - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Text Classification - TextSnippet, content up to 60,000 characters,
-           UTF-8 encoded.
-        -  Text Extraction - TextSnippet, content up to 30,000 characters, UTF-8
-           NFC encoded.
-        -  Translation - TextSnippet, content up to 25,000 characters, UTF-8
-           encoded.
-        -  Text Sentiment - TextSnippet, content up 500 characters, UTF-8
-           encoded.
+        .. raw:: html
+
+            <table>
+            <tr>
+            <td>AutoML Vision Classification</td>
+            <td>An image in .JPEG, .GIF or .PNG format, image_bytes up to 30MB.</td>
+            </tr>
+            <tr>
+            <td>AutoML Vision Object Detection</td>
+            <td>An image in .JPEG, .GIF or .PNG format, image_bytes up to 30MB.</td>
+            </tr>
+            <tr>
+            <td>AutoML Natural Language Classification</td>
+            <td>A TextSnippet up to 60,000 characters, UTF-8 encoded or a document in
+            .PDF, .TIF or .TIFF format with size upto 2MB.</td>
+            </tr>
+            <tr>
+            <td>AutoML Natural Language Entity Extraction</td>
+            <td>A TextSnippet up to 10,000 characters, UTF-8 NFC encoded or a document
+             in .PDF, .TIF or .TIFF format with size upto 20MB.</td>
+            </tr>
+            <tr>
+            <td>AutoML Natural Language Sentiment Analysis</td>
+            <td>A TextSnippet up to 60,000 characters, UTF-8 encoded or a document in
+            .PDF, .TIF or .TIFF format with size upto 2MB.</td>
+            </tr>
+            <tr>
+            <td>AutoML Translation</td>
+            <td>A TextSnippet up to 25,000 characters, UTF-8 encoded.</td>
+            </tr>
+            <tr>
+            <td>AutoML Tables</td>
+            <td>A row with column values matching
+              the columns of the model, up to 5MB. Not available for FORECASTING
+              `prediction_type`.
+            </td>
+            </tr>
+            </table>
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -154,11 +180,16 @@ class PredictionServiceGrpcTransport(object):
         Instead, a long running operation object is returned. User can poll the
         operation result via ``GetOperation`` method. Once the operation is
         done, ``BatchPredictResult`` is returned in the ``response`` field.
-        Available for following ML problems:
+        Available for following ML scenarios:
 
-        -  Image Classification
-        -  Image Object Detection
-        -  Text Extraction
+        -  AutoML Vision Classification
+        -  AutoML Vision Object Detection
+        -  AutoML Video Intelligence Classification
+        -  AutoML Video Intelligence Object Tracking \* AutoML Natural Language
+           Classification
+        -  AutoML Natural Language Entity Extraction
+        -  AutoML Natural Language Sentiment Analysis
+        -  AutoML Tables
 
         Returns:
             Callable: A callable which accepts the appropriate

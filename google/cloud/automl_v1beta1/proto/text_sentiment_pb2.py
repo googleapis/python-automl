@@ -277,8 +277,6 @@ TextSentimentAnnotation = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTSENTIMENTANNOTATION,
         __module__="google.cloud.automl_v1beta1.proto.text_sentiment_pb2",
         __doc__="""Contains annotation details specific to text sentiment.
-  
-  
   Attributes:
       sentiment:
           Output only. The sentiment with the semantic, as given to the 
@@ -309,8 +307,6 @@ TextSentimentEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTSENTIMENTEVALUATIONMETRICS,
         __module__="google.cloud.automl_v1beta1.proto.text_sentiment_pb2",
         __doc__="""Model evaluation metrics for text sentiment problems.
-  
-  
   Attributes:
       precision:
           Output only. Precision.

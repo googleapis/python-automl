@@ -15,6 +15,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior__pb2
 from google.cloud.automl_v1beta1.proto import (
     data_items_pb2 as google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_data__items__pb2,
 )
@@ -29,9 +30,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\037com.google.cloud.automl.v1beta1B\020TranslationProtoP\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1"
     ),
     serialized_pb=_b(
-        '\n3google/cloud/automl_v1beta1/proto/translation.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x32google/cloud/automl_v1beta1/proto/data_items.proto\x1a\x1cgoogle/api/annotations.proto"X\n\x1aTranslationDatasetMetadata\x12\x1c\n\x14source_language_code\x18\x01 \x01(\t\x12\x1c\n\x14target_language_code\x18\x02 \x01(\t"K\n\x1cTranslationEvaluationMetrics\x12\x12\n\nbleu_score\x18\x01 \x01(\x01\x12\x17\n\x0f\x62\x61se_bleu_score\x18\x02 \x01(\x01"j\n\x18TranslationModelMetadata\x12\x12\n\nbase_model\x18\x01 \x01(\t\x12\x1c\n\x14source_language_code\x18\x02 \x01(\t\x12\x1c\n\x14target_language_code\x18\x03 \x01(\t"]\n\x15TranslationAnnotation\x12\x44\n\x12translated_content\x18\x01 \x01(\x0b\x32(.google.cloud.automl.v1beta1.TextSnippetB\xb7\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\x10TranslationProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
+        '\n3google/cloud/automl_v1beta1/proto/translation.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1fgoogle/api/field_behavior.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_items.proto\x1a\x1cgoogle/api/annotations.proto"b\n\x1aTranslationDatasetMetadata\x12!\n\x14source_language_code\x18\x01 \x01(\tB\x03\xe0\x41\x02\x12!\n\x14target_language_code\x18\x02 \x01(\tB\x03\xe0\x41\x02"K\n\x1cTranslationEvaluationMetrics\x12\x12\n\nbleu_score\x18\x01 \x01(\x01\x12\x17\n\x0f\x62\x61se_bleu_score\x18\x02 \x01(\x01"j\n\x18TranslationModelMetadata\x12\x12\n\nbase_model\x18\x01 \x01(\t\x12\x1c\n\x14source_language_code\x18\x02 \x01(\t\x12\x1c\n\x14target_language_code\x18\x03 \x01(\t"]\n\x15TranslationAnnotation\x12\x44\n\x12translated_content\x18\x01 \x01(\x0b\x32(.google.cloud.automl.v1beta1.TextSnippetB\xb7\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\x10TranslationProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
     ),
     dependencies=[
+        google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_data__items__pb2.DESCRIPTOR,
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
     ],
@@ -60,7 +62,7 @@ _TRANSLATIONDATASETMETADATA = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -78,7 +80,7 @@ _TRANSLATIONDATASETMETADATA = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -90,8 +92,8 @@ _TRANSLATIONDATASETMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=166,
-    serialized_end=254,
+    serialized_start=199,
+    serialized_end=297,
 )
 
 
@@ -147,8 +149,8 @@ _TRANSLATIONEVALUATIONMETRICS = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=256,
-    serialized_end=331,
+    serialized_start=299,
+    serialized_end=374,
 )
 
 
@@ -222,8 +224,8 @@ _TRANSLATIONMODELMETADATA = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=333,
-    serialized_end=439,
+    serialized_start=376,
+    serialized_end=482,
 )
 
 
@@ -261,8 +263,8 @@ _TRANSLATIONANNOTATION = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=441,
-    serialized_end=534,
+    serialized_start=484,
+    serialized_end=577,
 )
 
 _TRANSLATIONANNOTATION.fields_by_name[
@@ -287,8 +289,6 @@ TranslationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TRANSLATIONDATASETMETADATA,
         __module__="google.cloud.automl_v1beta1.proto.translation_pb2",
         __doc__="""Dataset metadata that is specific to translation.
-  
-  
   Attributes:
       source_language_code:
           Required. The BCP-47 language code of the source language.
@@ -307,8 +307,6 @@ TranslationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TRANSLATIONEVALUATIONMETRICS,
         __module__="google.cloud.automl_v1beta1.proto.translation_pb2",
         __doc__="""Evaluation metrics for the dataset.
-  
-  
   Attributes:
       bleu_score:
           Output only. BLEU score.
@@ -327,8 +325,6 @@ TranslationModelMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TRANSLATIONMODELMETADATA,
         __module__="google.cloud.automl_v1beta1.proto.translation_pb2",
         __doc__="""Model metadata that is specific to translation.
-  
-  
   Attributes:
       base_model:
           The resource name of the model to use as a baseline to train
@@ -354,8 +350,6 @@ TranslationAnnotation = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TRANSLATIONANNOTATION,
         __module__="google.cloud.automl_v1beta1.proto.translation_pb2",
         __doc__="""Annotation details specific to translation.
-  
-  
   Attributes:
       translated_content:
           Output only . The translated content.
@@ -367,4 +361,6 @@ _sym_db.RegisterMessage(TranslationAnnotation)
 
 
 DESCRIPTOR._options = None
+_TRANSLATIONDATASETMETADATA.fields_by_name["source_language_code"]._options = None
+_TRANSLATIONDATASETMETADATA.fields_by_name["target_language_code"]._options = None
 # @@protoc_insertion_point(module_scope)

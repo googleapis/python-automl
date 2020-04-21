@@ -651,8 +651,6 @@ ClassificationAnnotation = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_CLASSIFICATIONANNOTATION,
         __module__="google.cloud.automl_v1.proto.classification_pb2",
         __doc__="""Contains annotation details specific to classification.
-  
-  
   Attributes:
       score:
           Output only. A confidence estimate between 0.0 and 1.0. A
@@ -677,8 +675,6 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                 DESCRIPTOR=_CLASSIFICATIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY,
                 __module__="google.cloud.automl_v1.proto.classification_pb2",
                 __doc__="""Metrics for a single confidence threshold.
-    
-    
     Attributes:
         confidence_threshold:
             Output only. Metrics are computed with an assumption that the
@@ -745,8 +741,6 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                         DESCRIPTOR=_CLASSIFICATIONEVALUATIONMETRICS_CONFUSIONMATRIX_ROW,
                         __module__="google.cloud.automl_v1.proto.classification_pb2",
                         __doc__="""Output only. A row in the confusion matrix.
-      
-      
       Attributes:
           example_count:
               Output only. Value of the specific cell in the confusion
@@ -762,16 +756,20 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                 DESCRIPTOR=_CLASSIFICATIONEVALUATIONMETRICS_CONFUSIONMATRIX,
                 __module__="google.cloud.automl_v1.proto.classification_pb2",
                 __doc__="""Confusion matrix of the model running the classification.
-    
-    
     Attributes:
         annotation_spec_id:
             Output only. IDs of the annotation specs used in the confusion
-            matrix.
+            matrix. For Tables CLASSIFICATION  [prediction\_type][google.c
+            loud.automl.v1p1beta.TablesModelMetadata.prediction\_type]
+            only list of [annotation\_spec\_display\_name-s][] is
+            populated.
         display_name:
             Output only. Display name of the annotation specs used in the
             confusion matrix, as they were at the moment of the
-            evaluation.
+            evaluation. For Tables CLASSIFICATION  [prediction\_type-s][go
+            ogle.cloud.automl.v1p1beta.TablesModelMetadata.prediction\_typ
+            e], distinct values of the target column at the moment of the
+            model evaluation are populated here.
         row:
             Output only. Rows in the confusion matrix. The number of rows
             is equal to the size of ``annotation_spec_id``.
@@ -785,9 +783,9 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         ),
         DESCRIPTOR=_CLASSIFICATIONEVALUATIONMETRICS,
         __module__="google.cloud.automl_v1.proto.classification_pb2",
-        __doc__="""Model evaluation metrics for classification problems.
-  
-  
+        __doc__="""Model evaluation metrics for classification problems. Note: For Video
+  Classification this metrics only describe quality of the Video
+  Classification predictions of "segment\_classification" type.
   Attributes:
       au_prc:
           Output only. The Area Under Precision-Recall Curve metric.

@@ -281,8 +281,6 @@ TextExtractionAnnotation = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTEXTRACTIONANNOTATION,
         __module__="google.cloud.automl_v1.proto.text_extraction_pb2",
         __doc__="""Annotation for identifying spans of text.
-  
-  
   Attributes:
       annotation:
           Required. Text extraction annotations can either be a text
@@ -311,8 +309,6 @@ TextExtractionEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                 DESCRIPTOR=_TEXTEXTRACTIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY,
                 __module__="google.cloud.automl_v1.proto.text_extraction_pb2",
                 __doc__="""Metrics for a single confidence threshold.
-    
-    
     Attributes:
         confidence_threshold:
             Output only. The confidence threshold value used to compute
@@ -331,8 +327,6 @@ TextExtractionEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_TEXTEXTRACTIONEVALUATIONMETRICS,
         __module__="google.cloud.automl_v1.proto.text_extraction_pb2",
         __doc__="""Model evaluation metrics for text extraction problems.
-  
-  
   Attributes:
       au_prc:
           Output only. The Area under precision recall curve metric.

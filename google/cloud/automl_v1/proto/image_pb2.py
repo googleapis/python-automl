@@ -15,7 +15,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.cloud.automl_v1.proto import (
     annotation_spec_pb2 as google_dot_cloud_dot_automl__v1_dot_proto_dot_annotation__spec__pb2,
@@ -24,6 +23,7 @@ from google.cloud.automl_v1.proto import (
     classification_pb2 as google_dot_cloud_dot_automl__v1_dot_proto_dot_classification__pb2,
 )
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -34,14 +34,14 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\032com.google.cloud.automl.v1B\nImageProtoP\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1"
     ),
     serialized_pb=_b(
-        '\n(google/cloud/automl_v1/proto/image.proto\x12\x16google.cloud.automl.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x19google/api/resource.proto\x1a\x32google/cloud/automl_v1/proto/annotation_spec.proto\x1a\x31google/cloud/automl_v1/proto/classification.proto\x1a\x1fgoogle/protobuf/timestamp.proto"m\n"ImageClassificationDatasetMetadata\x12G\n\x13\x63lassification_type\x18\x01 \x01(\x0e\x32*.google.cloud.automl.v1.ClassificationType"%\n#ImageObjectDetectionDatasetMetadata"\xd4\x01\n ImageClassificationModelMetadata\x12\x15\n\rbase_model_id\x18\x01 \x01(\t\x12%\n\x1dtrain_budget_milli_node_hours\x18\x10 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x11 \x01(\x03\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12\x12\n\nmodel_type\x18\x07 \x01(\t\x12\x10\n\x08node_qps\x18\r \x01(\x01\x12\x12\n\nnode_count\x18\x0e \x01(\x03"\xbe\x01\n!ImageObjectDetectionModelMetadata\x12\x12\n\nmodel_type\x18\x01 \x01(\t\x12\x12\n\nnode_count\x18\x03 \x01(\x03\x12\x10\n\x08node_qps\x18\x04 \x01(\x01\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12%\n\x1dtrain_budget_milli_node_hours\x18\x06 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x07 \x01(\x03"@\n*ImageClassificationModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03"A\n+ImageObjectDetectionModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03\x42\xb6\x01\n\x1a\x63om.google.cloud.automl.v1B\nImageProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3'
+        '\n(google/cloud/automl_v1/proto/image.proto\x12\x16google.cloud.automl.v1\x1a\x19google/api/resource.proto\x1a\x32google/cloud/automl_v1/proto/annotation_spec.proto\x1a\x31google/cloud/automl_v1/proto/classification.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto"m\n"ImageClassificationDatasetMetadata\x12G\n\x13\x63lassification_type\x18\x01 \x01(\x0e\x32*.google.cloud.automl.v1.ClassificationType"%\n#ImageObjectDetectionDatasetMetadata"\xd4\x01\n ImageClassificationModelMetadata\x12\x15\n\rbase_model_id\x18\x01 \x01(\t\x12%\n\x1dtrain_budget_milli_node_hours\x18\x10 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x11 \x01(\x03\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12\x12\n\nmodel_type\x18\x07 \x01(\t\x12\x10\n\x08node_qps\x18\r \x01(\x01\x12\x12\n\nnode_count\x18\x0e \x01(\x03"\xbe\x01\n!ImageObjectDetectionModelMetadata\x12\x12\n\nmodel_type\x18\x01 \x01(\t\x12\x12\n\nnode_count\x18\x03 \x01(\x03\x12\x10\n\x08node_qps\x18\x04 \x01(\x01\x12\x13\n\x0bstop_reason\x18\x05 \x01(\t\x12%\n\x1dtrain_budget_milli_node_hours\x18\x06 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x07 \x01(\x03"@\n*ImageClassificationModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03"A\n+ImageObjectDetectionModelDeploymentMetadata\x12\x12\n\nnode_count\x18\x01 \x01(\x03\x42\xb6\x01\n\x1a\x63om.google.cloud.automl.v1B\nImageProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3'
     ),
     dependencies=[
-        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
         google_dot_api_dot_resource__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1_dot_proto_dot_annotation__spec__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1_dot_proto_dot_classification__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,
+        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
     ],
 )
 
@@ -490,8 +490,6 @@ ImageClassificationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_IMAGECLASSIFICATIONDATASETMETADATA,
         __module__="google.cloud.automl_v1.proto.image_pb2",
         __doc__="""Dataset metadata that is specific to image classification.
-  
-  
   Attributes:
       classification_type:
           Required. Type of the classification problem.
@@ -507,9 +505,7 @@ ImageObjectDetectionDatasetMetadata = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_IMAGEOBJECTDETECTIONDATASETMETADATA,
         __module__="google.cloud.automl_v1.proto.image_pb2",
-        __doc__="""Dataset metadata specific to image object detection.
-  
-  """,
+        __doc__="""Dataset metadata specific to image object detection.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1.ImageObjectDetectionDatasetMetadata)
     ),
 )
@@ -522,8 +518,6 @@ ImageClassificationModelMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_IMAGECLASSIFICATIONMODELMETADATA,
         __module__="google.cloud.automl_v1.proto.image_pb2",
         __doc__="""Model metadata for image classification.
-  
-  
   Attributes:
       base_model_id:
           Optional. The ID of the ``base`` model. If it is specified,
@@ -612,8 +606,6 @@ ImageObjectDetectionModelMetadata = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_IMAGEOBJECTDETECTIONMODELMETADATA,
         __module__="google.cloud.automl_v1.proto.image_pb2",
         __doc__="""Model metadata specific to image object detection.
-  
-  
   Attributes:
       model_type:
           Optional. Type of the model. The available values are: \*
@@ -623,7 +615,22 @@ ImageObjectDetectionModelMetadata = _reflection.GeneratedProtocolMessageType(
           other models. \* ``cloud-low-latency-1`` - A model to be used
           via prediction calls to AutoML API. Expected to have low
           latency, but may have lower prediction quality than other
-          models.
+          models. \* ``mobile-low-latency-1`` - A model that, in
+          addition to providing prediction via AutoML API, can also be
+          exported (see [AutoMl.ExportModel][google.cloud.automl.v1.Auto
+          Ml.ExportModel]) and used on a mobile or edge device with
+          TensorFlow afterwards. Expected to have low latency, but may
+          have lower prediction quality than other models. \* ``mobile-
+          versatile-1`` - A model that, in addition to providing
+          prediction via AutoML API, can also be exported (see [AutoMl.E
+          xportModel][google.cloud.automl.v1.AutoMl.ExportModel]) and
+          used on a mobile or edge device with TensorFlow afterwards. \*
+          ``mobile-high-accuracy-1`` - A model that, in addition to
+          providing prediction via AutoML API, can also be exported (see
+          [AutoMl.ExportModel][google.cloud.automl.v1.AutoMl.ExportModel
+          ]) and used on a mobile or edge device with TensorFlow
+          afterwards. Expected to have a higher latency, but should also
+          have a higher prediction quality than other models.
       node_count:
           Output only. The number of nodes this model is deployed on. A
           node is an abstraction of a machine resource, which can handle
@@ -669,10 +676,7 @@ ImageClassificationModelDeploymentMetadata = _reflection.GeneratedProtocolMessag
     dict(
         DESCRIPTOR=_IMAGECLASSIFICATIONMODELDEPLOYMENTMETADATA,
         __module__="google.cloud.automl_v1.proto.image_pb2",
-        __doc__="""Model deployment metadata specific to Image
-  Classification.
-  
-  
+        __doc__="""Model deployment metadata specific to Image Classification.
   Attributes:
       node_count:
           Input only. The number of nodes to deploy the model on. A node
@@ -692,10 +696,7 @@ ImageObjectDetectionModelDeploymentMetadata = _reflection.GeneratedProtocolMessa
     dict(
         DESCRIPTOR=_IMAGEOBJECTDETECTIONMODELDEPLOYMENTMETADATA,
         __module__="google.cloud.automl_v1.proto.image_pb2",
-        __doc__="""Model deployment metadata specific to Image Object
-  Detection.
-  
-  
+        __doc__="""Model deployment metadata specific to Image Object Detection.
   Attributes:
       node_count:
           Input only. The number of nodes to deploy the model on. A node

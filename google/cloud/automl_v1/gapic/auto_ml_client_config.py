@@ -17,12 +17,17 @@ config = {
                 }
             },
             "methods": {
-                "CreateDataset": {
+                "DeleteDataset": {
                     "timeout_millis": 5000,
-                    "retry_codes_name": "non_idempotent",
+                    "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
-                "UpdateDataset": {
+                "DeleteModel": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "idempotent",
+                    "retry_params_name": "default",
+                },
+                "CreateDataset": {
                     "timeout_millis": 5000,
                     "retry_codes_name": "non_idempotent",
                     "retry_params_name": "default",
@@ -37,9 +42,9 @@ config = {
                     "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
-                "DeleteDataset": {
+                "UpdateDataset": {
                     "timeout_millis": 5000,
-                    "retry_codes_name": "idempotent",
+                    "retry_codes_name": "non_idempotent",
                     "retry_params_name": "default",
                 },
                 "ImportData": {
@@ -67,19 +72,14 @@ config = {
                     "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
-                "UpdateModel": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "non_idempotent",
-                    "retry_params_name": "default",
-                },
                 "ListModels": {
                     "timeout_millis": 50000,
                     "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
-                "DeleteModel": {
+                "UpdateModel": {
                     "timeout_millis": 5000,
-                    "retry_codes_name": "idempotent",
+                    "retry_codes_name": "non_idempotent",
                     "retry_params_name": "default",
                 },
                 "DeployModel": {

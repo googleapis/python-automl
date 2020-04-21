@@ -98,8 +98,6 @@ DoubleRange = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_DOUBLERANGE,
         __module__="google.cloud.automl_v1beta1.proto.ranges_pb2",
         __doc__="""A range between two double numbers.
-  
-  
   Attributes:
       start:
           Start of the range, inclusive.

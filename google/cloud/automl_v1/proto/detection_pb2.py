@@ -15,11 +15,11 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.cloud.automl_v1.proto import (
     geometry_pb2 as google_dot_cloud_dot_automl__v1_dot_proto_dot_geometry__pb2,
 )
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -30,12 +30,12 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\032com.google.cloud.automl.v1P\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1"
     ),
     serialized_pb=_b(
-        '\n,google/cloud/automl_v1/proto/detection.proto\x12\x16google.cloud.automl.v1\x1a\x1cgoogle/api/annotations.proto\x1a+google/cloud/automl_v1/proto/geometry.proto\x1a\x1egoogle/protobuf/duration.proto"k\n\x1eImageObjectDetectionAnnotation\x12:\n\x0c\x62ounding_box\x18\x01 \x01(\x0b\x32$.google.cloud.automl.v1.BoundingPoly\x12\r\n\x05score\x18\x02 \x01(\x02"\xa9\x02\n\x17\x42oundingBoxMetricsEntry\x12\x15\n\riou_threshold\x18\x01 \x01(\x02\x12\x1e\n\x16mean_average_precision\x18\x02 \x01(\x02\x12j\n\x1a\x63onfidence_metrics_entries\x18\x03 \x03(\x0b\x32\x46.google.cloud.automl.v1.BoundingBoxMetricsEntry.ConfidenceMetricsEntry\x1ak\n\x16\x43onfidenceMetricsEntry\x12\x1c\n\x14\x63onfidence_threshold\x18\x01 \x01(\x02\x12\x0e\n\x06recall\x18\x02 \x01(\x02\x12\x11\n\tprecision\x18\x03 \x01(\x02\x12\x10\n\x08\x66\x31_score\x18\x04 \x01(\x02"\xd1\x01\n%ImageObjectDetectionEvaluationMetrics\x12$\n\x1c\x65valuated_bounding_box_count\x18\x01 \x01(\x05\x12U\n\x1c\x62ounding_box_metrics_entries\x18\x02 \x03(\x0b\x32/.google.cloud.automl.v1.BoundingBoxMetricsEntry\x12+\n#bounding_box_mean_average_precision\x18\x03 \x01(\x02\x42\xaa\x01\n\x1a\x63om.google.cloud.automl.v1P\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3'
+        '\n,google/cloud/automl_v1/proto/detection.proto\x12\x16google.cloud.automl.v1\x1a+google/cloud/automl_v1/proto/geometry.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/api/annotations.proto"k\n\x1eImageObjectDetectionAnnotation\x12:\n\x0c\x62ounding_box\x18\x01 \x01(\x0b\x32$.google.cloud.automl.v1.BoundingPoly\x12\r\n\x05score\x18\x02 \x01(\x02"\xa9\x02\n\x17\x42oundingBoxMetricsEntry\x12\x15\n\riou_threshold\x18\x01 \x01(\x02\x12\x1e\n\x16mean_average_precision\x18\x02 \x01(\x02\x12j\n\x1a\x63onfidence_metrics_entries\x18\x03 \x03(\x0b\x32\x46.google.cloud.automl.v1.BoundingBoxMetricsEntry.ConfidenceMetricsEntry\x1ak\n\x16\x43onfidenceMetricsEntry\x12\x1c\n\x14\x63onfidence_threshold\x18\x01 \x01(\x02\x12\x0e\n\x06recall\x18\x02 \x01(\x02\x12\x11\n\tprecision\x18\x03 \x01(\x02\x12\x10\n\x08\x66\x31_score\x18\x04 \x01(\x02"\xd1\x01\n%ImageObjectDetectionEvaluationMetrics\x12$\n\x1c\x65valuated_bounding_box_count\x18\x01 \x01(\x05\x12U\n\x1c\x62ounding_box_metrics_entries\x18\x02 \x03(\x0b\x32/.google.cloud.automl.v1.BoundingBoxMetricsEntry\x12+\n#bounding_box_mean_average_precision\x18\x03 \x01(\x02\x42\xaa\x01\n\x1a\x63om.google.cloud.automl.v1P\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3'
     ),
     dependencies=[
-        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1_dot_proto_dot_geometry__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,
+        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
     ],
 )
 
@@ -368,8 +368,6 @@ ImageObjectDetectionAnnotation = _reflection.GeneratedProtocolMessageType(
         DESCRIPTOR=_IMAGEOBJECTDETECTIONANNOTATION,
         __module__="google.cloud.automl_v1.proto.detection_pb2",
         __doc__="""Annotation details for image object detection.
-  
-  
   Attributes:
       bounding_box:
           Output only. The rectangle representing the object location.
@@ -394,8 +392,6 @@ BoundingBoxMetricsEntry = _reflection.GeneratedProtocolMessageType(
                 DESCRIPTOR=_BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY,
                 __module__="google.cloud.automl_v1.proto.detection_pb2",
                 __doc__="""Metrics for a single confidence threshold.
-    
-    
     Attributes:
         confidence_threshold:
             Output only. The confidence threshold value used to compute
@@ -412,11 +408,8 @@ BoundingBoxMetricsEntry = _reflection.GeneratedProtocolMessageType(
         ),
         DESCRIPTOR=_BOUNDINGBOXMETRICSENTRY,
         __module__="google.cloud.automl_v1.proto.detection_pb2",
-        __doc__="""Bounding box matching model metrics for a single
-  intersection-over-union threshold and multiple label match confidence
-  thresholds.
-  
-  
+        __doc__="""Bounding box matching model metrics for a single intersection-over-
+  union threshold and multiple label match confidence thresholds.
   Attributes:
       iou_threshold:
           Output only. The intersection-over-union threshold value used
@@ -442,10 +435,8 @@ ImageObjectDetectionEvaluationMetrics = _reflection.GeneratedProtocolMessageType
     dict(
         DESCRIPTOR=_IMAGEOBJECTDETECTIONEVALUATIONMETRICS,
         __module__="google.cloud.automl_v1.proto.detection_pb2",
-        __doc__="""Model evaluation metrics for image object detection
-  problems. Evaluates prediction quality of labeled bounding boxes.
-  
-  
+        __doc__="""Model evaluation metrics for image object detection problems.
+  Evaluates prediction quality of labeled bounding boxes.
   Attributes:
       evaluated_bounding_box_count:
           Output only. The total number of bounding boxes (i.e. summed

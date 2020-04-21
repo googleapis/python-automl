@@ -17,26 +17,6 @@ config = {
                 }
             },
             "methods": {
-                "CreateDataset": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "non_idempotent",
-                    "retry_params_name": "default",
-                },
-                "UpdateDataset": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "non_idempotent",
-                    "retry_params_name": "default",
-                },
-                "GetDataset": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "idempotent",
-                    "retry_params_name": "default",
-                },
-                "ListDatasets": {
-                    "timeout_millis": 50000,
-                    "retry_codes_name": "idempotent",
-                    "retry_params_name": "default",
-                },
                 "DeleteDataset": {
                     "timeout_millis": 5000,
                     "retry_codes_name": "idempotent",
@@ -52,37 +32,7 @@ config = {
                     "retry_codes_name": "non_idempotent",
                     "retry_params_name": "default",
                 },
-                "CreateModel": {
-                    "timeout_millis": 20000,
-                    "retry_codes_name": "non_idempotent",
-                    "retry_params_name": "default",
-                },
-                "GetModel": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "idempotent",
-                    "retry_params_name": "default",
-                },
-                "ListModels": {
-                    "timeout_millis": 50000,
-                    "retry_codes_name": "idempotent",
-                    "retry_params_name": "default",
-                },
                 "DeleteModel": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "idempotent",
-                    "retry_params_name": "default",
-                },
-                "DeployModel": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "non_idempotent",
-                    "retry_params_name": "default",
-                },
-                "UndeployModel": {
-                    "timeout_millis": 5000,
-                    "retry_codes_name": "non_idempotent",
-                    "retry_params_name": "default",
-                },
-                "GetModelEvaluation": {
                     "timeout_millis": 5000,
                     "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
@@ -99,6 +49,26 @@ config = {
                 },
                 "ListModelEvaluations": {
                     "timeout_millis": 50000,
+                    "retry_codes_name": "non_idempotent",
+                    "retry_params_name": "default",
+                },
+                "CreateDataset": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "non_idempotent",
+                    "retry_params_name": "default",
+                },
+                "GetDataset": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "idempotent",
+                    "retry_params_name": "default",
+                },
+                "ListDatasets": {
+                    "timeout_millis": 50000,
+                    "retry_codes_name": "idempotent",
+                    "retry_params_name": "default",
+                },
+                "UpdateDataset": {
+                    "timeout_millis": 5000,
                     "retry_codes_name": "non_idempotent",
                     "retry_params_name": "default",
                 },
@@ -135,6 +105,36 @@ config = {
                 "UpdateColumnSpec": {
                     "timeout_millis": 5000,
                     "retry_codes_name": "non_idempotent",
+                    "retry_params_name": "default",
+                },
+                "CreateModel": {
+                    "timeout_millis": 20000,
+                    "retry_codes_name": "non_idempotent",
+                    "retry_params_name": "default",
+                },
+                "GetModel": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "idempotent",
+                    "retry_params_name": "default",
+                },
+                "ListModels": {
+                    "timeout_millis": 50000,
+                    "retry_codes_name": "idempotent",
+                    "retry_params_name": "default",
+                },
+                "DeployModel": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "non_idempotent",
+                    "retry_params_name": "default",
+                },
+                "UndeployModel": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "non_idempotent",
+                    "retry_params_name": "default",
+                },
+                "GetModelEvaluation": {
+                    "timeout_millis": 5000,
+                    "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
             },

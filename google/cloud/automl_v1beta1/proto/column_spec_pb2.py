@@ -15,6 +15,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.cloud.automl_v1beta1.proto import (
     data_stats_pb2 as google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_data__stats__pb2,
 )
@@ -32,9 +33,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1"
     ),
     serialized_pb=_b(
-        '\n3google/cloud/automl_v1beta1/proto/column_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x32google/cloud/automl_v1beta1/proto/data_stats.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_types.proto\x1a\x1cgoogle/api/annotations.proto"\x84\x03\n\nColumnSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x38\n\tdata_type\x18\x02 \x01(\x0b\x32%.google.cloud.automl.v1beta1.DataType\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12:\n\ndata_stats\x18\x04 \x01(\x0b\x32&.google.cloud.automl.v1beta1.DataStats\x12X\n\x16top_correlated_columns\x18\x05 \x03(\x0b\x32\x38.google.cloud.automl.v1beta1.ColumnSpec.CorrelatedColumn\x12\x0c\n\x04\x65tag\x18\x06 \x01(\t\x1at\n\x10\x43orrelatedColumn\x12\x16\n\x0e\x63olumn_spec_id\x18\x01 \x01(\t\x12H\n\x11\x63orrelation_stats\x18\x02 \x01(\x0b\x32-.google.cloud.automl.v1beta1.CorrelationStatsB\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
+        '\n3google/cloud/automl_v1beta1/proto/column_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x19google/api/resource.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_stats.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_types.proto\x1a\x1cgoogle/api/annotations.proto"\x9b\x04\n\nColumnSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x38\n\tdata_type\x18\x02 \x01(\x0b\x32%.google.cloud.automl.v1beta1.DataType\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12:\n\ndata_stats\x18\x04 \x01(\x0b\x32&.google.cloud.automl.v1beta1.DataStats\x12X\n\x16top_correlated_columns\x18\x05 \x03(\x0b\x32\x38.google.cloud.automl.v1beta1.ColumnSpec.CorrelatedColumn\x12\x0c\n\x04\x65tag\x18\x06 \x01(\t\x1at\n\x10\x43orrelatedColumn\x12\x16\n\x0e\x63olumn_spec_id\x18\x01 \x01(\t\x12H\n\x11\x63orrelation_stats\x18\x02 \x01(\x0b\x32-.google.cloud.automl.v1beta1.CorrelationStats:\x94\x01\xea\x41\x90\x01\n automl.googleapis.com/ColumnSpec\x12lprojects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}/columnSpecs/{column_spec}B\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
     ),
     dependencies=[
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_data__stats__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_data__types__pb2.DESCRIPTOR,
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -94,8 +96,8 @@ _COLUMNSPEC_CORRELATEDCOLUMN = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=491,
-    serialized_end=607,
+    serialized_start=518,
+    serialized_end=634,
 )
 
 _COLUMNSPEC = _descriptor.Descriptor(
@@ -217,13 +219,15 @@ _COLUMNSPEC = _descriptor.Descriptor(
     extensions=[],
     nested_types=[_COLUMNSPEC_CORRELATEDCOLUMN],
     enum_types=[],
-    serialized_options=None,
+    serialized_options=_b(
+        "\352A\220\001\n automl.googleapis.com/ColumnSpec\022lprojects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}/columnSpecs/{column_spec}"
+    ),
     is_extendable=False,
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=219,
-    serialized_end=607,
+    serialized_start=246,
+    serialized_end=785,
 )
 
 _COLUMNSPEC_CORRELATEDCOLUMN.fields_by_name[
@@ -258,10 +262,8 @@ ColumnSpec = _reflection.GeneratedProtocolMessageType(
             dict(
                 DESCRIPTOR=_COLUMNSPEC_CORRELATEDCOLUMN,
                 __module__="google.cloud.automl_v1beta1.proto.column_spec_pb2",
-                __doc__="""Identifies the table's column, and its correlation with
-    the column this ColumnSpec describes.
-    
-    
+                __doc__="""Identifies the table's column, and its correlation with the column
+    this ColumnSpec describes.
     Attributes:
         column_spec_id:
             The column\_spec\_id of the correlated column, which belongs
@@ -274,11 +276,9 @@ ColumnSpec = _reflection.GeneratedProtocolMessageType(
         ),
         DESCRIPTOR=_COLUMNSPEC,
         __module__="google.cloud.automl_v1beta1.proto.column_spec_pb2",
-        __doc__="""A representation of a column in a relational table. When
-  listing them, column specs are returned in the same order in which they
-  were given on import . Used by: \* Tables
-  
-  
+        __doc__="""A representation of a column in a relational table. When listing them,
+  column specs are returned in the same order in which they were given
+  on import . Used by: \* Tables
   Attributes:
       name:
           Output only. The resource name of the column specs. Form:  ``p
@@ -311,4 +311,5 @@ _sym_db.RegisterMessage(ColumnSpec.CorrelatedColumn)
 
 
 DESCRIPTOR._options = None
+_COLUMNSPEC._options = None
 # @@protoc_insertion_point(module_scope)

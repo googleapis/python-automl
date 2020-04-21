@@ -16,6 +16,9 @@ _sym_db = _symbol_database.Default()
 
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from google.api import client_pb2 as google_dot_api_dot_client__pb2
+from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior__pb2
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.cloud.automl_v1beta1.proto import (
     annotation_payload_pb2 as google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_annotation__payload__pb2,
 )
@@ -50,7 +53,6 @@ from google.longrunning import (
     operations_pb2 as google_dot_longrunning_dot_operations__pb2,
 )
 from google.protobuf import field_mask_pb2 as google_dot_protobuf_dot_field__mask__pb2
-from google.api import client_pb2 as google_dot_api_dot_client__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -61,10 +63,13 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         "\n\037com.google.cloud.automl.v1beta1B\013AutoMlProtoP\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1"
     ),
     serialized_pb=_b(
-        '\n/google/cloud/automl_v1beta1/proto/service.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto\x1a:google/cloud/automl_v1beta1/proto/annotation_payload.proto\x1a\x37google/cloud/automl_v1beta1/proto/annotation_spec.proto\x1a\x33google/cloud/automl_v1beta1/proto/column_spec.proto\x1a/google/cloud/automl_v1beta1/proto/dataset.proto\x1a-google/cloud/automl_v1beta1/proto/image.proto\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a-google/cloud/automl_v1beta1/proto/model.proto\x1a\x38google/cloud/automl_v1beta1/proto/model_evaluation.proto\x1a\x32google/cloud/automl_v1beta1/proto/operations.proto\x1a\x32google/cloud/automl_v1beta1/proto/table_spec.proto\x1a#google/longrunning/operations.proto\x1a google/protobuf/field_mask.proto\x1a\x17google/api/client.proto"]\n\x14\x43reateDatasetRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x35\n\x07\x64\x61taset\x18\x02 \x01(\x0b\x32$.google.cloud.automl.v1beta1.Dataset"!\n\x11GetDatasetRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"\\\n\x13ListDatasetsRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"g\n\x14ListDatasetsResponse\x12\x36\n\x08\x64\x61tasets\x18\x01 \x03(\x0b\x32$.google.cloud.automl.v1beta1.Dataset\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"~\n\x14UpdateDatasetRequest\x12\x35\n\x07\x64\x61taset\x18\x01 \x01(\x0b\x32$.google.cloud.automl.v1beta1.Dataset\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"$\n\x14\x44\x65leteDatasetRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"a\n\x11ImportDataRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12>\n\x0cinput_config\x18\x03 \x01(\x0b\x32(.google.cloud.automl.v1beta1.InputConfig"c\n\x11\x45xportDataRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12@\n\routput_config\x18\x03 \x01(\x0b\x32).google.cloud.automl.v1beta1.OutputConfig"(\n\x18GetAnnotationSpecRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"S\n\x13GetTableSpecRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\x8e\x01\n\x15ListTableSpecsRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"n\n\x16ListTableSpecsResponse\x12;\n\x0btable_specs\x18\x01 \x03(\x0b\x32&.google.cloud.automl.v1beta1.TableSpec\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x85\x01\n\x16UpdateTableSpecRequest\x12:\n\ntable_spec\x18\x01 \x01(\x0b\x32&.google.cloud.automl.v1beta1.TableSpec\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"T\n\x14GetColumnSpecRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\x8f\x01\n\x16ListColumnSpecsRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"q\n\x17ListColumnSpecsResponse\x12=\n\x0c\x63olumn_specs\x18\x01 \x03(\x0b\x32\'.google.cloud.automl.v1beta1.ColumnSpec\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x88\x01\n\x17UpdateColumnSpecRequest\x12<\n\x0b\x63olumn_spec\x18\x01 \x01(\x0b\x32\'.google.cloud.automl.v1beta1.ColumnSpec\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"W\n\x12\x43reateModelRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x31\n\x05model\x18\x04 \x01(\x0b\x32".google.cloud.automl.v1beta1.Model"\x1f\n\x0fGetModelRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"Z\n\x11ListModelsRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"`\n\x12ListModelsResponse\x12\x31\n\x05model\x18\x01 \x03(\x0b\x32".google.cloud.automl.v1beta1.Model\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t""\n\x12\x44\x65leteModelRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"\xca\x02\n\x12\x44\x65ployModelRequest\x12\x84\x01\n0image_object_detection_model_deployment_metadata\x18\x02 \x01(\x0b\x32H.google.cloud.automl.v1beta1.ImageObjectDetectionModelDeploymentMetadataH\x00\x12\x81\x01\n.image_classification_model_deployment_metadata\x18\x04 \x01(\x0b\x32G.google.cloud.automl.v1beta1.ImageClassificationModelDeploymentMetadataH\x00\x12\x0c\n\x04name\x18\x01 \x01(\tB\x1b\n\x19model_deployment_metadata"$\n\x14UndeployModelRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"o\n\x12\x45xportModelRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12K\n\routput_config\x18\x03 \x01(\x0b\x32\x34.google.cloud.automl.v1beta1.ModelExportOutputConfig"\x87\x01\n\x1e\x45xportEvaluatedExamplesRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12W\n\routput_config\x18\x03 \x01(\x0b\x32@.google.cloud.automl.v1beta1.ExportEvaluatedExamplesOutputConfig")\n\x19GetModelEvaluationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t"d\n\x1bListModelEvaluationsRequest\x12\x0e\n\x06parent\x18\x01 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"\x7f\n\x1cListModelEvaluationsResponse\x12\x46\n\x10model_evaluation\x18\x01 \x03(\x0b\x32,.google.cloud.automl.v1beta1.ModelEvaluation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xd9"\n\x06\x41utoMl\x12\xac\x01\n\rCreateDataset\x12\x31.google.cloud.automl.v1beta1.CreateDatasetRequest\x1a$.google.cloud.automl.v1beta1.Dataset"B\x82\xd3\xe4\x93\x02<"1/v1beta1/{parent=projects/*/locations/*}/datasets:\x07\x64\x61taset\x12\x9d\x01\n\nGetDataset\x12..google.cloud.automl.v1beta1.GetDatasetRequest\x1a$.google.cloud.automl.v1beta1.Dataset"9\x82\xd3\xe4\x93\x02\x33\x12\x31/v1beta1/{name=projects/*/locations/*/datasets/*}\x12\xae\x01\n\x0cListDatasets\x12\x30.google.cloud.automl.v1beta1.ListDatasetsRequest\x1a\x31.google.cloud.automl.v1beta1.ListDatasetsResponse"9\x82\xd3\xe4\x93\x02\x33\x12\x31/v1beta1/{parent=projects/*/locations/*}/datasets\x12\xb4\x01\n\rUpdateDataset\x12\x31.google.cloud.automl.v1beta1.UpdateDatasetRequest\x1a$.google.cloud.automl.v1beta1.Dataset"J\x82\xd3\xe4\x93\x02\x44\x32\x39/v1beta1/{dataset.name=projects/*/locations/*/datasets/*}:\x07\x64\x61taset\x12\x9c\x01\n\rDeleteDataset\x12\x31.google.cloud.automl.v1beta1.DeleteDatasetRequest\x1a\x1d.google.longrunning.Operation"9\x82\xd3\xe4\x93\x02\x33*1/v1beta1/{name=projects/*/locations/*/datasets/*}\x12\xa4\x01\n\nImportData\x12..google.cloud.automl.v1beta1.ImportDataRequest\x1a\x1d.google.longrunning.Operation"G\x82\xd3\xe4\x93\x02\x41"</v1beta1/{name=projects/*/locations/*/datasets/*}:importData:\x01*\x12\xa4\x01\n\nExportData\x12..google.cloud.automl.v1beta1.ExportDataRequest\x1a\x1d.google.longrunning.Operation"G\x82\xd3\xe4\x93\x02\x41"</v1beta1/{name=projects/*/locations/*/datasets/*}:exportData:\x01*\x12\xc4\x01\n\x11GetAnnotationSpec\x12\x35.google.cloud.automl.v1beta1.GetAnnotationSpecRequest\x1a+.google.cloud.automl.v1beta1.AnnotationSpec"K\x82\xd3\xe4\x93\x02\x45\x12\x43/v1beta1/{name=projects/*/locations/*/datasets/*/annotationSpecs/*}\x12\xb0\x01\n\x0cGetTableSpec\x12\x30.google.cloud.automl.v1beta1.GetTableSpecRequest\x1a&.google.cloud.automl.v1beta1.TableSpec"F\x82\xd3\xe4\x93\x02@\x12>/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*}\x12\xc1\x01\n\x0eListTableSpecs\x12\x32.google.cloud.automl.v1beta1.ListTableSpecsRequest\x1a\x33.google.cloud.automl.v1beta1.ListTableSpecsResponse"F\x82\xd3\xe4\x93\x02@\x12>/v1beta1/{parent=projects/*/locations/*/datasets/*}/tableSpecs\x12\xcd\x01\n\x0fUpdateTableSpec\x12\x33.google.cloud.automl.v1beta1.UpdateTableSpecRequest\x1a&.google.cloud.automl.v1beta1.TableSpec"]\x82\xd3\xe4\x93\x02W2I/v1beta1/{table_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*}:\ntable_spec\x12\xc1\x01\n\rGetColumnSpec\x12\x31.google.cloud.automl.v1beta1.GetColumnSpecRequest\x1a\'.google.cloud.automl.v1beta1.ColumnSpec"T\x82\xd3\xe4\x93\x02N\x12L/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}\x12\xd2\x01\n\x0fListColumnSpecs\x12\x33.google.cloud.automl.v1beta1.ListColumnSpecsRequest\x1a\x34.google.cloud.automl.v1beta1.ListColumnSpecsResponse"T\x82\xd3\xe4\x93\x02N\x12L/v1beta1/{parent=projects/*/locations/*/datasets/*/tableSpecs/*}/columnSpecs\x12\xe0\x01\n\x10UpdateColumnSpec\x12\x34.google.cloud.automl.v1beta1.UpdateColumnSpecRequest\x1a\'.google.cloud.automl.v1beta1.ColumnSpec"m\x82\xd3\xe4\x93\x02g2X/v1beta1/{column_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}:\x0b\x63olumn_spec\x12\x9d\x01\n\x0b\x43reateModel\x12/.google.cloud.automl.v1beta1.CreateModelRequest\x1a\x1d.google.longrunning.Operation">\x82\xd3\xe4\x93\x02\x38"//v1beta1/{parent=projects/*/locations/*}/models:\x05model\x12\x95\x01\n\x08GetModel\x12,.google.cloud.automl.v1beta1.GetModelRequest\x1a".google.cloud.automl.v1beta1.Model"7\x82\xd3\xe4\x93\x02\x31\x12//v1beta1/{name=projects/*/locations/*/models/*}\x12\xa6\x01\n\nListModels\x12..google.cloud.automl.v1beta1.ListModelsRequest\x1a/.google.cloud.automl.v1beta1.ListModelsResponse"7\x82\xd3\xe4\x93\x02\x31\x12//v1beta1/{parent=projects/*/locations/*}/models\x12\x96\x01\n\x0b\x44\x65leteModel\x12/.google.cloud.automl.v1beta1.DeleteModelRequest\x1a\x1d.google.longrunning.Operation"7\x82\xd3\xe4\x93\x02\x31*//v1beta1/{name=projects/*/locations/*/models/*}\x12\xa0\x01\n\x0b\x44\x65ployModel\x12/.google.cloud.automl.v1beta1.DeployModelRequest\x1a\x1d.google.longrunning.Operation"A\x82\xd3\xe4\x93\x02;"6/v1beta1/{name=projects/*/locations/*/models/*}:deploy:\x01*\x12\xa6\x01\n\rUndeployModel\x12\x31.google.cloud.automl.v1beta1.UndeployModelRequest\x1a\x1d.google.longrunning.Operation"C\x82\xd3\xe4\x93\x02="8/v1beta1/{name=projects/*/locations/*/models/*}:undeploy:\x01*\x12\xa0\x01\n\x0b\x45xportModel\x12/.google.cloud.automl.v1beta1.ExportModelRequest\x1a\x1d.google.longrunning.Operation"A\x82\xd3\xe4\x93\x02;"6/v1beta1/{name=projects/*/locations/*/models/*}:export:\x01*\x12\xc9\x01\n\x17\x45xportEvaluatedExamples\x12;.google.cloud.automl.v1beta1.ExportEvaluatedExamplesRequest\x1a\x1d.google.longrunning.Operation"R\x82\xd3\xe4\x93\x02L"G/v1beta1/{name=projects/*/locations/*/models/*}:exportEvaluatedExamples:\x01*\x12\xc6\x01\n\x12GetModelEvaluation\x12\x36.google.cloud.automl.v1beta1.GetModelEvaluationRequest\x1a,.google.cloud.automl.v1beta1.ModelEvaluation"J\x82\xd3\xe4\x93\x02\x44\x12\x42/v1beta1/{name=projects/*/locations/*/models/*/modelEvaluations/*}\x12\xd7\x01\n\x14ListModelEvaluations\x12\x38.google.cloud.automl.v1beta1.ListModelEvaluationsRequest\x1a\x39.google.cloud.automl.v1beta1.ListModelEvaluationsResponse"J\x82\xd3\xe4\x93\x02\x44\x12\x42/v1beta1/{parent=projects/*/locations/*/models/*}/modelEvaluations\x1aI\xca\x41\x15\x61utoml.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\xb2\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\x0b\x41utoMlProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
+        '\n/google/cloud/automl_v1beta1/proto/service.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a:google/cloud/automl_v1beta1/proto/annotation_payload.proto\x1a\x37google/cloud/automl_v1beta1/proto/annotation_spec.proto\x1a\x33google/cloud/automl_v1beta1/proto/column_spec.proto\x1a/google/cloud/automl_v1beta1/proto/dataset.proto\x1a-google/cloud/automl_v1beta1/proto/image.proto\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a-google/cloud/automl_v1beta1/proto/model.proto\x1a\x38google/cloud/automl_v1beta1/proto/model_evaluation.proto\x1a\x32google/cloud/automl_v1beta1/proto/operations.proto\x1a\x32google/cloud/automl_v1beta1/proto/table_spec.proto\x1a#google/longrunning/operations.proto\x1a google/protobuf/field_mask.proto"\x8d\x01\n\x14\x43reateDatasetRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12:\n\x07\x64\x61taset\x18\x02 \x01(\x0b\x32$.google.cloud.automl.v1beta1.DatasetB\x03\xe0\x41\x02"H\n\x11GetDatasetRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset"\x87\x01\n\x13ListDatasetsRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"g\n\x14ListDatasetsResponse\x12\x36\n\x08\x64\x61tasets\x18\x01 \x03(\x0b\x32$.google.cloud.automl.v1beta1.Dataset\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x83\x01\n\x14UpdateDatasetRequest\x12:\n\x07\x64\x61taset\x18\x01 \x01(\x0b\x32$.google.cloud.automl.v1beta1.DatasetB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"K\n\x14\x44\x65leteDatasetRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset"\x8d\x01\n\x11ImportDataRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset\x12\x43\n\x0cinput_config\x18\x03 \x01(\x0b\x32(.google.cloud.automl.v1beta1.InputConfigB\x03\xe0\x41\x02"\x8f\x01\n\x11\x45xportDataRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset\x12\x45\n\routput_config\x18\x03 \x01(\x0b\x32).google.cloud.automl.v1beta1.OutputConfigB\x03\xe0\x41\x02"V\n\x18GetAnnotationSpecRequest\x12:\n\x04name\x18\x01 \x01(\tB,\xe0\x41\x02\xfa\x41&\n$automl.googleapis.com/AnnotationSpec"|\n\x13GetTableSpecRequest\x12\x35\n\x04name\x18\x01 \x01(\tB\'\xe0\x41\x02\xfa\x41!\n\x1f\x61utoml.googleapis.com/TableSpec\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\xb5\x01\n\x15ListTableSpecsRequest\x12\x35\n\x06parent\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"n\n\x16ListTableSpecsResponse\x12;\n\x0btable_specs\x18\x01 \x03(\x0b\x32&.google.cloud.automl.v1beta1.TableSpec\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x8a\x01\n\x16UpdateTableSpecRequest\x12?\n\ntable_spec\x18\x01 \x01(\x0b\x32&.google.cloud.automl.v1beta1.TableSpecB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"~\n\x14GetColumnSpecRequest\x12\x36\n\x04name\x18\x01 \x01(\tB(\xe0\x41\x02\xfa\x41"\n automl.googleapis.com/ColumnSpec\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\xb8\x01\n\x16ListColumnSpecsRequest\x12\x37\n\x06parent\x18\x01 \x01(\tB\'\xe0\x41\x02\xfa\x41!\n\x1f\x61utoml.googleapis.com/TableSpec\x12.\n\nfield_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"q\n\x17ListColumnSpecsResponse\x12=\n\x0c\x63olumn_specs\x18\x01 \x03(\x0b\x32\'.google.cloud.automl.v1beta1.ColumnSpec\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x8d\x01\n\x17UpdateColumnSpecRequest\x12\x41\n\x0b\x63olumn_spec\x18\x01 \x01(\x0b\x32\'.google.cloud.automl.v1beta1.ColumnSpecB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\x87\x01\n\x12\x43reateModelRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x36\n\x05model\x18\x04 \x01(\x0b\x32".google.cloud.automl.v1beta1.ModelB\x03\xe0\x41\x02"D\n\x0fGetModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model"\x85\x01\n\x11ListModelsRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"`\n\x12ListModelsResponse\x12\x31\n\x05model\x18\x01 \x03(\x0b\x32".google.cloud.automl.v1beta1.Model\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"G\n\x12\x44\x65leteModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model"\xef\x02\n\x12\x44\x65ployModelRequest\x12\x84\x01\n0image_object_detection_model_deployment_metadata\x18\x02 \x01(\x0b\x32H.google.cloud.automl.v1beta1.ImageObjectDetectionModelDeploymentMetadataH\x00\x12\x81\x01\n.image_classification_model_deployment_metadata\x18\x04 \x01(\x0b\x32G.google.cloud.automl.v1beta1.ImageClassificationModelDeploymentMetadataH\x00\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/ModelB\x1b\n\x19model_deployment_metadata"I\n\x14UndeployModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model"\x99\x01\n\x12\x45xportModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12P\n\routput_config\x18\x03 \x01(\x0b\x32\x34.google.cloud.automl.v1beta1.ModelExportOutputConfigB\x03\xe0\x41\x02"\xb1\x01\n\x1e\x45xportEvaluatedExamplesRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12\\\n\routput_config\x18\x03 \x01(\x0b\x32@.google.cloud.automl.v1beta1.ExportEvaluatedExamplesOutputConfigB\x03\xe0\x41\x02"X\n\x19GetModelEvaluationRequest\x12;\n\x04name\x18\x01 \x01(\tB-\xe0\x41\x02\xfa\x41\'\n%automl.googleapis.com/ModelEvaluation"\x89\x01\n\x1bListModelEvaluationsRequest\x12\x33\n\x06parent\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"\x7f\n\x1cListModelEvaluationsResponse\x12\x46\n\x10model_evaluation\x18\x01 \x03(\x0b\x32,.google.cloud.automl.v1beta1.ModelEvaluation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xed\'\n\x06\x41utoMl\x12\xbd\x01\n\rCreateDataset\x12\x31.google.cloud.automl.v1beta1.CreateDatasetRequest\x1a$.google.cloud.automl.v1beta1.Dataset"S\x82\xd3\xe4\x93\x02<"1/v1beta1/{parent=projects/*/locations/*}/datasets:\x07\x64\x61taset\xda\x41\x0eparent,dataset\x12\xa4\x01\n\nGetDataset\x12..google.cloud.automl.v1beta1.GetDatasetRequest\x1a$.google.cloud.automl.v1beta1.Dataset"@\x82\xd3\xe4\x93\x02\x33\x12\x31/v1beta1/{name=projects/*/locations/*/datasets/*}\xda\x41\x04name\x12\xb7\x01\n\x0cListDatasets\x12\x30.google.cloud.automl.v1beta1.ListDatasetsRequest\x1a\x31.google.cloud.automl.v1beta1.ListDatasetsResponse"B\x82\xd3\xe4\x93\x02\x33\x12\x31/v1beta1/{parent=projects/*/locations/*}/datasets\xda\x41\x06parent\x12\xbe\x01\n\rUpdateDataset\x12\x31.google.cloud.automl.v1beta1.UpdateDatasetRequest\x1a$.google.cloud.automl.v1beta1.Dataset"T\x82\xd3\xe4\x93\x02\x44\x32\x39/v1beta1/{dataset.name=projects/*/locations/*/datasets/*}:\x07\x64\x61taset\xda\x41\x07\x64\x61taset\x12\xd0\x01\n\rDeleteDataset\x12\x31.google.cloud.automl.v1beta1.DeleteDatasetRequest\x1a\x1d.google.longrunning.Operation"m\x82\xd3\xe4\x93\x02\x33*1/v1beta1/{name=projects/*/locations/*/datasets/*}\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xe6\x01\n\nImportData\x12..google.cloud.automl.v1beta1.ImportDataRequest\x1a\x1d.google.longrunning.Operation"\x88\x01\x82\xd3\xe4\x93\x02\x41"</v1beta1/{name=projects/*/locations/*/datasets/*}:importData:\x01*\xda\x41\x11name,input_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xe7\x01\n\nExportData\x12..google.cloud.automl.v1beta1.ExportDataRequest\x1a\x1d.google.longrunning.Operation"\x89\x01\x82\xd3\xe4\x93\x02\x41"</v1beta1/{name=projects/*/locations/*/datasets/*}:exportData:\x01*\xda\x41\x12name,output_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xcb\x01\n\x11GetAnnotationSpec\x12\x35.google.cloud.automl.v1beta1.GetAnnotationSpecRequest\x1a+.google.cloud.automl.v1beta1.AnnotationSpec"R\x82\xd3\xe4\x93\x02\x45\x12\x43/v1beta1/{name=projects/*/locations/*/datasets/*/annotationSpecs/*}\xda\x41\x04name\x12\xb7\x01\n\x0cGetTableSpec\x12\x30.google.cloud.automl.v1beta1.GetTableSpecRequest\x1a&.google.cloud.automl.v1beta1.TableSpec"M\x82\xd3\xe4\x93\x02@\x12>/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*}\xda\x41\x04name\x12\xca\x01\n\x0eListTableSpecs\x12\x32.google.cloud.automl.v1beta1.ListTableSpecsRequest\x1a\x33.google.cloud.automl.v1beta1.ListTableSpecsResponse"O\x82\xd3\xe4\x93\x02@\x12>/v1beta1/{parent=projects/*/locations/*/datasets/*}/tableSpecs\xda\x41\x06parent\x12\xda\x01\n\x0fUpdateTableSpec\x12\x33.google.cloud.automl.v1beta1.UpdateTableSpecRequest\x1a&.google.cloud.automl.v1beta1.TableSpec"j\x82\xd3\xe4\x93\x02W2I/v1beta1/{table_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*}:\ntable_spec\xda\x41\ntable_spec\x12\xc8\x01\n\rGetColumnSpec\x12\x31.google.cloud.automl.v1beta1.GetColumnSpecRequest\x1a\'.google.cloud.automl.v1beta1.ColumnSpec"[\x82\xd3\xe4\x93\x02N\x12L/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}\xda\x41\x04name\x12\xdb\x01\n\x0fListColumnSpecs\x12\x33.google.cloud.automl.v1beta1.ListColumnSpecsRequest\x1a\x34.google.cloud.automl.v1beta1.ListColumnSpecsResponse"]\x82\xd3\xe4\x93\x02N\x12L/v1beta1/{parent=projects/*/locations/*/datasets/*/tableSpecs/*}/columnSpecs\xda\x41\x06parent\x12\xee\x01\n\x10UpdateColumnSpec\x12\x34.google.cloud.automl.v1beta1.UpdateColumnSpecRequest\x1a\'.google.cloud.automl.v1beta1.ColumnSpec"{\x82\xd3\xe4\x93\x02g2X/v1beta1/{column_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}:\x0b\x63olumn_spec\xda\x41\x0b\x63olumn_spec\x12\xc9\x01\n\x0b\x43reateModel\x12/.google.cloud.automl.v1beta1.CreateModelRequest\x1a\x1d.google.longrunning.Operation"j\x82\xd3\xe4\x93\x02\x38"//v1beta1/{parent=projects/*/locations/*}/models:\x05model\xda\x41\x0cparent,model\xca\x41\x1a\n\x05Model\x12\x11OperationMetadata\x12\x9c\x01\n\x08GetModel\x12,.google.cloud.automl.v1beta1.GetModelRequest\x1a".google.cloud.automl.v1beta1.Model">\x82\xd3\xe4\x93\x02\x31\x12//v1beta1/{name=projects/*/locations/*/models/*}\xda\x41\x04name\x12\xaf\x01\n\nListModels\x12..google.cloud.automl.v1beta1.ListModelsRequest\x1a/.google.cloud.automl.v1beta1.ListModelsResponse"@\x82\xd3\xe4\x93\x02\x31\x12//v1beta1/{parent=projects/*/locations/*}/models\xda\x41\x06parent\x12\xca\x01\n\x0b\x44\x65leteModel\x12/.google.cloud.automl.v1beta1.DeleteModelRequest\x1a\x1d.google.longrunning.Operation"k\x82\xd3\xe4\x93\x02\x31*//v1beta1/{name=projects/*/locations/*/models/*}\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xd4\x01\n\x0b\x44\x65ployModel\x12/.google.cloud.automl.v1beta1.DeployModelRequest\x1a\x1d.google.longrunning.Operation"u\x82\xd3\xe4\x93\x02;"6/v1beta1/{name=projects/*/locations/*/models/*}:deploy:\x01*\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xda\x01\n\rUndeployModel\x12\x31.google.cloud.automl.v1beta1.UndeployModelRequest\x1a\x1d.google.longrunning.Operation"w\x82\xd3\xe4\x93\x02="8/v1beta1/{name=projects/*/locations/*/models/*}:undeploy:\x01*\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xe3\x01\n\x0b\x45xportModel\x12/.google.cloud.automl.v1beta1.ExportModelRequest\x1a\x1d.google.longrunning.Operation"\x83\x01\x82\xd3\xe4\x93\x02;"6/v1beta1/{name=projects/*/locations/*/models/*}:export:\x01*\xda\x41\x12name,output_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\x8c\x02\n\x17\x45xportEvaluatedExamples\x12;.google.cloud.automl.v1beta1.ExportEvaluatedExamplesRequest\x1a\x1d.google.longrunning.Operation"\x94\x01\x82\xd3\xe4\x93\x02L"G/v1beta1/{name=projects/*/locations/*/models/*}:exportEvaluatedExamples:\x01*\xda\x41\x12name,output_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xcd\x01\n\x12GetModelEvaluation\x12\x36.google.cloud.automl.v1beta1.GetModelEvaluationRequest\x1a,.google.cloud.automl.v1beta1.ModelEvaluation"Q\x82\xd3\xe4\x93\x02\x44\x12\x42/v1beta1/{name=projects/*/locations/*/models/*/modelEvaluations/*}\xda\x41\x04name\x12\xe0\x01\n\x14ListModelEvaluations\x12\x38.google.cloud.automl.v1beta1.ListModelEvaluationsRequest\x1a\x39.google.cloud.automl.v1beta1.ListModelEvaluationsResponse"S\x82\xd3\xe4\x93\x02\x44\x12\x42/v1beta1/{parent=projects/*/locations/*/models/*}/modelEvaluations\xda\x41\x06parent\x1aI\xca\x41\x15\x61utoml.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\xb2\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\x0b\x41utoMlProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3'
     ),
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
+        google_dot_api_dot_client__pb2.DESCRIPTOR,
+        google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_annotation__payload__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_annotation__spec__pb2.DESCRIPTOR,
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_column__spec__pb2.DESCRIPTOR,
@@ -77,7 +82,6 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_table__spec__pb2.DESCRIPTOR,
         google_dot_longrunning_dot_operations__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,
-        google_dot_api_dot_client__pb2.DESCRIPTOR,
     ],
 )
 
@@ -104,7 +108,9 @@ _CREATEDATASETREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A#\n!locations.googleapis.com/Location"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -122,7 +128,7 @@ _CREATEDATASETREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -134,8 +140,8 @@ _CREATEDATASETREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=725,
-    serialized_end=818,
+    serialized_start=786,
+    serialized_end=927,
 )
 
 
@@ -161,7 +167,9 @@ _GETDATASETREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\037\n\035automl.googleapis.com/Dataset"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -173,8 +181,8 @@ _GETDATASETREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=820,
-    serialized_end=853,
+    serialized_start=929,
+    serialized_end=1001,
 )
 
 
@@ -200,7 +208,9 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A#\n!locations.googleapis.com/Location"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -266,8 +276,8 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=855,
-    serialized_end=947,
+    serialized_start=1004,
+    serialized_end=1139,
 )
 
 
@@ -323,8 +333,8 @@ _LISTDATASETSRESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=949,
-    serialized_end=1052,
+    serialized_start=1141,
+    serialized_end=1244,
 )
 
 
@@ -350,7 +360,7 @@ _UPDATEDATASETREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -380,8 +390,8 @@ _UPDATEDATASETREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1054,
-    serialized_end=1180,
+    serialized_start=1247,
+    serialized_end=1378,
 )
 
 
@@ -407,7 +417,9 @@ _DELETEDATASETREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\037\n\035automl.googleapis.com/Dataset"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -419,8 +431,8 @@ _DELETEDATASETREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1182,
-    serialized_end=1218,
+    serialized_start=1380,
+    serialized_end=1455,
 )
 
 
@@ -446,7 +458,9 @@ _IMPORTDATAREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\037\n\035automl.googleapis.com/Dataset"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -464,7 +478,7 @@ _IMPORTDATAREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -476,8 +490,8 @@ _IMPORTDATAREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1220,
-    serialized_end=1317,
+    serialized_start=1458,
+    serialized_end=1599,
 )
 
 
@@ -503,7 +517,9 @@ _EXPORTDATAREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\037\n\035automl.googleapis.com/Dataset"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -521,7 +537,7 @@ _EXPORTDATAREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -533,8 +549,8 @@ _EXPORTDATAREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1319,
-    serialized_end=1418,
+    serialized_start=1602,
+    serialized_end=1745,
 )
 
 
@@ -560,7 +576,9 @@ _GETANNOTATIONSPECREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A&\n$automl.googleapis.com/AnnotationSpec"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -572,8 +590,8 @@ _GETANNOTATIONSPECREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1420,
-    serialized_end=1460,
+    serialized_start=1747,
+    serialized_end=1833,
 )
 
 
@@ -599,7 +617,9 @@ _GETTABLESPECREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A!\n\037automl.googleapis.com/TableSpec"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -629,8 +649,8 @@ _GETTABLESPECREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1462,
-    serialized_end=1545,
+    serialized_start=1835,
+    serialized_end=1959,
 )
 
 
@@ -656,7 +676,9 @@ _LISTTABLESPECSREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\037\n\035automl.googleapis.com/Dataset"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -740,8 +762,8 @@ _LISTTABLESPECSREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1548,
-    serialized_end=1690,
+    serialized_start=1962,
+    serialized_end=2143,
 )
 
 
@@ -797,8 +819,8 @@ _LISTTABLESPECSRESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1692,
-    serialized_end=1802,
+    serialized_start=2145,
+    serialized_end=2255,
 )
 
 
@@ -824,7 +846,7 @@ _UPDATETABLESPECREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -854,8 +876,8 @@ _UPDATETABLESPECREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1805,
-    serialized_end=1938,
+    serialized_start=2258,
+    serialized_end=2396,
 )
 
 
@@ -881,7 +903,7 @@ _GETCOLUMNSPECREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b('\340A\002\372A"\n automl.googleapis.com/ColumnSpec'),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -911,8 +933,8 @@ _GETCOLUMNSPECREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1940,
-    serialized_end=2024,
+    serialized_start=2398,
+    serialized_end=2524,
 )
 
 
@@ -938,7 +960,9 @@ _LISTCOLUMNSPECSREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A!\n\037automl.googleapis.com/TableSpec"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1022,8 +1046,8 @@ _LISTCOLUMNSPECSREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2027,
-    serialized_end=2170,
+    serialized_start=2527,
+    serialized_end=2711,
 )
 
 
@@ -1079,8 +1103,8 @@ _LISTCOLUMNSPECSRESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2172,
-    serialized_end=2285,
+    serialized_start=2713,
+    serialized_end=2826,
 )
 
 
@@ -1106,7 +1130,7 @@ _UPDATECOLUMNSPECREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1136,8 +1160,8 @@ _UPDATECOLUMNSPECREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2288,
-    serialized_end=2424,
+    serialized_start=2829,
+    serialized_end=2970,
 )
 
 
@@ -1163,7 +1187,9 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A#\n!locations.googleapis.com/Location"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1181,7 +1207,7 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -1193,8 +1219,8 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2426,
-    serialized_end=2513,
+    serialized_start=2973,
+    serialized_end=3108,
 )
 
 
@@ -1220,7 +1246,9 @@ _GETMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -1232,8 +1260,8 @@ _GETMODELREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2515,
-    serialized_end=2546,
+    serialized_start=3110,
+    serialized_end=3178,
 )
 
 
@@ -1259,7 +1287,9 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A#\n!locations.googleapis.com/Location"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1325,8 +1355,8 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2548,
-    serialized_end=2638,
+    serialized_start=3181,
+    serialized_end=3314,
 )
 
 
@@ -1382,8 +1412,8 @@ _LISTMODELSRESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2640,
-    serialized_end=2736,
+    serialized_start=3316,
+    serialized_end=3412,
 )
 
 
@@ -1409,7 +1439,9 @@ _DELETEMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -1421,8 +1453,8 @@ _DELETEMODELREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=2738,
-    serialized_end=2772,
+    serialized_start=3414,
+    serialized_end=3485,
 )
 
 
@@ -1484,7 +1516,9 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         ),
     ],
@@ -1504,8 +1538,8 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
             fields=[],
         )
     ],
-    serialized_start=2775,
-    serialized_end=3105,
+    serialized_start=3488,
+    serialized_end=3855,
 )
 
 
@@ -1531,7 +1565,9 @@ _UNDEPLOYMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -1543,8 +1579,8 @@ _UNDEPLOYMODELREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3107,
-    serialized_end=3143,
+    serialized_start=3857,
+    serialized_end=3930,
 )
 
 
@@ -1570,7 +1606,9 @@ _EXPORTMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1588,7 +1626,7 @@ _EXPORTMODELREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -1600,8 +1638,8 @@ _EXPORTMODELREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3145,
-    serialized_end=3256,
+    serialized_start=3933,
+    serialized_end=4086,
 )
 
 
@@ -1627,7 +1665,9 @@ _EXPORTEVALUATEDEXAMPLESREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1645,7 +1685,7 @@ _EXPORTEVALUATEDEXAMPLESREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b("\340A\002"),
             file=DESCRIPTOR,
         ),
     ],
@@ -1657,8 +1697,8 @@ _EXPORTEVALUATEDEXAMPLESREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3259,
-    serialized_end=3394,
+    serialized_start=4089,
+    serialized_end=4266,
 )
 
 
@@ -1684,7 +1724,9 @@ _GETMODELEVALUATIONREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A'\n%automl.googleapis.com/ModelEvaluation"
+            ),
             file=DESCRIPTOR,
         )
     ],
@@ -1696,8 +1738,8 @@ _GETMODELEVALUATIONREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3396,
-    serialized_end=3437,
+    serialized_start=4268,
+    serialized_end=4356,
 )
 
 
@@ -1723,7 +1765,9 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=None,
+            serialized_options=_b(
+                "\340A\002\372A\035\n\033automl.googleapis.com/Model"
+            ),
             file=DESCRIPTOR,
         ),
         _descriptor.FieldDescriptor(
@@ -1789,8 +1833,8 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3439,
-    serialized_end=3539,
+    serialized_start=4359,
+    serialized_end=4496,
 )
 
 
@@ -1846,8 +1890,8 @@ _LISTMODELEVALUATIONSRESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=3541,
-    serialized_end=3668,
+    serialized_start=4498,
+    serialized_end=4625,
 )
 
 _CREATEDATASETREQUEST.fields_by_name[
@@ -2004,15 +2048,14 @@ CreateDatasetRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_CREATEDATASETREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.CreateDataset][google.cloud.automl.v1beta1.AutoMl.CreateDataset].
-  
-  
+        __doc__="""Request message for [AutoMl.CreateDataset][google.cloud.automl.v1beta1
+  .AutoMl.CreateDataset].
   Attributes:
       parent:
-          The resource name of the project to create the dataset for.
+          Required. The resource name of the project to create the
+          dataset for.
       dataset:
-          The dataset to create.
+          Required. The dataset to create.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.CreateDatasetRequest)
     ),
@@ -2027,11 +2070,9 @@ GetDatasetRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.GetDataset][google.cloud.automl.v1beta1.AutoMl.GetDataset].
-  
-  
   Attributes:
       name:
-          The resource name of the dataset to retrieve.
+          Required. The resource name of the dataset to retrieve.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.GetDatasetRequest)
     ),
@@ -2044,13 +2085,12 @@ ListDatasetsRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTDATASETSREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.ListDatasets][google.cloud.automl.v1beta1.AutoMl.ListDatasets].
-  
-  
+        __doc__="""Request message for [AutoMl.ListDatasets][google.cloud.automl.v1beta1.
+  AutoMl.ListDatasets].
   Attributes:
       parent:
-          The resource name of the project from which to list datasets.
+          Required. The resource name of the project from which to list
+          datasets.
       filter:
           An expression for filtering the results of the request.  -
           ``dataset_metadata`` - for existence of the case (e.g.
@@ -2079,10 +2119,8 @@ ListDatasetsResponse = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTDATASETSRESPONSE,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Response message for
-  [AutoMl.ListDatasets][google.cloud.automl.v1beta1.AutoMl.ListDatasets].
-  
-  
+        __doc__="""Response message for [AutoMl.ListDatasets][google.cloud.automl.v1beta1
+  .AutoMl.ListDatasets].
   Attributes:
       datasets:
           The datasets read.
@@ -2102,13 +2140,12 @@ UpdateDatasetRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_UPDATEDATASETREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.UpdateDataset][google.cloud.automl.v1beta1.AutoMl.UpdateDataset]
-  
-  
+        __doc__="""Request message for [AutoMl.UpdateDataset][google.cloud.automl.v1beta1
+  .AutoMl.UpdateDataset]
   Attributes:
       dataset:
-          The dataset which replaces the resource on the server.
+          Required. The dataset which replaces the resource on the
+          server.
       update_mask:
           The update mask applies to the resource.
   """,
@@ -2123,13 +2160,11 @@ DeleteDatasetRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_DELETEDATASETREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.DeleteDataset][google.cloud.automl.v1beta1.AutoMl.DeleteDataset].
-  
-  
+        __doc__="""Request message for [AutoMl.DeleteDataset][google.cloud.automl.v1beta1
+  .AutoMl.DeleteDataset].
   Attributes:
       name:
-          The resource name of the dataset to delete.
+          Required. The resource name of the dataset to delete.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.DeleteDatasetRequest)
     ),
@@ -2144,8 +2179,6 @@ ImportDataRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.ImportData][google.cloud.automl.v1beta1.AutoMl.ImportData].
-  
-  
   Attributes:
       name:
           Required. Dataset name. Dataset must already exist. All
@@ -2167,8 +2200,6 @@ ExportDataRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.ExportData][google.cloud.automl.v1beta1.AutoMl.ExportData].
-  
-  
   Attributes:
       name:
           Required. The resource name of the dataset.
@@ -2186,13 +2217,12 @@ GetAnnotationSpecRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_GETANNOTATIONSPECREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.GetAnnotationSpec][google.cloud.automl.v1beta1.AutoMl.GetAnnotationSpec].
-  
-  
+        __doc__="""Request message for [AutoMl.GetAnnotationSpec][google.cloud.automl.v1b
+  eta1.AutoMl.GetAnnotationSpec].
   Attributes:
       name:
-          The resource name of the annotation spec to retrieve.
+          Required. The resource name of the annotation spec to
+          retrieve.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.GetAnnotationSpecRequest)
     ),
@@ -2205,13 +2235,11 @@ GetTableSpecRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_GETTABLESPECREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.GetTableSpec][google.cloud.automl.v1beta1.AutoMl.GetTableSpec].
-  
-  
+        __doc__="""Request message for [AutoMl.GetTableSpec][google.cloud.automl.v1beta1.
+  AutoMl.GetTableSpec].
   Attributes:
       name:
-          The resource name of the table spec to retrieve.
+          Required. The resource name of the table spec to retrieve.
       field_mask:
           Mask specifying which fields to read.
   """,
@@ -2226,13 +2254,12 @@ ListTableSpecsRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTTABLESPECSREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.ListTableSpecs][google.cloud.automl.v1beta1.AutoMl.ListTableSpecs].
-  
-  
+        __doc__="""Request message for [AutoMl.ListTableSpecs][google.cloud.automl.v1beta
+  1.AutoMl.ListTableSpecs].
   Attributes:
       parent:
-          The resource name of the dataset to list table specs from.
+          Required. The resource name of the dataset to list table specs
+          from.
       field_mask:
           Mask specifying which fields to read.
       filter:
@@ -2260,10 +2287,8 @@ ListTableSpecsResponse = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTTABLESPECSRESPONSE,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Response message for
-  [AutoMl.ListTableSpecs][google.cloud.automl.v1beta1.AutoMl.ListTableSpecs].
-  
-  
+        __doc__="""Response message for [AutoMl.ListTableSpecs][google.cloud.automl.v1bet
+  a1.AutoMl.ListTableSpecs].
   Attributes:
       table_specs:
           The table specs read.
@@ -2283,13 +2308,12 @@ UpdateTableSpecRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_UPDATETABLESPECREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.UpdateTableSpec][google.cloud.automl.v1beta1.AutoMl.UpdateTableSpec]
-  
-  
+        __doc__="""Request message for [AutoMl.UpdateTableSpec][google.cloud.automl.v1bet
+  a1.AutoMl.UpdateTableSpec]
   Attributes:
       table_spec:
-          The table spec which replaces the resource on the server.
+          Required. The table spec which replaces the resource on the
+          server.
       update_mask:
           The update mask applies to the resource.
   """,
@@ -2304,13 +2328,11 @@ GetColumnSpecRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_GETCOLUMNSPECREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.GetColumnSpec][google.cloud.automl.v1beta1.AutoMl.GetColumnSpec].
-  
-  
+        __doc__="""Request message for [AutoMl.GetColumnSpec][google.cloud.automl.v1beta1
+  .AutoMl.GetColumnSpec].
   Attributes:
       name:
-          The resource name of the column spec to retrieve.
+          Required. The resource name of the column spec to retrieve.
       field_mask:
           Mask specifying which fields to read.
   """,
@@ -2325,13 +2347,12 @@ ListColumnSpecsRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTCOLUMNSPECSREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.ListColumnSpecs][google.cloud.automl.v1beta1.AutoMl.ListColumnSpecs].
-  
-  
+        __doc__="""Request message for [AutoMl.ListColumnSpecs][google.cloud.automl.v1bet
+  a1.AutoMl.ListColumnSpecs].
   Attributes:
       parent:
-          The resource name of the table spec to list column specs from.
+          Required. The resource name of the table spec to list column
+          specs from.
       field_mask:
           Mask specifying which fields to read.
       filter:
@@ -2359,10 +2380,8 @@ ListColumnSpecsResponse = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTCOLUMNSPECSRESPONSE,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Response message for
-  [AutoMl.ListColumnSpecs][google.cloud.automl.v1beta1.AutoMl.ListColumnSpecs].
-  
-  
+        __doc__="""Response message for [AutoMl.ListColumnSpecs][google.cloud.automl.v1be
+  ta1.AutoMl.ListColumnSpecs].
   Attributes:
       column_specs:
           The column specs read.
@@ -2382,13 +2401,12 @@ UpdateColumnSpecRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_UPDATECOLUMNSPECREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.UpdateColumnSpec][google.cloud.automl.v1beta1.AutoMl.UpdateColumnSpec]
-  
-  
+        __doc__="""Request message for [AutoMl.UpdateColumnSpec][google.cloud.automl.v1be
+  ta1.AutoMl.UpdateColumnSpec]
   Attributes:
       column_spec:
-          The column spec which replaces the resource on the server.
+          Required. The column spec which replaces the resource on the
+          server.
       update_mask:
           The update mask applies to the resource.
   """,
@@ -2405,14 +2423,12 @@ CreateModelRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.CreateModel][google.cloud.automl.v1beta1.AutoMl.CreateModel].
-  
-  
   Attributes:
       parent:
-          Resource name of the parent project where the model is being
-          created.
+          Required. Resource name of the parent project where the model
+          is being created.
       model:
-          The model to create.
+          Required. The model to create.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.CreateModelRequest)
     ),
@@ -2427,11 +2443,9 @@ GetModelRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.GetModel][google.cloud.automl.v1beta1.AutoMl.GetModel].
-  
-  
   Attributes:
       name:
-          Resource name of the model.
+          Required. Resource name of the model.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.GetModelRequest)
     ),
@@ -2446,11 +2460,10 @@ ListModelsRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.ListModels][google.cloud.automl.v1beta1.AutoMl.ListModels].
-  
-  
   Attributes:
       parent:
-          Resource name of the project, from which to list the models.
+          Required. Resource name of the project, from which to list the
+          models.
       filter:
           An expression for filtering the results of the request.  -
           ``model_metadata`` - for existence of the case (e.g.
@@ -2481,8 +2494,6 @@ ListModelsResponse = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Response message for
   [AutoMl.ListModels][google.cloud.automl.v1beta1.AutoMl.ListModels].
-  
-  
   Attributes:
       model:
           List of models in the requested page.
@@ -2504,11 +2515,9 @@ DeleteModelRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.DeleteModel][google.cloud.automl.v1beta1.AutoMl.DeleteModel].
-  
-  
   Attributes:
       name:
-          Resource name of the model being deleted.
+          Required. Resource name of the model being deleted.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.DeleteModelRequest)
     ),
@@ -2523,8 +2532,6 @@ DeployModelRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.DeployModel][google.cloud.automl.v1beta1.AutoMl.DeployModel].
-  
-  
   Attributes:
       model_deployment_metadata:
           The per-domain specific deployment parameters.
@@ -2533,7 +2540,7 @@ DeployModelRequest = _reflection.GeneratedProtocolMessageType(
       image_classification_model_deployment_metadata:
           Model deployment metadata specific to Image Classification.
       name:
-          Resource name of the model to deploy.
+          Required. Resource name of the model to deploy.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.DeployModelRequest)
     ),
@@ -2546,13 +2553,11 @@ UndeployModelRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_UNDEPLOYMODELREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.UndeployModel][google.cloud.automl.v1beta1.AutoMl.UndeployModel].
-  
-  
+        __doc__="""Request message for [AutoMl.UndeployModel][google.cloud.automl.v1beta1
+  .AutoMl.UndeployModel].
   Attributes:
       name:
-          Resource name of the model to undeploy.
+          Required. Resource name of the model to undeploy.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.UndeployModelRequest)
     ),
@@ -2567,10 +2572,8 @@ ExportModelRequest = _reflection.GeneratedProtocolMessageType(
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
         __doc__="""Request message for
   [AutoMl.ExportModel][google.cloud.automl.v1beta1.AutoMl.ExportModel].
-  Models need to be enabled for exporting, otherwise an error code will be
-  returned.
-  
-  
+  Models need to be enabled for exporting, otherwise an error code will
+  be returned.
   Attributes:
       name:
           Required. The resource name of the model to export.
@@ -2588,10 +2591,8 @@ ExportEvaluatedExamplesRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_EXPORTEVALUATEDEXAMPLESREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.ExportEvaluatedExamples][google.cloud.automl.v1beta1.AutoMl.ExportEvaluatedExamples].
-  
-  
+        __doc__="""Request message for [AutoMl.ExportEvaluatedExamples][google.cloud.auto
+  ml.v1beta1.AutoMl.ExportEvaluatedExamples].
   Attributes:
       name:
           Required. The resource name of the model whose evaluated
@@ -2610,13 +2611,11 @@ GetModelEvaluationRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_GETMODELEVALUATIONREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.GetModelEvaluation][google.cloud.automl.v1beta1.AutoMl.GetModelEvaluation].
-  
-  
+        __doc__="""Request message for [AutoMl.GetModelEvaluation][google.cloud.automl.v1
+  beta1.AutoMl.GetModelEvaluation].
   Attributes:
       name:
-          Resource name for the model evaluation.
+          Required. Resource name for the model evaluation.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.GetModelEvaluationRequest)
     ),
@@ -2629,15 +2628,14 @@ ListModelEvaluationsRequest = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTMODELEVALUATIONSREQUEST,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Request message for
-  [AutoMl.ListModelEvaluations][google.cloud.automl.v1beta1.AutoMl.ListModelEvaluations].
-  
-  
+        __doc__="""Request message for [AutoMl.ListModelEvaluations][google.cloud.automl.
+  v1beta1.AutoMl.ListModelEvaluations].
   Attributes:
       parent:
-          Resource name of the model to list the model evaluations for.
-          If modelId is set as "-", this will list model evaluations
-          from across all models of the parent location.
+          Required. Resource name of the model to list the model
+          evaluations for. If modelId is set as "-", this will list
+          model evaluations from across all models of the parent
+          location.
       filter:
           An expression for filtering the results of the request.  -
           ``annotation_spec_id`` - for =, != or existence. See example
@@ -2667,10 +2665,8 @@ ListModelEvaluationsResponse = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_LISTMODELEVALUATIONSRESPONSE,
         __module__="google.cloud.automl_v1beta1.proto.service_pb2",
-        __doc__="""Response message for
-  [AutoMl.ListModelEvaluations][google.cloud.automl.v1beta1.AutoMl.ListModelEvaluations].
-  
-  
+        __doc__="""Response message for [AutoMl.ListModelEvaluations][google.cloud.automl
+  .v1beta1.AutoMl.ListModelEvaluations].
   Attributes:
       model_evaluation:
           List of model evaluations in the requested page.
@@ -2688,6 +2684,36 @@ _sym_db.RegisterMessage(ListModelEvaluationsResponse)
 
 
 DESCRIPTOR._options = None
+_CREATEDATASETREQUEST.fields_by_name["parent"]._options = None
+_CREATEDATASETREQUEST.fields_by_name["dataset"]._options = None
+_GETDATASETREQUEST.fields_by_name["name"]._options = None
+_LISTDATASETSREQUEST.fields_by_name["parent"]._options = None
+_UPDATEDATASETREQUEST.fields_by_name["dataset"]._options = None
+_DELETEDATASETREQUEST.fields_by_name["name"]._options = None
+_IMPORTDATAREQUEST.fields_by_name["name"]._options = None
+_IMPORTDATAREQUEST.fields_by_name["input_config"]._options = None
+_EXPORTDATAREQUEST.fields_by_name["name"]._options = None
+_EXPORTDATAREQUEST.fields_by_name["output_config"]._options = None
+_GETANNOTATIONSPECREQUEST.fields_by_name["name"]._options = None
+_GETTABLESPECREQUEST.fields_by_name["name"]._options = None
+_LISTTABLESPECSREQUEST.fields_by_name["parent"]._options = None
+_UPDATETABLESPECREQUEST.fields_by_name["table_spec"]._options = None
+_GETCOLUMNSPECREQUEST.fields_by_name["name"]._options = None
+_LISTCOLUMNSPECSREQUEST.fields_by_name["parent"]._options = None
+_UPDATECOLUMNSPECREQUEST.fields_by_name["column_spec"]._options = None
+_CREATEMODELREQUEST.fields_by_name["parent"]._options = None
+_CREATEMODELREQUEST.fields_by_name["model"]._options = None
+_GETMODELREQUEST.fields_by_name["name"]._options = None
+_LISTMODELSREQUEST.fields_by_name["parent"]._options = None
+_DELETEMODELREQUEST.fields_by_name["name"]._options = None
+_DEPLOYMODELREQUEST.fields_by_name["name"]._options = None
+_UNDEPLOYMODELREQUEST.fields_by_name["name"]._options = None
+_EXPORTMODELREQUEST.fields_by_name["name"]._options = None
+_EXPORTMODELREQUEST.fields_by_name["output_config"]._options = None
+_EXPORTEVALUATEDEXAMPLESREQUEST.fields_by_name["name"]._options = None
+_EXPORTEVALUATEDEXAMPLESREQUEST.fields_by_name["output_config"]._options = None
+_GETMODELEVALUATIONREQUEST.fields_by_name["name"]._options = None
+_LISTMODELEVALUATIONSREQUEST.fields_by_name["parent"]._options = None
 
 _AUTOML = _descriptor.ServiceDescriptor(
     name="AutoMl",
@@ -2697,8 +2723,8 @@ _AUTOML = _descriptor.ServiceDescriptor(
     serialized_options=_b(
         "\312A\025automl.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform"
     ),
-    serialized_start=3671,
-    serialized_end=8112,
+    serialized_start=4628,
+    serialized_end=9729,
     methods=[
         _descriptor.MethodDescriptor(
             name="CreateDataset",
@@ -2708,7 +2734,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_CREATEDATASETREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_dataset__pb2._DATASET,
             serialized_options=_b(
-                '\202\323\344\223\002<"1/v1beta1/{parent=projects/*/locations/*}/datasets:\007dataset'
+                '\202\323\344\223\002<"1/v1beta1/{parent=projects/*/locations/*}/datasets:\007dataset\332A\016parent,dataset'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2719,7 +2745,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETDATASETREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_dataset__pb2._DATASET,
             serialized_options=_b(
-                "\202\323\344\223\0023\0221/v1beta1/{name=projects/*/locations/*/datasets/*}"
+                "\202\323\344\223\0023\0221/v1beta1/{name=projects/*/locations/*/datasets/*}\332A\004name"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2730,7 +2756,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTDATASETSREQUEST,
             output_type=_LISTDATASETSRESPONSE,
             serialized_options=_b(
-                "\202\323\344\223\0023\0221/v1beta1/{parent=projects/*/locations/*}/datasets"
+                "\202\323\344\223\0023\0221/v1beta1/{parent=projects/*/locations/*}/datasets\332A\006parent"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2741,7 +2767,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UPDATEDATASETREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_dataset__pb2._DATASET,
             serialized_options=_b(
-                "\202\323\344\223\002D29/v1beta1/{dataset.name=projects/*/locations/*/datasets/*}:\007dataset"
+                "\202\323\344\223\002D29/v1beta1/{dataset.name=projects/*/locations/*/datasets/*}:\007dataset\332A\007dataset"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2752,7 +2778,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_DELETEDATASETREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                "\202\323\344\223\0023*1/v1beta1/{name=projects/*/locations/*/datasets/*}"
+                "\202\323\344\223\0023*1/v1beta1/{name=projects/*/locations/*/datasets/*}\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2763,7 +2789,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_IMPORTDATAREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\002A"</v1beta1/{name=projects/*/locations/*/datasets/*}:importData:\001*'
+                '\202\323\344\223\002A"</v1beta1/{name=projects/*/locations/*/datasets/*}:importData:\001*\332A\021name,input_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2774,7 +2800,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_EXPORTDATAREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\002A"</v1beta1/{name=projects/*/locations/*/datasets/*}:exportData:\001*'
+                '\202\323\344\223\002A"</v1beta1/{name=projects/*/locations/*/datasets/*}:exportData:\001*\332A\022name,output_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2785,7 +2811,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETANNOTATIONSPECREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_annotation__spec__pb2._ANNOTATIONSPEC,
             serialized_options=_b(
-                "\202\323\344\223\002E\022C/v1beta1/{name=projects/*/locations/*/datasets/*/annotationSpecs/*}"
+                "\202\323\344\223\002E\022C/v1beta1/{name=projects/*/locations/*/datasets/*/annotationSpecs/*}\332A\004name"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2796,7 +2822,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETTABLESPECREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_table__spec__pb2._TABLESPEC,
             serialized_options=_b(
-                "\202\323\344\223\002@\022>/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*}"
+                "\202\323\344\223\002@\022>/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*}\332A\004name"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2807,7 +2833,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTTABLESPECSREQUEST,
             output_type=_LISTTABLESPECSRESPONSE,
             serialized_options=_b(
-                "\202\323\344\223\002@\022>/v1beta1/{parent=projects/*/locations/*/datasets/*}/tableSpecs"
+                "\202\323\344\223\002@\022>/v1beta1/{parent=projects/*/locations/*/datasets/*}/tableSpecs\332A\006parent"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2818,7 +2844,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UPDATETABLESPECREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_table__spec__pb2._TABLESPEC,
             serialized_options=_b(
-                "\202\323\344\223\002W2I/v1beta1/{table_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*}:\ntable_spec"
+                "\202\323\344\223\002W2I/v1beta1/{table_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*}:\ntable_spec\332A\ntable_spec"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2829,7 +2855,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETCOLUMNSPECREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_column__spec__pb2._COLUMNSPEC,
             serialized_options=_b(
-                "\202\323\344\223\002N\022L/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}"
+                "\202\323\344\223\002N\022L/v1beta1/{name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}\332A\004name"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2840,7 +2866,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTCOLUMNSPECSREQUEST,
             output_type=_LISTCOLUMNSPECSRESPONSE,
             serialized_options=_b(
-                "\202\323\344\223\002N\022L/v1beta1/{parent=projects/*/locations/*/datasets/*/tableSpecs/*}/columnSpecs"
+                "\202\323\344\223\002N\022L/v1beta1/{parent=projects/*/locations/*/datasets/*/tableSpecs/*}/columnSpecs\332A\006parent"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2851,7 +2877,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UPDATECOLUMNSPECREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_column__spec__pb2._COLUMNSPEC,
             serialized_options=_b(
-                "\202\323\344\223\002g2X/v1beta1/{column_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}:\013column_spec"
+                "\202\323\344\223\002g2X/v1beta1/{column_spec.name=projects/*/locations/*/datasets/*/tableSpecs/*/columnSpecs/*}:\013column_spec\332A\013column_spec"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2862,7 +2888,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_CREATEMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\0028"//v1beta1/{parent=projects/*/locations/*}/models:\005model'
+                '\202\323\344\223\0028"//v1beta1/{parent=projects/*/locations/*}/models:\005model\332A\014parent,model\312A\032\n\005Model\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2873,7 +2899,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETMODELREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_model__pb2._MODEL,
             serialized_options=_b(
-                "\202\323\344\223\0021\022//v1beta1/{name=projects/*/locations/*/models/*}"
+                "\202\323\344\223\0021\022//v1beta1/{name=projects/*/locations/*/models/*}\332A\004name"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2884,7 +2910,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTMODELSREQUEST,
             output_type=_LISTMODELSRESPONSE,
             serialized_options=_b(
-                "\202\323\344\223\0021\022//v1beta1/{parent=projects/*/locations/*}/models"
+                "\202\323\344\223\0021\022//v1beta1/{parent=projects/*/locations/*}/models\332A\006parent"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2895,7 +2921,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_DELETEMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                "\202\323\344\223\0021*//v1beta1/{name=projects/*/locations/*/models/*}"
+                "\202\323\344\223\0021*//v1beta1/{name=projects/*/locations/*/models/*}\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2906,7 +2932,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_DEPLOYMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\002;"6/v1beta1/{name=projects/*/locations/*/models/*}:deploy:\001*'
+                '\202\323\344\223\002;"6/v1beta1/{name=projects/*/locations/*/models/*}:deploy:\001*\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2917,7 +2943,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UNDEPLOYMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\002="8/v1beta1/{name=projects/*/locations/*/models/*}:undeploy:\001*'
+                '\202\323\344\223\002="8/v1beta1/{name=projects/*/locations/*/models/*}:undeploy:\001*\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2928,7 +2954,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_EXPORTMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\002;"6/v1beta1/{name=projects/*/locations/*/models/*}:export:\001*'
+                '\202\323\344\223\002;"6/v1beta1/{name=projects/*/locations/*/models/*}:export:\001*\332A\022name,output_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2939,7 +2965,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_EXPORTEVALUATEDEXAMPLESREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=_b(
-                '\202\323\344\223\002L"G/v1beta1/{name=projects/*/locations/*/models/*}:exportEvaluatedExamples:\001*'
+                '\202\323\344\223\002L"G/v1beta1/{name=projects/*/locations/*/models/*}:exportEvaluatedExamples:\001*\332A\022name,output_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata'
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2950,7 +2976,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETMODELEVALUATIONREQUEST,
             output_type=google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_model__evaluation__pb2._MODELEVALUATION,
             serialized_options=_b(
-                "\202\323\344\223\002D\022B/v1beta1/{name=projects/*/locations/*/models/*/modelEvaluations/*}"
+                "\202\323\344\223\002D\022B/v1beta1/{name=projects/*/locations/*/models/*/modelEvaluations/*}\332A\004name"
             ),
         ),
         _descriptor.MethodDescriptor(
@@ -2961,7 +2987,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTMODELEVALUATIONSREQUEST,
             output_type=_LISTMODELEVALUATIONSRESPONSE,
             serialized_options=_b(
-                "\202\323\344\223\002D\022B/v1beta1/{parent=projects/*/locations/*/models/*}/modelEvaluations"
+                "\202\323\344\223\002D\022B/v1beta1/{parent=projects/*/locations/*/models/*}/modelEvaluations\332A\006parent"
             ),
         ),
     ],

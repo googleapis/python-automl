@@ -39,12 +39,15 @@ from google.cloud.automl_v1beta1.gapic import enums
 from google.cloud.automl_v1beta1.gapic.transports import auto_ml_grpc_transport
 from google.cloud.automl_v1beta1.proto import annotation_spec_pb2
 from google.cloud.automl_v1beta1.proto import column_spec_pb2
+from google.cloud.automl_v1beta1.proto import data_items_pb2
 from google.cloud.automl_v1beta1.proto import dataset_pb2
 from google.cloud.automl_v1beta1.proto import image_pb2
 from google.cloud.automl_v1beta1.proto import io_pb2
 from google.cloud.automl_v1beta1.proto import model_evaluation_pb2
 from google.cloud.automl_v1beta1.proto import model_pb2
 from google.cloud.automl_v1beta1.proto import operations_pb2 as proto_operations_pb2
+from google.cloud.automl_v1beta1.proto import prediction_service_pb2
+from google.cloud.automl_v1beta1.proto import prediction_service_pb2_grpc
 from google.cloud.automl_v1beta1.proto import service_pb2
 from google.cloud.automl_v1beta1.proto import service_pb2_grpc
 from google.cloud.automl_v1beta1.proto import table_spec_pb2
@@ -58,20 +61,45 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-automl").v
 
 class AutoMlClient(object):
     """
-    AutoML Server API.
+    If this SourceCodeInfo represents a complete declaration, these are
+    any comments appearing before and after the declaration which appear to
+    be attached to the declaration.
 
-    The resource names are assigned by the server. The server never reuses
-    names that it has created after the resources with those names are
-    deleted.
+    A series of line comments appearing on consecutive lines, with no other
+    tokens appearing on those lines, will be treated as a single comment.
 
-    An ID of a resource is the last element of the item's resource name. For
-    ``projects/{project_id}/locations/{location_id}/datasets/{dataset_id}``,
-    then the id for the item is ``{dataset_id}``.
+    leading_detached_comments will keep paragraphs of comments that appear
+    before (but not connected to) the current element. Each paragraph,
+    separated by empty lines, will be one comment element in the repeated
+    field.
 
-    Currently the only supported ``location_id`` is "us-central1".
+    Only the comment content is provided; comment markers (e.g. //) are
+    stripped out. For block comments, leading whitespace and an asterisk
+    will be stripped from the beginning of each line other than the first.
+    Newlines are included in the output.
 
-    On any input that is documented to expect a string parameter in
-    snake\_case or kebab-case, either of those cases is accepted.
+    Examples:
+
+    optional int32 foo = 1; // Comment attached to foo. // Comment attached
+    to bar. optional int32 bar = 2;
+
+    optional string baz = 3; // Comment attached to baz. // Another line
+    attached to baz.
+
+    // Comment attached to qux. // // Another line attached to qux. optional
+    double qux = 4;
+
+    // Detached comment for corge. This is not leading or trailing comments
+    // to qux or corge because there are blank lines separating it from //
+    both.
+
+    // Detached comment for corge paragraph 2.
+
+    optional string corge = 5; /\* Block comment attached \* to corge.
+    Leading asterisks \* will be removed. */ /* Block comment attached to \*
+    grault. \*/ optional int32 grault = 6;
+
+    // ignored detached comments.
     """
 
     SERVICE_ADDRESS = "automl.googleapis.com:443"
@@ -288,344 +316,6 @@ class AutoMlClient(object):
         self._inner_api_calls = {}
 
     # Service calls
-    def create_dataset(
-        self,
-        parent,
-        dataset,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Creates a dataset.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
-            >>>
-            >>> # TODO: Initialize `dataset`:
-            >>> dataset = {}
-            >>>
-            >>> response = client.create_dataset(parent, dataset)
-
-        Args:
-            parent (str): The resource name of the project to create the dataset for.
-            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): The dataset to create.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.Dataset`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types.Dataset` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "create_dataset" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "create_dataset"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.create_dataset,
-                default_retry=self._method_configs["CreateDataset"].retry,
-                default_timeout=self._method_configs["CreateDataset"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.CreateDatasetRequest(parent=parent, dataset=dataset)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("parent", parent)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        return self._inner_api_calls["create_dataset"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-
-    def update_dataset(
-        self,
-        dataset,
-        update_mask=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Updates a dataset.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> # TODO: Initialize `dataset`:
-            >>> dataset = {}
-            >>>
-            >>> response = client.update_dataset(dataset)
-
-        Args:
-            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): The dataset which replaces the resource on the server.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.Dataset`
-            update_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): The update mask applies to the resource.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.FieldMask`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types.Dataset` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "update_dataset" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "update_dataset"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.update_dataset,
-                default_retry=self._method_configs["UpdateDataset"].retry,
-                default_timeout=self._method_configs["UpdateDataset"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.UpdateDatasetRequest(
-            dataset=dataset, update_mask=update_mask
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("dataset.name", dataset.name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        return self._inner_api_calls["update_dataset"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-
-    def get_dataset(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Gets a dataset.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
-            >>>
-            >>> response = client.get_dataset(name)
-
-        Args:
-            name (str): The resource name of the dataset to retrieve.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types.Dataset` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "get_dataset" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_dataset"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.get_dataset,
-                default_retry=self._method_configs["GetDataset"].retry,
-                default_timeout=self._method_configs["GetDataset"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.GetDatasetRequest(name=name)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        return self._inner_api_calls["get_dataset"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-
-    def list_datasets(
-        self,
-        parent,
-        filter_=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Lists datasets in a project.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
-            >>>
-            >>> # Iterate over all results
-            >>> for element in client.list_datasets(parent):
-            ...     # process element
-            ...     pass
-            >>>
-            >>>
-            >>> # Alternatively:
-            >>>
-            >>> # Iterate over results one page at a time
-            >>> for page in client.list_datasets(parent).pages:
-            ...     for element in page:
-            ...         # process element
-            ...         pass
-
-        Args:
-            parent (str): The resource name of the project from which to list datasets.
-            filter_ (str): An expression for filtering the results of the request.
-
-                -  ``dataset_metadata`` - for existence of the case (e.g.
-                   image\_classification\_dataset\_metadata:\*). Some examples of using
-                   the filter are:
-
-                -  ``translation_dataset_metadata:*`` --> The dataset has
-                   translation\_dataset\_metadata.
-            page_size (int): The maximum number of resources contained in the
-                underlying API response. If page streaming is performed per-
-                resource, this parameter does not affect the return value. If page
-                streaming is performed per-page, this determines the maximum number
-                of resources in a page.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.api_core.page_iterator.PageIterator` instance.
-            An iterable of :class:`~google.cloud.automl_v1beta1.types.Dataset` instances.
-            You can also iterate over the pages of the response
-            using its `pages` property.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "list_datasets" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_datasets"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.list_datasets,
-                default_retry=self._method_configs["ListDatasets"].retry,
-                default_timeout=self._method_configs["ListDatasets"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ListDatasetsRequest(
-            parent=parent, filter=filter_, page_size=page_size
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("parent", parent)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        iterator = google.api_core.page_iterator.GRPCIterator(
-            client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_datasets"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
-            request=request,
-            items_field="datasets",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
-        )
-        return iterator
-
     def delete_dataset(
         self,
         name,
@@ -634,9 +324,8 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Deletes a dataset and all of its contents. Returns empty response in the
-        ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
+        Output only. Auxiliary information for each of the
+        input_feature_column_specs with respect to this particular model.
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -657,7 +346,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): The resource name of the dataset to delete.
+            name (str): Required. The resource name of the dataset to delete.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -721,14 +410,28 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Imports data into a dataset. For Tables this method can only be called
-        on an empty Dataset.
+        Optional. Type of the model. The available values are:
 
-        For Tables:
-
-        -  A ``schema_inference_version`` parameter must be explicitly set.
-           Returns an empty response in the ``response`` field when it
-           completes.
+        -  ``cloud-high-accuracy-1`` - (default) A model to be used via
+           prediction calls to AutoML API. Expected to have a higher latency,
+           but should also have a higher prediction quality than other models.
+        -  ``cloud-low-latency-1`` - A model to be used via prediction calls to
+           AutoML API. Expected to have low latency, but may have lower
+           prediction quality than other models.
+        -  ``mobile-low-latency-1`` - A model that, in addition to providing
+           prediction via AutoML API, can also be exported (see
+           ``AutoMl.ExportModel``) and used on a mobile or edge device with
+           TensorFlow afterwards. Expected to have low latency, but may have
+           lower prediction quality than other models.
+        -  ``mobile-versatile-1`` - A model that, in addition to providing
+           prediction via AutoML API, can also be exported (see
+           ``AutoMl.ExportModel``) and used on a mobile or edge device with
+           TensorFlow afterwards.
+        -  ``mobile-high-accuracy-1`` - A model that, in addition to providing
+           prediction via AutoML API, can also be exported (see
+           ``AutoMl.ExportModel``) and used on a mobile or edge device with
+           TensorFlow afterwards. Expected to have a higher latency, but should
+           also have a higher prediction quality than other models.
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -822,8 +525,44 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Exports dataset's data to the provided output location. Returns an empty
-        response in the ``response`` field when it completes.
+        A Location identifies a piece of source code in a .proto file which
+        corresponds to a particular definition. This information is intended to
+        be useful to IDEs, code indexers, documentation generators, and similar
+        tools.
+
+        For example, say we have a file like: message Foo { optional string foo
+        = 1; } Let's look at just the field definition: optional string foo = 1;
+        ^ ^^ ^^ ^ ^^^ a bc de f ghi We have the following locations: span path
+        represents [a,i) [ 4, 0, 2, 0 ] The whole field definition. [a,b) [ 4,
+        0, 2, 0, 4 ] The label (optional). [c,d) [ 4, 0, 2, 0, 5 ] The type
+        (string). [e,f) [ 4, 0, 2, 0, 1 ] The name (foo). [g,h) [ 4, 0, 2, 0, 3
+        ] The number (1).
+
+        Notes:
+
+        -  A location may refer to a repeated field itself (i.e. not to any
+           particular index within it). This is used whenever a set of elements
+           are logically enclosed in a single code segment. For example, an
+           entire extend block (possibly containing multiple extension
+           definitions) will have an outer location whose path refers to the
+           "extensions" repeated field without an index.
+        -  Multiple locations may have the same path. This happens when a single
+           logical declaration is spread out across multiple places. The most
+           obvious example is the "extend" block again -- there may be multiple
+           extend blocks in the same scope, each of which will have the same
+           path.
+        -  A location's span is not always a subset of its parent's span. For
+           example, the "extendee" of an extension declaration appears at the
+           beginning of the "extend" block and is shared by all extensions
+           within the block.
+        -  Just because a location's span is a subset of some other location's
+           span does not mean that it is a descendant. For example, a "group"
+           defines both a type and a field in a single declaration. Thus, the
+           locations corresponding to the type and field and their components
+           will overlap.
+        -  Code which tries to interpret locations should probably be designed
+           to ignore those that it doesn't understand, as more types of
+           locations could be recorded in the future.
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -906,285 +645,6 @@ class AutoMlClient(object):
             metadata_type=proto_operations_pb2.OperationMetadata,
         )
 
-    def create_model(
-        self,
-        parent,
-        model,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Creates a model. Returns a Model in the ``response`` field when it
-        completes. When you create a model, several model evaluations are
-        created for it: a global evaluation, and one evaluation for each
-        annotation spec.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
-            >>>
-            >>> # TODO: Initialize `model`:
-            >>> model = {}
-            >>>
-            >>> response = client.create_model(parent, model)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            parent (str): Resource name of the parent project where the model is being created.
-            model (Union[dict, ~google.cloud.automl_v1beta1.types.Model]): The model to create.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.Model`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "create_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "create_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.create_model,
-                default_retry=self._method_configs["CreateModel"].retry,
-                default_timeout=self._method_configs["CreateModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.CreateModelRequest(parent=parent, model=model)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("parent", parent)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["create_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            model_pb2.Model,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def get_model(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Gets a model.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> response = client.get_model(name)
-
-        Args:
-            name (str): Resource name of the model.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types.Model` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "get_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.get_model,
-                default_retry=self._method_configs["GetModel"].retry,
-                default_timeout=self._method_configs["GetModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.GetModelRequest(name=name)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        return self._inner_api_calls["get_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-
-    def list_models(
-        self,
-        parent,
-        filter_=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Lists models.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
-            >>>
-            >>> # Iterate over all results
-            >>> for element in client.list_models(parent):
-            ...     # process element
-            ...     pass
-            >>>
-            >>>
-            >>> # Alternatively:
-            >>>
-            >>> # Iterate over results one page at a time
-            >>> for page in client.list_models(parent).pages:
-            ...     for element in page:
-            ...         # process element
-            ...         pass
-
-        Args:
-            parent (str): Resource name of the project, from which to list the models.
-            filter_ (str): An expression for filtering the results of the request.
-
-                -  ``model_metadata`` - for existence of the case (e.g.
-                   video\_classification\_model\_metadata:\*).
-
-                -  ``dataset_id`` - for = or !=. Some examples of using the filter are:
-
-                -  ``image_classification_model_metadata:*`` --> The model has
-                   image\_classification\_model\_metadata.
-
-                -  ``dataset_id=5`` --> The model was created from a dataset with ID 5.
-            page_size (int): The maximum number of resources contained in the
-                underlying API response. If page streaming is performed per-
-                resource, this parameter does not affect the return value. If page
-                streaming is performed per-page, this determines the maximum number
-                of resources in a page.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.api_core.page_iterator.PageIterator` instance.
-            An iterable of :class:`~google.cloud.automl_v1beta1.types.Model` instances.
-            You can also iterate over the pages of the response
-            using its `pages` property.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "list_models" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_models"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.list_models,
-                default_retry=self._method_configs["ListModels"].retry,
-                default_timeout=self._method_configs["ListModels"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ListModelsRequest(
-            parent=parent, filter=filter_, page_size=page_size
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("parent", parent)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        iterator = google.api_core.page_iterator.GRPCIterator(
-            client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_models"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
-            request=request,
-            items_field="model",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
-        )
-        return iterator
-
     def delete_model(
         self,
         name,
@@ -1193,9 +653,9 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Deletes a model. Returns ``google.protobuf.Empty`` in the ``response``
-        field when it completes, and ``delete_details`` in the ``metadata``
-        field.
+        Output only. The number of nodes this model is deployed on. A node
+        is an abstraction of a machine resource, which can handle online
+        prediction QPS as given in the qps_per_node field.
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -1216,7 +676,7 @@ class AutoMlClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Resource name of the model being deleted.
+            name (str): Required. Resource name of the model being deleted.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1271,280 +731,6 @@ class AutoMlClient(object):
             metadata_type=proto_operations_pb2.OperationMetadata,
         )
 
-    def deploy_model(
-        self,
-        name,
-        image_object_detection_model_deployment_metadata=None,
-        image_classification_model_deployment_metadata=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Deploys a model. If a model is already deployed, deploying it with the
-        same parameters has no effect. Deploying with different parametrs (as
-        e.g. changing
-
-        ``node_number``) will reset the deployment state without pausing the
-        model's availability.
-
-        Only applicable for Text Classification, Image Object Detection and
-        Tables; all other domains manage deployment automatically.
-
-        Returns an empty response in the ``response`` field when it completes.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> response = client.deploy_model(name)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Resource name of the model to deploy.
-            image_object_detection_model_deployment_metadata (Union[dict, ~google.cloud.automl_v1beta1.types.ImageObjectDetectionModelDeploymentMetadata]): Model deployment metadata specific to Image Object Detection.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.ImageObjectDetectionModelDeploymentMetadata`
-            image_classification_model_deployment_metadata (Union[dict, ~google.cloud.automl_v1beta1.types.ImageClassificationModelDeploymentMetadata]): Model deployment metadata specific to Image Classification.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.ImageClassificationModelDeploymentMetadata`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "deploy_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "deploy_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.deploy_model,
-                default_retry=self._method_configs["DeployModel"].retry,
-                default_timeout=self._method_configs["DeployModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        # Sanity check: We have some fields which are mutually exclusive;
-        # raise ValueError if more than one is sent.
-        google.api_core.protobuf_helpers.check_oneof(
-            image_object_detection_model_deployment_metadata=image_object_detection_model_deployment_metadata,
-            image_classification_model_deployment_metadata=image_classification_model_deployment_metadata,
-        )
-
-        request = service_pb2.DeployModelRequest(
-            name=name,
-            image_object_detection_model_deployment_metadata=image_object_detection_model_deployment_metadata,
-            image_classification_model_deployment_metadata=image_classification_model_deployment_metadata,
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["deploy_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def undeploy_model(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Undeploys a model. If the model is not deployed this method has no
-        effect.
-
-        Only applicable for Text Classification, Image Object Detection and
-        Tables; all other domains manage deployment automatically.
-
-        Returns an empty response in the ``response`` field when it completes.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> response = client.undeploy_model(name)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Resource name of the model to undeploy.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "undeploy_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "undeploy_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.undeploy_model,
-                default_retry=self._method_configs["UndeployModel"].retry,
-                default_timeout=self._method_configs["UndeployModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.UndeployModelRequest(name=name)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["undeploy_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def get_model_evaluation(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Gets a model evaluation.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_evaluation_path('[PROJECT]', '[LOCATION]', '[MODEL]', '[MODEL_EVALUATION]')
-            >>>
-            >>> response = client.get_model_evaluation(name)
-
-        Args:
-            name (str): Resource name for the model evaluation.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types.ModelEvaluation` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "get_model_evaluation" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_model_evaluation"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.get_model_evaluation,
-                default_retry=self._method_configs["GetModelEvaluation"].retry,
-                default_timeout=self._method_configs["GetModelEvaluation"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.GetModelEvaluationRequest(name=name)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        return self._inner_api_calls["get_model_evaluation"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-
     def export_model(
         self,
         name,
@@ -1554,13 +740,21 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Exports a trained, "export-able", model to a user specified Google Cloud
-        Storage location. A model is considered export-able if and only if it
-        has an export format defined for it in
+        Set true to use the old proto1 MessageSet wire format for
+        extensions. This is provided for backwards-compatibility with the
+        MessageSet wire format. You should not use this for any other reason:
+        It's less efficient, has fewer features, and is more complicated.
 
-        ``ModelExportOutputConfig``.
+        The message must be defined exactly as follows: message Foo { option
+        message_set_wire_format = true; extensions 4 to max; } Note that the
+        message cannot have any defined fields; MessageSets only have
+        extensions.
 
-        Returns an empty response in the ``response`` field when it completes.
+        All extensions of your type must be singular messages; e.g. they cannot
+        be int32s, enums, or repeated messages.
+
+        Because this is an option, the above two restrictions are not enforced
+        by the protocol compiler.
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -1652,18 +846,8 @@ class AutoMlClient(object):
         metadata=None,
     ):
         """
-        Exports examples on which the model was evaluated (i.e. which were in
-        the TEST set of the dataset the model was created from), together with
-        their ground truth annotations and the annotations created (predicted)
-        by the model. The examples, ground truth and predictions are exported in
-        the state they were at the moment the model was evaluated.
-
-        This export is available only for 30 days since the model evaluation is
-        created.
-
-        Currently only available for Tables.
-
-        Returns an empty response in the ``response`` field when it completes.
+        Output only. Resource name of the model. Format:
+        ``projects/{project_id}/locations/{location_id}/models/{model_id}``
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -1783,20 +967,20 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): Resource name of the model to list the model evaluations for.
+            parent (str): Required. Resource name of the model to list the model evaluations for.
                 If modelId is set as "-", this will list model evaluations from across all
                 models of the parent location.
             filter_ (str): An expression for filtering the results of the request.
 
-                -  ``annotation_spec_id`` - for =, != or existence. See example below
-                   for the last.
+                -  ``model_metadata`` - for existence of the case (e.g.
+                   video_classification_model_metadata:*).
 
-                Some examples of using the filter are:
+                -  ``dataset_id`` - for = or !=. Some examples of using the filter are:
 
-                -  ``annotation_spec_id!=4`` --> The model evaluation was done for
-                   annotation spec with ID different than 4.
-                -  ``NOT annotation_spec_id:*`` --> The model evaluation was done for
-                   aggregate of all annotation specs.
+                -  ``image_classification_model_metadata:*`` --> The model has
+                   image_classification_model_metadata.
+
+                -  ``dataset_id=5`` --> The model was created from a dataset with ID 5.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -1866,6 +1050,340 @@ class AutoMlClient(object):
         )
         return iterator
 
+    def create_dataset(
+        self,
+        parent,
+        dataset,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Creates a dataset.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
+            >>>
+            >>> # TODO: Initialize `dataset`:
+            >>> dataset = {}
+            >>>
+            >>> response = client.create_dataset(parent, dataset)
+
+        Args:
+            parent (str): Required. The resource name of the project to create the dataset for.
+            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): Required. The dataset to create.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.Dataset`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types.Dataset` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "create_dataset" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "create_dataset"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.create_dataset,
+                default_retry=self._method_configs["CreateDataset"].retry,
+                default_timeout=self._method_configs["CreateDataset"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.CreateDatasetRequest(parent=parent, dataset=dataset)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("parent", parent)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        return self._inner_api_calls["create_dataset"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def get_dataset(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Gets a dataset.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
+            >>>
+            >>> response = client.get_dataset(name)
+
+        Args:
+            name (str): Required. The resource name of the dataset to retrieve.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types.Dataset` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "get_dataset" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "get_dataset"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.get_dataset,
+                default_retry=self._method_configs["GetDataset"].retry,
+                default_timeout=self._method_configs["GetDataset"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.GetDatasetRequest(name=name)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        return self._inner_api_calls["get_dataset"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def list_datasets(
+        self,
+        parent,
+        filter_=None,
+        page_size=None,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Lists datasets in a project.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
+            >>>
+            >>> # Iterate over all results
+            >>> for element in client.list_datasets(parent):
+            ...     # process element
+            ...     pass
+            >>>
+            >>>
+            >>> # Alternatively:
+            >>>
+            >>> # Iterate over results one page at a time
+            >>> for page in client.list_datasets(parent).pages:
+            ...     for element in page:
+            ...         # process element
+            ...         pass
+
+        Args:
+            parent (str): Required. The resource name of the project from which to list datasets.
+            filter_ (str): Required. The name of the model to show in the interface. The name
+                can be up to 32 characters long and can consist only of ASCII Latin
+                letters A-Z and a-z, underscores (_), and ASCII digits 0-9. It must
+                start with a letter.
+            page_size (int): The maximum number of resources contained in the
+                underlying API response. If page streaming is performed per-
+                resource, this parameter does not affect the return value. If page
+                streaming is performed per-page, this determines the maximum number
+                of resources in a page.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.api_core.page_iterator.PageIterator` instance.
+            An iterable of :class:`~google.cloud.automl_v1beta1.types.Dataset` instances.
+            You can also iterate over the pages of the response
+            using its `pages` property.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "list_datasets" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "list_datasets"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.list_datasets,
+                default_retry=self._method_configs["ListDatasets"].retry,
+                default_timeout=self._method_configs["ListDatasets"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ListDatasetsRequest(
+            parent=parent, filter=filter_, page_size=page_size
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("parent", parent)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        iterator = google.api_core.page_iterator.GRPCIterator(
+            client=None,
+            method=functools.partial(
+                self._inner_api_calls["list_datasets"],
+                retry=retry,
+                timeout=timeout,
+                metadata=metadata,
+            ),
+            request=request,
+            items_field="datasets",
+            request_token_field="page_token",
+            response_token_field="next_page_token",
+        )
+        return iterator
+
+    def update_dataset(
+        self,
+        dataset,
+        update_mask=None,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Updates a dataset.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> # TODO: Initialize `dataset`:
+            >>> dataset = {}
+            >>>
+            >>> response = client.update_dataset(dataset)
+
+        Args:
+            dataset (Union[dict, ~google.cloud.automl_v1beta1.types.Dataset]): Required. The dataset which replaces the resource on the server.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.Dataset`
+            update_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): The update mask applies to the resource.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.FieldMask`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types.Dataset` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "update_dataset" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "update_dataset"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.update_dataset,
+                default_retry=self._method_configs["UpdateDataset"].retry,
+                default_timeout=self._method_configs["UpdateDataset"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.UpdateDatasetRequest(
+            dataset=dataset, update_mask=update_mask
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("dataset.name", dataset.name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        return self._inner_api_calls["update_dataset"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
     def get_annotation_spec(
         self,
         name,
@@ -1886,7 +1404,7 @@ class AutoMlClient(object):
             >>> response = client.get_annotation_spec(name)
 
         Args:
-            name (str): The resource name of the annotation spec to retrieve.
+            name (str): Required. The resource name of the annotation spec to retrieve.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1956,7 +1474,7 @@ class AutoMlClient(object):
             >>> response = client.get_table_spec(name)
 
         Args:
-            name (str): The resource name of the table spec to retrieve.
+            name (str): Required. The resource name of the table spec to retrieve.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2044,7 +1562,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): The resource name of the dataset to list table specs from.
+            parent (str): Required. The resource name of the dataset to list table specs from.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2141,7 +1659,7 @@ class AutoMlClient(object):
             >>> response = client.update_table_spec(table_spec)
 
         Args:
-            table_spec (Union[dict, ~google.cloud.automl_v1beta1.types.TableSpec]): The table spec which replaces the resource on the server.
+            table_spec (Union[dict, ~google.cloud.automl_v1beta1.types.TableSpec]): Required. The table spec which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.TableSpec`
@@ -2220,7 +1738,7 @@ class AutoMlClient(object):
             >>> response = client.get_column_spec(name)
 
         Args:
-            name (str): The resource name of the column spec to retrieve.
+            name (str): Required. The resource name of the column spec to retrieve.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2308,7 +1826,7 @@ class AutoMlClient(object):
             ...         pass
 
         Args:
-            parent (str): The resource name of the table spec to list column specs from.
+            parent (str): Required. The resource name of the table spec to list column specs from.
             field_mask (Union[dict, ~google.cloud.automl_v1beta1.types.FieldMask]): Mask specifying which fields to read.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -2405,7 +1923,7 @@ class AutoMlClient(object):
             >>> response = client.update_column_spec(column_spec)
 
         Args:
-            column_spec (Union[dict, ~google.cloud.automl_v1beta1.types.ColumnSpec]): The column spec which replaces the resource on the server.
+            column_spec (Union[dict, ~google.cloud.automl_v1beta1.types.ColumnSpec]): Required. The column spec which replaces the resource on the server.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.ColumnSpec`
@@ -2460,5 +1978,821 @@ class AutoMlClient(object):
             metadata.append(routing_metadata)
 
         return self._inner_api_calls["update_column_spec"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def create_model(
+        self,
+        parent,
+        model,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Input configuration for ImportData Action.
+
+        The format of input depends on dataset_metadata the Dataset into which
+        the import is happening has. As input source the ``gcs_source`` is
+        expected, unless specified otherwise. Additionally any input .CSV file
+        by itself must be 100MB or smaller, unless specified otherwise. If an
+        "example" file (that is, image, video etc.) with identical content (even
+        if it had different GCS_FILE_PATH) is mentioned multiple times, then its
+        label, bounding boxes etc. are appended. The same file should be always
+        provided with the same ML_USE and GCS_FILE_PATH, if it is not, then
+        these values are nondeterministically selected from the given ones.
+
+        The formats are represented in EBNF with commas being literal and with
+        non-terminal symbols defined near the end of this comment. The formats
+        are:
+
+        -  For Image Classification: CSV file(s) with each line in format:
+           ML_USE,GCS_FILE_PATH,LABEL,LABEL,... GCS_FILE_PATH leads to image of
+           up to 30MB in size. Supported extensions: .JPEG, .GIF, .PNG, .WEBP,
+           .BMP, .TIFF, .ICO For MULTICLASS classification type, at most one
+           LABEL is allowed per image. If an image has not yet been labeled,
+           then it should be mentioned just once with no LABEL. Some sample
+           rows: TRAIN,gs://folder/image1.jpg,daisy
+           TEST,gs://folder/image2.jpg,dandelion,tulip,rose
+           UNASSIGNED,gs://folder/image3.jpg,daisy
+           UNASSIGNED,gs://folder/image4.jpg
+
+        -  For Image Object Detection: CSV file(s) with each line in format:
+           ML_USE,GCS_FILE_PATH,(LABEL,BOUNDING_BOX \| ,,,,,,,) GCS_FILE_PATH
+           leads to image of up to 30MB in size. Supported extensions: .JPEG,
+           .GIF, .PNG. Each image is assumed to be exhaustively labeled. The
+           minimum allowed BOUNDING_BOX edge length is 0.01, and no more than
+           500 BOUNDING_BOX-es per image are allowed (one BOUNDING_BOX is
+           defined per line). If an image has not yet been labeled, then it
+           should be mentioned just once with no LABEL and the ",,,,,,," in
+           place of the BOUNDING_BOX. For images which are known to not contain
+           any bounding boxes, they should be labelled explictly as
+           "NEGATIVE_IMAGE", followed by ",,,,,,," in place of the BOUNDING_BOX.
+           Sample rows: TRAIN,gs://folder/image1.png,car,0.1,0.1,,,0.3,0.3,,
+           TRAIN,gs://folder/image1.png,bike,.7,.6,,,.8,.9,,
+           UNASSIGNED,gs://folder/im2.png,car,0.1,0.1,0.2,0.1,0.2,0.3,0.1,0.3
+           TEST,gs://folder/im3.png,,,,,,,,,
+           TRAIN,gs://folder/im4.png,NEGATIVE_IMAGE,,,,,,,,,
+
+        -  For Video Classification: CSV file(s) with each line in format:
+           ML_USE,GCS_FILE_PATH where ML_USE VALIDATE value should not be used.
+           The GCS_FILE_PATH should lead to another .csv file which describes
+           examples that have given ML_USE, using the following row format:
+           GCS_FILE_PATH,(LABEL,TIME_SEGMENT_START,TIME_SEGMENT_END \| ,,) Here
+           GCS_FILE_PATH leads to a video of up to 50GB in size and up to 3h
+           duration. Supported extensions: .MOV, .MPEG4, .MP4, .AVI.
+           TIME_SEGMENT_START and TIME_SEGMENT_END must be within the length of
+           the video, and end has to be after the start. Any segment of a video
+           which has one or more labels on it, is considered a hard negative for
+           all other labels. Any segment with no labels on it is considered to
+           be unknown. If a whole video is unknown, then it shuold be mentioned
+           just once with ",," in place of LABEL,
+           TIME_SEGMENT_START,TIME_SEGMENT_END. Sample top level CSV file:
+           TRAIN,gs://folder/train_videos.csv TEST,gs://folder/test_videos.csv
+           UNASSIGNED,gs://folder/other_videos.csv Sample rows of a CSV file for
+           a particular ML_USE: gs://folder/video1.avi,car,120,180.000021
+           gs://folder/video1.avi,bike,150,180.000021
+           gs://folder/vid2.avi,car,0,60.5 gs://folder/vid3.avi,,,
+
+        -  For Video Object Tracking: CSV file(s) with each line in format:
+           ML_USE,GCS_FILE_PATH where ML_USE VALIDATE value should not be used.
+           The GCS_FILE_PATH should lead to another .csv file which describes
+           examples that have given ML_USE, using one of the following row
+           format: GCS_FILE_PATH,LABEL,[INSTANCE_ID],TIMESTAMP,BOUNDING_BOX or
+           GCS_FILE_PATH,,,,,,,,,, Here GCS_FILE_PATH leads to a video of up to
+           50GB in size and up to 3h duration. Supported extensions: .MOV,
+           .MPEG4, .MP4, .AVI. Providing INSTANCE_IDs can help to obtain a
+           better model. When a specific labeled entity leaves the video frame,
+           and shows up afterwards it is not required, albeit preferable, that
+           the same INSTANCE_ID is given to it. TIMESTAMP must be within the
+           length of the video, the BOUNDING_BOX is assumed to be drawn on the
+           closest video's frame to the TIMESTAMP. Any mentioned by the
+           TIMESTAMP frame is expected to be exhaustively labeled and no more
+           than 500 BOUNDING_BOX-es per frame are allowed. If a whole video is
+           unknown, then it should be mentioned just once with ",,,,,,,,,," in
+           place of LABEL, [INSTANCE_ID],TIMESTAMP,BOUNDING_BOX. Sample top
+           level CSV file: TRAIN,gs://folder/train_videos.csv
+           TEST,gs://folder/test_videos.csv
+           UNASSIGNED,gs://folder/other_videos.csv Seven sample rows of a CSV
+           file for a particular ML_USE:
+           gs://folder/video1.avi,car,1,12.10,0.8,0.8,0.9,0.8,0.9,0.9,0.8,0.9
+           gs://folder/video1.avi,car,1,12.90,0.4,0.8,0.5,0.8,0.5,0.9,0.4,0.9
+           gs://folder/video1.avi,car,2,12.10,.4,.2,.5,.2,.5,.3,.4,.3
+           gs://folder/video1.avi,car,2,12.90,.8,.2,,,.9,.3,,
+           gs://folder/video1.avi,bike,,12.50,.45,.45,,,.55,.55,,
+           gs://folder/video2.avi,car,1,0,.1,.9,,,.9,.1,,
+           gs://folder/video2.avi,,,,,,,,,,,
+
+        -  For Text Extraction: CSV file(s) with each line in format:
+           ML_USE,GCS_FILE_PATH GCS_FILE_PATH leads to a .JSONL (that is, JSON
+           Lines) file which either imports text in-line or as documents. Any
+           given .JSONL file must be 100MB or smaller. The in-line .JSONL file
+           contains, per line, a proto that wraps a TextSnippet proto (in json
+           representation) followed by one or more AnnotationPayload protos
+           (called annotations), which have display_name and text_extraction
+           detail populated. The given text is expected to be annotated
+           exhaustively, for example, if you look for animals and text contains
+           "dolphin" that is not labeled, then "dolphin" is assumed to not be an
+           animal. Any given text snippet content must be 10KB or smaller, and
+           also be UTF-8 NFC encoded (ASCII already is). The document .JSONL
+           file contains, per line, a proto that wraps a Document proto. The
+           Document proto must have either document_text or input_config set. In
+           document_text case, the Document proto may also contain the spatial
+           information of the document, including layout, document dimension and
+           page number. In input_config case, only PDF documents are supported
+           now, and each document may be up to 2MB large. Currently, annotations
+           on documents cannot be specified at import. Three sample CSV rows:
+           TRAIN,gs://folder/file1.jsonl VALIDATE,gs://folder/file2.jsonl
+           TEST,gs://folder/file3.jsonl Sample in-line JSON Lines file for
+           entity extraction (presented here with artificial line breaks, but
+           the only actual line break is denoted by \\n).: { "document": {
+           "document_text": {"content": "dog cat"} "layout": [ { "text_segment":
+           { "start_offset": 0, "end_offset": 3, }, "page_number": 1,
+           "bounding_poly": { "normalized_vertices": [ {"x": 0.1, "y": 0.1},
+           {"x": 0.1, "y": 0.3}, {"x": 0.3, "y": 0.3}, {"x": 0.3, "y": 0.1}, ],
+           }, "text_segment_type": TOKEN, }, { "text_segment": { "start_offset":
+           4, "end_offset": 7, }, "page_number": 1, "bounding_poly": {
+           "normalized_vertices": [ {"x": 0.4, "y": 0.1}, {"x": 0.4, "y": 0.3},
+           {"x": 0.8, "y": 0.3}, {"x": 0.8, "y": 0.1}, ], },
+           "text_segment_type": TOKEN, }
+    
+           ::
+    
+           ],
+                    "document_dimensions": {
+                      "width": 8.27,
+                      "height": 11.69,
+                      "unit": INCH,
+                    }
+                    "page_count": 1,
+                  },
+                  "annotations": [
+                    {
+                      "display_name": "animal",
+                      "text_extraction": {"text_segment": {"start_offset": 0,
+                      "end_offset": 3}}
+                    },
+                    {
+                      "display_name": "animal",
+                      "text_extraction": {"text_segment": {"start_offset": 4,
+                      "end_offset": 7}}
+                    }
+                  ],
+                }\n
+                {
+                   "text_snippet": {
+                     "content": "This dog is good."
+                   },
+                   "annotations": [
+                     {
+                       "display_name": "animal",
+                       "text_extraction": {
+                         "text_segment": {"start_offset": 5, "end_offset": 8}
+                       }
+                     }
+                   ]
+                }
+              Sample document JSON Lines file (presented here with artificial line
+              breaks, but the only actual line break is denoted by \n).:
+                {
+                  "document": {
+                    "input_config": {
+                      "gcs_source": { "input_uris": [ "gs://folder/document1.pdf" ]
+                      }
+                    }
+                  }
+                }\n
+                {
+                  "document": {
+                    "input_config": {
+                      "gcs_source": { "input_uris": [ "gs://folder/document2.pdf" ]
+                      }
+                    }
+                  }
+                }
+
+        -  For Text Classification: CSV file(s) with each line in format:
+           ML_USE,(TEXT_SNIPPET \| GCS_FILE_PATH),LABEL,LABEL,... TEXT_SNIPPET
+           and GCS_FILE_PATH are distinguished by a pattern. If the column
+           content is a valid gcs file path, i.e. prefixed by "gs://", it will
+           be treated as a GCS_FILE_PATH, else if the content is enclosed within
+           double quotes (""), it is treated as a TEXT_SNIPPET. In the
+           GCS_FILE_PATH case, the path must lead to a .txt file with UTF-8
+           encoding, for example, "gs://folder/content.txt", and the content in
+           it is extracted as a text snippet. In TEXT_SNIPPET case, the column
+           content excluding quotes is treated as to be imported text snippet.
+           In both cases, the text snippet/file size must be within 128kB.
+           Maximum 100 unique labels are allowed per CSV row. Sample rows:
+           TRAIN,"They have bad food and very rude",RudeService,BadFood
+           TRAIN,gs://folder/content.txt,SlowService TEST,"Typically always bad
+           service there.",RudeService VALIDATE,"Stomach ache to go.",BadFood
+
+        -  For Text Sentiment: CSV file(s) with each line in format:
+           ML_USE,(TEXT_SNIPPET \| GCS_FILE_PATH),SENTIMENT TEXT_SNIPPET and
+           GCS_FILE_PATH are distinguished by a pattern. If the column content
+           is a valid gcs file path, that is, prefixed by "gs://", it is treated
+           as a GCS_FILE_PATH, otherwise it is treated as a TEXT_SNIPPET. In the
+           GCS_FILE_PATH case, the path must lead to a .txt file with UTF-8
+           encoding, for example, "gs://folder/content.txt", and the content in
+           it is extracted as a text snippet. In TEXT_SNIPPET case, the column
+           content itself is treated as to be imported text snippet. In both
+           cases, the text snippet must be up to 500 characters long. Sample
+           rows: TRAIN,"@freewrytin this is way too good for your product",2
+           TRAIN,"I need this product so bad",3 TEST,"Thank you for this
+           product.",4 VALIDATE,gs://folder/content.txt,2
+
+        -  For Tables: Either ``gcs_source`` or
+
+        ``bigquery_source`` can be used. All inputs is concatenated into a
+        single
+
+        ``primary_table`` For gcs_source: CSV file(s), where the first row of
+        the first file is the header, containing unique column names. If the
+        first row of a subsequent file is the same as the header, then it is
+        also treated as a header. All other rows contain values for the
+        corresponding columns. Each .CSV file by itself must be 10GB or smaller,
+        and their total size must be 100GB or smaller. First three sample rows
+        of a CSV file: "Id","First Name","Last Name","Dob","Addresses"
+
+        "1","John","Doe","1968-01-22","[{"status":"current","address":"123_First_Avenue","city":"Seattle","state":"WA","zip":"11111","numberOfYears":"1"},{"status":"previous","address":"456_Main_Street","city":"Portland","state":"OR","zip":"22222","numberOfYears":"5"}]"
+
+        "2","Jane","Doe","1980-10-16","[{"status":"current","address":"789_Any_Avenue","city":"Albany","state":"NY","zip":"33333","numberOfYears":"2"},{"status":"previous","address":"321_Main_Street","city":"Hoboken","state":"NJ","zip":"44444","numberOfYears":"3"}]}
+        For bigquery_source: An URI of a BigQuery table. The user data size of
+        the BigQuery table must be 100GB or smaller. An imported table must have
+        between 2 and 1,000 columns, inclusive, and between 1000 and 100,000,000
+        rows, inclusive. There are at most 5 import data running in parallel.
+        Definitions: ML_USE = "TRAIN" \| "VALIDATE" \| "TEST" \| "UNASSIGNED"
+        Describes how the given example (file) should be used for model
+        training. "UNASSIGNED" can be used when user has no preference.
+        GCS_FILE_PATH = A path to file on GCS, e.g. "gs://folder/image1.png".
+        LABEL = A display name of an object on an image, video etc., e.g. "dog".
+        Must be up to 32 characters long and can consist only of ASCII Latin
+        letters A-Z and a-z, underscores(_), and ASCII digits 0-9. For each
+        label an AnnotationSpec is created which display_name becomes the label;
+        AnnotationSpecs are given back in predictions. INSTANCE_ID = A positive
+        integer that identifies a specific instance of a labeled entity on an
+        example. Used e.g. to track two cars on a video while being able to tell
+        apart which one is which. BOUNDING_BOX = VERTEX,VERTEX,VERTEX,VERTEX \|
+        VERTEX,,,VERTEX,, A rectangle parallel to the frame of the example
+        (image, video). If 4 vertices are given they are connected by edges in
+        the order provided, if 2 are given they are recognized as diagonally
+        opposite vertices of the rectangle. VERTEX = COORDINATE,COORDINATE First
+        coordinate is horizontal (x), the second is vertical (y). COORDINATE = A
+        float in 0 to 1 range, relative to total length of image or video in
+        given dimension. For fractions the leading non-decimal 0 can be omitted
+        (i.e. 0.3 = .3). Point 0,0 is in top left. TIME_SEGMENT_START =
+        TIME_OFFSET Expresses a beginning, inclusive, of a time segment within
+        an example that has a time dimension (e.g. video). TIME_SEGMENT_END =
+        TIME_OFFSET Expresses an end, exclusive, of a time segment within an
+        example that has a time dimension (e.g. video). TIME_OFFSET = A number
+        of seconds as measured from the start of an example (e.g. video).
+        Fractions are allowed, up to a microsecond precision. "inf" is allowed,
+        and it means the end of the example. TEXT_SNIPPET = A content of a text
+        snippet, UTF-8 encoded, enclosed within double quotes (""). SENTIMENT =
+        An integer between 0 and
+        Dataset.text_sentiment_dataset_metadata.sentiment_max (inclusive).
+        Describes the ordinal of the sentiment - higher value means a more
+        positive sentiment. All the values are completely relative, i.e. neither
+        0 needs to mean a negative or neutral sentiment nor sentiment_max needs
+        to mean a positive one - it is just required that 0 is the least
+        positive sentiment in the data, and sentiment_max is the most positive
+        one. The SENTIMENT shouldn't be confused with "score" or "magnitude"
+        from the previous Natural Language Sentiment Analysis API. All SENTIMENT
+        values between 0 and sentiment_max must be represented in the imported
+        data. On prediction the same 0 to sentiment_max range will be used. The
+        difference between neighboring sentiment values needs not to be uniform,
+        e.g. 1 and 2 may be similar whereas the difference between 2 and 3 may
+        be huge.
+
+        Errors: If any of the provided CSV files can't be parsed or if more than
+        certain percent of CSV rows cannot be processed then the operation fails
+        and nothing is imported. Regardless of overall success or failure the
+        per-row failures, up to a certain count cap, is listed in
+        Operation.metadata.partial_failures.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
+            >>>
+            >>> # TODO: Initialize `model`:
+            >>> model = {}
+            >>>
+            >>> response = client.create_model(parent, model)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            parent (str): Required. Resource name of the parent project where the model is being created.
+            model (Union[dict, ~google.cloud.automl_v1beta1.types.Model]): Required. The model to create.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.Model`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "create_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "create_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.create_model,
+                default_retry=self._method_configs["CreateModel"].retry,
+                default_timeout=self._method_configs["CreateModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.CreateModelRequest(parent=parent, model=model)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("parent", parent)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["create_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            model_pb2.Model,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
+    def get_model(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Gets a model.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> response = client.get_model(name)
+
+        Args:
+            name (str): Required. Resource name of the model.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types.Model` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "get_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "get_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.get_model,
+                default_retry=self._method_configs["GetModel"].retry,
+                default_timeout=self._method_configs["GetModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.GetModelRequest(name=name)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        return self._inner_api_calls["get_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def list_models(
+        self,
+        parent,
+        filter_=None,
+        page_size=None,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Lists models.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> parent = client.location_path('[PROJECT]', '[LOCATION]')
+            >>>
+            >>> # Iterate over all results
+            >>> for element in client.list_models(parent):
+            ...     # process element
+            ...     pass
+            >>>
+            >>>
+            >>> # Alternatively:
+            >>>
+            >>> # Iterate over results one page at a time
+            >>> for page in client.list_models(parent).pages:
+            ...     for element in page:
+            ...         # process element
+            ...         pass
+
+        Args:
+            parent (str): Required. Resource name of the project, from which to list the models.
+            filter_ (str): Input only. The number of nodes to deploy the model on. A node is an
+                abstraction of a machine resource, which can handle online prediction
+                QPS as given in the model's
+
+                ``qps_per_node``. Must be between 1 and 100, inclusive on both ends.
+            page_size (int): The maximum number of resources contained in the
+                underlying API response. If page streaming is performed per-
+                resource, this parameter does not affect the return value. If page
+                streaming is performed per-page, this determines the maximum number
+                of resources in a page.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.api_core.page_iterator.PageIterator` instance.
+            An iterable of :class:`~google.cloud.automl_v1beta1.types.Model` instances.
+            You can also iterate over the pages of the response
+            using its `pages` property.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "list_models" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "list_models"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.list_models,
+                default_retry=self._method_configs["ListModels"].retry,
+                default_timeout=self._method_configs["ListModels"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ListModelsRequest(
+            parent=parent, filter=filter_, page_size=page_size
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("parent", parent)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        iterator = google.api_core.page_iterator.GRPCIterator(
+            client=None,
+            method=functools.partial(
+                self._inner_api_calls["list_models"],
+                retry=retry,
+                timeout=timeout,
+                metadata=metadata,
+            ),
+            request=request,
+            items_field="model",
+            request_token_field="page_token",
+            response_token_field="next_page_token",
+        )
+        return iterator
+
+    def deploy_model(
+        self,
+        name,
+        image_object_detection_model_deployment_metadata=None,
+        image_classification_model_deployment_metadata=None,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Input only. The data representing the image. For Predict calls
+        ``image_bytes`` must be set, as other options are not currently
+        supported by prediction API. You can read the contents of an uploaded
+        image by using the ``content_uri`` field.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> response = client.deploy_model(name)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. Resource name of the model to deploy.
+            image_object_detection_model_deployment_metadata (Union[dict, ~google.cloud.automl_v1beta1.types.ImageObjectDetectionModelDeploymentMetadata]): Model deployment metadata specific to Image Object Detection.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.ImageObjectDetectionModelDeploymentMetadata`
+            image_classification_model_deployment_metadata (Union[dict, ~google.cloud.automl_v1beta1.types.ImageClassificationModelDeploymentMetadata]): Model deployment metadata specific to Image Classification.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.ImageClassificationModelDeploymentMetadata`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "deploy_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "deploy_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.deploy_model,
+                default_retry=self._method_configs["DeployModel"].retry,
+                default_timeout=self._method_configs["DeployModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        # Sanity check: We have some fields which are mutually exclusive;
+        # raise ValueError if more than one is sent.
+        google.api_core.protobuf_helpers.check_oneof(
+            image_object_detection_model_deployment_metadata=image_object_detection_model_deployment_metadata,
+            image_classification_model_deployment_metadata=image_classification_model_deployment_metadata,
+        )
+
+        request = service_pb2.DeployModelRequest(
+            name=name,
+            image_object_detection_model_deployment_metadata=image_object_detection_model_deployment_metadata,
+            image_classification_model_deployment_metadata=image_classification_model_deployment_metadata,
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["deploy_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
+    def undeploy_model(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Imports data into a dataset. For Tables this method can only be
+        called on an empty Dataset.
+
+        For Tables:
+
+        -  A ``schema_inference_version`` parameter must be explicitly set.
+           Returns an empty response in the ``response`` field when it
+           completes.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> response = client.undeploy_model(name)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. Resource name of the model to undeploy.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "undeploy_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "undeploy_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.undeploy_model,
+                default_retry=self._method_configs["UndeployModel"].retry,
+                default_timeout=self._method_configs["UndeployModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.UndeployModelRequest(name=name)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["undeploy_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
+    def get_model_evaluation(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Gets a model evaluation.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_evaluation_path('[PROJECT]', '[LOCATION]', '[MODEL]', '[MODEL_EVALUATION]')
+            >>>
+            >>> response = client.get_model_evaluation(name)
+
+        Args:
+            name (str): Required. Resource name for the model evaluation.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types.ModelEvaluation` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "get_model_evaluation" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "get_model_evaluation"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.get_model_evaluation,
+                default_retry=self._method_configs["GetModelEvaluation"].retry,
+                default_timeout=self._method_configs["GetModelEvaluation"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.GetModelEvaluationRequest(name=name)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        return self._inner_api_calls["get_model_evaluation"](
             request, retry=retry, timeout=timeout, metadata=metadata
         )

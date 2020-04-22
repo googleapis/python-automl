@@ -34,33 +34,19 @@ import grpc
 from google.cloud.automl_v1.gapic import enums
 from google.cloud.automl_v1.gapic import prediction_service_client_config
 from google.cloud.automl_v1.gapic.transports import prediction_service_grpc_transport
-from google.cloud.automl_v1.proto import annotation_spec_pb2
 from google.cloud.automl_v1.proto import data_items_pb2
-from google.cloud.automl_v1.proto import dataset_pb2
-from google.cloud.automl_v1.proto import image_pb2
 from google.cloud.automl_v1.proto import io_pb2
-from google.cloud.automl_v1.proto import model_evaluation_pb2
-from google.cloud.automl_v1.proto import model_pb2
 from google.cloud.automl_v1.proto import operations_pb2 as proto_operations_pb2
 from google.cloud.automl_v1.proto import prediction_service_pb2
 from google.cloud.automl_v1.proto import prediction_service_pb2_grpc
-from google.cloud.automl_v1.proto import service_pb2
-from google.cloud.automl_v1.proto import service_pb2_grpc
 from google.longrunning import operations_pb2 as longrunning_operations_pb2
-from google.protobuf import empty_pb2
-from google.protobuf import field_mask_pb2
 
 
 _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-automl").version
 
 
 class PredictionServiceClient(object):
-    """
-    AutoML Prediction API.
-
-    On any input that is documented to expect a string parameter in
-    snake\_case or kebab-case, either of those cases is accepted.
-    """
+    """Response message for ``AutoMl.ListDatasets``."""
 
     SERVICE_ADDRESS = "automl.googleapis.com:443"
     """The default address of the service."""
@@ -222,22 +208,16 @@ class PredictionServiceClient(object):
         metadata=None,
     ):
         """
-        Perform an online prediction. The prediction result will be directly
-        returned in the response. Available for following ML problems, and their
-        expected request payloads:
+        Lists operations that match the specified filter in the request. If
+        the server doesn't support this method, it returns ``UNIMPLEMENTED``.
 
-        -  Image Classification - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Image Object Detection - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Text Classification - TextSnippet, content up to 60,000 characters,
-           UTF-8 encoded.
-        -  Text Extraction - TextSnippet, content up to 30,000 characters, UTF-8
-           NFC encoded.
-        -  Translation - TextSnippet, content up to 25,000 characters, UTF-8
-           encoded.
-        -  Text Sentiment - TextSnippet, content up 500 characters, UTF-8
-           encoded.
+        NOTE: the ``name`` binding allows API services to override the binding
+        to use different resource name schemes, such as ``users/*/operations``.
+        To override the binding, API services can add a binding such as
+        ``"/v1/{name=users/*}/operations"`` to their service configuration. For
+        backwards compatibility, the default name includes the operations
+        collection id, however overriding users must ensure the name binding is
+        the parent resource, without the operations collection id.
 
         Example:
             >>> from google.cloud import automl_v1
@@ -252,27 +232,19 @@ class PredictionServiceClient(object):
             >>> response = client.predict(name, payload)
 
         Args:
-            name (str): Name of the model requested to serve the prediction.
+            name (str): Required. Name of the model requested to serve the prediction.
             payload (Union[dict, ~google.cloud.automl_v1.types.ExamplePayload]): Required. Payload to perform a prediction on. The payload must match the
                 problem type that the model was trained to solve.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1.types.ExamplePayload`
-            params (dict[str -> str]): Additional domain-specific parameters, any string must be up to 25000
-                characters long.
+            params (dict[str -> str]): An indicator of the behavior of a given field (for example, that a
+                field is required in requests, or given as output but ignored as input).
+                This **does not** change the behavior in protocol buffers itself; it
+                only denotes the behavior and may affect how API tooling handles the
+                field.
 
-                -  For Image Classification:
-
-                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
-                   makes predictions for an image, it will only produce results that
-                   have at least this confidence score. The default is 0.5.
-
-                -  For Image Object Detection: ``score_threshold`` - (float) When Model
-                   detects objects on the image, it will only produce bounding boxes
-                   which have at least this confidence score. Value in 0 to 1 range,
-                   default is 0.5. ``max_bounding_box_count`` - (int64) No more than
-                   this number of bounding boxes will be returned in the response.
-                   Default is 100, the requested value may be limited by server.
+                Note: This enum **may** receive new values in the future.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -334,16 +306,14 @@ class PredictionServiceClient(object):
         metadata=None,
     ):
         """
-        Perform a batch prediction. Unlike the online ``Predict``, batch
-        prediction result won't be immediately available in the response.
-        Instead, a long running operation object is returned. User can poll the
-        operation result via ``GetOperation`` method. Once the operation is
-        done, ``BatchPredictResult`` is returned in the ``response`` field.
-        Available for following ML problems:
+        Output only. The number of examples used for model evaluation, i.e.
+        for which ground truth from time of model creation is compared against
+        the predicted annotations created by the model. For overall
+        ModelEvaluation (i.e. with annotation_spec_id not set) this is the total
+        number of all examples used for evaluation. Otherwise, this is the count
+        of examples that according to the ground truth were annotated by the
 
-        -  Image Classification
-        -  Image Object Detection
-        -  Text Extraction
+        ``annotation_spec_id``.
 
         Example:
             >>> from google.cloud import automl_v1
@@ -370,7 +340,7 @@ class PredictionServiceClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Name of the model requested to serve the batch prediction.
+            name (str): Required. Name of the model requested to serve the batch prediction.
             input_config (Union[dict, ~google.cloud.automl_v1.types.BatchPredictInputConfig]): Required. The input configuration for batch prediction.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -380,29 +350,12 @@ class PredictionServiceClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1.types.BatchPredictOutputConfig`
-            params (dict[str -> str]): Additional domain-specific parameters for the predictions, any string
-                must be up to 25000 characters long.
-
-                -  For Text Classification:
-
-                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
-                   makes predictions for a text snippet, it will only produce results
-                   that have at least this confidence score. The default is 0.5.
-
-                -  For Image Classification:
-
-                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
-                   makes predictions for an image, it will only produce results that
-                   have at least this confidence score. The default is 0.5.
-
-                -  For Image Object Detection:
-
-                   ``score_threshold`` - (float) When Model detects objects on the
-                   image, it will only produce bounding boxes which have at least this
-                   confidence score. Value in 0 to 1 range, default is 0.5.
-                   ``max_bounding_box_count`` - (int64) No more than this number of
-                   bounding boxes will be produced per image. Default is 100, the
-                   requested value may be limited by server.
+            params (dict[str -> str]): Required. A sentiment is expressed as an integer ordinal, where
+                higher value means a more positive sentiment. The range of sentiments
+                that will be used is between 0 and sentiment_max (inclusive on both
+                ends), and all the values in the range must be represented in the
+                dataset before a model can be created. sentiment_max value must be
+                between 1 and 10 (inclusive).
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.

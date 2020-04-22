@@ -114,6 +114,41 @@ class AutoMlGrpcTransport(object):
         return self._channel
 
     @property
+    def delete_dataset(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.delete_dataset`.
+
+        An annotation that describes a resource definition, see
+        ``ResourceDescriptor``.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["auto_ml_stub"].DeleteDataset
+
+    @property
+    def delete_model(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.delete_model`.
+
+        Starts asynchronous cancellation on a long-running operation. The
+        server makes a best effort to cancel the operation, but success is not
+        guaranteed. If the server doesn't support this method, it returns
+        ``google.rpc.Code.UNIMPLEMENTED``. Clients can use
+        ``Operations.GetOperation`` or other methods to check whether the
+        cancellation succeeded or whether the operation completed despite
+        cancellation. On successful cancellation, the operation is not deleted;
+        instead, it becomes an operation with an ``Operation.error`` value with
+        a ``google.rpc.Status.code`` of 1, corresponding to ``Code.CANCELLED``.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["auto_ml_stub"].DeleteModel
+
+    @property
     def create_dataset(self):
         """Return the gRPC stub for :meth:`AutoMlClient.create_dataset`.
 
@@ -125,19 +160,6 @@ class AutoMlGrpcTransport(object):
                 deserialized response object.
         """
         return self._stubs["auto_ml_stub"].CreateDataset
-
-    @property
-    def update_dataset(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.update_dataset`.
-
-        Updates a dataset.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["auto_ml_stub"].UpdateDataset
 
     @property
     def get_dataset(self):
@@ -166,25 +188,30 @@ class AutoMlGrpcTransport(object):
         return self._stubs["auto_ml_stub"].ListDatasets
 
     @property
-    def delete_dataset(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.delete_dataset`.
+    def update_dataset(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.update_dataset`.
 
-        Deletes a dataset and all of its contents. Returns empty response in the
-        ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
+        Updates a dataset.
 
         Returns:
             Callable: A callable which accepts the appropriate
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs["auto_ml_stub"].DeleteDataset
+        return self._stubs["auto_ml_stub"].UpdateDataset
 
     @property
     def import_data(self):
         """Return the gRPC stub for :meth:`AutoMlClient.import_data`.
 
-        Imports data into a dataset.
+        The ``Status`` type defines a logical error model that is suitable
+        for different programming environments, including REST APIs and RPC
+        APIs. It is used by `gRPC <https://github.com/grpc>`__. Each ``Status``
+        message contains three pieces of data: error code, error message, and
+        error details.
+
+        You can find out more about this error model and how to work with it in
+        the `API Design Guide <https://cloud.google.com/apis/design/errors>`__.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -197,8 +224,127 @@ class AutoMlGrpcTransport(object):
     def export_data(self):
         """Return the gRPC stub for :meth:`AutoMlClient.export_data`.
 
-        Exports dataset's data to the provided output location. Returns an empty
-        response in the ``response`` field when it completes.
+        A simple descriptor of a resource type.
+
+        ResourceDescriptor annotates a resource message (either by means of a
+        protobuf annotation or use in the service config), and associates the
+        resource's schema, the resource type, and the pattern of the resource
+        name.
+
+        Example:
+
+        ::
+
+            message Topic {
+              // Indicates this message defines a resource schema.
+              // Declares the resource type in the format of {service}/{kind}.
+              // For Kubernetes resources, the format is {api group}/{kind}.
+              option (google.api.resource) = {
+                type: "pubsub.googleapis.com/Topic"
+                name_descriptor: {
+                  pattern: "projects/{project}/topics/{topic}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Project"
+                  parent_name_extractor: "projects/{project}"
+                }
+              };
+            }
+
+        The ResourceDescriptor Yaml config will look like:
+
+        ::
+
+            resources:
+            - type: "pubsub.googleapis.com/Topic"
+              name_descriptor:
+                - pattern: "projects/{project}/topics/{topic}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Project"
+                  parent_name_extractor: "projects/{project}"
+
+        Sometimes, resources have multiple patterns, typically because they can
+        live under multiple parents.
+
+        Example:
+
+        ::
+
+            message LogEntry {
+              option (google.api.resource) = {
+                type: "logging.googleapis.com/LogEntry"
+                name_descriptor: {
+                  pattern: "projects/{project}/logs/{log}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Project"
+                  parent_name_extractor: "projects/{project}"
+                }
+                name_descriptor: {
+                  pattern: "folders/{folder}/logs/{log}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Folder"
+                  parent_name_extractor: "folders/{folder}"
+                }
+                name_descriptor: {
+                  pattern: "organizations/{organization}/logs/{log}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Organization"
+                  parent_name_extractor: "organizations/{organization}"
+                }
+                name_descriptor: {
+                  pattern: "billingAccounts/{billing_account}/logs/{log}"
+                  parent_type: "billing.googleapis.com/BillingAccount"
+                  parent_name_extractor: "billingAccounts/{billing_account}"
+                }
+              };
+            }
+
+        The ResourceDescriptor Yaml config will look like:
+
+        ::
+
+            resources:
+            - type: 'logging.googleapis.com/LogEntry'
+              name_descriptor:
+                - pattern: "projects/{project}/logs/{log}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Project"
+                  parent_name_extractor: "projects/{project}"
+                - pattern: "folders/{folder}/logs/{log}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Folder"
+                  parent_name_extractor: "folders/{folder}"
+                - pattern: "organizations/{organization}/logs/{log}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Organization"
+                  parent_name_extractor: "organizations/{organization}"
+                - pattern: "billingAccounts/{billing_account}/logs/{log}"
+                  parent_type: "billing.googleapis.com/BillingAccount"
+                  parent_name_extractor: "billingAccounts/{billing_account}"
+
+        For flexible resources, the resource name doesn't contain parent names,
+        but the resource itself has parents for policy evaluation.
+
+        Example:
+
+        ::
+
+            message Shelf {
+              option (google.api.resource) = {
+                type: "library.googleapis.com/Shelf"
+                name_descriptor: {
+                  pattern: "shelves/{shelf}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Project"
+                }
+                name_descriptor: {
+                  pattern: "shelves/{shelf}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Folder"
+                }
+              };
+            }
+
+        The ResourceDescriptor Yaml config will look like:
+
+        ::
+
+            resources:
+            - type: 'library.googleapis.com/Shelf'
+              name_descriptor:
+                - pattern: "shelves/{shelf}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Project"
+                - pattern: "shelves/{shelf}"
+                  parent_type: "cloudresourcemanager.googleapis.com/Folder"
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -224,10 +370,8 @@ class AutoMlGrpcTransport(object):
     def create_model(self):
         """Return the gRPC stub for :meth:`AutoMlClient.create_model`.
 
-        Creates a model. Returns a Model in the ``response`` field when it
-        completes. When you create a model, several model evaluations are
-        created for it: a global evaluation, and one evaluation for each
-        annotation spec.
+        The status code, which should be an enum value of
+        ``google.rpc.Code``.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -250,19 +394,6 @@ class AutoMlGrpcTransport(object):
         return self._stubs["auto_ml_stub"].GetModel
 
     @property
-    def update_model(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.update_model`.
-
-        Updates a model.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["auto_ml_stub"].UpdateModel
-
-    @property
     def list_models(self):
         """Return the gRPC stub for :meth:`AutoMlClient.list_models`.
 
@@ -276,35 +407,24 @@ class AutoMlGrpcTransport(object):
         return self._stubs["auto_ml_stub"].ListModels
 
     @property
-    def delete_model(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.delete_model`.
+    def update_model(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.update_model`.
 
-        Deletes a model. Returns ``google.protobuf.Empty`` in the ``response``
-        field when it completes, and ``delete_details`` in the ``metadata``
-        field.
+        Updates a model.
 
         Returns:
             Callable: A callable which accepts the appropriate
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs["auto_ml_stub"].DeleteModel
+        return self._stubs["auto_ml_stub"].UpdateModel
 
     @property
     def deploy_model(self):
         """Return the gRPC stub for :meth:`AutoMlClient.deploy_model`.
 
-        Deploys a model. If a model is already deployed, deploying it with the
-        same parameters has no effect. Deploying with different parametrs (as
-        e.g. changing
-
-        ``node_number``) will reset the deployment state without pausing the
-        model's availability.
-
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
-
-        Returns an empty response in the ``response`` field when it completes.
+        Input and output type names. These are resolved in the same way as
+        FieldDescriptorProto.type_name, but must refer to a message type.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -317,13 +437,7 @@ class AutoMlGrpcTransport(object):
     def undeploy_model(self):
         """Return the gRPC stub for :meth:`AutoMlClient.undeploy_model`.
 
-        Undeploys a model. If the model is not deployed this method has no
-        effect.
-
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
-
-        Returns an empty response in the ``response`` field when it completes.
+        javalite_serializable
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -336,11 +450,8 @@ class AutoMlGrpcTransport(object):
     def export_model(self):
         """Return the gRPC stub for :meth:`AutoMlClient.export_model`.
 
-        Exports a trained, "export-able", model to a user specified Google Cloud
-        Storage location. A model is considered export-able if and only if it
-        has an export format defined for it in ``ModelExportOutputConfig``.
-
-        Returns an empty response in the ``response`` field when it completes.
+        Request message for ``AutoMl.ExportModel``. Models need to be
+        enabled for exporting, otherwise an error code will be returned.
 
         Returns:
             Callable: A callable which accepts the appropriate

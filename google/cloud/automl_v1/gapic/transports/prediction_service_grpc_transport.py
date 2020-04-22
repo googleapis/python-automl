@@ -121,22 +121,16 @@ class PredictionServiceGrpcTransport(object):
     def predict(self):
         """Return the gRPC stub for :meth:`PredictionServiceClient.predict`.
 
-        Perform an online prediction. The prediction result will be directly
-        returned in the response. Available for following ML problems, and their
-        expected request payloads:
+        Lists operations that match the specified filter in the request. If
+        the server doesn't support this method, it returns ``UNIMPLEMENTED``.
 
-        -  Image Classification - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Image Object Detection - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Text Classification - TextSnippet, content up to 60,000 characters,
-           UTF-8 encoded.
-        -  Text Extraction - TextSnippet, content up to 30,000 characters, UTF-8
-           NFC encoded.
-        -  Translation - TextSnippet, content up to 25,000 characters, UTF-8
-           encoded.
-        -  Text Sentiment - TextSnippet, content up 500 characters, UTF-8
-           encoded.
+        NOTE: the ``name`` binding allows API services to override the binding
+        to use different resource name schemes, such as ``users/*/operations``.
+        To override the binding, API services can add a binding such as
+        ``"/v1/{name=users/*}/operations"`` to their service configuration. For
+        backwards compatibility, the default name includes the operations
+        collection id, however overriding users must ensure the name binding is
+        the parent resource, without the operations collection id.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -149,16 +143,14 @@ class PredictionServiceGrpcTransport(object):
     def batch_predict(self):
         """Return the gRPC stub for :meth:`PredictionServiceClient.batch_predict`.
 
-        Perform a batch prediction. Unlike the online ``Predict``, batch
-        prediction result won't be immediately available in the response.
-        Instead, a long running operation object is returned. User can poll the
-        operation result via ``GetOperation`` method. Once the operation is
-        done, ``BatchPredictResult`` is returned in the ``response`` field.
-        Available for following ML problems:
+        Output only. The number of examples used for model evaluation, i.e.
+        for which ground truth from time of model creation is compared against
+        the predicted annotations created by the model. For overall
+        ModelEvaluation (i.e. with annotation_spec_id not set) this is the total
+        number of all examples used for evaluation. Otherwise, this is the count
+        of examples that according to the ground truth were annotated by the
 
-        -  Image Classification
-        -  Image Object Detection
-        -  Text Extraction
+        ``annotation_spec_id``.
 
         Returns:
             Callable: A callable which accepts the appropriate

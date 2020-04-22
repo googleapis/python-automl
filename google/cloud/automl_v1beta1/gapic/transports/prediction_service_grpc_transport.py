@@ -121,27 +121,22 @@ class PredictionServiceGrpcTransport(object):
     def predict(self):
         """Return the gRPC stub for :meth:`PredictionServiceClient.predict`.
 
-        Perform an online prediction. The prediction result will be directly
-        returned in the response. Available for following ML problems, and their
-        expected request payloads:
+        Identifies which part of the FileDescriptorProto was defined at this
+        location.
 
-        -  Image Classification - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Image Object Detection - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Text Classification - TextSnippet, content up to 60,000 characters,
-           UTF-8 encoded.
-        -  Text Extraction - TextSnippet, content up to 30,000 characters, UTF-8
-           NFC encoded.
-        -  Translation - TextSnippet, content up to 25,000 characters, UTF-8
-           encoded.
-        -  Tables - Row, with column values matching the columns of the model,
-           up to 5MB. Not available for FORECASTING
+        Each element is a field number or an index. They form a path from the
+        root FileDescriptorProto to the place where the definition. For example,
+        this path: [ 4, 3, 2, 7, 1 ] refers to: file.message_type(3) // 4, 3
+        .field(7) // 2, 7 .name() // 1 This is because
+        FileDescriptorProto.message_type has field number 4: repeated
+        DescriptorProto message_type = 4; and DescriptorProto.field has field
+        number 2: repeated FieldDescriptorProto field = 2; and
+        FieldDescriptorProto.name has field number 1: optional string name = 1;
 
-        ``prediction_type``.
-
-        -  Text Sentiment - TextSnippet, content up 500 characters, UTF-8
-           encoded.
+        Thus, the above path gives the location of a field name. If we removed
+        the last element: [ 4, 3, 2, 7 ] this path refers to the whole field
+        declaration (from the beginning of the label to the terminating
+        semicolon).
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -154,18 +149,16 @@ class PredictionServiceGrpcTransport(object):
     def batch_predict(self):
         """Return the gRPC stub for :meth:`PredictionServiceClient.batch_predict`.
 
-        Perform a batch prediction. Unlike the online ``Predict``, batch
-        prediction result won't be immediately available in the response.
-        Instead, a long running operation object is returned. User can poll the
-        operation result via ``GetOperation`` method. Once the operation is
-        done, ``BatchPredictResult`` is returned in the ``response`` field.
-        Available for following ML problems:
+        A message representing the message types used by a long-running
+        operation.
 
-        -  Image Classification
-        -  Image Object Detection
-        -  Video Classification
-        -  Video Object Tracking \* Text Extraction
-        -  Tables
+        Example:
+
+        rpc LongRunningRecognize(LongRunningRecognizeRequest) returns
+        (google.longrunning.Operation) { option
+        (google.longrunning.operation_info) = { response_type:
+        "LongRunningRecognizeResponse" metadata_type:
+        "LongRunningRecognizeMetadata" }; }
 
         Returns:
             Callable: A callable which accepts the appropriate

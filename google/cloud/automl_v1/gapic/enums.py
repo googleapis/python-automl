@@ -45,12 +45,23 @@ class Document(object):
               TOKEN (int): The text segment is a token. e.g. word.
               PARAGRAPH (int): The text segment is a paragraph.
               FORM_FIELD (int): The text segment is a form field.
-              FORM_FIELD_NAME (int): The text segment is the name part of a form field. It will be treated as
-              child of another FORM\_FIELD TextSegment if its span is subspan of
-              another TextSegment with type FORM\_FIELD.
-              FORM_FIELD_CONTENTS (int): The text segment is the text content part of a form field. It will be
-              treated as child of another FORM\_FIELD TextSegment if its span is
-              subspan of another TextSegment with type FORM\_FIELD.
+              FORM_FIELD_NAME (int): Deploys a model. If a model is already deployed, deploying it with
+              the same parameters has no effect. Deploying with different parametrs
+              (as e.g. changing
+
+              ``node_number``) will reset the deployment state without pausing the
+              model's availability.
+
+              Only applicable for Text Classification, Image Object Detection ,
+              Tables, and Image Segmentation; all other domains manage deployment
+              automatically.
+
+              Returns an empty response in the ``response`` field when it completes.
+              FORM_FIELD_CONTENTS (int): Output only. IDs of the annotation specs used in the confusion
+              matrix. For Tables CLASSIFICATION
+
+              ``prediction_type`` only list of ``annotation_spec_display_name-s`` is
+              populated.
               TABLE (int): The text segment is a whole table, including headers, and all rows.
               TABLE_HEADER (int): The text segment is a table's headers. It will be treated as child of
               another TABLE TextSegment if its span is subspan of another TextSegment
@@ -58,9 +69,21 @@ class Document(object):
               TABLE_ROW (int): The text segment is a row in table. It will be treated as child of
               another TABLE TextSegment if its span is subspan of another TextSegment
               with type TABLE.
-              TABLE_CELL (int): The text segment is a cell in table. It will be treated as child of
-              another TABLE\_ROW TextSegment if its span is subspan of another
-              TextSegment with type TABLE\_ROW.
+              TABLE_CELL (int): The train budget of creating this model, expressed in milli node
+              hours i.e. 1,000 value in this field means 1 node hour. The actual
+              ``train_cost`` will be equal or less than this value. If further model
+              training ceases to provide any improvements, it will stop without using
+              full budget and the stop_reason will be ``MODEL_CONVERGED``. Note,
+              node_hour = actual_hour \* number_of_nodes_invovled. For model type
+              ``cloud``\ (default), the train budget must be between 8,000 and 800,000
+              milli node hours, inclusive. The default value is 192, 000 which
+              represents one day in wall time. For model type
+              ``mobile-low-latency-1``, ``mobile-versatile-1``,
+              ``mobile-high-accuracy-1``, ``mobile-core-ml-low-latency-1``,
+              ``mobile-core-ml-versatile-1``, ``mobile-core-ml-high-accuracy-1``, the
+              train budget must be between 1,000 and 100,000 milli node hours,
+              inclusive. The default value is 24, 000 which represents one day in wall
+              time.
             """
 
             TEXT_SEGMENT_TYPE_UNSPECIFIED = 0

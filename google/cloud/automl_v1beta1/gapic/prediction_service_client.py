@@ -36,23 +36,12 @@ from google.cloud.automl_v1beta1.gapic import prediction_service_client_config
 from google.cloud.automl_v1beta1.gapic.transports import (
     prediction_service_grpc_transport,
 )
-from google.cloud.automl_v1beta1.proto import annotation_spec_pb2
-from google.cloud.automl_v1beta1.proto import column_spec_pb2
 from google.cloud.automl_v1beta1.proto import data_items_pb2
-from google.cloud.automl_v1beta1.proto import dataset_pb2
-from google.cloud.automl_v1beta1.proto import image_pb2
 from google.cloud.automl_v1beta1.proto import io_pb2
-from google.cloud.automl_v1beta1.proto import model_evaluation_pb2
-from google.cloud.automl_v1beta1.proto import model_pb2
 from google.cloud.automl_v1beta1.proto import operations_pb2 as proto_operations_pb2
 from google.cloud.automl_v1beta1.proto import prediction_service_pb2
 from google.cloud.automl_v1beta1.proto import prediction_service_pb2_grpc
-from google.cloud.automl_v1beta1.proto import service_pb2
-from google.cloud.automl_v1beta1.proto import service_pb2_grpc
-from google.cloud.automl_v1beta1.proto import table_spec_pb2
 from google.longrunning import operations_pb2 as longrunning_operations_pb2
-from google.protobuf import empty_pb2
-from google.protobuf import field_mask_pb2
 
 
 _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-automl").version
@@ -60,10 +49,12 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-automl").v
 
 class PredictionServiceClient(object):
     """
-    AutoML Prediction API.
-
-    On any input that is documented to expect a string parameter in
-    snake\_case or kebab-case, either of those cases is accepted.
+    Output only. Metrics for each confidence_threshold in
+    0.00,0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 and position_threshold =
+    INT32_MAX_VALUE. ROC and precision-recall curves, and other aggregated
+    metrics are derived from them. The confidence metrics entries may also
+    be supplied for additional values of position_threshold, but from these
+    no aggregated metrics are computed.
     """
 
     SERVICE_ADDRESS = "automl.googleapis.com:443"
@@ -226,27 +217,22 @@ class PredictionServiceClient(object):
         metadata=None,
     ):
         """
-        Perform an online prediction. The prediction result will be directly
-        returned in the response. Available for following ML problems, and their
-        expected request payloads:
+        Identifies which part of the FileDescriptorProto was defined at this
+        location.
 
-        -  Image Classification - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Image Object Detection - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
-        -  Text Classification - TextSnippet, content up to 60,000 characters,
-           UTF-8 encoded.
-        -  Text Extraction - TextSnippet, content up to 30,000 characters, UTF-8
-           NFC encoded.
-        -  Translation - TextSnippet, content up to 25,000 characters, UTF-8
-           encoded.
-        -  Tables - Row, with column values matching the columns of the model,
-           up to 5MB. Not available for FORECASTING
+        Each element is a field number or an index. They form a path from the
+        root FileDescriptorProto to the place where the definition. For example,
+        this path: [ 4, 3, 2, 7, 1 ] refers to: file.message_type(3) // 4, 3
+        .field(7) // 2, 7 .name() // 1 This is because
+        FileDescriptorProto.message_type has field number 4: repeated
+        DescriptorProto message_type = 4; and DescriptorProto.field has field
+        number 2: repeated FieldDescriptorProto field = 2; and
+        FieldDescriptorProto.name has field number 1: optional string name = 1;
 
-        ``prediction_type``.
-
-        -  Text Sentiment - TextSnippet, content up 500 characters, UTF-8
-           encoded.
+        Thus, the above path gives the location of a field name. If we removed
+        the last element: [ 4, 3, 2, 7 ] this path refers to the whole field
+        declaration (from the beginning of the label to the terminating
+        semicolon).
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -261,35 +247,44 @@ class PredictionServiceClient(object):
             >>> response = client.predict(name, payload)
 
         Args:
-            name (str): Name of the model requested to serve the prediction.
+            name (str): Required. Name of the model requested to serve the prediction.
             payload (Union[dict, ~google.cloud.automl_v1beta1.types.ExamplePayload]): Required. Payload to perform a prediction on. The payload must match the
                 problem type that the model was trained to solve.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.ExamplePayload`
-            params (dict[str -> str]): Additional domain-specific parameters, any string must be up to 25000
-                characters long.
+            params (dict[str -> str]): Optional. Type of the model. The available values are:
 
-                -  For Image Classification:
-
-                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
-                   makes predictions for an image, it will only produce results that
-                   have at least this confidence score. The default is 0.5.
-
-                -  For Image Object Detection: ``score_threshold`` - (float) When Model
-                   detects objects on the image, it will only produce bounding boxes
-                   which have at least this confidence score. Value in 0 to 1 range,
-                   default is 0.5. ``max_bounding_box_count`` - (int64) No more than
-                   this number of bounding boxes will be returned in the response.
-                   Default is 100, the requested value may be limited by server.
-
-                -  For Tables: ``feature_importance`` - (boolean) Whether
-
-                [feature\_importance][[google.cloud.automl.v1beta1.TablesModelColumnInfo.feature\_importance]
-                should be populated in the returned
-
-                [TablesAnnotation(-s)][[google.cloud.automl.v1beta1.TablesAnnotation].
-                The default is false.
+                -  ``cloud`` - Model to be used via prediction calls to AutoML API. This
+                   is the default value.
+                -  ``mobile-low-latency-1`` - A model that, in addition to providing
+                   prediction via AutoML API, can also be exported (see
+                   ``AutoMl.ExportModel``) and used on a mobile or edge device with
+                   TensorFlow afterwards. Expected to have low latency, but may have
+                   lower prediction quality than other models.
+                -  ``mobile-versatile-1`` - A model that, in addition to providing
+                   prediction via AutoML API, can also be exported (see
+                   ``AutoMl.ExportModel``) and used on a mobile or edge device with
+                   TensorFlow afterwards.
+                -  ``mobile-high-accuracy-1`` - A model that, in addition to providing
+                   prediction via AutoML API, can also be exported (see
+                   ``AutoMl.ExportModel``) and used on a mobile or edge device with
+                   TensorFlow afterwards. Expected to have a higher latency, but should
+                   also have a higher prediction quality than other models.
+                -  ``mobile-core-ml-low-latency-1`` - A model that, in addition to
+                   providing prediction via AutoML API, can also be exported (see
+                   ``AutoMl.ExportModel``) and used on a mobile device with Core ML
+                   afterwards. Expected to have low latency, but may have lower
+                   prediction quality than other models.
+                -  ``mobile-core-ml-versatile-1`` - A model that, in addition to
+                   providing prediction via AutoML API, can also be exported (see
+                   ``AutoMl.ExportModel``) and used on a mobile device with Core ML
+                   afterwards.
+                -  ``mobile-core-ml-high-accuracy-1`` - A model that, in addition to
+                   providing prediction via AutoML API, can also be exported (see
+                   ``AutoMl.ExportModel``) and used on a mobile device with Core ML
+                   afterwards. Expected to have a higher latency, but should also have a
+                   higher prediction quality than other models.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -345,24 +340,22 @@ class PredictionServiceClient(object):
         name,
         input_config,
         output_config,
-        params=None,
+        params,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
         metadata=None,
     ):
         """
-        Perform a batch prediction. Unlike the online ``Predict``, batch
-        prediction result won't be immediately available in the response.
-        Instead, a long running operation object is returned. User can poll the
-        operation result via ``GetOperation`` method. Once the operation is
-        done, ``BatchPredictResult`` is returned in the ``response`` field.
-        Available for following ML problems:
+        A message representing the message types used by a long-running
+        operation.
 
-        -  Image Classification
-        -  Image Object Detection
-        -  Video Classification
-        -  Video Object Tracking \* Text Extraction
-        -  Tables
+        Example:
+
+        rpc LongRunningRecognize(LongRunningRecognizeRequest) returns
+        (google.longrunning.Operation) { option
+        (google.longrunning.operation_info) = { response_type:
+        "LongRunningRecognizeResponse" metadata_type:
+        "LongRunningRecognizeMetadata" }; }
 
         Example:
             >>> from google.cloud import automl_v1beta1
@@ -377,7 +370,10 @@ class PredictionServiceClient(object):
             >>> # TODO: Initialize `output_config`:
             >>> output_config = {}
             >>>
-            >>> response = client.batch_predict(name, input_config, output_config)
+            >>> # TODO: Initialize `params`:
+            >>> params = {}
+            >>>
+            >>> response = client.batch_predict(name, input_config, output_config, params)
             >>>
             >>> def callback(operation_future):
             ...     # Handle result.
@@ -389,7 +385,7 @@ class PredictionServiceClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Name of the model requested to serve the batch prediction.
+            name (str): Required. Name of the model requested to serve the batch prediction.
             input_config (Union[dict, ~google.cloud.automl_v1beta1.types.BatchPredictInputConfig]): Required. The input configuration for batch prediction.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -399,64 +395,14 @@ class PredictionServiceClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.automl_v1beta1.types.BatchPredictOutputConfig`
-            params (dict[str -> str]): Additional domain-specific parameters for the predictions, any string
-                must be up to 25000 characters long.
+            params (dict[str -> str]): Required. The message name of the metadata type for this
+                long-running operation.
 
-                -  For Text Classification:
+                If the response is in a different package from the rpc, a
+                fully-qualified message name must be used (e.g.
+                ``google.protobuf.Struct``).
 
-                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
-                   makes predictions for a text snippet, it will only produce results
-                   that have at least this confidence score. The default is 0.5.
-
-                -  For Image Classification:
-
-                   ``score_threshold`` - (float) A value from 0.0 to 1.0. When the model
-                   makes predictions for an image, it will only produce results that
-                   have at least this confidence score. The default is 0.5.
-
-                -  For Image Object Detection:
-
-                   ``score_threshold`` - (float) When Model detects objects on the
-                   image, it will only produce bounding boxes which have at least this
-                   confidence score. Value in 0 to 1 range, default is 0.5.
-                   ``max_bounding_box_count`` - (int64) No more than this number of
-                   bounding boxes will be produced per image. Default is 100, the
-                   requested value may be limited by server.
-
-                -  For Video Classification : ``score_threshold`` - (float) A value from
-                   0.0 to 1.0. When the model makes predictions for a video, it will
-                   only produce results that have at least this confidence score. The
-                   default is 0.5. ``segment_classification`` - (boolean) Set to true to
-                   request segment-level classification. AutoML Video Intelligence
-                   returns labels and their confidence scores for the entire segment of
-                   the video that user specified in the request configuration. The
-                   default is "true". ``shot_classification`` - (boolean) Set to true to
-                   request shot-level classification. AutoML Video Intelligence
-                   determines the boundaries for each camera shot in the entire segment
-                   of the video that user specified in the request configuration. AutoML
-                   Video Intelligence then returns labels and their confidence scores
-                   for each detected shot, along with the start and end time of the
-                   shot. WARNING: Model evaluation is not done for this classification
-                   type, the quality of it depends on training data, but there are no
-                   metrics provided to describe that quality. The default is "false".
-                   ``1s_interval_classification`` - (boolean) Set to true to request
-                   classification for a video at one-second intervals. AutoML Video
-                   Intelligence returns labels and their confidence scores for each
-                   second of the entire segment of the video that user specified in the
-                   request configuration. WARNING: Model evaluation is not done for this
-                   classification type, the quality of it depends on training data, but
-                   there are no metrics provided to describe that quality. The default
-                   is "false".
-
-                -  For Video Object Tracking: ``score_threshold`` - (float) When Model
-                   detects objects on video frames, it will only produce bounding boxes
-                   which have at least this confidence score. Value in 0 to 1 range,
-                   default is 0.5. ``max_bounding_box_count`` - (int64) No more than
-                   this number of bounding boxes will be returned per frame. Default is
-                   100, the requested value may be limited by server.
-                   ``min_bounding_box_size`` - (float) Only bounding boxes with shortest
-                   edge at least that long as a relative value of video frame size will
-                   be returned. Value in 0 to 1 range. Default is 0.
+                Note: Altering this value constitutes a breaking change.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.

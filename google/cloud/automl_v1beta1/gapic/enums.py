@@ -36,10 +36,9 @@ class ClassificationType(enum.IntEnum):
 
 class NullValue(enum.IntEnum):
     """
-    ``NullValue`` is a singleton enumeration to represent the null value for
-    the ``Value`` type union.
-
-    The JSON representation for ``NullValue`` is JSON ``null``.
+    Output only. Metrics are computed with an assumption that the model
+    always returns at most this many predictions (ordered by their score,
+    descendingly), but they all still need to meet the confidence_threshold.
 
     Attributes:
       NULL_VALUE (int): Null value.
@@ -50,28 +49,71 @@ class NullValue(enum.IntEnum):
 
 class TypeCode(enum.IntEnum):
     """
-    ``TypeCode`` is used as a part of ``DataType``.
+    Output only. The number of examples used for model evaluation, i.e.
+    for which ground truth from time of model creation is compared against
+    the predicted annotations created by the model. For overall
+    ModelEvaluation (i.e. with annotation_spec_id not set) this is the total
+    number of all examples used for evaluation. Otherwise, this is the count
+    of examples that according to the ground truth were annotated by the
+
+    ``annotation_spec_id``.
 
     Attributes:
       TYPE_CODE_UNSPECIFIED (int): Not specified. Should not be used.
-      FLOAT64 (int): Encoded as ``number``, or the strings ``"NaN"``, ``"Infinity"``, or
-      ``"-Infinity"``.
-      TIMESTAMP (int): Must be between 0AD and 9999AD. Encoded as ``string`` according to
-      ``time_format``, or, if that format is not set, then in RFC 3339
-      ``date-time`` format, where ``time-offset`` = ``"Z"`` (e.g.
-      1985-04-12T23:20:50.52Z).
-      STRING (int): Encoded as ``string``.
-      ARRAY (int): Encoded as ``list``, where the list elements are represented according
-      to
+      FLOAT64 (int): The position of the ``text_segment`` in the page. Contains exactly 4
 
-      ``list_element_type``.
-      STRUCT (int): Encoded as ``struct``, where field values are represented according to
-      ``struct_type``.
-      CATEGORY (int): Values of this type are not further understood by AutoML, e.g. AutoML is
-      unable to tell the order of values (as it could with FLOAT64), or is
-      unable to say if one value contains another (as it could with STRING).
-      Encoded as ``string`` (bytes should be base64-encoded, as described in
-      RFC 4648, section 4).
+      ``normalized_vertices`` and they are connected by edges in the order
+      provided, which will represent a rectangle parallel to the frame. The
+      ``NormalizedVertex-s`` are relative to the page. Coordinates are based
+      on top-left as point (0,0).
+      TIMESTAMP (int): Output only. Auxiliary information for each of the model's
+
+      ``input_feature_column_specs`` with respect to this particular
+      prediction. If no other fields than
+
+      ``column_spec_name`` and
+
+      ``column_display_name`` would be populated, then this whole field is
+      not.
+      STRING (int): The statistics of the top 20 CATEGORY values, ordered by
+
+      ``count``.
+      ARRAY (int): Required. BigQuery URI to a project, up to 2000 characters long.
+      Accepted forms:
+
+      -  BigQuery path e.g. bq://projectId
+      STRUCT (int): The type of the ``text_segment`` in document.
+      CATEGORY (int): Protocol Buffers - Google's data interchange format Copyright 2008
+      Google Inc. All rights reserved.
+      https://developers.google.com/protocol-buffers/
+
+      Redistribution and use in source and binary forms, with or without
+      modification, are permitted provided that the following conditions are
+      met:
+
+      ::
+
+          * Redistributions of source code must retain the above copyright
+
+      notice, this list of conditions and the following disclaimer. \*
+      Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution. \*
+      Neither the name of Google Inc. nor the names of its contributors may be
+      used to endorse or promote products derived from this software without
+      specific prior written permission.
+
+      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+      IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+      TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+      PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+      OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+      EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+      PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+      PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+      LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     """
 
     TYPE_CODE_UNSPECIFIED = 0
@@ -94,12 +136,22 @@ class Document(object):
               TOKEN (int): The text segment is a token. e.g. word.
               PARAGRAPH (int): The text segment is a paragraph.
               FORM_FIELD (int): The text segment is a form field.
-              FORM_FIELD_NAME (int): The text segment is the name part of a form field. It will be treated as
-              child of another FORM\_FIELD TextSegment if its span is subspan of
-              another TextSegment with type FORM\_FIELD.
-              FORM_FIELD_CONTENTS (int): The text segment is the text content part of a form field. It will be
-              treated as child of another FORM\_FIELD TextSegment if its span is
-              subspan of another TextSegment with type FORM\_FIELD.
+              FORM_FIELD_NAME (int): Exports examples on which the model was evaluated (i.e. which were
+              in the TEST set of the dataset the model was created from), together
+              with their ground truth annotations and the annotations created
+              (predicted) by the model. The examples, ground truth and predictions are
+              exported in the state they were at the moment the model was evaluated.
+
+              This export is available only for 30 days since the model evaluation is
+              created.
+
+              Currently only available for Tables.
+
+              Returns an empty response in the ``response`` field when it completes.
+              FORM_FIELD_CONTENTS (int): AutoML Prediction API.
+
+              On any input that is documented to expect a string parameter in
+              snake_case or kebab-case, either of those cases is accepted.
               TABLE (int): The text segment is a whole table, including headers, and all rows.
               TABLE_HEADER (int): The text segment is a table's headers. It will be treated as child of
               another TABLE TextSegment if its span is subspan of another TextSegment
@@ -107,9 +159,8 @@ class Document(object):
               TABLE_ROW (int): The text segment is a row in table. It will be treated as child of
               another TABLE TextSegment if its span is subspan of another TextSegment
               with type TABLE.
-              TABLE_CELL (int): The text segment is a cell in table. It will be treated as child of
-              another TABLE\_ROW TextSegment if its span is subspan of another
-              TextSegment with type TABLE\_ROW.
+              TABLE_CELL (int): Encoded as ``struct``, where field values are represented according
+              to ``struct_type``.
             """
 
             TEXT_SEGMENT_TYPE_UNSPECIFIED = 0

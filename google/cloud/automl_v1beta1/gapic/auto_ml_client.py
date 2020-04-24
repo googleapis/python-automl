@@ -1670,10 +1670,9 @@ class AutoMlClient(object):
             >>>
             >>> client = automl_v1beta1.AutoMlClient()
             >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>> name = client.model_path('[PROJECT_ID]', '[LOCATION]', '[MODEL]')
             >>>
-            >>> # TODO: Initialize `output_config`:
-            >>> output_config = {}
+            >>> output_config = {'bigquery_destination': {'output_uri': 'bq://[PROJECT ID]:[BIGQUERY_DATASET_NAME]'}}
             >>>
             >>> response = client.export_evaluated_examples(name, output_config)
             >>>
@@ -1684,7 +1683,7 @@ class AutoMlClient(object):
             >>> response.add_done_callback(callback)
             >>>
             >>> # Handle metadata.
-            >>> metadata = response.metadata()
+            >>> metadata = response.metadata
 
         Args:
             name (str): Required. The resource name of the model whose evaluated examples are to

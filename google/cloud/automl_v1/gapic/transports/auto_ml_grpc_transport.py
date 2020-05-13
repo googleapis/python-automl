@@ -114,6 +114,36 @@ class AutoMlGrpcTransport(object):
         return self._channel
 
     @property
+    def delete_dataset(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.delete_dataset`.
+
+        Deletes a dataset and all of its contents. Returns empty response in
+        the ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["auto_ml_stub"].DeleteDataset
+
+    @property
+    def delete_model(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.delete_model`.
+
+        Deletes a model. Returns ``google.protobuf.Empty`` in the
+        ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["auto_ml_stub"].DeleteModel
+
+    @property
     def create_dataset(self):
         """Return the gRPC stub for :meth:`AutoMlClient.create_dataset`.
 
@@ -125,19 +155,6 @@ class AutoMlGrpcTransport(object):
                 deserialized response object.
         """
         return self._stubs["auto_ml_stub"].CreateDataset
-
-    @property
-    def update_dataset(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.update_dataset`.
-
-        Updates a dataset.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["auto_ml_stub"].UpdateDataset
 
     @property
     def get_dataset(self):
@@ -166,25 +183,30 @@ class AutoMlGrpcTransport(object):
         return self._stubs["auto_ml_stub"].ListDatasets
 
     @property
-    def delete_dataset(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.delete_dataset`.
+    def update_dataset(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.update_dataset`.
 
-        Deletes a dataset and all of its contents. Returns empty response in the
-        ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
+        Updates a dataset.
 
         Returns:
             Callable: A callable which accepts the appropriate
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs["auto_ml_stub"].DeleteDataset
+        return self._stubs["auto_ml_stub"].UpdateDataset
 
     @property
     def import_data(self):
         """Return the gRPC stub for :meth:`AutoMlClient.import_data`.
 
-        Imports data into a dataset.
+        Imports data into a dataset. For Tables this method can only be
+        called on an empty Dataset.
+
+        For Tables:
+
+        -  A ``schema_inference_version`` parameter must be explicitly set.
+           Returns an empty response in the ``response`` field when it
+           completes.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -197,8 +219,8 @@ class AutoMlGrpcTransport(object):
     def export_data(self):
         """Return the gRPC stub for :meth:`AutoMlClient.export_data`.
 
-        Exports dataset's data to the provided output location. Returns an empty
-        response in the ``response`` field when it completes.
+        Exports dataset's data to the provided output location. Returns an
+        empty response in the ``response`` field when it completes.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -250,19 +272,6 @@ class AutoMlGrpcTransport(object):
         return self._stubs["auto_ml_stub"].GetModel
 
     @property
-    def update_model(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.update_model`.
-
-        Updates a model.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["auto_ml_stub"].UpdateModel
-
-    @property
     def list_models(self):
         """Return the gRPC stub for :meth:`AutoMlClient.list_models`.
 
@@ -276,33 +285,32 @@ class AutoMlGrpcTransport(object):
         return self._stubs["auto_ml_stub"].ListModels
 
     @property
-    def delete_model(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.delete_model`.
+    def update_model(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.update_model`.
 
-        Deletes a model. Returns ``google.protobuf.Empty`` in the ``response``
-        field when it completes, and ``delete_details`` in the ``metadata``
-        field.
+        Updates a model.
 
         Returns:
             Callable: A callable which accepts the appropriate
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs["auto_ml_stub"].DeleteModel
+        return self._stubs["auto_ml_stub"].UpdateModel
 
     @property
     def deploy_model(self):
         """Return the gRPC stub for :meth:`AutoMlClient.deploy_model`.
 
-        Deploys a model. If a model is already deployed, deploying it with the
-        same parameters has no effect. Deploying with different parametrs (as
-        e.g. changing
+        Deploys a model. If a model is already deployed, deploying it with
+        the same parameters has no effect. Deploying with different parametrs
+        (as e.g. changing
 
         ``node_number``) will reset the deployment state without pausing the
         model's availability.
 
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection ,
+        Tables, and Image Segmentation; all other domains manage deployment
+        automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 
@@ -320,8 +328,8 @@ class AutoMlGrpcTransport(object):
         Undeploys a model. If the model is not deployed this method has no
         effect.
 
-        Only applicable for Text Classification, Image Object Detection; all
-        other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection and
+        Tables; all other domains manage deployment automatically.
 
         Returns an empty response in the ``response`` field when it completes.
 
@@ -336,9 +344,9 @@ class AutoMlGrpcTransport(object):
     def export_model(self):
         """Return the gRPC stub for :meth:`AutoMlClient.export_model`.
 
-        Exports a trained, "export-able", model to a user specified Google Cloud
-        Storage location. A model is considered export-able if and only if it
-        has an export format defined for it in ``ModelExportOutputConfig``.
+        Exports a trained, "export-able", model to a user specified Google
+        Cloud Storage location. A model is considered export-able if and only if
+        it has an export format defined for it in ``ModelExportOutputConfig``.
 
         Returns an empty response in the ``response`` field when it completes.
 

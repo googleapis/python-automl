@@ -34,14 +34,14 @@ if sys.version_info[:2] == (2, 7):
     warnings.warn(message, DeprecationWarning)
 
 
-class AutoMlClient(auto_ml_client.AutoMlClient):
-    __doc__ = auto_ml_client.AutoMlClient.__doc__
-    enums = enums
-
-
 class PredictionServiceClient(prediction_service_client.PredictionServiceClient):
     __doc__ = prediction_service_client.PredictionServiceClient.__doc__
     enums = enums
 
 
-__all__ = ("enums", "types", "AutoMlClient", "PredictionServiceClient")
+class AutoMlClient(auto_ml_client.AutoMlClient):
+    __doc__ = auto_ml_client.AutoMlClient.__doc__
+    enums = enums
+
+
+__all__ = ("enums", "types", "PredictionServiceClient", "AutoMlClient")

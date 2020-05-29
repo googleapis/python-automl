@@ -126,9 +126,9 @@ class PredictionServiceGrpcTransport(object):
         expected request payloads:
 
         -  Image Classification - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
+           image_bytes up to 30MB.
         -  Image Object Detection - Image in .JPEG, .GIF or .PNG format,
-           image\_bytes up to 30MB.
+           image_bytes up to 30MB.
         -  Text Classification - TextSnippet, content up to 60,000 characters,
            UTF-8 encoded.
         -  Text Extraction - TextSnippet, content up to 30,000 characters, UTF-8

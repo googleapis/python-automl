@@ -102,8 +102,6 @@ TimeSegment = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.temporal_pb2",
         "__doc__": """A time period inside of an example that has a time dimension
   (e.g. video).
-  
-  
   Attributes:
       start_time_offset:
           Start of the time segment (inclusive), represented as the

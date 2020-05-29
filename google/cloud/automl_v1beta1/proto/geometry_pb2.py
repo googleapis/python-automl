@@ -132,8 +132,6 @@ NormalizedVertex = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _NORMALIZEDVERTEX,
         "__module__": "google.cloud.automl_v1beta1.proto.geometry_pb2",
         "__doc__": """Required. Horizontal coordinate.
-  
-  
   Attributes:
       y:
           Required. Vertical coordinate.
@@ -149,11 +147,9 @@ BoundingPoly = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _BOUNDINGPOLY,
         "__module__": "google.cloud.automl_v1beta1.proto.geometry_pb2",
-        "__doc__": """A bounding polygon of a detected object on a plane. On
-  output both vertices and normalized_vertices are provided. The polygon
-  is formed by connecting vertices in the order they are listed.
-  
-  
+        "__doc__": """A bounding polygon of a detected object on a plane. On output both
+  vertices and normalized_vertices are provided. The polygon is formed
+  by connecting vertices in the order they are listed.
   Attributes:
       normalized_vertices:
           Output only . The bounding polygon normalized vertices.

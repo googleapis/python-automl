@@ -130,10 +130,8 @@ VideoClassificationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _VIDEOCLASSIFICATIONDATASETMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.video_pb2",
-        "__doc__": """Dataset metadata specific to video classification. All
-  Video Classification datasets are treated as multi label.
-  
-  """,
+        "__doc__": """Dataset metadata specific to video classification. All Video
+  Classification datasets are treated as multi label.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.VideoClassificationDatasetMetadata)
     },
 )
@@ -145,9 +143,7 @@ VideoObjectTrackingDatasetMetadata = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _VIDEOOBJECTTRACKINGDATASETMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.video_pb2",
-        "__doc__": """Dataset metadata specific to video object tracking.
-  
-  """,
+        "__doc__": """Dataset metadata specific to video object tracking.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.VideoObjectTrackingDatasetMetadata)
     },
 )
@@ -159,9 +155,7 @@ VideoClassificationModelMetadata = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _VIDEOCLASSIFICATIONMODELMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.video_pb2",
-        "__doc__": """Model metadata specific to video classification.
-  
-  """,
+        "__doc__": """Model metadata specific to video classification.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.VideoClassificationModelMetadata)
     },
 )
@@ -173,9 +167,7 @@ VideoObjectTrackingModelMetadata = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _VIDEOOBJECTTRACKINGMODELMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.video_pb2",
-        "__doc__": """Model metadata specific to video object tracking.
-  
-  """,
+        "__doc__": """Model metadata specific to video object tracking.""",
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.VideoObjectTrackingModelMetadata)
     },
 )

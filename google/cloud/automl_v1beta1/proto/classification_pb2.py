@@ -754,8 +754,6 @@ ClassificationAnnotation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CLASSIFICATIONANNOTATION,
         "__module__": "google.cloud.automl_v1beta1.proto.classification_pb2",
         "__doc__": """Contains annotation details specific to classification.
-  
-  
   Attributes:
       score:
           Output only. A confidence estimate between 0.0 and 1.0. A
@@ -775,10 +773,7 @@ VideoClassificationAnnotation = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _VIDEOCLASSIFICATIONANNOTATION,
         "__module__": "google.cloud.automl_v1beta1.proto.classification_pb2",
-        "__doc__": """Contains annotation details specific to video
-  classification.
-  
-  
+        "__doc__": """Contains annotation details specific to video classification.
   Attributes:
       type:
           Output only. Expresses the type of video classification.
@@ -825,8 +820,6 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _CLASSIFICATIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY,
                 "__module__": "google.cloud.automl_v1beta1.proto.classification_pb2",
                 "__doc__": """Metrics for a single confidence threshold.
-    
-    
     Attributes:
         confidence_threshold:
             Output only. Metrics are computed with an assumption that the
@@ -893,8 +886,6 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                         "DESCRIPTOR": _CLASSIFICATIONEVALUATIONMETRICS_CONFUSIONMATRIX_ROW,
                         "__module__": "google.cloud.automl_v1beta1.proto.classification_pb2",
                         "__doc__": """Output only. A row in the confusion matrix.
-      
-      
       Attributes:
           example_count:
               Output only. Value of the specific cell in the confusion
@@ -910,8 +901,6 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _CLASSIFICATIONEVALUATIONMETRICS_CONFUSIONMATRIX,
                 "__module__": "google.cloud.automl_v1beta1.proto.classification_pb2",
                 "__doc__": """Confusion matrix of the model running the classification.
-    
-    
     Attributes:
         annotation_spec_id:
             Output only. IDs of the annotation specs used in the confusion
@@ -938,11 +927,9 @@ ClassificationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _CLASSIFICATIONEVALUATIONMETRICS,
         "__module__": "google.cloud.automl_v1beta1.proto.classification_pb2",
-        "__doc__": """Model evaluation metrics for classification problems.
-  Note: For Video Classification this metrics only describe quality of the
-  Video Classification predictions of “segment_classification” type.
-  
-  
+        "__doc__": """Model evaluation metrics for classification problems. Note: For Video
+  Classification this metrics only describe quality of the Video
+  Classification predictions of “segment_classification” type.
   Attributes:
       au_prc:
           Output only. The Area Under Precision-Recall Curve metric.

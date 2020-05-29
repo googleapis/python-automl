@@ -51,6 +51,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1B\013AutoMlProtoP\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n*google/cloud/automl_v1/proto/service.proto\x12\x16google.cloud.automl.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a\x35google/cloud/automl_v1/proto/annotation_payload.proto\x1a\x32google/cloud/automl_v1/proto/annotation_spec.proto\x1a*google/cloud/automl_v1/proto/dataset.proto\x1a(google/cloud/automl_v1/proto/image.proto\x1a%google/cloud/automl_v1/proto/io.proto\x1a(google/cloud/automl_v1/proto/model.proto\x1a\x33google/cloud/automl_v1/proto/model_evaluation.proto\x1a-google/cloud/automl_v1/proto/operations.proto\x1a#google/longrunning/operations.proto\x1a google/protobuf/field_mask.proto"\x88\x01\n\x14\x43reateDatasetRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x35\n\x07\x64\x61taset\x18\x02 \x01(\x0b\x32\x1f.google.cloud.automl.v1.DatasetB\x03\xe0\x41\x02"H\n\x11GetDatasetRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset"\x87\x01\n\x13ListDatasetsRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"b\n\x14ListDatasetsResponse\x12\x31\n\x08\x64\x61tasets\x18\x01 \x03(\x0b\x32\x1f.google.cloud.automl.v1.Dataset\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x83\x01\n\x14UpdateDatasetRequest\x12\x35\n\x07\x64\x61taset\x18\x01 \x01(\x0b\x32\x1f.google.cloud.automl.v1.DatasetB\x03\xe0\x41\x02\x12\x34\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskB\x03\xe0\x41\x02"K\n\x14\x44\x65leteDatasetRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset"\x88\x01\n\x11ImportDataRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset\x12>\n\x0cinput_config\x18\x03 \x01(\x0b\x32#.google.cloud.automl.v1.InputConfigB\x03\xe0\x41\x02"\x8a\x01\n\x11\x45xportDataRequest\x12\x33\n\x04name\x18\x01 \x01(\tB%\xe0\x41\x02\xfa\x41\x1f\n\x1d\x61utoml.googleapis.com/Dataset\x12@\n\routput_config\x18\x03 \x01(\x0b\x32$.google.cloud.automl.v1.OutputConfigB\x03\xe0\x41\x02"V\n\x18GetAnnotationSpecRequest\x12:\n\x04name\x18\x01 \x01(\tB,\xe0\x41\x02\xfa\x41&\n$automl.googleapis.com/AnnotationSpec"\x82\x01\n\x12\x43reateModelRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x31\n\x05model\x18\x04 \x01(\x0b\x32\x1d.google.cloud.automl.v1.ModelB\x03\xe0\x41\x02"D\n\x0fGetModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model"\x85\x01\n\x11ListModelsRequest\x12\x39\n\x06parent\x18\x01 \x01(\tB)\xe0\x41\x02\xfa\x41#\n!locations.googleapis.com/Location\x12\x0e\n\x06\x66ilter\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"[\n\x12ListModelsResponse\x12,\n\x05model\x18\x01 \x03(\x0b\x32\x1d.google.cloud.automl.v1.Model\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"G\n\x12\x44\x65leteModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model"}\n\x12UpdateModelRequest\x12\x31\n\x05model\x18\x01 \x01(\x0b\x32\x1d.google.cloud.automl.v1.ModelB\x03\xe0\x41\x02\x12\x34\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskB\x03\xe0\x41\x02"\xe3\x02\n\x12\x44\x65ployModelRequest\x12\x7f\n0image_object_detection_model_deployment_metadata\x18\x02 \x01(\x0b\x32\x43.google.cloud.automl.v1.ImageObjectDetectionModelDeploymentMetadataH\x00\x12|\n.image_classification_model_deployment_metadata\x18\x04 \x01(\x0b\x32\x42.google.cloud.automl.v1.ImageClassificationModelDeploymentMetadataH\x00\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/ModelB\x1b\n\x19model_deployment_metadata"I\n\x14UndeployModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model"\x94\x01\n\x12\x45xportModelRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12K\n\routput_config\x18\x03 \x01(\x0b\x32/.google.cloud.automl.v1.ModelExportOutputConfigB\x03\xe0\x41\x02"X\n\x19GetModelEvaluationRequest\x12;\n\x04name\x18\x01 \x01(\tB-\xe0\x41\x02\xfa\x41\'\n%automl.googleapis.com/ModelEvaluation"\x8e\x01\n\x1bListModelEvaluationsRequest\x12\x33\n\x06parent\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12\x13\n\x06\x66ilter\x18\x03 \x01(\tB\x03\xe0\x41\x02\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x06 \x01(\t"z\n\x1cListModelEvaluationsResponse\x12\x41\n\x10model_evaluation\x18\x01 \x03(\x0b\x32\'.google.cloud.automl.v1.ModelEvaluation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xe8\x1b\n\x06\x41utoMl\x12\xcb\x01\n\rCreateDataset\x12,.google.cloud.automl.v1.CreateDatasetRequest\x1a\x1d.google.longrunning.Operation"m\x82\xd3\xe4\x93\x02\x37",/v1/{parent=projects/*/locations/*}/datasets:\x07\x64\x61taset\xda\x41\x0eparent,dataset\xca\x41\x1c\n\x07\x44\x61taset\x12\x11OperationMetadata\x12\x95\x01\n\nGetDataset\x12).google.cloud.automl.v1.GetDatasetRequest\x1a\x1f.google.cloud.automl.v1.Dataset";\x82\xd3\xe4\x93\x02.\x12,/v1/{name=projects/*/locations/*/datasets/*}\xda\x41\x04name\x12\xa8\x01\n\x0cListDatasets\x12+.google.cloud.automl.v1.ListDatasetsRequest\x1a,.google.cloud.automl.v1.ListDatasetsResponse"=\x82\xd3\xe4\x93\x02.\x12,/v1/{parent=projects/*/locations/*}/datasets\xda\x41\x06parent\x12\xbb\x01\n\rUpdateDataset\x12,.google.cloud.automl.v1.UpdateDatasetRequest\x1a\x1f.google.cloud.automl.v1.Dataset"[\x82\xd3\xe4\x93\x02?24/v1/{dataset.name=projects/*/locations/*/datasets/*}:\x07\x64\x61taset\xda\x41\x13\x64\x61taset,update_mask\x12\xc6\x01\n\rDeleteDataset\x12,.google.cloud.automl.v1.DeleteDatasetRequest\x1a\x1d.google.longrunning.Operation"h\x82\xd3\xe4\x93\x02.*,/v1/{name=projects/*/locations/*/datasets/*}\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xdc\x01\n\nImportData\x12).google.cloud.automl.v1.ImportDataRequest\x1a\x1d.google.longrunning.Operation"\x83\x01\x82\xd3\xe4\x93\x02<"7/v1/{name=projects/*/locations/*/datasets/*}:importData:\x01*\xda\x41\x11name,input_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xdd\x01\n\nExportData\x12).google.cloud.automl.v1.ExportDataRequest\x1a\x1d.google.longrunning.Operation"\x84\x01\x82\xd3\xe4\x93\x02<"7/v1/{name=projects/*/locations/*/datasets/*}:exportData:\x01*\xda\x41\x12name,output_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xbc\x01\n\x11GetAnnotationSpec\x12\x30.google.cloud.automl.v1.GetAnnotationSpecRequest\x1a&.google.cloud.automl.v1.AnnotationSpec"M\x82\xd3\xe4\x93\x02@\x12>/v1/{name=projects/*/locations/*/datasets/*/annotationSpecs/*}\xda\x41\x04name\x12\xbf\x01\n\x0b\x43reateModel\x12*.google.cloud.automl.v1.CreateModelRequest\x1a\x1d.google.longrunning.Operation"e\x82\xd3\xe4\x93\x02\x33"*/v1/{parent=projects/*/locations/*}/models:\x05model\xda\x41\x0cparent,model\xca\x41\x1a\n\x05Model\x12\x11OperationMetadata\x12\x8d\x01\n\x08GetModel\x12\'.google.cloud.automl.v1.GetModelRequest\x1a\x1d.google.cloud.automl.v1.Model"9\x82\xd3\xe4\x93\x02,\x12*/v1/{name=projects/*/locations/*/models/*}\xda\x41\x04name\x12\xa0\x01\n\nListModels\x12).google.cloud.automl.v1.ListModelsRequest\x1a*.google.cloud.automl.v1.ListModelsResponse";\x82\xd3\xe4\x93\x02,\x12*/v1/{parent=projects/*/locations/*}/models\xda\x41\x06parent\x12\xc0\x01\n\x0b\x44\x65leteModel\x12*.google.cloud.automl.v1.DeleteModelRequest\x1a\x1d.google.longrunning.Operation"f\x82\xd3\xe4\x93\x02,**/v1/{name=projects/*/locations/*/models/*}\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xad\x01\n\x0bUpdateModel\x12*.google.cloud.automl.v1.UpdateModelRequest\x1a\x1d.google.cloud.automl.v1.Model"S\x82\xd3\xe4\x93\x02\x39\x32\x30/v1/{model.name=projects/*/locations/*/models/*}:\x05model\xda\x41\x11model,update_mask\x12\xca\x01\n\x0b\x44\x65ployModel\x12*.google.cloud.automl.v1.DeployModelRequest\x1a\x1d.google.longrunning.Operation"p\x82\xd3\xe4\x93\x02\x36"1/v1/{name=projects/*/locations/*/models/*}:deploy:\x01*\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xd0\x01\n\rUndeployModel\x12,.google.cloud.automl.v1.UndeployModelRequest\x1a\x1d.google.longrunning.Operation"r\x82\xd3\xe4\x93\x02\x38"3/v1/{name=projects/*/locations/*/models/*}:undeploy:\x01*\xda\x41\x04name\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xd8\x01\n\x0b\x45xportModel\x12*.google.cloud.automl.v1.ExportModelRequest\x1a\x1d.google.longrunning.Operation"~\x82\xd3\xe4\x93\x02\x36"1/v1/{name=projects/*/locations/*/models/*}:export:\x01*\xda\x41\x12name,output_config\xca\x41*\n\x15google.protobuf.Empty\x12\x11OperationMetadata\x12\xbe\x01\n\x12GetModelEvaluation\x12\x31.google.cloud.automl.v1.GetModelEvaluationRequest\x1a\'.google.cloud.automl.v1.ModelEvaluation"L\x82\xd3\xe4\x93\x02?\x12=/v1/{name=projects/*/locations/*/models/*/modelEvaluations/*}\xda\x41\x04name\x12\xd8\x01\n\x14ListModelEvaluations\x12\x33.google.cloud.automl.v1.ListModelEvaluationsRequest\x1a\x34.google.cloud.automl.v1.ListModelEvaluationsResponse"U\x82\xd3\xe4\x93\x02?\x12=/v1/{parent=projects/*/locations/*/models/*}/modelEvaluations\xda\x41\rparent,filter\x1aI\xca\x41\x15\x61utoml.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\xb7\x01\n\x1a\x63om.google.cloud.automl.v1B\x0b\x41utoMlProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -77,6 +78,7 @@ _CREATEDATASETREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -95,6 +97,7 @@ _CREATEDATASETREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A#\n!locations.googleapis.com/Location",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="dataset",
@@ -113,6 +116,7 @@ _CREATEDATASETREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -134,6 +138,7 @@ _GETDATASETREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -152,6 +157,7 @@ _GETDATASETREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\037\n\035automl.googleapis.com/Dataset",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -173,6 +179,7 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -191,6 +198,7 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A#\n!locations.googleapis.com/Location",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -209,6 +217,7 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -227,6 +236,7 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -245,6 +255,7 @@ _LISTDATASETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -266,6 +277,7 @@ _LISTDATASETSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="datasets",
@@ -284,6 +296,7 @@ _LISTDATASETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -302,6 +315,7 @@ _LISTDATASETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -323,6 +337,7 @@ _UPDATEDATASETREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="dataset",
@@ -341,6 +356,7 @@ _UPDATEDATASETREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -359,6 +375,7 @@ _UPDATEDATASETREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -380,6 +397,7 @@ _DELETEDATASETREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -398,6 +416,7 @@ _DELETEDATASETREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\037\n\035automl.googleapis.com/Dataset",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -419,6 +438,7 @@ _IMPORTDATAREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -437,6 +457,7 @@ _IMPORTDATAREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\037\n\035automl.googleapis.com/Dataset",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="input_config",
@@ -455,6 +476,7 @@ _IMPORTDATAREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -476,6 +498,7 @@ _EXPORTDATAREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -494,6 +517,7 @@ _EXPORTDATAREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\037\n\035automl.googleapis.com/Dataset",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="output_config",
@@ -512,6 +536,7 @@ _EXPORTDATAREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -533,6 +558,7 @@ _GETANNOTATIONSPECREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -551,6 +577,7 @@ _GETANNOTATIONSPECREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A&\n$automl.googleapis.com/AnnotationSpec",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -572,6 +599,7 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -590,6 +618,7 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A#\n!locations.googleapis.com/Location",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="model",
@@ -608,6 +637,7 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -629,6 +659,7 @@ _GETMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -647,6 +678,7 @@ _GETMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -668,6 +700,7 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -686,6 +719,7 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A#\n!locations.googleapis.com/Location",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -704,6 +738,7 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -722,6 +757,7 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -740,6 +776,7 @@ _LISTMODELSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -761,6 +798,7 @@ _LISTMODELSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="model",
@@ -779,6 +817,7 @@ _LISTMODELSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -797,6 +836,7 @@ _LISTMODELSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -818,6 +858,7 @@ _DELETEMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -836,6 +877,7 @@ _DELETEMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -857,6 +899,7 @@ _UPDATEMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="model",
@@ -875,6 +918,7 @@ _UPDATEMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -893,6 +937,7 @@ _UPDATEMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -914,6 +959,7 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="image_object_detection_model_deployment_metadata",
@@ -932,6 +978,7 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="image_classification_model_deployment_metadata",
@@ -950,6 +997,7 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="name",
@@ -968,6 +1016,7 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -983,6 +1032,7 @@ _DEPLOYMODELREQUEST = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1.DeployModelRequest.model_deployment_metadata",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -997,6 +1047,7 @@ _UNDEPLOYMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1015,6 +1066,7 @@ _UNDEPLOYMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -1036,6 +1088,7 @@ _EXPORTMODELREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1054,6 +1107,7 @@ _EXPORTMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="output_config",
@@ -1072,6 +1126,7 @@ _EXPORTMODELREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1093,6 +1148,7 @@ _GETMODELEVALUATIONREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1111,6 +1167,7 @@ _GETMODELEVALUATIONREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A'\n%automl.googleapis.com/ModelEvaluation",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -1132,6 +1189,7 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1150,6 +1208,7 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -1168,6 +1227,7 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1186,6 +1246,7 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1204,6 +1265,7 @@ _LISTMODELEVALUATIONSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1225,6 +1287,7 @@ _LISTMODELEVALUATIONSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="model_evaluation",
@@ -1243,6 +1306,7 @@ _LISTMODELEVALUATIONSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -1261,6 +1325,7 @@ _LISTMODELEVALUATIONSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1857,6 +1922,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=b"\312A\025automl.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform",
+    create_key=_descriptor._internal_create_key,
     serialized_start=3236,
     serialized_end=6796,
     methods=[
@@ -1868,6 +1934,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_CREATEDATASETREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\0027",/v1/{parent=projects/*/locations/*}/datasets:\007dataset\332A\016parent,dataset\312A\034\n\007Dataset\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetDataset",
@@ -1877,6 +1944,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETDATASETREQUEST,
             output_type=google_dot_cloud_dot_automl__v1_dot_proto_dot_dataset__pb2._DATASET,
             serialized_options=b"\202\323\344\223\002.\022,/v1/{name=projects/*/locations/*/datasets/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListDatasets",
@@ -1886,6 +1954,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTDATASETSREQUEST,
             output_type=_LISTDATASETSRESPONSE,
             serialized_options=b"\202\323\344\223\002.\022,/v1/{parent=projects/*/locations/*}/datasets\332A\006parent",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateDataset",
@@ -1895,6 +1964,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UPDATEDATASETREQUEST,
             output_type=google_dot_cloud_dot_automl__v1_dot_proto_dot_dataset__pb2._DATASET,
             serialized_options=b"\202\323\344\223\002?24/v1/{dataset.name=projects/*/locations/*/datasets/*}:\007dataset\332A\023dataset,update_mask",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="DeleteDataset",
@@ -1904,6 +1974,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_DELETEDATASETREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b"\202\323\344\223\002.*,/v1/{name=projects/*/locations/*/datasets/*}\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ImportData",
@@ -1913,6 +1984,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_IMPORTDATAREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\002<"7/v1/{name=projects/*/locations/*/datasets/*}:importData:\001*\332A\021name,input_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ExportData",
@@ -1922,6 +1994,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_EXPORTDATAREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\002<"7/v1/{name=projects/*/locations/*/datasets/*}:exportData:\001*\332A\022name,output_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetAnnotationSpec",
@@ -1931,6 +2004,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETANNOTATIONSPECREQUEST,
             output_type=google_dot_cloud_dot_automl__v1_dot_proto_dot_annotation__spec__pb2._ANNOTATIONSPEC,
             serialized_options=b"\202\323\344\223\002@\022>/v1/{name=projects/*/locations/*/datasets/*/annotationSpecs/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="CreateModel",
@@ -1940,6 +2014,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_CREATEMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\0023"*/v1/{parent=projects/*/locations/*}/models:\005model\332A\014parent,model\312A\032\n\005Model\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetModel",
@@ -1949,6 +2024,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETMODELREQUEST,
             output_type=google_dot_cloud_dot_automl__v1_dot_proto_dot_model__pb2._MODEL,
             serialized_options=b"\202\323\344\223\002,\022*/v1/{name=projects/*/locations/*/models/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListModels",
@@ -1958,6 +2034,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTMODELSREQUEST,
             output_type=_LISTMODELSRESPONSE,
             serialized_options=b"\202\323\344\223\002,\022*/v1/{parent=projects/*/locations/*}/models\332A\006parent",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="DeleteModel",
@@ -1967,6 +2044,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_DELETEMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b"\202\323\344\223\002,**/v1/{name=projects/*/locations/*/models/*}\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateModel",
@@ -1976,6 +2054,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UPDATEMODELREQUEST,
             output_type=google_dot_cloud_dot_automl__v1_dot_proto_dot_model__pb2._MODEL,
             serialized_options=b"\202\323\344\223\002920/v1/{model.name=projects/*/locations/*/models/*}:\005model\332A\021model,update_mask",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="DeployModel",
@@ -1985,6 +2064,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_DEPLOYMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\0026"1/v1/{name=projects/*/locations/*/models/*}:deploy:\001*\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UndeployModel",
@@ -1994,6 +2074,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_UNDEPLOYMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\0028"3/v1/{name=projects/*/locations/*/models/*}:undeploy:\001*\332A\004name\312A*\n\025google.protobuf.Empty\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ExportModel",
@@ -2003,6 +2084,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_EXPORTMODELREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\0026"1/v1/{name=projects/*/locations/*/models/*}:export:\001*\332A\022name,output_config\312A*\n\025google.protobuf.Empty\022\021OperationMetadata',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetModelEvaluation",
@@ -2012,6 +2094,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_GETMODELEVALUATIONREQUEST,
             output_type=google_dot_cloud_dot_automl__v1_dot_proto_dot_model__evaluation__pb2._MODELEVALUATION,
             serialized_options=b"\202\323\344\223\002?\022=/v1/{name=projects/*/locations/*/models/*/modelEvaluations/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListModelEvaluations",
@@ -2021,6 +2104,7 @@ _AUTOML = _descriptor.ServiceDescriptor(
             input_type=_LISTMODELEVALUATIONSREQUEST,
             output_type=_LISTMODELEVALUATIONSRESPONSE,
             serialized_options=b"\202\323\344\223\002?\022=/v1/{parent=projects/*/locations/*/models/*}/modelEvaluations\332A\rparent,filter",
+            create_key=_descriptor._internal_create_key,
         ),
     ],
 )

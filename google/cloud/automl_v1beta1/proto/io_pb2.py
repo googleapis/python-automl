@@ -20,6 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n*google/cloud/automl_v1beta1/proto/io.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto"\x92\x02\n\x0bInputConfig\x12<\n\ngcs_source\x18\x01 \x01(\x0b\x32&.google.cloud.automl.v1beta1.GcsSourceH\x00\x12\x46\n\x0f\x62igquery_source\x18\x03 \x01(\x0b\x32+.google.cloud.automl.v1beta1.BigQuerySourceH\x00\x12\x44\n\x06params\x18\x02 \x03(\x0b\x32\x34.google.cloud.automl.v1beta1.InputConfig.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x08\n\x06source"\xa9\x01\n\x17\x42\x61tchPredictInputConfig\x12<\n\ngcs_source\x18\x01 \x01(\x0b\x32&.google.cloud.automl.v1beta1.GcsSourceH\x00\x12\x46\n\x0f\x62igquery_source\x18\x02 \x01(\x0b\x32+.google.cloud.automl.v1beta1.BigQuerySourceH\x00\x42\x08\n\x06source"Q\n\x13\x44ocumentInputConfig\x12:\n\ngcs_source\x18\x01 \x01(\x0b\x32&.google.cloud.automl.v1beta1.GcsSource"\xb7\x01\n\x0cOutputConfig\x12\x46\n\x0fgcs_destination\x18\x01 \x01(\x0b\x32+.google.cloud.automl.v1beta1.GcsDestinationH\x00\x12P\n\x14\x62igquery_destination\x18\x02 \x01(\x0b\x32\x30.google.cloud.automl.v1beta1.BigQueryDestinationH\x00\x42\r\n\x0b\x64\x65stination"\xc3\x01\n\x18\x42\x61tchPredictOutputConfig\x12\x46\n\x0fgcs_destination\x18\x01 \x01(\x0b\x32+.google.cloud.automl.v1beta1.GcsDestinationH\x00\x12P\n\x14\x62igquery_destination\x18\x02 \x01(\x0b\x32\x30.google.cloud.automl.v1beta1.BigQueryDestinationH\x00\x42\r\n\x0b\x64\x65stination"\xcf\x02\n\x17ModelExportOutputConfig\x12\x46\n\x0fgcs_destination\x18\x01 \x01(\x0b\x32+.google.cloud.automl.v1beta1.GcsDestinationH\x00\x12\x46\n\x0fgcr_destination\x18\x03 \x01(\x0b\x32+.google.cloud.automl.v1beta1.GcrDestinationH\x00\x12\x14\n\x0cmodel_format\x18\x04 \x01(\t\x12P\n\x06params\x18\x02 \x03(\x0b\x32@.google.cloud.automl.v1beta1.ModelExportOutputConfig.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\r\n\x0b\x64\x65stination"\x86\x01\n#ExportEvaluatedExamplesOutputConfig\x12P\n\x14\x62igquery_destination\x18\x02 \x01(\x0b\x32\x30.google.cloud.automl.v1beta1.BigQueryDestinationH\x00\x42\r\n\x0b\x64\x65stination"\x1f\n\tGcsSource\x12\x12\n\ninput_uris\x18\x01 \x03(\t"#\n\x0e\x42igQuerySource\x12\x11\n\tinput_uri\x18\x01 \x01(\t"+\n\x0eGcsDestination\x12\x19\n\x11output_uri_prefix\x18\x01 \x01(\t")\n\x13\x42igQueryDestination\x12\x12\n\noutput_uri\x18\x01 \x01(\t"$\n\x0eGcrDestination\x12\x12\n\noutput_uri\x18\x01 \x01(\tB\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR],
 )
@@ -31,6 +32,7 @@ _INPUTCONFIG_PARAMSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -49,6 +51,7 @@ _INPUTCONFIG_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -67,6 +70,7 @@ _INPUTCONFIG_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -87,6 +91,7 @@ _INPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_source",
@@ -105,6 +110,7 @@ _INPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bigquery_source",
@@ -123,6 +129,7 @@ _INPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="params",
@@ -141,6 +148,7 @@ _INPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -156,6 +164,7 @@ _INPUTCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.InputConfig.source",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -170,6 +179,7 @@ _BATCHPREDICTINPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_source",
@@ -188,6 +198,7 @@ _BATCHPREDICTINPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bigquery_source",
@@ -206,6 +217,7 @@ _BATCHPREDICTINPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -221,6 +233,7 @@ _BATCHPREDICTINPUTCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.BatchPredictInputConfig.source",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -235,6 +248,7 @@ _DOCUMENTINPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_source",
@@ -253,6 +267,7 @@ _DOCUMENTINPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -274,6 +289,7 @@ _OUTPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_destination",
@@ -292,6 +308,7 @@ _OUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bigquery_destination",
@@ -310,6 +327,7 @@ _OUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -325,6 +343,7 @@ _OUTPUTCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.OutputConfig.destination",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -339,6 +358,7 @@ _BATCHPREDICTOUTPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_destination",
@@ -357,6 +377,7 @@ _BATCHPREDICTOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bigquery_destination",
@@ -375,6 +396,7 @@ _BATCHPREDICTOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -390,6 +412,7 @@ _BATCHPREDICTOUTPUTCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.BatchPredictOutputConfig.destination",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -404,6 +427,7 @@ _MODELEXPORTOUTPUTCONFIG_PARAMSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -422,6 +446,7 @@ _MODELEXPORTOUTPUTCONFIG_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -440,6 +465,7 @@ _MODELEXPORTOUTPUTCONFIG_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -460,6 +486,7 @@ _MODELEXPORTOUTPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_destination",
@@ -478,6 +505,7 @@ _MODELEXPORTOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="gcr_destination",
@@ -496,6 +524,7 @@ _MODELEXPORTOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="model_format",
@@ -514,6 +543,7 @@ _MODELEXPORTOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="params",
@@ -532,6 +562,7 @@ _MODELEXPORTOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -547,6 +578,7 @@ _MODELEXPORTOUTPUTCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.ModelExportOutputConfig.destination",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -561,6 +593,7 @@ _EXPORTEVALUATEDEXAMPLESOUTPUTCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="bigquery_destination",
@@ -579,6 +612,7 @@ _EXPORTEVALUATEDEXAMPLESOUTPUTCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -594,6 +628,7 @@ _EXPORTEVALUATEDEXAMPLESOUTPUTCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.ExportEvaluatedExamplesOutputConfig.destination",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -608,6 +643,7 @@ _GCSSOURCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="input_uris",
@@ -626,6 +662,7 @@ _GCSSOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -647,6 +684,7 @@ _BIGQUERYSOURCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="input_uri",
@@ -665,6 +703,7 @@ _BIGQUERYSOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -686,6 +725,7 @@ _GCSDESTINATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="output_uri_prefix",
@@ -704,6 +744,7 @@ _GCSDESTINATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -725,6 +766,7 @@ _BIGQUERYDESTINATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="output_uri",
@@ -743,6 +785,7 @@ _BIGQUERYDESTINATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -764,6 +807,7 @@ _GCRDESTINATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="output_uri",
@@ -782,6 +826,7 @@ _GCRDESTINATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],

@@ -20,6 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1B\020TextSegmentProtoP\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n/google/cloud/automl_v1/proto/text_segment.proto\x12\x16google.cloud.automl.v1\x1a\x1cgoogle/api/annotations.proto"H\n\x0bTextSegment\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\x12\x14\n\x0cstart_offset\x18\x01 \x01(\x03\x12\x12\n\nend_offset\x18\x02 \x01(\x03\x42\xbc\x01\n\x1a\x63om.google.cloud.automl.v1B\x10TextSegmentProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3',
     dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR],
 )
@@ -31,6 +32,7 @@ _TEXTSEGMENT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="content",
@@ -49,6 +51,7 @@ _TEXTSEGMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="start_offset",
@@ -67,6 +70,7 @@ _TEXTSEGMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="end_offset",
@@ -85,6 +89,7 @@ _TEXTSEGMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

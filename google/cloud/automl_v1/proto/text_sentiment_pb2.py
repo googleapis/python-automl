@@ -23,6 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1B\022TextSentimentProtoP\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n1google/cloud/automl_v1/proto/text_sentiment.proto\x12\x16google.cloud.automl.v1\x1a\x31google/cloud/automl_v1/proto/classification.proto\x1a\x1cgoogle/api/annotations.proto",\n\x17TextSentimentAnnotation\x12\x11\n\tsentiment\x18\x01 \x01(\x05"\xa0\x02\n\x1eTextSentimentEvaluationMetrics\x12\x11\n\tprecision\x18\x01 \x01(\x02\x12\x0e\n\x06recall\x18\x02 \x01(\x02\x12\x10\n\x08\x66\x31_score\x18\x03 \x01(\x02\x12\x1b\n\x13mean_absolute_error\x18\x04 \x01(\x02\x12\x1a\n\x12mean_squared_error\x18\x05 \x01(\x02\x12\x14\n\x0clinear_kappa\x18\x06 \x01(\x02\x12\x17\n\x0fquadratic_kappa\x18\x07 \x01(\x02\x12\x61\n\x10\x63onfusion_matrix\x18\x08 \x01(\x0b\x32G.google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfusionMatrixB\xbe\x01\n\x1a\x63om.google.cloud.automl.v1B\x12TextSentimentProtoP\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1_dot_proto_dot_classification__pb2.DESCRIPTOR,
@@ -37,6 +38,7 @@ _TEXTSENTIMENTANNOTATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="sentiment",
@@ -55,6 +57,7 @@ _TEXTSENTIMENTANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -76,6 +79,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="precision",
@@ -94,6 +98,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="recall",
@@ -112,6 +117,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="f1_score",
@@ -130,6 +136,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="mean_absolute_error",
@@ -148,6 +155,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="mean_squared_error",
@@ -166,6 +174,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="linear_kappa",
@@ -184,6 +193,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="quadratic_kappa",
@@ -202,6 +212,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="confusion_matrix",
@@ -220,6 +231,7 @@ _TEXTSENTIMENTEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

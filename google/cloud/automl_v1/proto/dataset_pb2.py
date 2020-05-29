@@ -31,6 +31,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1P\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b"\n*google/cloud/automl_v1/proto/dataset.proto\x12\x16google.cloud.automl.v1\x1a\x19google/api/resource.proto\x1a(google/cloud/automl_v1/proto/image.proto\x1a'google/cloud/automl_v1/proto/text.proto\x1a.google/cloud/automl_v1/proto/translation.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"\xe0\x07\n\x07\x44\x61taset\x12Z\n\x1ctranslation_dataset_metadata\x18\x17 \x01(\x0b\x32\x32.google.cloud.automl.v1.TranslationDatasetMetadataH\x00\x12k\n%image_classification_dataset_metadata\x18\x18 \x01(\x0b\x32:.google.cloud.automl.v1.ImageClassificationDatasetMetadataH\x00\x12i\n$text_classification_dataset_metadata\x18\x19 \x01(\x0b\x32\x39.google.cloud.automl.v1.TextClassificationDatasetMetadataH\x00\x12n\n'image_object_detection_dataset_metadata\x18\x1a \x01(\x0b\x32;.google.cloud.automl.v1.ImageObjectDetectionDatasetMetadataH\x00\x12\x61\n text_extraction_dataset_metadata\x18\x1c \x01(\x0b\x32\x35.google.cloud.automl.v1.TextExtractionDatasetMetadataH\x00\x12_\n\x1ftext_sentiment_dataset_metadata\x18\x1e \x01(\x0b\x32\x34.google.cloud.automl.v1.TextSentimentDatasetMetadataH\x00\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x15\n\rexample_count\x18\x15 \x01(\x05\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04\x65tag\x18\x11 \x01(\t\x12;\n\x06labels\x18' \x03(\x0b\x32+.google.cloud.automl.v1.Dataset.LabelsEntry\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01:^\xea\x41[\n\x1d\x61utoml.googleapis.com/Dataset\x12:projects/{project}/locations/{location}/datasets/{dataset}B\x12\n\x10\x64\x61taset_metadataB\xaa\x01\n\x1a\x63om.google.cloud.automl.v1P\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3",
     dependencies=[
         google_dot_api_dot_resource__pb2.DESCRIPTOR,
@@ -49,6 +50,7 @@ _DATASET_LABELSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -67,6 +69,7 @@ _DATASET_LABELSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -85,6 +88,7 @@ _DATASET_LABELSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -105,6 +109,7 @@ _DATASET = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="translation_dataset_metadata",
@@ -123,6 +128,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="image_classification_dataset_metadata",
@@ -141,6 +147,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_classification_dataset_metadata",
@@ -159,6 +166,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="image_object_detection_dataset_metadata",
@@ -177,6 +185,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_extraction_dataset_metadata",
@@ -195,6 +204,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_sentiment_dataset_metadata",
@@ -213,6 +223,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="name",
@@ -231,6 +242,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="display_name",
@@ -249,6 +261,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="description",
@@ -267,6 +280,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="example_count",
@@ -285,6 +299,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="create_time",
@@ -303,6 +318,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="etag",
@@ -321,6 +337,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="labels",
@@ -339,6 +356,7 @@ _DATASET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -354,6 +372,7 @@ _DATASET = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1.Dataset.dataset_metadata",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],

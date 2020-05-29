@@ -24,6 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n2google/cloud/automl_v1beta1/proto/table_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x19google/api/resource.proto\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a\x1cgoogle/api/annotations.proto"\xc1\x02\n\tTableSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1b\n\x13time_column_spec_id\x18\x02 \x01(\t\x12\x11\n\trow_count\x18\x03 \x01(\x03\x12\x17\n\x0fvalid_row_count\x18\x04 \x01(\x03\x12\x14\n\x0c\x63olumn_count\x18\x07 \x01(\x03\x12?\n\rinput_configs\x18\x05 \x03(\x0b\x32(.google.cloud.automl.v1beta1.InputConfig\x12\x0c\n\x04\x65tag\x18\x06 \x01(\t:x\xea\x41u\n\x1f\x61utoml.googleapis.com/TableSpec\x12Rprojects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}B\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[
         google_dot_api_dot_resource__pb2.DESCRIPTOR,
@@ -39,6 +40,7 @@ _TABLESPEC = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -57,6 +59,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="time_column_spec_id",
@@ -75,6 +78,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="row_count",
@@ -93,6 +97,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="valid_row_count",
@@ -111,6 +116,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="column_count",
@@ -129,6 +135,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="input_configs",
@@ -147,6 +154,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="etag",
@@ -165,6 +173,7 @@ _TABLESPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

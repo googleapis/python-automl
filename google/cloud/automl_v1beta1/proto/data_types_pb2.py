@@ -21,6 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n2google/cloud/automl_v1beta1/proto/data_types.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto"\xfc\x01\n\x08\x44\x61taType\x12\x42\n\x11list_element_type\x18\x02 \x01(\x0b\x32%.google.cloud.automl.v1beta1.DataTypeH\x00\x12>\n\x0bstruct_type\x18\x03 \x01(\x0b\x32\'.google.cloud.automl.v1beta1.StructTypeH\x00\x12\x15\n\x0btime_format\x18\x05 \x01(\tH\x00\x12\x38\n\ttype_code\x18\x01 \x01(\x0e\x32%.google.cloud.automl.v1beta1.TypeCode\x12\x10\n\x08nullable\x18\x04 \x01(\x08\x42\t\n\x07\x64\x65tails"\xa7\x01\n\nStructType\x12\x43\n\x06\x66ields\x18\x01 \x03(\x0b\x32\x33.google.cloud.automl.v1beta1.StructType.FieldsEntry\x1aT\n\x0b\x46ieldsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.google.cloud.automl.v1beta1.DataType:\x02\x38\x01*r\n\x08TypeCode\x12\x19\n\x15TYPE_CODE_UNSPECIFIED\x10\x00\x12\x0b\n\x07\x46LOAT64\x10\x03\x12\r\n\tTIMESTAMP\x10\x04\x12\n\n\x06STRING\x10\x06\x12\t\n\x05\x41RRAY\x10\x08\x12\n\n\x06STRUCT\x10\t\x12\x0c\n\x08\x43\x41TEGORY\x10\nB\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR],
 )
@@ -30,6 +31,7 @@ _TYPECODE = _descriptor.EnumDescriptor(
     full_name="google.cloud.automl.v1beta1.TypeCode",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="TYPE_CODE_UNSPECIFIED",
@@ -37,24 +39,55 @@ _TYPECODE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FLOAT64", index=1, number=3, serialized_options=None, type=None
+            name="FLOAT64",
+            index=1,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="TIMESTAMP", index=2, number=4, serialized_options=None, type=None
+            name="TIMESTAMP",
+            index=2,
+            number=4,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="STRING", index=3, number=6, serialized_options=None, type=None
+            name="STRING",
+            index=3,
+            number=6,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="ARRAY", index=4, number=8, serialized_options=None, type=None
+            name="ARRAY",
+            index=4,
+            number=8,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="STRUCT", index=5, number=9, serialized_options=None, type=None
+            name="STRUCT",
+            index=5,
+            number=9,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="CATEGORY", index=6, number=10, serialized_options=None, type=None
+            name="CATEGORY",
+            index=6,
+            number=10,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -80,6 +113,7 @@ _DATATYPE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="list_element_type",
@@ -98,6 +132,7 @@ _DATATYPE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="struct_type",
@@ -116,6 +151,7 @@ _DATATYPE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="time_format",
@@ -134,6 +170,7 @@ _DATATYPE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="type_code",
@@ -152,6 +189,7 @@ _DATATYPE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="nullable",
@@ -170,6 +208,7 @@ _DATATYPE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -185,6 +224,7 @@ _DATATYPE = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.DataType.details",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -199,6 +239,7 @@ _STRUCTTYPE_FIELDSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -217,6 +258,7 @@ _STRUCTTYPE_FIELDSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -235,6 +277,7 @@ _STRUCTTYPE_FIELDSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -255,6 +298,7 @@ _STRUCTTYPE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="fields",
@@ -273,6 +317,7 @@ _STRUCTTYPE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],

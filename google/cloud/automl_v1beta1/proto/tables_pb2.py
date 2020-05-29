@@ -43,6 +43,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n.google/cloud/automl_v1beta1/proto/tables.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x36google/cloud/automl_v1beta1/proto/classification.proto\x1a\x33google/cloud/automl_v1beta1/proto/column_spec.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_items.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_stats.proto\x1a.google/cloud/automl_v1beta1/proto/ranges.proto\x1a\x32google/cloud/automl_v1beta1/proto/regression.proto\x1a\x30google/cloud/automl_v1beta1/proto/temporal.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto"\xb0\x03\n\x15TablesDatasetMetadata\x12\x1d\n\x15primary_table_spec_id\x18\x01 \x01(\t\x12\x1d\n\x15target_column_spec_id\x18\x02 \x01(\t\x12\x1d\n\x15weight_column_spec_id\x18\x03 \x01(\t\x12\x1d\n\x15ml_use_column_spec_id\x18\x04 \x01(\t\x12t\n\x1atarget_column_correlations\x18\x06 \x03(\x0b\x32P.google.cloud.automl.v1beta1.TablesDatasetMetadata.TargetColumnCorrelationsEntry\x12\x35\n\x11stats_update_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1an\n\x1dTargetColumnCorrelationsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12<\n\x05value\x18\x02 \x01(\x0b\x32-.google.cloud.automl.v1beta1.CorrelationStats:\x02\x38\x01"\x96\x04\n\x13TablesModelMetadata\x12-\n#optimization_objective_recall_value\x18\x11 \x01(\x02H\x00\x12\x30\n&optimization_objective_precision_value\x18\x12 \x01(\x02H\x00\x12\x43\n\x12target_column_spec\x18\x02 \x01(\x0b\x32\'.google.cloud.automl.v1beta1.ColumnSpec\x12K\n\x1ainput_feature_column_specs\x18\x03 \x03(\x0b\x32\'.google.cloud.automl.v1beta1.ColumnSpec\x12\x1e\n\x16optimization_objective\x18\x04 \x01(\t\x12T\n\x18tables_model_column_info\x18\x05 \x03(\x0b\x32\x32.google.cloud.automl.v1beta1.TablesModelColumnInfo\x12%\n\x1dtrain_budget_milli_node_hours\x18\x06 \x01(\x03\x12#\n\x1btrain_cost_milli_node_hours\x18\x07 \x01(\x03\x12\x1e\n\x16\x64isable_early_stopping\x18\x0c \x01(\x08\x42*\n(additional_optimization_objective_config"\xfd\x01\n\x10TablesAnnotation\x12\r\n\x05score\x18\x01 \x01(\x02\x12\x45\n\x13prediction_interval\x18\x04 \x01(\x0b\x32(.google.cloud.automl.v1beta1.DoubleRange\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.google.protobuf.Value\x12T\n\x18tables_model_column_info\x18\x03 \x03(\x0b\x32\x32.google.cloud.automl.v1beta1.TablesModelColumnInfo\x12\x16\n\x0e\x62\x61seline_score\x18\x05 \x01(\x02"j\n\x15TablesModelColumnInfo\x12\x18\n\x10\x63olumn_spec_name\x18\x01 \x01(\t\x12\x1b\n\x13\x63olumn_display_name\x18\x02 \x01(\t\x12\x1a\n\x12\x66\x65\x61ture_importance\x18\x03 \x01(\x02\x42\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_classification__pb2.DESCRIPTOR,
@@ -65,6 +66,7 @@ _TABLESDATASETMETADATA_TARGETCOLUMNCORRELATIONSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -83,6 +85,7 @@ _TABLESDATASETMETADATA_TARGETCOLUMNCORRELATIONSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -101,6 +104,7 @@ _TABLESDATASETMETADATA_TARGETCOLUMNCORRELATIONSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -121,6 +125,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="primary_table_spec_id",
@@ -139,6 +144,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="target_column_spec_id",
@@ -157,6 +163,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="weight_column_spec_id",
@@ -175,6 +182,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="ml_use_column_spec_id",
@@ -193,6 +201,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="target_column_correlations",
@@ -211,6 +220,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="stats_update_time",
@@ -229,6 +239,7 @@ _TABLESDATASETMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -250,6 +261,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="optimization_objective_recall_value",
@@ -268,6 +280,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="optimization_objective_precision_value",
@@ -286,6 +299,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="target_column_spec",
@@ -304,6 +318,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="input_feature_column_specs",
@@ -322,6 +337,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="optimization_objective",
@@ -340,6 +356,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="tables_model_column_info",
@@ -358,6 +375,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="train_budget_milli_node_hours",
@@ -376,6 +394,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="train_cost_milli_node_hours",
@@ -394,6 +413,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="disable_early_stopping",
@@ -412,6 +432,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -427,6 +448,7 @@ _TABLESMODELMETADATA = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.TablesModelMetadata.additional_optimization_objective_config",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -441,6 +463,7 @@ _TABLESANNOTATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="score",
@@ -459,6 +482,7 @@ _TABLESANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="prediction_interval",
@@ -477,6 +501,7 @@ _TABLESANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -495,6 +520,7 @@ _TABLESANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="tables_model_column_info",
@@ -513,6 +539,7 @@ _TABLESANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="baseline_score",
@@ -531,6 +558,7 @@ _TABLESANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -552,6 +580,7 @@ _TABLESMODELCOLUMNINFO = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="column_spec_name",
@@ -570,6 +599,7 @@ _TABLESMODELCOLUMNINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="column_display_name",
@@ -588,6 +618,7 @@ _TABLESMODELCOLUMNINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="feature_importance",
@@ -606,6 +637,7 @@ _TABLESMODELCOLUMNINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

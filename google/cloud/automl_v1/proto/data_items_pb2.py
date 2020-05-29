@@ -32,6 +32,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1P\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n-google/cloud/automl_v1/proto/data_items.proto\x12\x16google.cloud.automl.v1\x1a+google/cloud/automl_v1/proto/geometry.proto\x1a%google/cloud/automl_v1/proto/io.proto\x1a/google/cloud/automl_v1/proto/text_segment.proto\x1a\x19google/protobuf/any.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1cgoogle/api/annotations.proto"=\n\x05Image\x12\x15\n\x0bimage_bytes\x18\x01 \x01(\x0cH\x00\x12\x15\n\rthumbnail_uri\x18\x04 \x01(\tB\x06\n\x04\x64\x61ta"F\n\x0bTextSnippet\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\t\x12\x11\n\tmime_type\x18\x02 \x01(\t\x12\x13\n\x0b\x63ontent_uri\x18\x04 \x01(\t"\xea\x01\n\x12\x44ocumentDimensions\x12N\n\x04unit\x18\x01 \x01(\x0e\x32@.google.cloud.automl.v1.DocumentDimensions.DocumentDimensionUnit\x12\r\n\x05width\x18\x02 \x01(\x02\x12\x0e\n\x06height\x18\x03 \x01(\x02"e\n\x15\x44ocumentDimensionUnit\x12\'\n#DOCUMENT_DIMENSION_UNIT_UNSPECIFIED\x10\x00\x12\x08\n\x04INCH\x10\x01\x12\x0e\n\nCENTIMETER\x10\x02\x12\t\n\x05POINT\x10\x03"\xd6\x05\n\x08\x44ocument\x12\x41\n\x0cinput_config\x18\x01 \x01(\x0b\x32+.google.cloud.automl.v1.DocumentInputConfig\x12:\n\rdocument_text\x18\x02 \x01(\x0b\x32#.google.cloud.automl.v1.TextSnippet\x12\x37\n\x06layout\x18\x03 \x03(\x0b\x32\'.google.cloud.automl.v1.Document.Layout\x12G\n\x13\x64ocument_dimensions\x18\x04 \x01(\x0b\x32*.google.cloud.automl.v1.DocumentDimensions\x12\x12\n\npage_count\x18\x05 \x01(\x05\x1a\xb4\x03\n\x06Layout\x12\x39\n\x0ctext_segment\x18\x01 \x01(\x0b\x32#.google.cloud.automl.v1.TextSegment\x12\x13\n\x0bpage_number\x18\x02 \x01(\x05\x12;\n\rbounding_poly\x18\x03 \x01(\x0b\x32$.google.cloud.automl.v1.BoundingPoly\x12R\n\x11text_segment_type\x18\x04 \x01(\x0e\x32\x37.google.cloud.automl.v1.Document.Layout.TextSegmentType"\xc8\x01\n\x0fTextSegmentType\x12!\n\x1dTEXT_SEGMENT_TYPE_UNSPECIFIED\x10\x00\x12\t\n\x05TOKEN\x10\x01\x12\r\n\tPARAGRAPH\x10\x02\x12\x0e\n\nFORM_FIELD\x10\x03\x12\x13\n\x0f\x46ORM_FIELD_NAME\x10\x04\x12\x17\n\x13\x46ORM_FIELD_CONTENTS\x10\x05\x12\t\n\x05TABLE\x10\x06\x12\x10\n\x0cTABLE_HEADER\x10\x07\x12\r\n\tTABLE_ROW\x10\x08\x12\x0e\n\nTABLE_CELL\x10\t"\xbe\x01\n\x0e\x45xamplePayload\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x1d.google.cloud.automl.v1.ImageH\x00\x12;\n\x0ctext_snippet\x18\x02 \x01(\x0b\x32#.google.cloud.automl.v1.TextSnippetH\x00\x12\x34\n\x08\x64ocument\x18\x04 \x01(\x0b\x32 .google.cloud.automl.v1.DocumentH\x00\x42\t\n\x07payloadB\xaa\x01\n\x1a\x63om.google.cloud.automl.v1P\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1_dot_proto_dot_geometry__pb2.DESCRIPTOR,
@@ -50,6 +51,7 @@ _DOCUMENTDIMENSIONS_DOCUMENTDIMENSIONUNIT = _descriptor.EnumDescriptor(
     full_name="google.cloud.automl.v1.DocumentDimensions.DocumentDimensionUnit",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="DOCUMENT_DIMENSION_UNIT_UNSPECIFIED",
@@ -57,15 +59,31 @@ _DOCUMENTDIMENSIONS_DOCUMENTDIMENSIONUNIT = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="INCH", index=1, number=1, serialized_options=None, type=None
+            name="INCH",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="CENTIMETER", index=2, number=2, serialized_options=None, type=None
+            name="CENTIMETER",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="POINT", index=3, number=3, serialized_options=None, type=None
+            name="POINT",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -80,6 +98,7 @@ _DOCUMENT_LAYOUT_TEXTSEGMENTTYPE = _descriptor.EnumDescriptor(
     full_name="google.cloud.automl.v1.Document.Layout.TextSegmentType",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="TEXT_SEGMENT_TYPE_UNSPECIFIED",
@@ -87,15 +106,31 @@ _DOCUMENT_LAYOUT_TEXTSEGMENTTYPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="TOKEN", index=1, number=1, serialized_options=None, type=None
+            name="TOKEN",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="PARAGRAPH", index=2, number=2, serialized_options=None, type=None
+            name="PARAGRAPH",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FORM_FIELD", index=3, number=3, serialized_options=None, type=None
+            name="FORM_FIELD",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="FORM_FIELD_NAME",
@@ -103,6 +138,7 @@ _DOCUMENT_LAYOUT_TEXTSEGMENTTYPE = _descriptor.EnumDescriptor(
             number=4,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="FORM_FIELD_CONTENTS",
@@ -110,18 +146,39 @@ _DOCUMENT_LAYOUT_TEXTSEGMENTTYPE = _descriptor.EnumDescriptor(
             number=5,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="TABLE", index=6, number=6, serialized_options=None, type=None
+            name="TABLE",
+            index=6,
+            number=6,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="TABLE_HEADER", index=7, number=7, serialized_options=None, type=None
+            name="TABLE_HEADER",
+            index=7,
+            number=7,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="TABLE_ROW", index=8, number=8, serialized_options=None, type=None
+            name="TABLE_ROW",
+            index=8,
+            number=8,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="TABLE_CELL", index=9, number=9, serialized_options=None, type=None
+            name="TABLE_CELL",
+            index=9,
+            number=9,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -138,6 +195,7 @@ _IMAGE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="image_bytes",
@@ -156,6 +214,7 @@ _IMAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="thumbnail_uri",
@@ -174,6 +233,7 @@ _IMAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -189,6 +249,7 @@ _IMAGE = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1.Image.data",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],
@@ -203,6 +264,7 @@ _TEXTSNIPPET = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="content",
@@ -221,6 +283,7 @@ _TEXTSNIPPET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="mime_type",
@@ -239,6 +302,7 @@ _TEXTSNIPPET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="content_uri",
@@ -257,6 +321,7 @@ _TEXTSNIPPET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -278,6 +343,7 @@ _DOCUMENTDIMENSIONS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="unit",
@@ -296,6 +362,7 @@ _DOCUMENTDIMENSIONS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="width",
@@ -314,6 +381,7 @@ _DOCUMENTDIMENSIONS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="height",
@@ -332,6 +400,7 @@ _DOCUMENTDIMENSIONS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -353,6 +422,7 @@ _DOCUMENT_LAYOUT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="text_segment",
@@ -371,6 +441,7 @@ _DOCUMENT_LAYOUT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_number",
@@ -389,6 +460,7 @@ _DOCUMENT_LAYOUT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bounding_poly",
@@ -407,6 +479,7 @@ _DOCUMENT_LAYOUT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_segment_type",
@@ -425,6 +498,7 @@ _DOCUMENT_LAYOUT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -445,6 +519,7 @@ _DOCUMENT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="input_config",
@@ -463,6 +538,7 @@ _DOCUMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="document_text",
@@ -481,6 +557,7 @@ _DOCUMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="layout",
@@ -499,6 +576,7 @@ _DOCUMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="document_dimensions",
@@ -517,6 +595,7 @@ _DOCUMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_count",
@@ -535,6 +614,7 @@ _DOCUMENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -556,6 +636,7 @@ _EXAMPLEPAYLOAD = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="image",
@@ -574,6 +655,7 @@ _EXAMPLEPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_snippet",
@@ -592,6 +674,7 @@ _EXAMPLEPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="document",
@@ -610,6 +693,7 @@ _EXAMPLEPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -625,6 +709,7 @@ _EXAMPLEPAYLOAD = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1.ExamplePayload.payload",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         )
     ],

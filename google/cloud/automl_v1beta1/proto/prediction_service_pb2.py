@@ -38,6 +38,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1B\026PredictionServiceProtoP\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n:google/cloud/automl_v1beta1/proto/prediction_service.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a:google/cloud/automl_v1beta1/proto/annotation_payload.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_items.proto\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a\x32google/cloud/automl_v1beta1/proto/operations.proto\x1a#google/longrunning/operations.proto"\xfe\x01\n\x0ePredictRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12\x41\n\x07payload\x18\x02 \x01(\x0b\x32+.google.cloud.automl.v1beta1.ExamplePayloadB\x03\xe0\x41\x02\x12G\n\x06params\x18\x03 \x03(\x0b\x32\x37.google.cloud.automl.v1beta1.PredictRequest.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\x9a\x02\n\x0fPredictResponse\x12?\n\x07payload\x18\x01 \x03(\x0b\x32..google.cloud.automl.v1beta1.AnnotationPayload\x12G\n\x12preprocessed_input\x18\x03 \x01(\x0b\x32+.google.cloud.automl.v1beta1.ExamplePayload\x12L\n\x08metadata\x18\x02 \x03(\x0b\x32:.google.cloud.automl.v1beta1.PredictResponse.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\xee\x02\n\x13\x42\x61tchPredictRequest\x12\x31\n\x04name\x18\x01 \x01(\tB#\xe0\x41\x02\xfa\x41\x1d\n\x1b\x61utoml.googleapis.com/Model\x12O\n\x0cinput_config\x18\x03 \x01(\x0b\x32\x34.google.cloud.automl.v1beta1.BatchPredictInputConfigB\x03\xe0\x41\x02\x12Q\n\routput_config\x18\x04 \x01(\x0b\x32\x35.google.cloud.automl.v1beta1.BatchPredictOutputConfigB\x03\xe0\x41\x02\x12Q\n\x06params\x18\x05 \x03(\x0b\x32<.google.cloud.automl.v1beta1.BatchPredictRequest.ParamsEntryB\x03\xe0\x41\x02\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\x96\x01\n\x12\x42\x61tchPredictResult\x12O\n\x08metadata\x18\x01 \x03(\x0b\x32=.google.cloud.automl.v1beta1.BatchPredictResult.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\x9e\x04\n\x11PredictionService\x12\xbe\x01\n\x07Predict\x12+.google.cloud.automl.v1beta1.PredictRequest\x1a,.google.cloud.automl.v1beta1.PredictResponse"X\x82\xd3\xe4\x93\x02<"7/v1beta1/{name=projects/*/locations/*/models/*}:predict:\x01*\xda\x41\x13name,payload,params\x12\xfc\x01\n\x0c\x42\x61tchPredict\x12\x30.google.cloud.automl.v1beta1.BatchPredictRequest\x1a\x1d.google.longrunning.Operation"\x9a\x01\x82\xd3\xe4\x93\x02\x41"</v1beta1/{name=projects/*/locations/*/models/*}:batchPredict:\x01*\xda\x41&name,input_config,output_config,params\xca\x41\'\n\x12\x42\x61tchPredictResult\x12\x11OperationMetadata\x1aI\xca\x41\x15\x61utoml.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\xbd\x01\n\x1f\x63om.google.cloud.automl.v1beta1B\x16PredictionServiceProtoP\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -59,6 +60,7 @@ _PREDICTREQUEST_PARAMSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -77,6 +79,7 @@ _PREDICTREQUEST_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -95,6 +98,7 @@ _PREDICTREQUEST_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -115,6 +119,7 @@ _PREDICTREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -133,6 +138,7 @@ _PREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="payload",
@@ -151,6 +157,7 @@ _PREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="params",
@@ -169,6 +176,7 @@ _PREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -190,6 +198,7 @@ _PREDICTRESPONSE_METADATAENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -208,6 +217,7 @@ _PREDICTRESPONSE_METADATAENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -226,6 +236,7 @@ _PREDICTRESPONSE_METADATAENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -246,6 +257,7 @@ _PREDICTRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="payload",
@@ -264,6 +276,7 @@ _PREDICTRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="preprocessed_input",
@@ -282,6 +295,7 @@ _PREDICTRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="metadata",
@@ -300,6 +314,7 @@ _PREDICTRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -321,6 +336,7 @@ _BATCHPREDICTREQUEST_PARAMSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -339,6 +355,7 @@ _BATCHPREDICTREQUEST_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -357,6 +374,7 @@ _BATCHPREDICTREQUEST_PARAMSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -377,6 +395,7 @@ _BATCHPREDICTREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -395,6 +414,7 @@ _BATCHPREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\035\n\033automl.googleapis.com/Model",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="input_config",
@@ -413,6 +433,7 @@ _BATCHPREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="output_config",
@@ -431,6 +452,7 @@ _BATCHPREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="params",
@@ -449,6 +471,7 @@ _BATCHPREDICTREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -470,6 +493,7 @@ _BATCHPREDICTRESULT_METADATAENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -488,6 +512,7 @@ _BATCHPREDICTRESULT_METADATAENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -506,6 +531,7 @@ _BATCHPREDICTRESULT_METADATAENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -526,6 +552,7 @@ _BATCHPREDICTRESULT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="metadata",
@@ -544,6 +571,7 @@ _BATCHPREDICTRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         )
     ],
     extensions=[],
@@ -841,6 +869,7 @@ _PREDICTIONSERVICE = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=b"\312A\025automl.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform",
+    create_key=_descriptor._internal_create_key,
     serialized_start=1516,
     serialized_end=2058,
     methods=[
@@ -852,6 +881,7 @@ _PREDICTIONSERVICE = _descriptor.ServiceDescriptor(
             input_type=_PREDICTREQUEST,
             output_type=_PREDICTRESPONSE,
             serialized_options=b'\202\323\344\223\002<"7/v1beta1/{name=projects/*/locations/*/models/*}:predict:\001*\332A\023name,payload,params',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="BatchPredict",
@@ -861,6 +891,7 @@ _PREDICTIONSERVICE = _descriptor.ServiceDescriptor(
             input_type=_BATCHPREDICTREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b"\202\323\344\223\002A\"</v1beta1/{name=projects/*/locations/*/models/*}:batchPredict:\001*\332A&name,input_config,output_config,params\312A'\n\022BatchPredictResult\022\021OperationMetadata",
+            create_key=_descriptor._internal_create_key,
         ),
     ],
 )

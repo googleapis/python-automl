@@ -24,6 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1P\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n,google/cloud/automl_v1/proto/detection.proto\x12\x16google.cloud.automl.v1\x1a+google/cloud/automl_v1/proto/geometry.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/api/annotations.proto"k\n\x1eImageObjectDetectionAnnotation\x12:\n\x0c\x62ounding_box\x18\x01 \x01(\x0b\x32$.google.cloud.automl.v1.BoundingPoly\x12\r\n\x05score\x18\x02 \x01(\x02"\xa9\x02\n\x17\x42oundingBoxMetricsEntry\x12\x15\n\riou_threshold\x18\x01 \x01(\x02\x12\x1e\n\x16mean_average_precision\x18\x02 \x01(\x02\x12j\n\x1a\x63onfidence_metrics_entries\x18\x03 \x03(\x0b\x32\x46.google.cloud.automl.v1.BoundingBoxMetricsEntry.ConfidenceMetricsEntry\x1ak\n\x16\x43onfidenceMetricsEntry\x12\x1c\n\x14\x63onfidence_threshold\x18\x01 \x01(\x02\x12\x0e\n\x06recall\x18\x02 \x01(\x02\x12\x11\n\tprecision\x18\x03 \x01(\x02\x12\x10\n\x08\x66\x31_score\x18\x04 \x01(\x02"\xd1\x01\n%ImageObjectDetectionEvaluationMetrics\x12$\n\x1c\x65valuated_bounding_box_count\x18\x01 \x01(\x05\x12U\n\x1c\x62ounding_box_metrics_entries\x18\x02 \x03(\x0b\x32/.google.cloud.automl.v1.BoundingBoxMetricsEntry\x12+\n#bounding_box_mean_average_precision\x18\x03 \x01(\x02\x42\xaa\x01\n\x1a\x63om.google.cloud.automl.v1P\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1_dot_proto_dot_geometry__pb2.DESCRIPTOR,
@@ -39,6 +40,7 @@ _IMAGEOBJECTDETECTIONANNOTATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="bounding_box",
@@ -57,6 +59,7 @@ _IMAGEOBJECTDETECTIONANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="score",
@@ -75,6 +78,7 @@ _IMAGEOBJECTDETECTIONANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -96,6 +100,7 @@ _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="confidence_threshold",
@@ -114,6 +119,7 @@ _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="recall",
@@ -132,6 +138,7 @@ _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="precision",
@@ -150,6 +157,7 @@ _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="f1_score",
@@ -168,6 +176,7 @@ _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -188,6 +197,7 @@ _BOUNDINGBOXMETRICSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="iou_threshold",
@@ -206,6 +216,7 @@ _BOUNDINGBOXMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="mean_average_precision",
@@ -224,6 +235,7 @@ _BOUNDINGBOXMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="confidence_metrics_entries",
@@ -242,6 +254,7 @@ _BOUNDINGBOXMETRICSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -263,6 +276,7 @@ _IMAGEOBJECTDETECTIONEVALUATIONMETRICS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="evaluated_bounding_box_count",
@@ -281,6 +295,7 @@ _IMAGEOBJECTDETECTIONEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bounding_box_metrics_entries",
@@ -299,6 +314,7 @@ _IMAGEOBJECTDETECTIONEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bounding_box_mean_average_precision",
@@ -317,6 +333,7 @@ _IMAGEOBJECTDETECTIONEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

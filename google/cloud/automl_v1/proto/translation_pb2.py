@@ -295,6 +295,7 @@ TranslationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TRANSLATIONDATASETMETADATA,
         "__module__": "google.cloud.automl_v1.proto.translation_pb2",
         "__doc__": """Dataset metadata that is specific to translation.
+  
   Attributes:
       source_language_code:
           Required. The BCP-47 language code of the source language.
@@ -313,6 +314,7 @@ TranslationEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TRANSLATIONEVALUATIONMETRICS,
         "__module__": "google.cloud.automl_v1.proto.translation_pb2",
         "__doc__": """Evaluation metrics for the dataset.
+  
   Attributes:
       bleu_score:
           Output only. BLEU score.
@@ -331,6 +333,7 @@ TranslationModelMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TRANSLATIONMODELMETADATA,
         "__module__": "google.cloud.automl_v1.proto.translation_pb2",
         "__doc__": """Model metadata that is specific to translation.
+  
   Attributes:
       base_model:
           The resource name of the model to use as a baseline to train
@@ -356,6 +359,7 @@ TranslationAnnotation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TRANSLATIONANNOTATION,
         "__module__": "google.cloud.automl_v1.proto.translation_pb2",
         "__doc__": """Annotation details specific to translation.
+  
   Attributes:
       translated_content:
           Output only . The translated content.

@@ -898,6 +898,7 @@ Image = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
         "__doc__": """A representation of an image. Only images up to 30MB in size are
   supported.
+  
   Attributes:
       data:
           Input only. The data representing the image. For Predict calls
@@ -928,6 +929,7 @@ TextSnippet = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TEXTSNIPPET,
         "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
         "__doc__": """A representation of a text snippet.
+  
   Attributes:
       content:
           Required. The content of the text snippet as a string. Up to
@@ -954,6 +956,7 @@ DocumentDimensions = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DOCUMENTDIMENSIONS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
         "__doc__": """Message that describes dimension of a document.
+  
   Attributes:
       unit:
           Unit of the dimension.
@@ -979,6 +982,7 @@ Document = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
                 "__doc__": """Describes the layout information of a [text_segment][google.cloud.auto
     ml.v1beta1.Document.Layout.text_segment] in the document.
+    
     Attributes:
         text_segment:
             Text Segment that represents a segment in [document_text][goog
@@ -1006,6 +1010,7 @@ Document = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DOCUMENT,
         "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
         "__doc__": """A structured text document e.g. a PDF.
+  
   Attributes:
       input_config:
           An input config specifying the content of the document.
@@ -1032,6 +1037,7 @@ Row = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ROW,
         "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
         "__doc__": """A representation of a row in a relational table.
+  
   Attributes:
       column_spec_ids:
           The resource IDs of the column specs describing the columns of
@@ -1060,6 +1066,7 @@ ExamplePayload = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _EXAMPLEPAYLOAD,
         "__module__": "google.cloud.automl_v1beta1.proto.data_items_pb2",
         "__doc__": """Example data used for training or prediction.
+  
   Attributes:
       payload:
           Required. Input only. The example data.

@@ -1034,6 +1034,7 @@ OperationMetadata = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
         "__doc__": """Metadata used across all long running operations returned by AutoML
   API.
+  
   Attributes:
       details:
           Ouptut only. Details of specific operation. Even if this field
@@ -1148,6 +1149,7 @@ ExportDataOperationMetadata = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
                 "__doc__": """Further describes this export data’s output. Supplements
     [OutputConfig][google.cloud.automl.v1beta1.OutputConfig].
+    
     Attributes:
         output_location:
             The output location to which the exported data is written.
@@ -1165,6 +1167,7 @@ ExportDataOperationMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _EXPORTDATAOPERATIONMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
         "__doc__": """Details of ExportData operation.
+  
   Attributes:
       output_info:
           Output only. Information further describing this export data’s
@@ -1189,6 +1192,7 @@ BatchPredictOperationMetadata = _reflection.GeneratedProtocolMessageType(
                 "__doc__": """Further describes this batch predict’s output. Supplements  [BatchPred
     ictOutputConfig][google.cloud.automl.v1beta1.BatchPredictOutputConfig]
     .
+    
     Attributes:
         output_location:
             The output location into which prediction output is written.
@@ -1206,6 +1210,7 @@ BatchPredictOperationMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BATCHPREDICTOPERATIONMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
         "__doc__": """Details of BatchPredict operation.
+  
   Attributes:
       input_config:
           Output only. The input config that was given upon starting
@@ -1232,6 +1237,7 @@ ExportModelOperationMetadata = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
                 "__doc__": """Further describes the output of model export. Supplements  [ModelExpor
     tOutputConfig][google.cloud.automl.v1beta1.ModelExportOutputConfig].
+    
     Attributes:
         gcs_output_directory:
             The full path of the Google Cloud Storage directory created,
@@ -1243,6 +1249,7 @@ ExportModelOperationMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _EXPORTMODELOPERATIONMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
         "__doc__": """Details of ExportModel operation.
+  
   Attributes:
       output_info:
           Output only. Information further describing the output of this
@@ -1267,6 +1274,7 @@ ExportEvaluatedExamplesOperationMetadata = _reflection.GeneratedProtocolMessageT
                 "__doc__": """Further describes the output of the evaluated examples export.
     Supplements  [ExportEvaluatedExamplesOutputConfig][google.cloud.automl
     .v1beta1.ExportEvaluatedExamplesOutputConfig].
+    
     Attributes:
         bigquery_output_dataset:
             The path of the BigQuery dataset created, in
@@ -1279,6 +1287,7 @@ ExportEvaluatedExamplesOperationMetadata = _reflection.GeneratedProtocolMessageT
         "DESCRIPTOR": _EXPORTEVALUATEDEXAMPLESOPERATIONMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.operations_pb2",
         "__doc__": """Details of EvaluatedExamples operation.
+  
   Attributes:
       output_info:
           Output only. Information further describing the output of this

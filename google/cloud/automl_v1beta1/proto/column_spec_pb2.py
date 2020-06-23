@@ -266,6 +266,7 @@ ColumnSpec = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.automl_v1beta1.proto.column_spec_pb2",
                 "__doc__": """Identifies the table’s column, and its correlation with the column
     this ColumnSpec describes.
+    
     Attributes:
         column_spec_id:
             The column_spec_id of the correlated column, which belongs to
@@ -281,6 +282,7 @@ ColumnSpec = _reflection.GeneratedProtocolMessageType(
         "__doc__": """A representation of a column in a relational table. When listing them,
   column specs are returned in the same order in which they were given
   on import . Used by: \* Tables
+  
   Attributes:
       name:
           Output only. The resource name of the column specs. Form:  ``p

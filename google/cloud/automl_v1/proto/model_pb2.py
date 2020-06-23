@@ -534,6 +534,7 @@ Model = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _MODEL,
         "__module__": "google.cloud.automl_v1.proto.model_pb2",
         "__doc__": """API proto representing a trained machine learning model.
+  
   Attributes:
       model_metadata:
           Required. The model metadata that is specific to the problem

@@ -154,6 +154,7 @@ RegressionEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _REGRESSIONEVALUATIONMETRICS,
         "__module__": "google.cloud.automl_v1beta1.proto.regression_pb2",
         "__doc__": """Metrics for regression problems.
+  
   Attributes:
       root_mean_squared_error:
           Output only. Root Mean Squared Error (RMSE).

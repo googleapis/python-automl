@@ -1203,6 +1203,7 @@ InputConfig = _reflection.GeneratedProtocolMessageType(
   operation fails and nothing is imported. Regardless of overall success
   or failure the per-row failures, up to a certain count cap, is listed
   in Operation.metadata.partial_failures.
+  
   Attributes:
       source:
           The source of the input.
@@ -1358,6 +1359,7 @@ BatchPredictInputConfig = _reflection.GeneratedProtocolMessageType(
   the operation fails and prediction does not happen. Regardless of
   overall success or failure the per-row failures, up to a certain count
   cap, will be listed in Operation.metadata.partial_failures.
+  
   Attributes:
       source:
           Required. The source of the input.
@@ -1379,6 +1381,7 @@ DocumentInputConfig = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """Input configuration of a
   [Document][google.cloud.automl.v1beta1.Document].
+  
   Attributes:
       gcs_source:
           The Google Cloud Storage location of the document file. Only a
@@ -1416,6 +1419,7 @@ OutputConfig = _reflection.GeneratedProtocolMessageType(
   on ISO-8601” format. In that dataset a new table called
   ``primary_table`` will be created, and filled with precisely the same
   data as this obtained on import.
+  
   Attributes:
       destination:
           Required. The destination of the output.
@@ -1652,6 +1656,7 @@ BatchPredictOutputConfig = _reflection.GeneratedProtocolMessageType(
   and as a value has  ```google.rpc.Status`` <https:%20//github.com/goog
   leapis/googleapis/blob/master/google/rpc/status.proto>`__ represented
   as a STRUCT, and containing only ``code`` and ``message``.
+  
   Attributes:
       destination:
           Required. The destination of the output.
@@ -1682,6 +1687,7 @@ ModelExportOutputConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _MODELEXPORTOUTPUTCONFIG,
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """Output configuration for ModelExport Action.
+  
   Attributes:
       destination:
           Required. The destination of the output.
@@ -1763,6 +1769,7 @@ ExportEvaluatedExamplesOutputConfig = _reflection.GeneratedProtocolMessageType(
   [AnnotationPayloads][google.cloud.automl.v1beta1.AnnotationPayload],
   represented as STRUCT-s, containing
   [TablesAnnotation][google.cloud.automl.v1beta1.TablesAnnotation].
+  
   Attributes:
       destination:
           Required. The destination of the output.
@@ -1781,6 +1788,7 @@ GcsSource = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GCSSOURCE,
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """The Google Cloud Storage location for the input content.
+  
   Attributes:
       input_uris:
           Required. Google Cloud Storage URIs to input files, up to 2000
@@ -1799,6 +1807,7 @@ BigQuerySource = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BIGQUERYSOURCE,
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """The BigQuery location for the input content.
+  
   Attributes:
       input_uri:
           Required. BigQuery URI to a table, up to 2000 characters long.
@@ -1818,6 +1827,7 @@ GcsDestination = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """The Google Cloud Storage location where the output is to be written
   to.
+  
   Attributes:
       output_uri_prefix:
           Required. Google Cloud Storage URI to output directory, up to
@@ -1838,6 +1848,7 @@ BigQueryDestination = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BIGQUERYDESTINATION,
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """The BigQuery location for the output content.
+  
   Attributes:
       output_uri:
           Required. BigQuery URI to a project, up to 2000 characters
@@ -1855,6 +1866,7 @@ GcrDestination = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GCRDESTINATION,
         "__module__": "google.cloud.automl_v1beta1.proto.io_pb2",
         "__doc__": """The GCR location where the image must be pushed to.
+  
   Attributes:
       output_uri:
           Required. Google Contained Registry URI of the new image, up

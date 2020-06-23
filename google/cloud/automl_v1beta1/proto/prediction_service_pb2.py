@@ -648,6 +648,7 @@ PredictRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.prediction_service_pb2",
         "__doc__": """Request message for [PredictionService.Predict][google.cloud.automl.v1
   beta1.PredictionService.Predict].
+  
   Attributes:
       name:
           Required. Name of the model requested to serve the prediction.
@@ -694,6 +695,7 @@ PredictResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.prediction_service_pb2",
         "__doc__": """Response message for [PredictionService.Predict][google.cloud.automl.v
   1beta1.PredictionService.Predict].
+  
   Attributes:
       payload:
           Prediction result. Translation and Text Sentiment will return
@@ -742,6 +744,7 @@ BatchPredictRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.prediction_service_pb2",
         "__doc__": """Request message for [PredictionService.BatchPredict][google.cloud.auto
   ml.v1beta1.PredictionService.BatchPredict].
+  
   Attributes:
       name:
           Required. Name of the model requested to serve the batch
@@ -835,6 +838,7 @@ BatchPredictResult = _reflection.GeneratedProtocolMessageType(
   [response][google.longrunning.Operation.response] of the operation
   returned by the [PredictionService.BatchPredict][google.cloud.automl.v
   1beta1.PredictionService.BatchPredict].
+  
   Attributes:
       metadata:
           Additional domain-specific prediction response metadata.  -

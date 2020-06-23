@@ -591,6 +591,7 @@ ImageObjectDetectionAnnotation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _IMAGEOBJECTDETECTIONANNOTATION,
         "__module__": "google.cloud.automl_v1beta1.proto.detection_pb2",
         "__doc__": """Annotation details for image object detection.
+  
   Attributes:
       bounding_box:
           Output only. The rectangle representing the object location.
@@ -611,6 +612,7 @@ VideoObjectTrackingAnnotation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _VIDEOOBJECTTRACKINGANNOTATION,
         "__module__": "google.cloud.automl_v1beta1.proto.detection_pb2",
         "__doc__": """Annotation details for video object tracking.
+  
   Attributes:
       instance_id:
           Optional. The instance of the object, expressed as a positive
@@ -650,6 +652,7 @@ BoundingBoxMetricsEntry = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY,
                 "__module__": "google.cloud.automl_v1beta1.proto.detection_pb2",
                 "__doc__": """Metrics for a single confidence threshold.
+    
     Attributes:
         confidence_threshold:
             Output only. The confidence threshold value used to compute
@@ -668,6 +671,7 @@ BoundingBoxMetricsEntry = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.detection_pb2",
         "__doc__": """Bounding box matching model metrics for a single intersection-over-
   union threshold and multiple label match confidence thresholds.
+  
   Attributes:
       iou_threshold:
           Output only. The intersection-over-union threshold value used
@@ -694,6 +698,7 @@ ImageObjectDetectionEvaluationMetrics = _reflection.GeneratedProtocolMessageType
         "__module__": "google.cloud.automl_v1beta1.proto.detection_pb2",
         "__doc__": """Model evaluation metrics for image object detection problems.
   Evaluates prediction quality of labeled bounding boxes.
+  
   Attributes:
       evaluated_bounding_box_count:
           Output only. The total number of bounding boxes (i.e. summed
@@ -723,6 +728,7 @@ VideoObjectTrackingEvaluationMetrics = _reflection.GeneratedProtocolMessageType(
         "__doc__": """Model evaluation metrics for video object tracking problems. Evaluates
   prediction quality of both labeled bounding boxes and labeled tracks
   (i.e. series of bounding boxes sharing same label and instance ID).
+  
   Attributes:
       evaluated_frame_count:
           Output only. The number of video frames used to create this

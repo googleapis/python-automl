@@ -994,6 +994,7 @@ InputConfig = _reflection.GeneratedProtocolMessageType(
   is imported. Regardless of overall success or failure the per-row
   failures, up to a certain count cap, is listed in
   Operation.metadata.partial_failures.
+  
   Attributes:
       source:
           The source of the input.
@@ -1166,6 +1167,7 @@ BatchPredictInputConfig = _reflection.GeneratedProtocolMessageType(
   prediction does not happen. Regardless of overall success or failure
   the per-row failures, up to a certain count cap, will be listed in
   Operation.metadata.partial_failures.
+  
   Attributes:
       source:
           The source of the input.
@@ -1185,6 +1187,7 @@ DocumentInputConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DOCUMENTINPUTCONFIG,
         "__module__": "google.cloud.automl_v1.proto.io_pb2",
         "__doc__": """Input configuration of a [Document][google.cloud.automl.v1.Document].
+  
   Attributes:
       gcs_source:
           The Google Cloud Storage location of the document file. Only a
@@ -1222,6 +1225,7 @@ OutputConfig = _reflection.GeneratedProtocolMessageType(
   YYYY_MM_DDThh_mm_ss_sssZ “based on ISO-8601” format. In that dataset a
   new table called ``primary_table`` will be created, and filled with
   precisely the same data as this obtained on import.
+  
   Attributes:
       destination:
           The destination of the output.
@@ -1458,6 +1462,7 @@ BatchPredictOutputConfig = _reflection.GeneratedProtocolMessageType(
   ```google.rpc.Status`` <https:%20//github.com/googleapis/googleapis/bl
   ob/master/google/rpc/status.proto>`__ represented as a STRUCT, and
   containing only ``code`` and ``message``.
+  
   Attributes:
       destination:
           The destination of the output.
@@ -1486,6 +1491,7 @@ ModelExportOutputConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _MODELEXPORTOUTPUTCONFIG,
         "__module__": "google.cloud.automl_v1.proto.io_pb2",
         "__doc__": """Output configuration for ModelExport Action.
+  
   Attributes:
       destination:
           The destination of the output.
@@ -1544,6 +1550,7 @@ GcsSource = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GCSSOURCE,
         "__module__": "google.cloud.automl_v1.proto.io_pb2",
         "__doc__": """The Google Cloud Storage location for the input content.
+  
   Attributes:
       input_uris:
           Required. Google Cloud Storage URIs to input files, up to 2000
@@ -1563,6 +1570,7 @@ GcsDestination = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1.proto.io_pb2",
         "__doc__": """The Google Cloud Storage location where the output is to be written
   to.
+  
   Attributes:
       output_uri_prefix:
           Required. Google Cloud Storage URI to output directory, up to

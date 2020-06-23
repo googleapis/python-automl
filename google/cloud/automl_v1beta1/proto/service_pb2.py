@@ -2098,6 +2098,7 @@ CreateDatasetRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.CreateDataset][google.cloud.automl.v1beta1
   .AutoMl.CreateDataset].
+  
   Attributes:
       parent:
           Required. The resource name of the project to create the
@@ -2118,6 +2119,7 @@ GetDatasetRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.GetDataset][google.cloud.automl.v1beta1.AutoMl.GetDataset].
+  
   Attributes:
       name:
           Required. The resource name of the dataset to retrieve.
@@ -2135,6 +2137,7 @@ ListDatasetsRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.ListDatasets][google.cloud.automl.v1beta1.
   AutoMl.ListDatasets].
+  
   Attributes:
       parent:
           Required. The resource name of the project from which to list
@@ -2169,6 +2172,7 @@ ListDatasetsResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Response message for [AutoMl.ListDatasets][google.cloud.automl.v1beta1
   .AutoMl.ListDatasets].
+  
   Attributes:
       datasets:
           The datasets read.
@@ -2190,6 +2194,7 @@ UpdateDatasetRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.UpdateDataset][google.cloud.automl.v1beta1
   .AutoMl.UpdateDataset]
+  
   Attributes:
       dataset:
           Required. The dataset which replaces the resource on the
@@ -2210,6 +2215,7 @@ DeleteDatasetRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.DeleteDataset][google.cloud.automl.v1beta1
   .AutoMl.DeleteDataset].
+  
   Attributes:
       name:
           Required. The resource name of the dataset to delete.
@@ -2227,6 +2233,7 @@ ImportDataRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.ImportData][google.cloud.automl.v1beta1.AutoMl.ImportData].
+  
   Attributes:
       name:
           Required. Dataset name. Dataset must already exist. All
@@ -2248,6 +2255,7 @@ ExportDataRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.ExportData][google.cloud.automl.v1beta1.AutoMl.ExportData].
+  
   Attributes:
       name:
           Required. The resource name of the dataset.
@@ -2267,6 +2275,7 @@ GetAnnotationSpecRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.GetAnnotationSpec][google.cloud.automl.v1b
   eta1.AutoMl.GetAnnotationSpec].
+  
   Attributes:
       name:
           Required. The resource name of the annotation spec to
@@ -2285,6 +2294,7 @@ GetTableSpecRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.GetTableSpec][google.cloud.automl.v1beta1.
   AutoMl.GetTableSpec].
+  
   Attributes:
       name:
           Required. The resource name of the table spec to retrieve.
@@ -2304,6 +2314,7 @@ ListTableSpecsRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.ListTableSpecs][google.cloud.automl.v1beta
   1.AutoMl.ListTableSpecs].
+  
   Attributes:
       parent:
           Required. The resource name of the dataset to list table specs
@@ -2336,6 +2347,7 @@ ListTableSpecsResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Response message for [AutoMl.ListTableSpecs][google.cloud.automl.v1bet
   a1.AutoMl.ListTableSpecs].
+  
   Attributes:
       table_specs:
           The table specs read.
@@ -2357,6 +2369,7 @@ UpdateTableSpecRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.UpdateTableSpec][google.cloud.automl.v1bet
   a1.AutoMl.UpdateTableSpec]
+  
   Attributes:
       table_spec:
           Required. The table spec which replaces the resource on the
@@ -2377,6 +2390,7 @@ GetColumnSpecRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.GetColumnSpec][google.cloud.automl.v1beta1
   .AutoMl.GetColumnSpec].
+  
   Attributes:
       name:
           Required. The resource name of the column spec to retrieve.
@@ -2396,6 +2410,7 @@ ListColumnSpecsRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.ListColumnSpecs][google.cloud.automl.v1bet
   a1.AutoMl.ListColumnSpecs].
+  
   Attributes:
       parent:
           Required. The resource name of the table spec to list column
@@ -2429,6 +2444,7 @@ ListColumnSpecsResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Response message for [AutoMl.ListColumnSpecs][google.cloud.automl.v1be
   ta1.AutoMl.ListColumnSpecs].
+  
   Attributes:
       column_specs:
           The column specs read.
@@ -2450,6 +2466,7 @@ UpdateColumnSpecRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.UpdateColumnSpec][google.cloud.automl.v1be
   ta1.AutoMl.UpdateColumnSpec]
+  
   Attributes:
       column_spec:
           Required. The column spec which replaces the resource on the
@@ -2470,6 +2487,7 @@ CreateModelRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.CreateModel][google.cloud.automl.v1beta1.AutoMl.CreateModel].
+  
   Attributes:
       parent:
           Required. Resource name of the parent project where the model
@@ -2490,6 +2508,7 @@ GetModelRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.GetModel][google.cloud.automl.v1beta1.AutoMl.GetModel].
+  
   Attributes:
       name:
           Required. Resource name of the model.
@@ -2507,6 +2526,7 @@ ListModelsRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.ListModels][google.cloud.automl.v1beta1.AutoMl.ListModels].
+  
   Attributes:
       parent:
           Required. Resource name of the project, from which to list the
@@ -2541,6 +2561,7 @@ ListModelsResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Response message for
   [AutoMl.ListModels][google.cloud.automl.v1beta1.AutoMl.ListModels].
+  
   Attributes:
       model:
           List of models in the requested page.
@@ -2562,6 +2583,7 @@ DeleteModelRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.DeleteModel][google.cloud.automl.v1beta1.AutoMl.DeleteModel].
+  
   Attributes:
       name:
           Required. Resource name of the model being deleted.
@@ -2579,6 +2601,7 @@ DeployModelRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for
   [AutoMl.DeployModel][google.cloud.automl.v1beta1.AutoMl.DeployModel].
+  
   Attributes:
       model_deployment_metadata:
           The per-domain specific deployment parameters.
@@ -2602,6 +2625,7 @@ UndeployModelRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.UndeployModel][google.cloud.automl.v1beta1
   .AutoMl.UndeployModel].
+  
   Attributes:
       name:
           Required. Resource name of the model to undeploy.
@@ -2621,6 +2645,7 @@ ExportModelRequest = _reflection.GeneratedProtocolMessageType(
   [AutoMl.ExportModel][google.cloud.automl.v1beta1.AutoMl.ExportModel].
   Models need to be enabled for exporting, otherwise an error code will
   be returned.
+  
   Attributes:
       name:
           Required. The resource name of the model to export.
@@ -2640,6 +2665,7 @@ ExportEvaluatedExamplesRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.ExportEvaluatedExamples][google.cloud.auto
   ml.v1beta1.AutoMl.ExportEvaluatedExamples].
+  
   Attributes:
       name:
           Required. The resource name of the model whose evaluated
@@ -2660,6 +2686,7 @@ GetModelEvaluationRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.GetModelEvaluation][google.cloud.automl.v1
   beta1.AutoMl.GetModelEvaluation].
+  
   Attributes:
       name:
           Required. Resource name for the model evaluation.
@@ -2677,6 +2704,7 @@ ListModelEvaluationsRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Request message for [AutoMl.ListModelEvaluations][google.cloud.automl.
   v1beta1.AutoMl.ListModelEvaluations].
+  
   Attributes:
       parent:
           Required. Resource name of the model to list the model
@@ -2714,6 +2742,7 @@ ListModelEvaluationsResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.automl_v1beta1.proto.service_pb2",
         "__doc__": """Response message for [AutoMl.ListModelEvaluations][google.cloud.automl
   .v1beta1.AutoMl.ListModelEvaluations].
+  
   Attributes:
       model_evaluation:
           List of model evaluations in the requested page.

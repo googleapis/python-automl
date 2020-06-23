@@ -254,6 +254,7 @@ TextClassificationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TEXTCLASSIFICATIONDATASETMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.text_pb2",
         "__doc__": """Dataset metadata for classification.
+  
   Attributes:
       classification_type:
           Required. Type of the classification problem.
@@ -270,6 +271,7 @@ TextClassificationModelMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TEXTCLASSIFICATIONMODELMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.text_pb2",
         "__doc__": """Model metadata that is specific to text classification.
+  
   Attributes:
       classification_type:
           Output only. Classification type of the dataset used to train
@@ -311,6 +313,7 @@ TextSentimentDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TEXTSENTIMENTDATASETMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.text_pb2",
         "__doc__": """Dataset metadata for text sentiment.
+  
   Attributes:
       sentiment_max:
           Required. A sentiment is expressed as an integer ordinal,

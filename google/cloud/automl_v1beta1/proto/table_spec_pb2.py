@@ -207,6 +207,7 @@ TableSpec = _reflection.GeneratedProtocolMessageType(
   a table, at times the schema may be inconsistent with the data in the
   table (e.g. string in a FLOAT64 column). The consistency validation is
   done upon creation of a model. Used by: \* Tables
+  
   Attributes:
       name:
           Output only. The resource name of the table spec. Form:  ``pro

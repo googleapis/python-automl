@@ -506,6 +506,7 @@ ImageClassificationDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _IMAGECLASSIFICATIONDATASETMETADATA,
         "__module__": "google.cloud.automl_v1.proto.image_pb2",
         "__doc__": """Dataset metadata that is specific to image classification.
+  
   Attributes:
       classification_type:
           Required. Type of the classification problem.
@@ -534,6 +535,7 @@ ImageClassificationModelMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _IMAGECLASSIFICATIONMODELMETADATA,
         "__module__": "google.cloud.automl_v1.proto.image_pb2",
         "__doc__": """Model metadata for image classification.
+  
   Attributes:
       base_model_id:
           Optional. The ID of the ``base`` model. If it is specified,
@@ -622,6 +624,7 @@ ImageObjectDetectionModelMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _IMAGEOBJECTDETECTIONMODELMETADATA,
         "__module__": "google.cloud.automl_v1.proto.image_pb2",
         "__doc__": """Model metadata specific to image object detection.
+  
   Attributes:
       model_type:
           Optional. Type of the model. The available values are: \*
@@ -693,6 +696,7 @@ ImageClassificationModelDeploymentMetadata = _reflection.GeneratedProtocolMessag
         "DESCRIPTOR": _IMAGECLASSIFICATIONMODELDEPLOYMENTMETADATA,
         "__module__": "google.cloud.automl_v1.proto.image_pb2",
         "__doc__": """Model deployment metadata specific to Image Classification.
+  
   Attributes:
       node_count:
           Input only. The number of nodes to deploy the model on. A node
@@ -713,6 +717,7 @@ ImageObjectDetectionModelDeploymentMetadata = _reflection.GeneratedProtocolMessa
         "DESCRIPTOR": _IMAGEOBJECTDETECTIONMODELDEPLOYMENTMETADATA,
         "__module__": "google.cloud.automl_v1.proto.image_pb2",
         "__doc__": """Model deployment metadata specific to Image Object Detection.
+  
   Attributes:
       node_count:
           Input only. The number of nodes to deploy the model on. A node

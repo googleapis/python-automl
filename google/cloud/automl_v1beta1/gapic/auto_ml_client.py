@@ -291,695 +291,6 @@ class AutoMlClient(object):
         self._inner_api_calls = {}
 
     # Service calls
-    def delete_dataset(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Deletes a dataset and all of its contents. Returns empty response in
-        the ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
-            >>>
-            >>> response = client.delete_dataset(name)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. The resource name of the dataset to delete.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "delete_dataset" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "delete_dataset"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.delete_dataset,
-                default_retry=self._method_configs["DeleteDataset"].retry,
-                default_timeout=self._method_configs["DeleteDataset"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.DeleteDatasetRequest(name=name,)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["delete_dataset"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def import_data(
-        self,
-        name,
-        input_config,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Imports data into a dataset. For Tables this method can only be
-        called on an empty Dataset.
-
-        For Tables:
-
-        -  A ``schema_inference_version`` parameter must be explicitly set.
-           Returns an empty response in the ``response`` field when it
-           completes.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
-            >>>
-            >>> # TODO: Initialize `input_config`:
-            >>> input_config = {}
-            >>>
-            >>> response = client.import_data(name, input_config)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. Dataset name. Dataset must already exist. All imported
-                annotations and examples will be added.
-            input_config (Union[dict, ~google.cloud.automl_v1beta1.types.InputConfig]): Required. The desired input location and its domain specific semantics,
-                if any.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.InputConfig`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "import_data" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "import_data"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.import_data,
-                default_retry=self._method_configs["ImportData"].retry,
-                default_timeout=self._method_configs["ImportData"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ImportDataRequest(name=name, input_config=input_config,)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["import_data"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def export_data(
-        self,
-        name,
-        output_config,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Exports dataset's data to the provided output location. Returns an
-        empty response in the ``response`` field when it completes.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
-            >>>
-            >>> # TODO: Initialize `output_config`:
-            >>> output_config = {}
-            >>>
-            >>> response = client.export_data(name, output_config)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. The resource name of the dataset.
-            output_config (Union[dict, ~google.cloud.automl_v1beta1.types.OutputConfig]): Required. The desired output location.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.OutputConfig`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "export_data" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "export_data"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.export_data,
-                default_retry=self._method_configs["ExportData"].retry,
-                default_timeout=self._method_configs["ExportData"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ExportDataRequest(name=name, output_config=output_config,)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["export_data"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def delete_model(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Deletes a model. Returns ``google.protobuf.Empty`` in the
-        ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> response = client.delete_model(name)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. Resource name of the model being deleted.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "delete_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "delete_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.delete_model,
-                default_retry=self._method_configs["DeleteModel"].retry,
-                default_timeout=self._method_configs["DeleteModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.DeleteModelRequest(name=name,)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["delete_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def export_model(
-        self,
-        name,
-        output_config,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Exports a trained, "export-able", model to a user specified Google
-        Cloud Storage location. A model is considered export-able if and only if
-        it has an export format defined for it in
-
-        ``ModelExportOutputConfig``.
-
-        Returns an empty response in the ``response`` field when it completes.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> # TODO: Initialize `output_config`:
-            >>> output_config = {}
-            >>>
-            >>> response = client.export_model(name, output_config)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. The resource name of the model to export.
-            output_config (Union[dict, ~google.cloud.automl_v1beta1.types.ModelExportOutputConfig]): Required. The desired output location and configuration.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.ModelExportOutputConfig`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "export_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "export_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.export_model,
-                default_retry=self._method_configs["ExportModel"].retry,
-                default_timeout=self._method_configs["ExportModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ExportModelRequest(
-            name=name, output_config=output_config,
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["export_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def export_evaluated_examples(
-        self,
-        name,
-        output_config,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Exports examples on which the model was evaluated (i.e. which were
-        in the TEST set of the dataset the model was created from), together
-        with their ground truth annotations and the annotations created
-        (predicted) by the model. The examples, ground truth and predictions are
-        exported in the state they were at the moment the model was evaluated.
-
-        This export is available only for 30 days since the model evaluation is
-        created.
-
-        Currently only available for Tables.
-
-        Returns an empty response in the ``response`` field when it completes.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> # TODO: Initialize `output_config`:
-            >>> output_config = {}
-            >>>
-            >>> response = client.export_evaluated_examples(name, output_config)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. The resource name of the model whose evaluated examples are to
-                be exported.
-            output_config (Union[dict, ~google.cloud.automl_v1beta1.types.ExportEvaluatedExamplesOutputConfig]): Required. The desired output location and configuration.
-
-                If a dict is provided, it must be of the same form as the protobuf
-                message :class:`~google.cloud.automl_v1beta1.types.ExportEvaluatedExamplesOutputConfig`
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "export_evaluated_examples" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "export_evaluated_examples"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.export_evaluated_examples,
-                default_retry=self._method_configs["ExportEvaluatedExamples"].retry,
-                default_timeout=self._method_configs["ExportEvaluatedExamples"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ExportEvaluatedExamplesRequest(
-            name=name, output_config=output_config,
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["export_evaluated_examples"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def list_model_evaluations(
-        self,
-        parent,
-        filter_=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Lists model evaluations.
-
-        Example:
-            >>> from google.cloud import automl_v1beta1
-            >>>
-            >>> client = automl_v1beta1.AutoMlClient()
-            >>>
-            >>> parent = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> # Iterate over all results
-            >>> for element in client.list_model_evaluations(parent):
-            ...     # process element
-            ...     pass
-            >>>
-            >>>
-            >>> # Alternatively:
-            >>>
-            >>> # Iterate over results one page at a time
-            >>> for page in client.list_model_evaluations(parent).pages:
-            ...     for element in page:
-            ...         # process element
-            ...         pass
-
-        Args:
-            parent (str): Required. Resource name of the model to list the model evaluations for.
-                If modelId is set as "-", this will list model evaluations from across all
-                models of the parent location.
-            filter_ (str): An expression for filtering the results of the request.
-
-                -  ``annotation_spec_id`` - for =, != or existence. See example below
-                   for the last.
-
-                Some examples of using the filter are:
-
-                -  ``annotation_spec_id!=4`` --> The model evaluation was done for
-                   annotation spec with ID different than 4.
-                -  ``NOT annotation_spec_id:*`` --> The model evaluation was done for
-                   aggregate of all annotation specs.
-            page_size (int): The maximum number of resources contained in the
-                underlying API response. If page streaming is performed per-
-                resource, this parameter does not affect the return value. If page
-                streaming is performed per-page, this determines the maximum number
-                of resources in a page.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.api_core.page_iterator.PageIterator` instance.
-            An iterable of :class:`~google.cloud.automl_v1beta1.types.ModelEvaluation` instances.
-            You can also iterate over the pages of the response
-            using its `pages` property.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "list_model_evaluations" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_model_evaluations"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.list_model_evaluations,
-                default_retry=self._method_configs["ListModelEvaluations"].retry,
-                default_timeout=self._method_configs["ListModelEvaluations"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.ListModelEvaluationsRequest(
-            parent=parent, filter=filter_, page_size=page_size,
-        )
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("parent", parent)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        iterator = google.api_core.page_iterator.GRPCIterator(
-            client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_model_evaluations"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
-            request=request,
-            items_field="model_evaluation",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
-        )
-        return iterator
-
     def create_dataset(
         self,
         parent,
@@ -1316,6 +627,286 @@ class AutoMlClient(object):
 
         return self._inner_api_calls["update_dataset"](
             request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def delete_dataset(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Deletes a dataset and all of its contents. Returns empty response in
+        the ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
+            >>>
+            >>> response = client.delete_dataset(name)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. The resource name of the dataset to delete.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "delete_dataset" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "delete_dataset"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.delete_dataset,
+                default_retry=self._method_configs["DeleteDataset"].retry,
+                default_timeout=self._method_configs["DeleteDataset"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.DeleteDatasetRequest(name=name,)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["delete_dataset"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
+    def import_data(
+        self,
+        name,
+        input_config,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Imports data into a dataset. For Tables this method can only be
+        called on an empty Dataset.
+
+        For Tables:
+
+        -  A ``schema_inference_version`` parameter must be explicitly set.
+           Returns an empty response in the ``response`` field when it
+           completes.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
+            >>>
+            >>> # TODO: Initialize `input_config`:
+            >>> input_config = {}
+            >>>
+            >>> response = client.import_data(name, input_config)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. Dataset name. Dataset must already exist. All imported
+                annotations and examples will be added.
+            input_config (Union[dict, ~google.cloud.automl_v1beta1.types.InputConfig]): Required. The desired input location and its domain specific semantics,
+                if any.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.InputConfig`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "import_data" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "import_data"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.import_data,
+                default_retry=self._method_configs["ImportData"].retry,
+                default_timeout=self._method_configs["ImportData"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ImportDataRequest(name=name, input_config=input_config,)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["import_data"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
+    def export_data(
+        self,
+        name,
+        output_config,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Exports dataset's data to the provided output location. Returns an
+        empty response in the ``response`` field when it completes.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
+            >>>
+            >>> # TODO: Initialize `output_config`:
+            >>> output_config = {}
+            >>>
+            >>> response = client.export_data(name, output_config)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. The resource name of the dataset.
+            output_config (Union[dict, ~google.cloud.automl_v1beta1.types.OutputConfig]): Required. The desired output location.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.OutputConfig`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "export_data" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "export_data"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.export_data,
+                default_retry=self._method_configs["ExportData"].retry,
+                default_timeout=self._method_configs["ExportData"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ExportDataRequest(name=name, output_config=output_config,)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["export_data"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
         )
 
     def get_annotation_spec(
@@ -2194,6 +1785,92 @@ class AutoMlClient(object):
         )
         return iterator
 
+    def delete_model(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Deletes a model. Returns ``google.protobuf.Empty`` in the
+        ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> response = client.delete_model(name)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. Resource name of the model being deleted.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "delete_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "delete_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.delete_model,
+                default_retry=self._method_configs["DeleteModel"].retry,
+                default_timeout=self._method_configs["DeleteModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.DeleteModelRequest(name=name,)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["delete_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
     def deploy_model(
         self,
         name,
@@ -2400,6 +2077,212 @@ class AutoMlClient(object):
             metadata_type=proto_operations_pb2.OperationMetadata,
         )
 
+    def export_model(
+        self,
+        name,
+        output_config,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Exports a trained, "export-able", model to a user specified Google
+        Cloud Storage location. A model is considered export-able if and only if
+        it has an export format defined for it in
+
+        ``ModelExportOutputConfig``.
+
+        Returns an empty response in the ``response`` field when it completes.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> # TODO: Initialize `output_config`:
+            >>> output_config = {}
+            >>>
+            >>> response = client.export_model(name, output_config)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. The resource name of the model to export.
+            output_config (Union[dict, ~google.cloud.automl_v1beta1.types.ModelExportOutputConfig]): Required. The desired output location and configuration.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.ModelExportOutputConfig`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "export_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "export_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.export_model,
+                default_retry=self._method_configs["ExportModel"].retry,
+                default_timeout=self._method_configs["ExportModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ExportModelRequest(
+            name=name, output_config=output_config,
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["export_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
+    def export_evaluated_examples(
+        self,
+        name,
+        output_config,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Exports examples on which the model was evaluated (i.e. which were
+        in the TEST set of the dataset the model was created from), together
+        with their ground truth annotations and the annotations created
+        (predicted) by the model. The examples, ground truth and predictions are
+        exported in the state they were at the moment the model was evaluated.
+
+        This export is available only for 30 days since the model evaluation is
+        created.
+
+        Currently only available for Tables.
+
+        Returns an empty response in the ``response`` field when it completes.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> # TODO: Initialize `output_config`:
+            >>> output_config = {}
+            >>>
+            >>> response = client.export_evaluated_examples(name, output_config)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. The resource name of the model whose evaluated examples are to
+                be exported.
+            output_config (Union[dict, ~google.cloud.automl_v1beta1.types.ExportEvaluatedExamplesOutputConfig]): Required. The desired output location and configuration.
+
+                If a dict is provided, it must be of the same form as the protobuf
+                message :class:`~google.cloud.automl_v1beta1.types.ExportEvaluatedExamplesOutputConfig`
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1beta1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "export_evaluated_examples" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "export_evaluated_examples"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.export_evaluated_examples,
+                default_retry=self._method_configs["ExportEvaluatedExamples"].retry,
+                default_timeout=self._method_configs["ExportEvaluatedExamples"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ExportEvaluatedExamplesRequest(
+            name=name, output_config=output_config,
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["export_evaluated_examples"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
+
     def get_model_evaluation(
         self,
         name,
@@ -2468,3 +2351,120 @@ class AutoMlClient(object):
         return self._inner_api_calls["get_model_evaluation"](
             request, retry=retry, timeout=timeout, metadata=metadata
         )
+
+    def list_model_evaluations(
+        self,
+        parent,
+        filter_=None,
+        page_size=None,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Lists model evaluations.
+
+        Example:
+            >>> from google.cloud import automl_v1beta1
+            >>>
+            >>> client = automl_v1beta1.AutoMlClient()
+            >>>
+            >>> parent = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> # Iterate over all results
+            >>> for element in client.list_model_evaluations(parent):
+            ...     # process element
+            ...     pass
+            >>>
+            >>>
+            >>> # Alternatively:
+            >>>
+            >>> # Iterate over results one page at a time
+            >>> for page in client.list_model_evaluations(parent).pages:
+            ...     for element in page:
+            ...         # process element
+            ...         pass
+
+        Args:
+            parent (str): Required. Resource name of the model to list the model evaluations for.
+                If modelId is set as "-", this will list model evaluations from across all
+                models of the parent location.
+            filter_ (str): An expression for filtering the results of the request.
+
+                -  ``annotation_spec_id`` - for =, != or existence. See example below
+                   for the last.
+
+                Some examples of using the filter are:
+
+                -  ``annotation_spec_id!=4`` --> The model evaluation was done for
+                   annotation spec with ID different than 4.
+                -  ``NOT annotation_spec_id:*`` --> The model evaluation was done for
+                   aggregate of all annotation specs.
+            page_size (int): The maximum number of resources contained in the
+                underlying API response. If page streaming is performed per-
+                resource, this parameter does not affect the return value. If page
+                streaming is performed per-page, this determines the maximum number
+                of resources in a page.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.api_core.page_iterator.PageIterator` instance.
+            An iterable of :class:`~google.cloud.automl_v1beta1.types.ModelEvaluation` instances.
+            You can also iterate over the pages of the response
+            using its `pages` property.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "list_model_evaluations" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "list_model_evaluations"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.list_model_evaluations,
+                default_retry=self._method_configs["ListModelEvaluations"].retry,
+                default_timeout=self._method_configs["ListModelEvaluations"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.ListModelEvaluationsRequest(
+            parent=parent, filter=filter_, page_size=page_size,
+        )
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("parent", parent)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        iterator = google.api_core.page_iterator.GRPCIterator(
+            client=None,
+            method=functools.partial(
+                self._inner_api_calls["list_model_evaluations"],
+                retry=retry,
+                timeout=timeout,
+                metadata=metadata,
+            ),
+            request=request,
+            items_field="model_evaluation",
+            request_token_field="page_token",
+            response_token_field="next_page_token",
+        )
+        return iterator

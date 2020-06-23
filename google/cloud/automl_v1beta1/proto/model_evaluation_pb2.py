@@ -393,8 +393,6 @@ ModelEvaluation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _MODELEVALUATION,
         "__module__": "google.cloud.automl_v1beta1.proto.model_evaluation_pb2",
         "__doc__": """Evaluation results of a model.
-  
-  
   Attributes:
       metrics:
           Output only. Problem type specific evaluation metrics.

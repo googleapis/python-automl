@@ -700,8 +700,6 @@ TablesDatasetMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TABLESDATASETMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.tables_pb2",
         "__doc__": """Metadata for a dataset used for AutoML Tables.
-  
-  
   Attributes:
       primary_table_spec_id:
           Output only. The table_spec_id of the primary table of this
@@ -770,8 +768,6 @@ TablesModelMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TABLESMODELMETADATA,
         "__module__": "google.cloud.automl_v1beta1.proto.tables_pb2",
         "__doc__": """Model metadata specific to AutoML Tables.
-  
-  
   Attributes:
       additional_optimization_objective_config:
           Additional optimization objective configuration. Required for
@@ -864,8 +860,6 @@ TablesAnnotation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TABLESANNOTATION,
         "__module__": "google.cloud.automl_v1beta1.proto.tables_pb2",
         "__doc__": """Contains annotation details specific to Tables.
-  
-  
   Attributes:
       score:
           Output only. A confidence estimate between 0.0 and 1.0,
@@ -916,10 +910,8 @@ TablesModelColumnInfo = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _TABLESMODELCOLUMNINFO,
         "__module__": "google.cloud.automl_v1beta1.proto.tables_pb2",
-        "__doc__": """An information specific to given column and Tables Model,
-  in context of the Model and the predictions created by it.
-  
-  
+        "__doc__": """An information specific to given column and Tables Model, in context
+  of the Model and the predictions created by it.
   Attributes:
       column_spec_name:
           Output only. The name of the ColumnSpec describing the column.

@@ -113,8 +113,6 @@ AnnotationSpec = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ANNOTATIONSPEC,
         "__module__": "google.cloud.automl_v1.proto.annotation_spec_pb2",
         "__doc__": """A definition of an annotation spec.
-  
-  
   Attributes:
       name:
           Output only. Resource name of the annotation spec. Form:  ‘pro

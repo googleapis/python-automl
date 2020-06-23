@@ -361,8 +361,6 @@ ImageObjectDetectionAnnotation = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _IMAGEOBJECTDETECTIONANNOTATION,
         "__module__": "google.cloud.automl_v1.proto.detection_pb2",
         "__doc__": """Annotation details for image object detection.
-  
-  
   Attributes:
       bounding_box:
           Output only. The rectangle representing the object location.
@@ -387,8 +385,6 @@ BoundingBoxMetricsEntry = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _BOUNDINGBOXMETRICSENTRY_CONFIDENCEMETRICSENTRY,
                 "__module__": "google.cloud.automl_v1.proto.detection_pb2",
                 "__doc__": """Metrics for a single confidence threshold.
-    
-    
     Attributes:
         confidence_threshold:
             Output only. The confidence threshold value used to compute
@@ -405,11 +401,8 @@ BoundingBoxMetricsEntry = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _BOUNDINGBOXMETRICSENTRY,
         "__module__": "google.cloud.automl_v1.proto.detection_pb2",
-        "__doc__": """Bounding box matching model metrics for a single
-  intersection-over-union threshold and multiple label match confidence
-  thresholds.
-  
-  
+        "__doc__": """Bounding box matching model metrics for a single intersection-over-
+  union threshold and multiple label match confidence thresholds.
   Attributes:
       iou_threshold:
           Output only. The intersection-over-union threshold value used
@@ -434,10 +427,8 @@ ImageObjectDetectionEvaluationMetrics = _reflection.GeneratedProtocolMessageType
     {
         "DESCRIPTOR": _IMAGEOBJECTDETECTIONEVALUATIONMETRICS,
         "__module__": "google.cloud.automl_v1.proto.detection_pb2",
-        "__doc__": """Model evaluation metrics for image object detection
-  problems. Evaluates prediction quality of labeled bounding boxes.
-  
-  
+        "__doc__": """Model evaluation metrics for image object detection problems.
+  Evaluates prediction quality of labeled bounding boxes.
   Attributes:
       evaluated_bounding_box_count:
           Output only. The total number of bounding boxes (i.e. summed

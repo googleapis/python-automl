@@ -1022,10 +1022,8 @@ DataStats = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _DATASTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
-        "__doc__": """The data statistics of a series of values that share the
-  same DataType.
-  
-  
+        "__doc__": """The data statistics of a series of values that share the same
+  DataType.
   Attributes:
       stats:
           The data statistics specific to a DataType.
@@ -1064,8 +1062,6 @@ Float64Stats = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _FLOAT64STATS_HISTOGRAMBUCKET,
                 "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
                 "__doc__": """A bucket of a histogram.
-    
-    
     Attributes:
         min:
             The minimum value of the bucket, inclusive.
@@ -1082,8 +1078,6 @@ Float64Stats = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _FLOAT64STATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
         "__doc__": """The data statistics of a series of FLOAT64 values.
-  
-  
   Attributes:
       mean:
           The mean of the series.
@@ -1119,8 +1113,6 @@ StringStats = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _STRINGSTATS_UNIGRAMSTATS,
                 "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
                 "__doc__": """The statistics of a unigram.
-    
-    
     Attributes:
         value:
             The unigram.
@@ -1133,8 +1125,6 @@ StringStats = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _STRINGSTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
         "__doc__": """The data statistics of a series of STRING values.
-  
-  
   Attributes:
       top_unigram_stats:
           The statistics of the top 20 unigrams, ordered by [count][goog
@@ -1166,8 +1156,6 @@ TimestampStats = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _TIMESTAMPSTATS_GRANULARSTATS,
                 "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
                 "__doc__": """Stats split by a defined in context granularity.
-    
-    
     Attributes:
         buckets:
             A map from granularity key to example count for that key. E.g.
@@ -1189,8 +1177,6 @@ TimestampStats = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _TIMESTAMPSTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
         "__doc__": """The data statistics of a series of TIMESTAMP values.
-  
-  
   Attributes:
       granular_stats:
           The string key is the pre-defined granularity. Currently
@@ -1214,8 +1200,6 @@ ArrayStats = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ARRAYSTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
         "__doc__": """The data statistics of a series of ARRAY values.
-  
-  
   Attributes:
       member_stats:
           Stats of all the values of all arrays, as if they were a
@@ -1243,8 +1227,6 @@ StructStats = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _STRUCTSTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
         "__doc__": """The data statistics of a series of STRUCT values.
-  
-  
   Attributes:
       field_stats:
           Map from a field name of the struct to data stats aggregated
@@ -1267,8 +1249,6 @@ CategoryStats = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _CATEGORYSTATS_SINGLECATEGORYSTATS,
                 "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
                 "__doc__": """The statistics of a single CATEGORY value.
-    
-    
     Attributes:
         value:
             The CATEGORY value.
@@ -1281,8 +1261,6 @@ CategoryStats = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CATEGORYSTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
         "__doc__": """The data statistics of a series of CATEGORY values.
-  
-  
   Attributes:
       top_category_stats:
           The statistics of the top 20 CATEGORY values, ordered by  [cou
@@ -1301,11 +1279,9 @@ CorrelationStats = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _CORRELATIONSTATS,
         "__module__": "google.cloud.automl_v1beta1.proto.data_stats_pb2",
-        "__doc__": """A correlation statistics between two series of DataType
-  values. The series may have differing DataType-s, but within a single
-  series the DataType must be the same.
-  
-  
+        "__doc__": """A correlation statistics between two series of DataType values. The
+  series may have differing DataType-s, but within a single series the
+  DataType must be the same.
   Attributes:
       cramers_v:
           The correlation value using the Cramer’s V measure.

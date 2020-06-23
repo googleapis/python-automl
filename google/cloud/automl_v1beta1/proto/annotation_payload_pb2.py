@@ -358,10 +358,7 @@ AnnotationPayload = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _ANNOTATIONPAYLOAD,
         "__module__": "google.cloud.automl_v1beta1.proto.annotation_payload_pb2",
-        "__doc__": """Contains annotation information that is relevant to
-  AutoML.
-  
-  
+        "__doc__": """Contains annotation information that is relevant to AutoML.
   Attributes:
       detail:
           Output only . Additional information about the annotation

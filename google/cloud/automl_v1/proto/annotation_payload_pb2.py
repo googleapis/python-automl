@@ -36,6 +36,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1",
     syntax="proto3",
     serialized_options=b"\n\032com.google.cloud.automl.v1P\001Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\252\002\026Google.Cloud.AutoML.V1\312\002\026Google\\Cloud\\AutoMl\\V1\352\002\031Google::Cloud::AutoML::V1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n5google/cloud/automl_v1/proto/annotation_payload.proto\x12\x16google.cloud.automl.v1\x1a\x31google/cloud/automl_v1/proto/classification.proto\x1a,google/cloud/automl_v1/proto/detection.proto\x1a\x32google/cloud/automl_v1/proto/text_extraction.proto\x1a\x31google/cloud/automl_v1/proto/text_sentiment.proto\x1a.google/cloud/automl_v1/proto/translation.proto\x1a\x19google/protobuf/any.proto\x1a\x1cgoogle/api/annotations.proto"\xd3\x03\n\x11\x41nnotationPayload\x12\x44\n\x0btranslation\x18\x02 \x01(\x0b\x32-.google.cloud.automl.v1.TranslationAnnotationH\x00\x12J\n\x0e\x63lassification\x18\x03 \x01(\x0b\x32\x30.google.cloud.automl.v1.ClassificationAnnotationH\x00\x12X\n\x16image_object_detection\x18\x04 \x01(\x0b\x32\x36.google.cloud.automl.v1.ImageObjectDetectionAnnotationH\x00\x12K\n\x0ftext_extraction\x18\x06 \x01(\x0b\x32\x30.google.cloud.automl.v1.TextExtractionAnnotationH\x00\x12I\n\x0etext_sentiment\x18\x07 \x01(\x0b\x32/.google.cloud.automl.v1.TextSentimentAnnotationH\x00\x12\x1a\n\x12\x61nnotation_spec_id\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x05 \x01(\tB\x08\n\x06\x64\x65tailB\xaa\x01\n\x1a\x63om.google.cloud.automl.v1P\x01Z<google.golang.org/genproto/googleapis/cloud/automl/v1;automl\xaa\x02\x16Google.Cloud.AutoML.V1\xca\x02\x16Google\\Cloud\\AutoMl\\V1\xea\x02\x19Google::Cloud::AutoML::V1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1_dot_proto_dot_classification__pb2.DESCRIPTOR,
@@ -55,6 +56,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="translation",
@@ -73,6 +75,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="classification",
@@ -91,6 +94,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="image_object_detection",
@@ -109,6 +113,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_extraction",
@@ -127,6 +132,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="text_sentiment",
@@ -145,6 +151,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="annotation_spec_id",
@@ -163,6 +170,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="display_name",
@@ -181,6 +189,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -196,6 +205,7 @@ _ANNOTATIONPAYLOAD = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1.AnnotationPayload.detail",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],

@@ -32,6 +32,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n2google/cloud/automl_v1beta1/proto/operations.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a*google/cloud/automl_v1beta1/proto/io.proto\x1a-google/cloud/automl_v1beta1/proto/model.proto\x1a\x38google/cloud/automl_v1beta1/proto/model_evaluation.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto\x1a\x1cgoogle/api/annotations.proto"\x8b\x08\n\x11OperationMetadata\x12N\n\x0e\x64\x65lete_details\x18\x08 \x01(\x0b\x32\x34.google.cloud.automl.v1beta1.DeleteOperationMetadataH\x00\x12Y\n\x14\x64\x65ploy_model_details\x18\x18 \x01(\x0b\x32\x39.google.cloud.automl.v1beta1.DeployModelOperationMetadataH\x00\x12]\n\x16undeploy_model_details\x18\x19 \x01(\x0b\x32;.google.cloud.automl.v1beta1.UndeployModelOperationMetadataH\x00\x12Y\n\x14\x63reate_model_details\x18\n \x01(\x0b\x32\x39.google.cloud.automl.v1beta1.CreateModelOperationMetadataH\x00\x12W\n\x13import_data_details\x18\x0f \x01(\x0b\x32\x38.google.cloud.automl.v1beta1.ImportDataOperationMetadataH\x00\x12[\n\x15\x62\x61tch_predict_details\x18\x10 \x01(\x0b\x32:.google.cloud.automl.v1beta1.BatchPredictOperationMetadataH\x00\x12W\n\x13\x65xport_data_details\x18\x15 \x01(\x0b\x32\x38.google.cloud.automl.v1beta1.ExportDataOperationMetadataH\x00\x12Y\n\x14\x65xport_model_details\x18\x16 \x01(\x0b\x32\x39.google.cloud.automl.v1beta1.ExportModelOperationMetadataH\x00\x12r\n!export_evaluated_examples_details\x18\x1a \x01(\x0b\x32\x45.google.cloud.automl.v1beta1.ExportEvaluatedExamplesOperationMetadataH\x00\x12\x18\n\x10progress_percent\x18\r \x01(\x05\x12,\n\x10partial_failures\x18\x02 \x03(\x0b\x32\x12.google.rpc.Status\x12/\n\x0b\x63reate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\t\n\x07\x64\x65tails"\x19\n\x17\x44\x65leteOperationMetadata"\x1e\n\x1c\x44\x65ployModelOperationMetadata" \n\x1eUndeployModelOperationMetadata"\x1e\n\x1c\x43reateModelOperationMetadata"\x1d\n\x1bImportDataOperationMetadata"\xef\x01\n\x1b\x45xportDataOperationMetadata\x12\x62\n\x0boutput_info\x18\x01 \x01(\x0b\x32M.google.cloud.automl.v1beta1.ExportDataOperationMetadata.ExportDataOutputInfo\x1al\n\x14\x45xportDataOutputInfo\x12\x1e\n\x14gcs_output_directory\x18\x01 \x01(\tH\x00\x12!\n\x17\x62igquery_output_dataset\x18\x02 \x01(\tH\x00\x42\x11\n\x0foutput_location"\xc3\x02\n\x1d\x42\x61tchPredictOperationMetadata\x12J\n\x0cinput_config\x18\x01 \x01(\x0b\x32\x34.google.cloud.automl.v1beta1.BatchPredictInputConfig\x12\x66\n\x0boutput_info\x18\x02 \x01(\x0b\x32Q.google.cloud.automl.v1beta1.BatchPredictOperationMetadata.BatchPredictOutputInfo\x1an\n\x16\x42\x61tchPredictOutputInfo\x12\x1e\n\x14gcs_output_directory\x18\x01 \x01(\tH\x00\x12!\n\x17\x62igquery_output_dataset\x18\x02 \x01(\tH\x00\x42\x11\n\x0foutput_location"\xbb\x01\n\x1c\x45xportModelOperationMetadata\x12\x64\n\x0boutput_info\x18\x02 \x01(\x0b\x32O.google.cloud.automl.v1beta1.ExportModelOperationMetadata.ExportModelOutputInfo\x1a\x35\n\x15\x45xportModelOutputInfo\x12\x1c\n\x14gcs_output_directory\x18\x01 \x01(\t"\xee\x01\n(ExportEvaluatedExamplesOperationMetadata\x12|\n\x0boutput_info\x18\x02 \x01(\x0b\x32g.google.cloud.automl.v1beta1.ExportEvaluatedExamplesOperationMetadata.ExportEvaluatedExamplesOutputInfo\x1a\x44\n!ExportEvaluatedExamplesOutputInfo\x12\x1f\n\x17\x62igquery_output_dataset\x18\x02 \x01(\tB\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_io__pb2.DESCRIPTOR,
@@ -51,6 +52,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="delete_details",
@@ -69,6 +71,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="deploy_model_details",
@@ -87,6 +90,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="undeploy_model_details",
@@ -105,6 +109,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="create_model_details",
@@ -123,6 +128,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="import_data_details",
@@ -141,6 +147,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="batch_predict_details",
@@ -159,6 +166,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="export_data_details",
@@ -177,6 +185,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="export_model_details",
@@ -195,6 +204,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="export_evaluated_examples_details",
@@ -213,6 +223,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="progress_percent",
@@ -231,6 +242,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="partial_failures",
@@ -249,6 +261,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="create_time",
@@ -267,6 +280,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_time",
@@ -285,6 +299,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -300,6 +315,7 @@ _OPERATIONMETADATA = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.OperationMetadata.details",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -314,6 +330,7 @@ _DELETEOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[],
     extensions=[],
     nested_types=[],
@@ -334,6 +351,7 @@ _DEPLOYMODELOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[],
     extensions=[],
     nested_types=[],
@@ -354,6 +372,7 @@ _UNDEPLOYMODELOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[],
     extensions=[],
     nested_types=[],
@@ -374,6 +393,7 @@ _CREATEMODELOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[],
     extensions=[],
     nested_types=[],
@@ -394,6 +414,7 @@ _IMPORTDATAOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[],
     extensions=[],
     nested_types=[],
@@ -414,6 +435,7 @@ _EXPORTDATAOPERATIONMETADATA_EXPORTDATAOUTPUTINFO = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_output_directory",
@@ -432,6 +454,7 @@ _EXPORTDATAOPERATIONMETADATA_EXPORTDATAOUTPUTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bigquery_output_dataset",
@@ -450,6 +473,7 @@ _EXPORTDATAOPERATIONMETADATA_EXPORTDATAOUTPUTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -465,6 +489,7 @@ _EXPORTDATAOPERATIONMETADATA_EXPORTDATAOUTPUTINFO = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.ExportDataOperationMetadata.ExportDataOutputInfo.output_location",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -478,6 +503,7 @@ _EXPORTDATAOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="output_info",
@@ -496,6 +522,7 @@ _EXPORTDATAOPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -517,6 +544,7 @@ _BATCHPREDICTOPERATIONMETADATA_BATCHPREDICTOUTPUTINFO = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_output_directory",
@@ -535,6 +563,7 @@ _BATCHPREDICTOPERATIONMETADATA_BATCHPREDICTOUTPUTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="bigquery_output_dataset",
@@ -553,6 +582,7 @@ _BATCHPREDICTOPERATIONMETADATA_BATCHPREDICTOUTPUTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -568,6 +598,7 @@ _BATCHPREDICTOPERATIONMETADATA_BATCHPREDICTOUTPUTINFO = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.BatchPredictOperationMetadata.BatchPredictOutputInfo.output_location",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -581,6 +612,7 @@ _BATCHPREDICTOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="input_config",
@@ -599,6 +631,7 @@ _BATCHPREDICTOPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="output_info",
@@ -617,6 +650,7 @@ _BATCHPREDICTOPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -638,6 +672,7 @@ _EXPORTMODELOPERATIONMETADATA_EXPORTMODELOUTPUTINFO = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="gcs_output_directory",
@@ -656,6 +691,7 @@ _EXPORTMODELOPERATIONMETADATA_EXPORTMODELOUTPUTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -676,6 +712,7 @@ _EXPORTMODELOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="output_info",
@@ -694,6 +731,7 @@ _EXPORTMODELOPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -715,6 +753,7 @@ _EXPORTEVALUATEDEXAMPLESOPERATIONMETADATA_EXPORTEVALUATEDEXAMPLESOUTPUTINFO = _d
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="bigquery_output_dataset",
@@ -733,6 +772,7 @@ _EXPORTEVALUATEDEXAMPLESOPERATIONMETADATA_EXPORTEVALUATEDEXAMPLESOUTPUTINFO = _d
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -753,6 +793,7 @@ _EXPORTEVALUATEDEXAMPLESOPERATIONMETADATA = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="output_info",
@@ -771,6 +812,7 @@ _EXPORTEVALUATEDEXAMPLESOPERATIONMETADATA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

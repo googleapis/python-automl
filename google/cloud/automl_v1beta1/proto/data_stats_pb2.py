@@ -20,6 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n2google/cloud/automl_v1beta1/proto/data_stats.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x1cgoogle/api/annotations.proto"\xfd\x03\n\tDataStats\x12\x42\n\rfloat64_stats\x18\x03 \x01(\x0b\x32).google.cloud.automl.v1beta1.Float64StatsH\x00\x12@\n\x0cstring_stats\x18\x04 \x01(\x0b\x32(.google.cloud.automl.v1beta1.StringStatsH\x00\x12\x46\n\x0ftimestamp_stats\x18\x05 \x01(\x0b\x32+.google.cloud.automl.v1beta1.TimestampStatsH\x00\x12>\n\x0b\x61rray_stats\x18\x06 \x01(\x0b\x32\'.google.cloud.automl.v1beta1.ArrayStatsH\x00\x12@\n\x0cstruct_stats\x18\x07 \x01(\x0b\x32(.google.cloud.automl.v1beta1.StructStatsH\x00\x12\x44\n\x0e\x63\x61tegory_stats\x18\x08 \x01(\x0b\x32*.google.cloud.automl.v1beta1.CategoryStatsH\x00\x12\x1c\n\x14\x64istinct_value_count\x18\x01 \x01(\x03\x12\x18\n\x10null_value_count\x18\x02 \x01(\x03\x12\x19\n\x11valid_value_count\x18\t \x01(\x03\x42\x07\n\x05stats"\xdd\x01\n\x0c\x46loat64Stats\x12\x0c\n\x04mean\x18\x01 \x01(\x01\x12\x1a\n\x12standard_deviation\x18\x02 \x01(\x01\x12\x11\n\tquantiles\x18\x03 \x03(\x01\x12T\n\x11histogram_buckets\x18\x04 \x03(\x0b\x32\x39.google.cloud.automl.v1beta1.Float64Stats.HistogramBucket\x1a:\n\x0fHistogramBucket\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\x12\r\n\x05\x63ount\x18\x03 \x01(\x03"\x8d\x01\n\x0bStringStats\x12P\n\x11top_unigram_stats\x18\x01 \x03(\x0b\x32\x35.google.cloud.automl.v1beta1.StringStats.UnigramStats\x1a,\n\x0cUnigramStats\x12\r\n\x05value\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x03"\xf4\x02\n\x0eTimestampStats\x12V\n\x0egranular_stats\x18\x01 \x03(\x0b\x32>.google.cloud.automl.v1beta1.TimestampStats.GranularStatsEntry\x1a\x98\x01\n\rGranularStats\x12W\n\x07\x62uckets\x18\x01 \x03(\x0b\x32\x46.google.cloud.automl.v1beta1.TimestampStats.GranularStats.BucketsEntry\x1a.\n\x0c\x42ucketsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x1ao\n\x12GranularStatsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12H\n\x05value\x18\x02 \x01(\x0b\x32\x39.google.cloud.automl.v1beta1.TimestampStats.GranularStats:\x02\x38\x01"J\n\nArrayStats\x12<\n\x0cmember_stats\x18\x02 \x01(\x0b\x32&.google.cloud.automl.v1beta1.DataStats"\xb7\x01\n\x0bStructStats\x12M\n\x0b\x66ield_stats\x18\x01 \x03(\x0b\x32\x38.google.cloud.automl.v1beta1.StructStats.FieldStatsEntry\x1aY\n\x0f\x46ieldStatsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x35\n\x05value\x18\x02 \x01(\x0b\x32&.google.cloud.automl.v1beta1.DataStats:\x02\x38\x01"\xa0\x01\n\rCategoryStats\x12Z\n\x12top_category_stats\x18\x01 \x03(\x0b\x32>.google.cloud.automl.v1beta1.CategoryStats.SingleCategoryStats\x1a\x33\n\x13SingleCategoryStats\x12\r\n\x05value\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x03"%\n\x10\x43orrelationStats\x12\x11\n\tcramers_v\x18\x01 \x01(\x01\x42\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,],
 )
@@ -31,6 +32,7 @@ _DATASTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="float64_stats",
@@ -49,6 +51,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="string_stats",
@@ -67,6 +70,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="timestamp_stats",
@@ -85,6 +89,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="array_stats",
@@ -103,6 +108,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="struct_stats",
@@ -121,6 +127,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="category_stats",
@@ -139,6 +146,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="distinct_value_count",
@@ -157,6 +165,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="null_value_count",
@@ -175,6 +184,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="valid_value_count",
@@ -193,6 +203,7 @@ _DATASTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -208,6 +219,7 @@ _DATASTATS = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.DataStats.stats",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -222,6 +234,7 @@ _FLOAT64STATS_HISTOGRAMBUCKET = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="min",
@@ -240,6 +253,7 @@ _FLOAT64STATS_HISTOGRAMBUCKET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="max",
@@ -258,6 +272,7 @@ _FLOAT64STATS_HISTOGRAMBUCKET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="count",
@@ -276,6 +291,7 @@ _FLOAT64STATS_HISTOGRAMBUCKET = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -296,6 +312,7 @@ _FLOAT64STATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="mean",
@@ -314,6 +331,7 @@ _FLOAT64STATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="standard_deviation",
@@ -332,6 +350,7 @@ _FLOAT64STATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="quantiles",
@@ -350,6 +369,7 @@ _FLOAT64STATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="histogram_buckets",
@@ -368,6 +388,7 @@ _FLOAT64STATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -389,6 +410,7 @@ _STRINGSTATS_UNIGRAMSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="value",
@@ -407,6 +429,7 @@ _STRINGSTATS_UNIGRAMSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="count",
@@ -425,6 +448,7 @@ _STRINGSTATS_UNIGRAMSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -445,6 +469,7 @@ _STRINGSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="top_unigram_stats",
@@ -463,6 +488,7 @@ _STRINGSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -484,6 +510,7 @@ _TIMESTAMPSTATS_GRANULARSTATS_BUCKETSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -502,6 +529,7 @@ _TIMESTAMPSTATS_GRANULARSTATS_BUCKETSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -520,6 +548,7 @@ _TIMESTAMPSTATS_GRANULARSTATS_BUCKETSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -540,6 +569,7 @@ _TIMESTAMPSTATS_GRANULARSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="buckets",
@@ -558,6 +588,7 @@ _TIMESTAMPSTATS_GRANULARSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -578,6 +609,7 @@ _TIMESTAMPSTATS_GRANULARSTATSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -596,6 +628,7 @@ _TIMESTAMPSTATS_GRANULARSTATSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -614,6 +647,7 @@ _TIMESTAMPSTATS_GRANULARSTATSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -634,6 +668,7 @@ _TIMESTAMPSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="granular_stats",
@@ -652,6 +687,7 @@ _TIMESTAMPSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -673,6 +709,7 @@ _ARRAYSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="member_stats",
@@ -691,6 +728,7 @@ _ARRAYSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -712,6 +750,7 @@ _STRUCTSTATS_FIELDSTATSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -730,6 +769,7 @@ _STRUCTSTATS_FIELDSTATSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -748,6 +788,7 @@ _STRUCTSTATS_FIELDSTATSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -768,6 +809,7 @@ _STRUCTSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="field_stats",
@@ -786,6 +828,7 @@ _STRUCTSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -807,6 +850,7 @@ _CATEGORYSTATS_SINGLECATEGORYSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="value",
@@ -825,6 +869,7 @@ _CATEGORYSTATS_SINGLECATEGORYSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="count",
@@ -843,6 +888,7 @@ _CATEGORYSTATS_SINGLECATEGORYSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -863,6 +909,7 @@ _CATEGORYSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="top_category_stats",
@@ -881,6 +928,7 @@ _CATEGORYSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -902,6 +950,7 @@ _CORRELATIONSTATS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="cramers_v",
@@ -920,6 +969,7 @@ _CORRELATIONSTATS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

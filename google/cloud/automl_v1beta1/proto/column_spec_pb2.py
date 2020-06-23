@@ -27,6 +27,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n3google/cloud/automl_v1beta1/proto/column_spec.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x19google/api/resource.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_stats.proto\x1a\x32google/cloud/automl_v1beta1/proto/data_types.proto\x1a\x1cgoogle/api/annotations.proto"\x9b\x04\n\nColumnSpec\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x38\n\tdata_type\x18\x02 \x01(\x0b\x32%.google.cloud.automl.v1beta1.DataType\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12:\n\ndata_stats\x18\x04 \x01(\x0b\x32&.google.cloud.automl.v1beta1.DataStats\x12X\n\x16top_correlated_columns\x18\x05 \x03(\x0b\x32\x38.google.cloud.automl.v1beta1.ColumnSpec.CorrelatedColumn\x12\x0c\n\x04\x65tag\x18\x06 \x01(\t\x1at\n\x10\x43orrelatedColumn\x12\x16\n\x0e\x63olumn_spec_id\x18\x01 \x01(\t\x12H\n\x11\x63orrelation_stats\x18\x02 \x01(\x0b\x32-.google.cloud.automl.v1beta1.CorrelationStats:\x94\x01\xea\x41\x90\x01\n automl.googleapis.com/ColumnSpec\x12lprojects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}/columnSpecs/{column_spec}B\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[
         google_dot_api_dot_resource__pb2.DESCRIPTOR,
@@ -43,6 +44,7 @@ _COLUMNSPEC_CORRELATEDCOLUMN = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="column_spec_id",
@@ -61,6 +63,7 @@ _COLUMNSPEC_CORRELATEDCOLUMN = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="correlation_stats",
@@ -79,6 +82,7 @@ _COLUMNSPEC_CORRELATEDCOLUMN = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -99,6 +103,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -117,6 +122,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="data_type",
@@ -135,6 +141,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="display_name",
@@ -153,6 +160,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="data_stats",
@@ -171,6 +179,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="top_correlated_columns",
@@ -189,6 +198,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="etag",
@@ -207,6 +217,7 @@ _COLUMNSPEC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

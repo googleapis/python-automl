@@ -23,6 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.automl.v1beta1",
     syntax="proto3",
     serialized_options=b"\n\037com.google.cloud.automl.v1beta1P\001ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\312\002\033Google\\Cloud\\AutoMl\\V1beta1\352\002\036Google::Cloud::AutoML::V1beta1",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n7google/cloud/automl_v1beta1/proto/text_extraction.proto\x12\x1bgoogle.cloud.automl.v1beta1\x1a\x34google/cloud/automl_v1beta1/proto/text_segment.proto\x1a\x1cgoogle/api/annotations.proto"y\n\x18TextExtractionAnnotation\x12@\n\x0ctext_segment\x18\x03 \x01(\x0b\x32(.google.cloud.automl.v1beta1.TextSegmentH\x00\x12\r\n\x05score\x18\x01 \x01(\x02\x42\x0c\n\nannotation"\x97\x02\n\x1fTextExtractionEvaluationMetrics\x12\x0e\n\x06\x61u_prc\x18\x01 \x01(\x02\x12w\n\x1a\x63onfidence_metrics_entries\x18\x02 \x03(\x0b\x32S.google.cloud.automl.v1beta1.TextExtractionEvaluationMetrics.ConfidenceMetricsEntry\x1ak\n\x16\x43onfidenceMetricsEntry\x12\x1c\n\x14\x63onfidence_threshold\x18\x01 \x01(\x02\x12\x0e\n\x06recall\x18\x03 \x01(\x02\x12\x11\n\tprecision\x18\x04 \x01(\x02\x12\x10\n\x08\x66\x31_score\x18\x05 \x01(\x02\x42\xa5\x01\n\x1f\x63om.google.cloud.automl.v1beta1P\x01ZAgoogle.golang.org/genproto/googleapis/cloud/automl/v1beta1;automl\xca\x02\x1bGoogle\\Cloud\\AutoMl\\V1beta1\xea\x02\x1eGoogle::Cloud::AutoML::V1beta1b\x06proto3',
     dependencies=[
         google_dot_cloud_dot_automl__v1beta1_dot_proto_dot_text__segment__pb2.DESCRIPTOR,
@@ -37,6 +38,7 @@ _TEXTEXTRACTIONANNOTATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="text_segment",
@@ -55,6 +57,7 @@ _TEXTEXTRACTIONANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="score",
@@ -73,6 +76,7 @@ _TEXTEXTRACTIONANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -88,6 +92,7 @@ _TEXTEXTRACTIONANNOTATION = _descriptor.Descriptor(
             full_name="google.cloud.automl.v1beta1.TextExtractionAnnotation.annotation",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -102,6 +107,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="confidence_threshold",
@@ -120,6 +126,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="recall",
@@ -138,6 +145,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="precision",
@@ -156,6 +164,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="f1_score",
@@ -174,6 +183,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS_CONFIDENCEMETRICSENTRY = _descriptor.Descriptor
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -194,6 +204,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="au_prc",
@@ -212,6 +223,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="confidence_metrics_entries",
@@ -230,6 +242,7 @@ _TEXTEXTRACTIONEVALUATIONMETRICS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

@@ -116,36 +116,6 @@ class AutoMlGrpcTransport(object):
         return self._channel
 
     @property
-    def delete_dataset(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.delete_dataset`.
-
-        Deletes a dataset and all of its contents. Returns empty response in
-        the ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["auto_ml_stub"].DeleteDataset
-
-    @property
-    def delete_model(self):
-        """Return the gRPC stub for :meth:`AutoMlClient.delete_model`.
-
-        Deletes a model. Returns ``google.protobuf.Empty`` in the
-        ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["auto_ml_stub"].DeleteModel
-
-    @property
     def create_dataset(self):
         """Return the gRPC stub for :meth:`AutoMlClient.create_dataset`.
 
@@ -196,6 +166,21 @@ class AutoMlGrpcTransport(object):
                 deserialized response object.
         """
         return self._stubs["auto_ml_stub"].UpdateDataset
+
+    @property
+    def delete_dataset(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.delete_dataset`.
+
+        Deletes a dataset and all of its contents. Returns empty response in
+        the ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["auto_ml_stub"].DeleteDataset
 
     @property
     def import_data(self):
@@ -285,6 +270,21 @@ class AutoMlGrpcTransport(object):
                 deserialized response object.
         """
         return self._stubs["auto_ml_stub"].ListModels
+
+    @property
+    def delete_model(self):
+        """Return the gRPC stub for :meth:`AutoMlClient.delete_model`.
+
+        Deletes a model. Returns ``google.protobuf.Empty`` in the
+        ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["auto_ml_stub"].DeleteModel
 
     @property
     def update_model(self):

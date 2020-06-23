@@ -266,178 +266,6 @@ class AutoMlClient(object):
         self._inner_api_calls = {}
 
     # Service calls
-    def delete_dataset(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Deletes a dataset and all of its contents. Returns empty response in
-        the ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
-
-        Example:
-            >>> from google.cloud import automl_v1
-            >>>
-            >>> client = automl_v1.AutoMlClient()
-            >>>
-            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
-            >>>
-            >>> response = client.delete_dataset(name)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. The resource name of the dataset to delete.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "delete_dataset" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "delete_dataset"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.delete_dataset,
-                default_retry=self._method_configs["DeleteDataset"].retry,
-                default_timeout=self._method_configs["DeleteDataset"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.DeleteDatasetRequest(name=name,)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["delete_dataset"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
-    def delete_model(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Deletes a model. Returns ``google.protobuf.Empty`` in the
-        ``response`` field when it completes, and ``delete_details`` in the
-        ``metadata`` field.
-
-        Example:
-            >>> from google.cloud import automl_v1
-            >>>
-            >>> client = automl_v1.AutoMlClient()
-            >>>
-            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
-            >>>
-            >>> response = client.delete_model(name)
-            >>>
-            >>> def callback(operation_future):
-            ...     # Handle result.
-            ...     result = operation_future.result()
-            >>>
-            >>> response.add_done_callback(callback)
-            >>>
-            >>> # Handle metadata.
-            >>> metadata = response.metadata()
-
-        Args:
-            name (str): Required. Resource name of the model being deleted.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.automl_v1.types._OperationFuture` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "delete_model" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "delete_model"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.delete_model,
-                default_retry=self._method_configs["DeleteModel"].retry,
-                default_timeout=self._method_configs["DeleteModel"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = service_pb2.DeleteModelRequest(name=name,)
-        if metadata is None:
-            metadata = []
-        metadata = list(metadata)
-        try:
-            routing_header = [("name", name)]
-        except AttributeError:
-            pass
-        else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
-            metadata.append(routing_metadata)
-
-        operation = self._inner_api_calls["delete_model"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-        return google.api_core.operation.from_gapic(
-            operation,
-            self.transport._operations_client,
-            empty_pb2.Empty,
-            metadata_type=proto_operations_pb2.OperationMetadata,
-        )
-
     def create_dataset(
         self,
         parent,
@@ -792,6 +620,92 @@ class AutoMlClient(object):
 
         return self._inner_api_calls["update_dataset"](
             request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def delete_dataset(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Deletes a dataset and all of its contents. Returns empty response in
+        the ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Example:
+            >>> from google.cloud import automl_v1
+            >>>
+            >>> client = automl_v1.AutoMlClient()
+            >>>
+            >>> name = client.dataset_path('[PROJECT]', '[LOCATION]', '[DATASET]')
+            >>>
+            >>> response = client.delete_dataset(name)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. The resource name of the dataset to delete.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "delete_dataset" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "delete_dataset"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.delete_dataset,
+                default_retry=self._method_configs["DeleteDataset"].retry,
+                default_timeout=self._method_configs["DeleteDataset"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.DeleteDatasetRequest(name=name,)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["delete_dataset"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
         )
 
     def import_data(
@@ -1335,6 +1249,92 @@ class AutoMlClient(object):
             response_token_field="next_page_token",
         )
         return iterator
+
+    def delete_model(
+        self,
+        name,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Deletes a model. Returns ``google.protobuf.Empty`` in the
+        ``response`` field when it completes, and ``delete_details`` in the
+        ``metadata`` field.
+
+        Example:
+            >>> from google.cloud import automl_v1
+            >>>
+            >>> client = automl_v1.AutoMlClient()
+            >>>
+            >>> name = client.model_path('[PROJECT]', '[LOCATION]', '[MODEL]')
+            >>>
+            >>> response = client.delete_model(name)
+            >>>
+            >>> def callback(operation_future):
+            ...     # Handle result.
+            ...     result = operation_future.result()
+            >>>
+            >>> response.add_done_callback(callback)
+            >>>
+            >>> # Handle metadata.
+            >>> metadata = response.metadata()
+
+        Args:
+            name (str): Required. Resource name of the model being deleted.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.automl_v1.types._OperationFuture` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "delete_model" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "delete_model"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.delete_model,
+                default_retry=self._method_configs["DeleteModel"].retry,
+                default_timeout=self._method_configs["DeleteModel"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = service_pb2.DeleteModelRequest(name=name,)
+        if metadata is None:
+            metadata = []
+        metadata = list(metadata)
+        try:
+            routing_header = [("name", name)]
+        except AttributeError:
+            pass
+        else:
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
+                routing_header
+            )
+            metadata.append(routing_metadata)
+
+        operation = self._inner_api_calls["delete_model"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+        return google.api_core.operation.from_gapic(
+            operation,
+            self.transport._operations_client,
+            empty_pb2.Empty,
+            metadata_type=proto_operations_pb2.OperationMetadata,
+        )
 
     def update_model(
         self,

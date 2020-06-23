@@ -70,6 +70,106 @@ class CustomException(Exception):
 
 
 class TestAutoMlClient(object):
+    def test_delete_dataset(self):
+        # Setup Expected Response
+        expected_response = {}
+        expected_response = empty_pb2.Empty(**expected_response)
+        operation = operations_pb2.Operation(
+            name="operations/test_delete_dataset", done=True
+        )
+        operation.response.Pack(expected_response)
+
+        # Mock the API response
+        channel = ChannelStub(responses=[operation])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = automl_v1.AutoMlClient()
+
+        # Setup Request
+        name = client.dataset_path("[PROJECT]", "[LOCATION]", "[DATASET]")
+
+        response = client.delete_dataset(name)
+        result = response.result()
+        assert expected_response == result
+
+        assert len(channel.requests) == 1
+        expected_request = service_pb2.DeleteDatasetRequest(name=name)
+        actual_request = channel.requests[0][1]
+        assert expected_request == actual_request
+
+    def test_delete_dataset_exception(self):
+        # Setup Response
+        error = status_pb2.Status()
+        operation = operations_pb2.Operation(
+            name="operations/test_delete_dataset_exception", done=True
+        )
+        operation.error.CopyFrom(error)
+
+        # Mock the API response
+        channel = ChannelStub(responses=[operation])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = automl_v1.AutoMlClient()
+
+        # Setup Request
+        name = client.dataset_path("[PROJECT]", "[LOCATION]", "[DATASET]")
+
+        response = client.delete_dataset(name)
+        exception = response.exception()
+        assert exception.errors[0] == error
+
+    def test_delete_model(self):
+        # Setup Expected Response
+        expected_response = {}
+        expected_response = empty_pb2.Empty(**expected_response)
+        operation = operations_pb2.Operation(
+            name="operations/test_delete_model", done=True
+        )
+        operation.response.Pack(expected_response)
+
+        # Mock the API response
+        channel = ChannelStub(responses=[operation])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = automl_v1.AutoMlClient()
+
+        # Setup Request
+        name = client.model_path("[PROJECT]", "[LOCATION]", "[MODEL]")
+
+        response = client.delete_model(name)
+        result = response.result()
+        assert expected_response == result
+
+        assert len(channel.requests) == 1
+        expected_request = service_pb2.DeleteModelRequest(name=name)
+        actual_request = channel.requests[0][1]
+        assert expected_request == actual_request
+
+    def test_delete_model_exception(self):
+        # Setup Response
+        error = status_pb2.Status()
+        operation = operations_pb2.Operation(
+            name="operations/test_delete_model_exception", done=True
+        )
+        operation.error.CopyFrom(error)
+
+        # Mock the API response
+        channel = ChannelStub(responses=[operation])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = automl_v1.AutoMlClient()
+
+        # Setup Request
+        name = client.model_path("[PROJECT]", "[LOCATION]", "[MODEL]")
+
+        response = client.delete_model(name)
+        exception = response.exception()
+        assert exception.errors[0] == error
+
     def test_create_dataset(self):
         # Setup Expected Response
         name = "name3373707"
@@ -134,58 +234,6 @@ class TestAutoMlClient(object):
         response = client.create_dataset(parent, dataset)
         exception = response.exception()
         assert exception.errors[0] == error
-
-    def test_update_dataset(self):
-        # Setup Expected Response
-        name = "name3373707"
-        display_name = "displayName1615086568"
-        description = "description-1724546052"
-        example_count = 1517063674
-        etag = "etag3123477"
-        expected_response = {
-            "name": name,
-            "display_name": display_name,
-            "description": description,
-            "example_count": example_count,
-            "etag": etag,
-        }
-        expected_response = dataset_pb2.Dataset(**expected_response)
-
-        # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = automl_v1.AutoMlClient()
-
-        # Setup Request
-        dataset = {}
-        update_mask = {}
-
-        response = client.update_dataset(dataset, update_mask)
-        assert expected_response == response
-
-        assert len(channel.requests) == 1
-        expected_request = service_pb2.UpdateDatasetRequest(
-            dataset=dataset, update_mask=update_mask
-        )
-        actual_request = channel.requests[0][1]
-        assert expected_request == actual_request
-
-    def test_update_dataset_exception(self):
-        # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = automl_v1.AutoMlClient()
-
-        # Setup request
-        dataset = {}
-        update_mask = {}
-
-        with pytest.raises(CustomException):
-            client.update_dataset(dataset, update_mask)
 
     def test_get_dataset(self):
         # Setup Expected Response
@@ -278,55 +326,57 @@ class TestAutoMlClient(object):
         with pytest.raises(CustomException):
             list(paged_list_response)
 
-    def test_delete_dataset(self):
+    def test_update_dataset(self):
         # Setup Expected Response
-        expected_response = {}
-        expected_response = empty_pb2.Empty(**expected_response)
-        operation = operations_pb2.Operation(
-            name="operations/test_delete_dataset", done=True
-        )
-        operation.response.Pack(expected_response)
+        name = "name3373707"
+        display_name = "displayName1615086568"
+        description = "description-1724546052"
+        example_count = 1517063674
+        etag = "etag3123477"
+        expected_response = {
+            "name": name,
+            "display_name": display_name,
+            "description": description,
+            "example_count": example_count,
+            "etag": etag,
+        }
+        expected_response = dataset_pb2.Dataset(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[operation])
+        channel = ChannelStub(responses=[expected_response])
         patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = automl_v1.AutoMlClient()
 
         # Setup Request
-        name = client.dataset_path("[PROJECT]", "[LOCATION]", "[DATASET]")
+        dataset = {}
+        update_mask = {}
 
-        response = client.delete_dataset(name)
-        result = response.result()
-        assert expected_response == result
+        response = client.update_dataset(dataset, update_mask)
+        assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = service_pb2.DeleteDatasetRequest(name=name)
+        expected_request = service_pb2.UpdateDatasetRequest(
+            dataset=dataset, update_mask=update_mask
+        )
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
-    def test_delete_dataset_exception(self):
-        # Setup Response
-        error = status_pb2.Status()
-        operation = operations_pb2.Operation(
-            name="operations/test_delete_dataset_exception", done=True
-        )
-        operation.error.CopyFrom(error)
-
+    def test_update_dataset_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[operation])
+        channel = ChannelStub(responses=[CustomException()])
         patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = automl_v1.AutoMlClient()
 
-        # Setup Request
-        name = client.dataset_path("[PROJECT]", "[LOCATION]", "[DATASET]")
+        # Setup request
+        dataset = {}
+        update_mask = {}
 
-        response = client.delete_dataset(name)
-        exception = response.exception()
-        assert exception.errors[0] == error
+        with pytest.raises(CustomException):
+            client.update_dataset(dataset, update_mask)
 
     def test_import_data(self):
         # Setup Expected Response
@@ -591,6 +641,49 @@ class TestAutoMlClient(object):
         with pytest.raises(CustomException):
             client.get_model(name)
 
+    def test_list_models(self):
+        # Setup Expected Response
+        next_page_token = ""
+        model_element = {}
+        model = [model_element]
+        expected_response = {"next_page_token": next_page_token, "model": model}
+        expected_response = service_pb2.ListModelsResponse(**expected_response)
+
+        # Mock the API response
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = automl_v1.AutoMlClient()
+
+        # Setup Request
+        parent = client.location_path("[PROJECT]", "[LOCATION]")
+
+        paged_list_response = client.list_models(parent)
+        resources = list(paged_list_response)
+        assert len(resources) == 1
+
+        assert expected_response.model[0] == resources[0]
+
+        assert len(channel.requests) == 1
+        expected_request = service_pb2.ListModelsRequest(parent=parent)
+        actual_request = channel.requests[0][1]
+        assert expected_request == actual_request
+
+    def test_list_models_exception(self):
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = automl_v1.AutoMlClient()
+
+        # Setup request
+        parent = client.location_path("[PROJECT]", "[LOCATION]")
+
+        paged_list_response = client.list_models(parent)
+        with pytest.raises(CustomException):
+            list(paged_list_response)
+
     def test_update_model(self):
         # Setup Expected Response
         name = "name3373707"
@@ -640,99 +733,6 @@ class TestAutoMlClient(object):
 
         with pytest.raises(CustomException):
             client.update_model(model, update_mask)
-
-    def test_list_models(self):
-        # Setup Expected Response
-        next_page_token = ""
-        model_element = {}
-        model = [model_element]
-        expected_response = {"next_page_token": next_page_token, "model": model}
-        expected_response = service_pb2.ListModelsResponse(**expected_response)
-
-        # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = automl_v1.AutoMlClient()
-
-        # Setup Request
-        parent = client.location_path("[PROJECT]", "[LOCATION]")
-
-        paged_list_response = client.list_models(parent)
-        resources = list(paged_list_response)
-        assert len(resources) == 1
-
-        assert expected_response.model[0] == resources[0]
-
-        assert len(channel.requests) == 1
-        expected_request = service_pb2.ListModelsRequest(parent=parent)
-        actual_request = channel.requests[0][1]
-        assert expected_request == actual_request
-
-    def test_list_models_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = automl_v1.AutoMlClient()
-
-        # Setup request
-        parent = client.location_path("[PROJECT]", "[LOCATION]")
-
-        paged_list_response = client.list_models(parent)
-        with pytest.raises(CustomException):
-            list(paged_list_response)
-
-    def test_delete_model(self):
-        # Setup Expected Response
-        expected_response = {}
-        expected_response = empty_pb2.Empty(**expected_response)
-        operation = operations_pb2.Operation(
-            name="operations/test_delete_model", done=True
-        )
-        operation.response.Pack(expected_response)
-
-        # Mock the API response
-        channel = ChannelStub(responses=[operation])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = automl_v1.AutoMlClient()
-
-        # Setup Request
-        name = client.model_path("[PROJECT]", "[LOCATION]", "[MODEL]")
-
-        response = client.delete_model(name)
-        result = response.result()
-        assert expected_response == result
-
-        assert len(channel.requests) == 1
-        expected_request = service_pb2.DeleteModelRequest(name=name)
-        actual_request = channel.requests[0][1]
-        assert expected_request == actual_request
-
-    def test_delete_model_exception(self):
-        # Setup Response
-        error = status_pb2.Status()
-        operation = operations_pb2.Operation(
-            name="operations/test_delete_model_exception", done=True
-        )
-        operation.error.CopyFrom(error)
-
-        # Mock the API response
-        channel = ChannelStub(responses=[operation])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = automl_v1.AutoMlClient()
-
-        # Setup Request
-        name = client.model_path("[PROJECT]", "[LOCATION]", "[MODEL]")
-
-        response = client.delete_model(name)
-        exception = response.exception()
-        assert exception.errors[0] == error
 
     def test_deploy_model(self):
         # Setup Expected Response

@@ -919,7 +919,7 @@ TablesAnnotation = _reflection.GeneratedProtocolMessageType(
           nput_feature_column_specs][google.cloud.automl.v1beta1.TablesM
           odelMetadata.input_feature_column_specs] with respect to this
           particular prediction. If no other fields than  [column_spec_n
-          ame][google.cloud.automl.v1beta1.TablesModelColumnInfo.column_
+          ame][google.cloud.automl.v1beta1.TablesModelColumnInfo.column\_
           spec_name] and  [column_display_name][google.cloud.automl.v1be
           ta1.TablesModelColumnInfo.column_display_name] would be
           populated, then this whole field is not.

@@ -691,7 +691,7 @@ ImageClassificationModelDeploymentMetadata = _reflection.GeneratedProtocolMessag
           Input only. The number of nodes to deploy the model on. A node
           is an abstraction of a machine resource, which can handle
           online prediction QPS as given in the model’s  [node_qps][goog
-          le.cloud.automl.v1beta1.ImageClassificationModelMetadata.node_
+          le.cloud.automl.v1beta1.ImageClassificationModelMetadata.node\_
           qps]. Must be between 1 and 100, inclusive on both ends.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.automl.v1beta1.ImageClassificationModelDeploymentMetadata)

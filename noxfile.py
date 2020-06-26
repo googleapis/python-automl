@@ -146,12 +146,11 @@ def docs(session):
     """Build the docs for this library."""
 
     session.install("-e", ".[pandas,storage]")
-    session.install("sphinx", "alabaster", "recommonmark")
+    session.install("sphinx<3.0.0", "alabaster", "recommonmark")
 
     shutil.rmtree(os.path.join("docs", "_build"), ignore_errors=True)
     session.run(
         "sphinx-build",
-        "-W",  # warnings as errors
         "-T",  # show full traceback on exception
         "-N",  # no colors
         "-b",

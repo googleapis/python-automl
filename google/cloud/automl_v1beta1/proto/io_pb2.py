@@ -1290,23 +1290,7 @@ BatchPredictInputConfig = _reflection.GeneratedProtocolMessageType(
   wraps a Document proto with    input_config set. Only PDF documents
   are supported now, and each    document must be up to 2MB large. Any
   given .JSONL file must be 100MB    or smaller, and no more than 20
-  files may be given. Sample in-line    JSON Lines file (presented here
-  with artificial line breaks, but the    only actual line break is
-  denoted by :raw-latex:`\n`): { “id”:    “my_first_id”, “text_snippet”:
-  { “content”: “dog car cat”},    “text_features”: [ { “text_segment”:
-  {“start_offset”: 4,    “end_offset”: 6}, “structural_type”: PARAGRAPH,
-  “bounding_poly”: {    “normalized_vertices”: [ {“x”: 0.1, “y”: 0.1},
-  {“x”: 0.1, “y”: 0.3},    {“x”: 0.3, “y”: 0.3}, {“x”: 0.3, “y”: 0.1}, ]
-  }, } ], }:raw-latex:`\n           {             "id": "2",
-  "text_snippet": {               "content": "An elaborate content",
-  "mime_type": "text/plain"             }           }` Sample document
-  JSON Lines file (presented here with    artificial line breaks, but
-  the only actual line break is denoted by    :raw-latex:`\n`).: {
-  “document”: { “input_config”: { “gcs_source”: {    “input_uris”: [
-  “gs://folder/document1.pdf” ] } } } }:raw-latex:`\n           {
-  "document": {               "input_config": {
-  "gcs_source": { "input_uris": [ "gs://folder/document2.pdf" ]
-  }               }             }           }`  -  For Tables: Either
+  files may be given. -  For Tables: Either
   [gcs_source][google.cloud.automl.v1beta1.InputConfig.gcs_source] or  [
   bigquery_source][google.cloud.automl.v1beta1.InputConfig.bigquery_sour
   ce]. GCS case: CSV file(s), each by itself 10GB or smaller and total
@@ -1466,7 +1450,7 @@ BatchPredictOutputConfig = _reflection.GeneratedProtocolMessageType(
   depends on total number of failed predictions). These files will have
   a JSON representation of a proto that wraps the same “ID” : “” but
   here followed by exactly one  ```google.rpc.Status`` <https:%20//githu
-  b.com/googleapis/googleapis/blob/master/google/rpc/status.proto>`__
+  b.com/googleapis/googleapis/blob/master/google/rpc/status.proto>`_\_
   containing only ``code`` and ``message``\ fields.  -  For Image Object
   Detection: In the created directory files
   ``image_object_detection_1.jsonl``,
@@ -1627,7 +1611,7 @@ BatchPredictOutputConfig = _reflection.GeneratedProtocolMessageType(
   be created (N depends on total number of failed rows). These files
   will have analogous format as ``tables_*.csv``, but always with a
   single target column having  ```google.rpc.Status`` <https:%20//github
-  .com/googleapis/googleapis/blob/master/google/rpc/status.proto>`__
+  .com/googleapis/googleapis/blob/master/google/rpc/status.proto>`_\_
   represented as a JSON string, and containing only ``code`` and
   ``message``. BigQuery case:  [bigquery_destination][google.cloud.autom
   l.v1beta1.OutputConfig.bigquery_destination] pointing to a BigQuery
@@ -1719,7 +1703,7 @@ ModelExportOutputConfig = _reflection.GeneratedProtocolMessageType(
           mobile devices. -  edgetpu_tflite - Used for `Edge    TPU
           <https://cloud.google.com/edge-tpu/>`__ devices. -
           tf_saved_model - A tensorflow model in SavedModel format. -
-          tf_js - A `TensorFlow.js <https://www.tensorflow.org/js>`__
+          tf_js - A `TensorFlow.js <https://www.tensorflow.org/js>`_\_
           model    that can be used in the browser and in Node.js using
           JavaScript. -  docker - Used for Docker containers. Use the
           params field to    customize the container. The container is

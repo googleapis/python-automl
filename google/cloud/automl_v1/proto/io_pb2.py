@@ -944,7 +944,7 @@ InputConfig = _reflection.GeneratedProtocolMessageType(
   raw:: html     <pre>    "Id","First Name","Last
   Name","Dob","Addresses"     "1","John","Doe","1968-01-22","[{"status":
   "current","address":"123_First_Avenue","city":"Seattle","state":"WA","
-  zip":"11111","numberOfYears":"1"},{"status":"previous","address":"456_
+  zip":"11111","numberOfYears":"1"},{"status":"previous","address":"456\_
   Main_Street","city":"Portland","state":"OR","zip":"22222","numberOfYea
   rs":"5"}]"     "2","Jane","Doe","1980-10-16","[{"status":"current","ad
   dress":"789_Any_Avenue","city":"Albany","state":"NY","zip":"33333","nu
@@ -1271,7 +1271,7 @@ BatchPredictOutputConfig = _reflection.GeneratedProtocolMessageType(
   depends on total number of failed predictions). These files will have
   a JSON representation of a proto that wraps the same “ID” : “” but
   here followed by exactly one  ```google.rpc.Status`` <https:%20//githu
-  b.com/googleapis/googleapis/blob/master/google/rpc/status.proto>`__
+  b.com/googleapis/googleapis/blob/master/google/rpc/status.proto>`_\_
   containing only ``code`` and ``message``\ fields.  -  For Image Object
   Detection: In the created directory files
   ``image_object_detection_1.jsonl``,
@@ -1433,7 +1433,7 @@ BatchPredictOutputConfig = _reflection.GeneratedProtocolMessageType(
   be created (N depends on total number of failed rows). These files
   will have analogous format as ``tables_*.csv``, but always with a
   single target column having  ```google.rpc.Status`` <https:%20//github
-  .com/googleapis/googleapis/blob/master/google/rpc/status.proto>`__
+  .com/googleapis/googleapis/blob/master/google/rpc/status.proto>`_\_
   represented as a JSON string, and containing only ``code`` and
   ``message``. BigQuery case:  [bigquery_destination][google.cloud.autom
   l.v1p1beta.OutputConfig.bigquery_destination] pointing to a BigQuery

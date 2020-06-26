@@ -118,7 +118,6 @@ def system(session):
     session.install(
         "mock", "pytest", "google-cloud-testutils",
     )
-    session.install("-e", "test_utils")
     session.install("-e", ".[pandas,storage]")
 
     # Run py.test against the system tests.

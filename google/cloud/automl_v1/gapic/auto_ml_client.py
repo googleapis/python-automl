@@ -465,7 +465,7 @@ class AutoMlClient(object):
             filter_ (str): An expression for filtering the results of the request.
 
                 -  ``dataset_metadata`` - for existence of the case (e.g.
-                   ````image_classification_dataset_metadata````). Some examples of using the
+                   ``image_classification_dataset_metadata``). Some examples of using the
                    filter are:
 
                 -  ``translation_dataset_metadata:*`` --> The dataset has
@@ -1173,7 +1173,7 @@ class AutoMlClient(object):
             filter_ (str): An expression for filtering the results of the request.
 
                 -  ``model_metadata`` - for existence of the case (e.g.
-                   ````video_classification_model_metadata:*````).
+                   ``video_classification_model_metadata:*``).
 
                 -  ``dataset_id`` - for = or !=. Some examples of using the filter are:
 

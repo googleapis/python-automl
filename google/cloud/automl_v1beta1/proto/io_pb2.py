@@ -1290,7 +1290,23 @@ BatchPredictInputConfig = _reflection.GeneratedProtocolMessageType(
   wraps a Document proto with    input_config set. Only PDF documents
   are supported now, and each    document must be up to 2MB large. Any
   given .JSONL file must be 100MB    or smaller, and no more than 20
-  files may be given. -  For Tables: Either
+  files may be given. Sample in-line    JSON Lines file (presented here
+  with artificial line breaks, but the    only actual line break is
+  denoted by :raw-latex:`\n`): { “id”:    “my_first_id”, “text_snippet”:
+  { “content”: “dog car cat”},    “text_features”: [ { “text_segment”:
+  {“start_offset”: 4,    “end_offset”: 6}, “structural_type”: PARAGRAPH,
+  “bounding_poly”: {    “normalized_vertices”: [ {“x”: 0.1, “y”: 0.1},
+  {“x”: 0.1, “y”: 0.3},    {“x”: 0.3, “y”: 0.3}, {“x”: 0.3, “y”: 0.1}, ]
+  }, } ], }:raw-latex:`\n           {             "id": "2",
+  "text_snippet": {               "content": "An elaborate content",
+  "mime_type": "text/plain"             }           }` Sample document
+  JSON Lines file (presented here with    artificial line breaks, but
+  the only actual line break is denoted by    :raw-latex:`\n`).: {
+  “document”: { “input_config”: { “gcs_source”: {    “input_uris”: [
+  “gs://folder/document1.pdf” ] } } } }:raw-latex:`\n           {
+  "document": {               "input_config": {
+  "gcs_source": { "input_uris": [ "gs://folder/document2.pdf" ]
+  }               }             }           }`  -  For Tables: Either
   [gcs_source][google.cloud.automl.v1beta1.InputConfig.gcs_source] or  [
   bigquery_source][google.cloud.automl.v1beta1.InputConfig.bigquery_sour
   ce]. GCS case: CSV file(s), each by itself 10GB or smaller and total

@@ -87,6 +87,7 @@ def batch_predict_bq(
     model_display_name,
     bq_input_uri,
     bq_output_uri,
+    params
 ):
     """Make a batch of predictions."""
     # [START automl_tables_batch_predict_bq]
@@ -96,6 +97,7 @@ def batch_predict_bq(
     # model_display_name = 'MODEL_DISPLAY_NAME_HERE'
     # bq_input_uri = 'bq://my-project.my-dataset.my-table'
     # bq_output_uri = 'bq://my-project'
+    # params = {}
 
     from google.cloud import automl_v1beta1 as automl
 
@@ -104,7 +106,8 @@ def batch_predict_bq(
     # Query model
     response = client.batch_predict(bigquery_input_uri=bq_input_uri,
                                     bigquery_output_uri=bq_output_uri,
-                                    model_display_name=model_display_name)
+                                    model_display_name=model_display_name,
+                                    params=params)
     print("Making batch prediction... ")
     # `response` is a async operation descriptor,
     # you can register a callback for the operation to complete via `add_done_callback`:
@@ -130,6 +133,7 @@ def batch_predict(
     model_display_name,
     gcs_input_uri,
     gcs_output_uri,
+    params,
 ):
     """Make a batch of predictions."""
     # [START automl_tables_batch_predict]
@@ -139,6 +143,7 @@ def batch_predict(
     # model_display_name = 'MODEL_DISPLAY_NAME_HERE'
     # gcs_input_uri = 'gs://YOUR_BUCKET_ID/path_to_your_input_csv'
     # gcs_output_uri = 'gs://YOUR_BUCKET_ID/path_to_save_results/'
+    # params = {}
 
     from google.cloud import automl_v1beta1 as automl
 
@@ -149,6 +154,7 @@ def batch_predict(
         gcs_input_uris=gcs_input_uri,
         gcs_output_uri_prefix=gcs_output_uri,
         model_display_name=model_display_name,
+        params=params
     )
     print("Making batch prediction... ")
     # `response` is a async operation descriptor,

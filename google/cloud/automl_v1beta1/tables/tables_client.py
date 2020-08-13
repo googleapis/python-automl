@@ -21,11 +21,14 @@ import logging
 import six
 
 from google.api_core.gapic_v1 import client_info
+
 from google.api_core import exceptions
-from google.cloud.automl_v1beta1 import gapic
-from google.cloud.automl_v1beta1.proto import data_items_pb2
+from google.cloud.automl_v1beta1 import AutoMlClient
+from google.cloud.automl_v1beta1 import PredictionServiceClient
+from google.cloud.automl_v1beta1 import data_items
 from google.cloud.automl_v1beta1.tables import gcs_client
 from google.protobuf import struct_pb2
+import google.cloud.automl_v1beta1
 
 
 _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-automl").version
@@ -176,14 +179,14 @@ class TablesClient(object):
         kwargs.pop("client_info", None)
 
         if client is None:
-            self.auto_ml_client = gapic.auto_ml_client.AutoMlClient(
+            self.auto_ml_client = AutoMlClient(
                 credentials=credentials, client_info=client_info_, **kwargs
             )
         else:
             self.auto_ml_client = client
 
         if prediction_client is None:
-            self.prediction_client = gapic.prediction_service_client.PredictionServiceClient(
+            self.prediction_client = PredictionServiceClient(
                 credentials=credentials, client_info=client_info_, **kwargs
             )
         else:
@@ -521,7 +524,7 @@ class TablesClient(object):
             ValueError: If required parameters are missing.
         """
         return self.auto_ml_client.list_datasets(
-            self.__location_path(project=project, region=region), **kwargs
+            parent=self.__location_path(project=project, region=region), **kwargs
         )
 
     def get_dataset(
@@ -583,7 +586,7 @@ class TablesClient(object):
             )
 
         if dataset_name is not None:
-            return self.auto_ml_client.get_dataset(dataset_name, **kwargs)
+            return self.auto_ml_client.get_dataset(name=dataset_name, **kwargs)
 
         return self.__lookup_by_display_name(
             "dataset",
@@ -631,8 +634,11 @@ class TablesClient(object):
             ValueError: If required parameters are missing.
         """
         return self.auto_ml_client.create_dataset(
-            self.__location_path(project, region),
-            {"display_name": dataset_display_name, "tables_dataset_metadata": metadata},
+            parent=self.__location_path(project, region),
+            dataset={
+                "display_name": dataset_display_name,
+                "tables_dataset_metadata": metadata,
+            },
             **kwargs
         )
 
@@ -709,7 +715,7 @@ class TablesClient(object):
         except exceptions.NotFound:
             return None
 
-        op = self.auto_ml_client.delete_dataset(dataset_name, **kwargs)
+        op = self.auto_ml_client.delete_dataset(name=dataset_name, **kwargs)
         self.__log_operation_info("Delete dataset", op)
         return op
 
@@ -832,7 +838,9 @@ class TablesClient(object):
                 "One of 'gcs_input_uris', or 'bigquery_input_uri', or 'pandas_dataframe' must be set."
             )
 
-        op = self.auto_ml_client.import_data(dataset_name, request, **kwargs)
+        op = self.auto_ml_client.import_data(
+            name=dataset_name, input_config=request, **kwargs
+        )
         self.__log_operation_info("Data import", op)
         return op
 
@@ -928,7 +936,9 @@ class TablesClient(object):
                 "One of 'gcs_output_uri_prefix', or 'bigquery_output_uri' must be set."
             )
 
-        op = self.auto_ml_client.export_data(dataset_name, request, **kwargs)
+        op = self.auto_ml_client.export_data(
+            name=dataset_name, output_config=request, **kwargs
+        )
         self.__log_operation_info("Export data", op)
         return op
 
@@ -1042,7 +1052,7 @@ class TablesClient(object):
             **kwargs
         )
 
-        return self.auto_ml_client.list_table_specs(dataset_name, **kwargs)
+        return self.auto_ml_client.list_table_specs(parent=dataset_name, **kwargs)
 
     def get_column_spec(self, column_spec_name, project=None, region=None, **kwargs):
         """Gets a single column spec in a particular project and region.
@@ -1177,7 +1187,7 @@ class TablesClient(object):
 
             table_spec_name = table_specs[table_spec_index].name
 
-        return self.auto_ml_client.list_column_specs(table_spec_name, **kwargs)
+        return self.auto_ml_client.list_column_specs(parent=table_spec_name, **kwargs)
 
     def update_column_spec(
         self,
@@ -1311,7 +1321,7 @@ class TablesClient(object):
 
         request = {"name": column_spec_name, "data_type": data_type}
 
-        return self.auto_ml_client.update_column_spec(request, **kwargs)
+        return self.auto_ml_client.update_column_spec(table_spec=request, **kwargs)
 
     def set_target_column(
         self,
@@ -1428,7 +1438,7 @@ class TablesClient(object):
 
         request = {"name": dataset.name, "tables_dataset_metadata": metadata}
 
-        return self.auto_ml_client.update_dataset(request, **kwargs)
+        return self.auto_ml_client.update_dataset(dataset=request, **kwargs)
 
     def set_time_column(
         self,
@@ -1546,7 +1556,7 @@ class TablesClient(object):
             "time_column_spec_id": column_spec_id,
         }
 
-        return self.auto_ml_client.update_table_spec(my_table_spec, **kwargs)
+        return self.auto_ml_client.update_table_spec(table_spec=my_table_spec, **kwargs)
 
     def clear_time_column(
         self,
@@ -1626,7 +1636,7 @@ class TablesClient(object):
 
         my_table_spec = {"name": table_spec_full_id, "time_column_spec_id": None}
 
-        return self.auto_ml_client.update_table_spec(my_table_spec, **kwargs)
+        return self.auto_ml_client.update_table_spec(table_spec=my_table_spec, **kwargs)
 
     def set_weight_column(
         self,
@@ -1743,7 +1753,7 @@ class TablesClient(object):
 
         request = {"name": dataset.name, "tables_dataset_metadata": metadata}
 
-        return self.auto_ml_client.update_dataset(request, **kwargs)
+        return self.auto_ml_client.update_dataset(dataset=request, **kwargs)
 
     def clear_weight_column(
         self,
@@ -1822,7 +1832,7 @@ class TablesClient(object):
 
         request = {"name": dataset.name, "tables_dataset_metadata": metadata}
 
-        return self.auto_ml_client.update_dataset(request, **kwargs)
+        return self.auto_ml_client.update_dataset(dataset=request, **kwargs)
 
     def set_test_train_column(
         self,
@@ -1940,7 +1950,7 @@ class TablesClient(object):
 
         request = {"name": dataset.name, "tables_dataset_metadata": metadata}
 
-        return self.auto_ml_client.update_dataset(request, **kwargs)
+        return self.auto_ml_client.update_dataset(dataset=request, **kwargs)
 
     def clear_test_train_column(
         self,
@@ -2020,7 +2030,7 @@ class TablesClient(object):
 
         request = {"name": dataset.name, "tables_dataset_metadata": metadata}
 
-        return self.auto_ml_client.update_dataset(request, **kwargs)
+        return self.auto_ml_client.update_dataset(dataset=request, **kwargs)
 
     def list_models(self, project=None, region=None, **kwargs):
         """List all models in a particular project and region.
@@ -2065,7 +2075,7 @@ class TablesClient(object):
             ValueError: If required parameters are missing.
         """
         return self.auto_ml_client.list_models(
-            self.__location_path(project=project, region=region), **kwargs
+            parent=self.__location_path(project=project, region=region), **kwargs
         )
 
     def list_model_evaluations(
@@ -2146,7 +2156,7 @@ class TablesClient(object):
             **kwargs
         )
 
-        return self.auto_ml_client.list_model_evaluations(model_name, **kwargs)
+        return self.auto_ml_client.list_model_evaluations(parent=model_name, **kwargs)
 
     def create_model(
         self,
@@ -2307,7 +2317,9 @@ class TablesClient(object):
         }
 
         op = self.auto_ml_client.create_model(
-            self.__location_path(project=project, region=region), request, **kwargs
+            parent=self.__location_path(project=project, region=region),
+            model=request,
+            **kwargs
         )
         self.__log_operation_info("Model creation", op)
         return op
@@ -2385,7 +2397,7 @@ class TablesClient(object):
         except exceptions.NotFound:
             return None
 
-        op = self.auto_ml_client.delete_model(model_name, **kwargs)
+        op = self.auto_ml_client.delete_model(name=model_name, **kwargs)
         self.__log_operation_info("Delete model", op)
         return op
 
@@ -2429,7 +2441,9 @@ class TablesClient(object):
                 to a retryable error and retry attempts failed.
             ValueError: If required parameters are missing.
         """
-        return self.auto_ml_client.get_model_evaluation(model_evaluation_name, **kwargs)
+        return self.auto_ml_client.get_model_evaluation(
+            name=model_evaluation_name, **kwargs
+        )
 
     def get_model(
         self,
@@ -2489,7 +2503,7 @@ class TablesClient(object):
             )
 
         if model_name is not None:
-            return self.auto_ml_client.get_model(model_name, **kwargs)
+            return self.auto_ml_client.get_model(name=model_name, **kwargs)
 
         return self.__lookup_by_display_name(
             "model", self.list_models(project, region, **kwargs), model_display_name
@@ -2565,7 +2579,7 @@ class TablesClient(object):
             **kwargs
         )
 
-        op = self.auto_ml_client.deploy_model(model_name, **kwargs)
+        op = self.auto_ml_client.deploy_model(name=model_name, **kwargs)
         self.__log_operation_info("Deploy model", op)
         return op
 
@@ -2637,7 +2651,7 @@ class TablesClient(object):
             **kwargs
         )
 
-        op = self.auto_ml_client.undeploy_model(model_name, **kwargs)
+        op = self.auto_ml_client.undeploy_model(name=model_name, **kwargs)
         self.__log_operation_info("Undeploy model", op)
         return op
 
@@ -2739,8 +2753,8 @@ class TablesClient(object):
                 raise ValueError(err)
             values.append(value_type)
 
-        row = data_items_pb2.Row(values=values)
-        payload = data_items_pb2.ExamplePayload(row=row)
+        row = data_items.Row(values=values)
+        payload = data_items.ExamplePayload(row=row)
 
         params = None
         if feature_importance:
@@ -2890,7 +2904,10 @@ class TablesClient(object):
             )
 
         op = self.prediction_client.batch_predict(
-            model_name, input_request, output_request, params, **kwargs
+            name=model_name,
+            input_config=input_request,
+            output_config=output_request,
+            **kwargs
         )
         self.__log_operation_info("Batch predict", op)
         return op

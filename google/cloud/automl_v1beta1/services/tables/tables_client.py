@@ -25,8 +25,8 @@ from google.api_core.gapic_v1 import client_info
 from google.api_core import exceptions
 from google.cloud.automl_v1beta1 import AutoMlClient
 from google.cloud.automl_v1beta1 import PredictionServiceClient
-from google.cloud.automl_v1beta1 import data_items
-from google.cloud.automl_v1beta1.tables import gcs_client
+from google.cloud.automl_v1beta1.types import data_items
+from google.cloud.automl_v1beta1.services.tables import gcs_client
 from google.protobuf import struct_pb2
 import google.cloud.automl_v1beta1
 
@@ -980,7 +980,7 @@ class TablesClient(object):
                 to a retryable error and retry attempts failed.
             ValueError: If required parameters are missing.
         """
-        return self.auto_ml_client.get_table_spec(table_spec_name, **kwargs)
+        return self.auto_ml_client.get_table_spec(name=table_spec_name, **kwargs)
 
     def list_table_specs(
         self,
@@ -1092,7 +1092,7 @@ class TablesClient(object):
                 to a retryable error and retry attempts failed.
             ValueError: If required parameters are missing.
         """
-        return self.auto_ml_client.get_column_spec(column_spec_name, **kwargs)
+        return self.auto_ml_client.get_column_spec(name=column_spec_name, **kwargs)
 
     def list_column_specs(
         self,
@@ -1321,7 +1321,7 @@ class TablesClient(object):
 
         request = {"name": column_spec_name, "data_type": data_type}
 
-        return self.auto_ml_client.update_column_spec(table_spec=request, **kwargs)
+        return self.auto_ml_client.update_column_spec(column_spec=request, **kwargs)
 
     def set_target_column(
         self,
@@ -2753,14 +2753,20 @@ class TablesClient(object):
                 raise ValueError(err)
             values.append(value_type)
 
-        row = data_items.Row(values=values)
+        row = data_items.Row()
+
+        # append each row value separately until issue is resovled
+        # https://github.com/googleapis/proto-plus-python/issues/104
+        for v in values:
+            row.values.append(v)
+    
         payload = data_items.ExamplePayload(row=row)
 
         params = None
         if feature_importance:
             params = {"feature_importance": "true"}
 
-        return self.prediction_client.predict(model.name, payload, params, **kwargs)
+        return self.prediction_client.predict(name=model.name, payload=payload, params=params, **kwargs)
 
     def batch_predict(
         self,

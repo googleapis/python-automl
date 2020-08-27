@@ -38,7 +38,7 @@ from google.cloud.automl_v1.types import io
 from google.cloud.automl_v1.types import operations
 from google.cloud.automl_v1.types import prediction_service
 
-from .transports.base import PredictionServiceTransport
+from .transports.base import PredictionServiceTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import PredictionServiceGrpcTransport
 from .transports.grpc_asyncio import PredictionServiceGrpcAsyncIOTransport
 
@@ -145,6 +145,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
         credentials: credentials.Credentials = None,
         transport: Union[str, PredictionServiceTransport] = None,
         client_options: ClientOptions = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the prediction service client.
 
@@ -170,6 +171,11 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
                 (2) The ``client_cert_source`` property is used to provide client
                 SSL credentials for mutual TLS transport. If not provided, the
                 default SSL credentials will be used if present.
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
+                The client info used to send a user-agent string along with	
+                API requests. If ``None``, then default info will be used.	
+                Generally, you only need to set this if you're developing	
+                your own client library.
 
         Raises:
             google.auth.exceptions.MutualTLSChannelError: If mutual TLS transport
@@ -227,6 +233,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
                 api_mtls_endpoint=client_options.api_endpoint,
                 client_cert_source=client_options.client_cert_source,
                 quota_project_id=client_options.quota_project_id,
+                client_info=client_info,
             )
 
     def predict(
@@ -604,11 +611,11 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("google-cloud-automl",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("PredictionServiceClient",)

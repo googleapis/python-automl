@@ -61,7 +61,7 @@ s.replace(
 # Add templated files
 # ----------------------------------------------------------------------------
 templated_files = common.py_library(
-    unit_cov_level=82, cov_level=83, samples=True
+    unit_cov_level=82, cov_level=83, samples=True, microgenerator=True
 )
 
 python.py_samples(skip_readmes=True)

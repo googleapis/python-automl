@@ -161,6 +161,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
             api_mtls_endpoint="squid.clam.whelk",
             client_cert_source=None,
             quota_project_id=None,
+            client_info=transports.base.DEFAULT_CLIENT_INFO,
         )
 
     # Check the case api_endpoint is not provided and GOOGLE_API_USE_MTLS is
@@ -177,6 +178,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
                 api_mtls_endpoint=client.DEFAULT_ENDPOINT,
                 client_cert_source=None,
                 quota_project_id=None,
+                client_info=transports.base.DEFAULT_CLIENT_INFO,
             )
 
     # Check the case api_endpoint is not provided and GOOGLE_API_USE_MTLS is
@@ -193,6 +195,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
                 api_mtls_endpoint=client.DEFAULT_MTLS_ENDPOINT,
                 client_cert_source=None,
                 quota_project_id=None,
+                client_info=transports.base.DEFAULT_CLIENT_INFO,
             )
 
     # Check the case api_endpoint is not provided, GOOGLE_API_USE_MTLS is
@@ -212,6 +215,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
                 api_mtls_endpoint=client.DEFAULT_MTLS_ENDPOINT,
                 client_cert_source=client_cert_source_callback,
                 quota_project_id=None,
+                client_info=transports.base.DEFAULT_CLIENT_INFO,
             )
 
     # Check the case api_endpoint is not provided, GOOGLE_API_USE_MTLS is
@@ -232,6 +236,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
                     api_mtls_endpoint=client.DEFAULT_MTLS_ENDPOINT,
                     client_cert_source=None,
                     quota_project_id=None,
+                    client_info=transports.base.DEFAULT_CLIENT_INFO,
                 )
 
     # Check the case api_endpoint is not provided, GOOGLE_API_USE_MTLS is
@@ -252,6 +257,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
                     api_mtls_endpoint=client.DEFAULT_ENDPOINT,
                     client_cert_source=None,
                     quota_project_id=None,
+                    client_info=transports.base.DEFAULT_CLIENT_INFO,
                 )
 
     # Check the case api_endpoint is not provided and GOOGLE_API_USE_MTLS has
@@ -273,6 +279,7 @@ def test_auto_ml_client_client_options(client_class, transport_class, transport_
             api_mtls_endpoint=client.DEFAULT_ENDPOINT,
             client_cert_source=None,
             quota_project_id="octopus",
+            client_info=transports.base.DEFAULT_CLIENT_INFO,
         )
 
 
@@ -299,6 +306,7 @@ def test_auto_ml_client_client_options_scopes(
             api_mtls_endpoint=client.DEFAULT_ENDPOINT,
             client_cert_source=None,
             quota_project_id=None,
+            client_info=transports.base.DEFAULT_CLIENT_INFO,
         )
 
 
@@ -325,6 +333,7 @@ def test_auto_ml_client_client_options_credentials_file(
             api_mtls_endpoint=client.DEFAULT_ENDPOINT,
             client_cert_source=None,
             quota_project_id=None,
+            client_info=transports.base.DEFAULT_CLIENT_INFO,
         )
 
 
@@ -342,6 +351,7 @@ def test_auto_ml_client_client_options_from_dict():
             api_mtls_endpoint="squid.clam.whelk",
             client_cert_source=None,
             quota_project_id=None,
+            client_info=transports.base.DEFAULT_CLIENT_INFO,
         )
 
 
@@ -4919,6 +4929,31 @@ def test_auto_ml_grpc_lro_async_client():
     assert transport.operations_client is transport.operations_client
 
 
+def test_model_path():
+    project = "squid"
+    location = "clam"
+    model = "whelk"
+
+    expected = "projects/{project}/locations/{location}/models/{model}".format(
+        project=project, location=location, model=model,
+    )
+    actual = AutoMlClient.model_path(project, location, model)
+    assert expected == actual
+
+
+def test_parse_model_path():
+    expected = {
+        "project": "octopus",
+        "location": "oyster",
+        "model": "nudibranch",
+    }
+    path = AutoMlClient.model_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = AutoMlClient.parse_model_path(path)
+    assert expected == actual
+
+
 def test_dataset_path():
     project = "squid"
     location = "clam"
@@ -4944,26 +4979,22 @@ def test_parse_dataset_path():
     assert expected == actual
 
 
-def test_model_path():
-    project = "squid"
-    location = "clam"
-    model = "whelk"
+def test_client_withDEFAULT_CLIENT_INFO():
+    client_info = gapic_v1.client_info.ClientInfo()
 
-    expected = "projects/{project}/locations/{location}/models/{model}".format(
-        project=project, location=location, model=model,
-    )
-    actual = AutoMlClient.model_path(project, location, model)
-    assert expected == actual
+    with mock.patch.object(
+        transports.AutoMlTransport, "_prep_wrapped_messages"
+    ) as prep:
+        client = AutoMlClient(
+            credentials=credentials.AnonymousCredentials(), client_info=client_info,
+        )
+        prep.assert_called_once_with(client_info)
 
-
-def test_parse_model_path():
-    expected = {
-        "project": "octopus",
-        "location": "oyster",
-        "model": "nudibranch",
-    }
-    path = AutoMlClient.model_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = AutoMlClient.parse_model_path(path)
-    assert expected == actual
+    with mock.patch.object(
+        transports.AutoMlTransport, "_prep_wrapped_messages"
+    ) as prep:
+        transport_class = AutoMlClient.get_transport_class()
+        transport = transport_class(
+            credentials=credentials.AnonymousCredentials(), client_info=client_info,
+        )
+        prep.assert_called_once_with(client_info)

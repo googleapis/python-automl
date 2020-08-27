@@ -31,9 +31,7 @@ PROJECT = "project"
 class TestGcsClient(object):
     def gcs_client(self, bucket_name=None, client_attrs={}):
         client_mock = mock.Mock(**client_attrs)
-        return automl_v1beta1.tables.gcs_client.GcsClient(
-            bucket_name=bucket_name, client=client_mock
-        )
+        return automl_v1beta1.GcsClient(bucket_name=bucket_name, client=client_mock)
 
     def test_init_with_project_and_credentials(self):
         # helper for checking that the storage client is initialized with the
@@ -46,7 +44,7 @@ class TestGcsClient(object):
         patch = mock.patch("google.cloud.storage.Client", new=FakeStorageClient)
         with patch:
             credentials = AnonymousCredentials()
-            gcs_client = automl_v1beta1.tables.gcs_client.GcsClient(
+            gcs_client = automl_v1beta1.GcsClient(
                 project=PROJECT, credentials=credentials
             )
             assert isinstance(gcs_client.client, FakeStorageClient)

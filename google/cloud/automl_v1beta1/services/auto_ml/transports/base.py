@@ -40,11 +40,11 @@ from google.longrunning import operations_pb2 as operations  # type: ignore
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("google-cloud-automl",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 class AutoMlTransport(abc.ABC):
@@ -60,6 +60,7 @@ class AutoMlTransport(abc.ABC):
         credentials_file: typing.Optional[str] = None,
         scopes: typing.Optional[typing.Sequence[str]] = AUTH_SCOPES,
         quota_project_id: typing.Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
         **kwargs,
     ) -> None:
         """Instantiate the transport.
@@ -77,6 +78,11 @@ class AutoMlTransport(abc.ABC):
             scope (Optional[Sequence[str]]): A list of scopes.
             quota_project_id (Optional[str]): An optional project to use for billing
                 and quota.
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
+                The client info used to send a user-agent string along with	
+                API requests. If ``None``, then default info will be used.	
+                Generally, you only need to set this if you're developing	
+                your own client library.
         """
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
         if ":" not in host:
@@ -104,13 +110,13 @@ class AutoMlTransport(abc.ABC):
         self._credentials = credentials
 
         # Lifted into its own function so it can be stubbed out during tests.
-        self._prep_wrapped_messages()
+        self._prep_wrapped_messages(client_info)
 
-    def _prep_wrapped_messages(self):
+    def _prep_wrapped_messages(self, client_info):
         # Precompute the wrapped methods.
         self._wrapped_methods = {
             self.create_dataset: gapic_v1.method.wrap_method(
-                self.create_dataset, default_timeout=5.0, client_info=_client_info,
+                self.create_dataset, default_timeout=5.0, client_info=client_info,
             ),
             self.get_dataset: gapic_v1.method.wrap_method(
                 self.get_dataset,
@@ -123,7 +129,7 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.list_datasets: gapic_v1.method.wrap_method(
                 self.list_datasets,
@@ -136,10 +142,10 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.update_dataset: gapic_v1.method.wrap_method(
-                self.update_dataset, default_timeout=5.0, client_info=_client_info,
+                self.update_dataset, default_timeout=5.0, client_info=client_info,
             ),
             self.delete_dataset: gapic_v1.method.wrap_method(
                 self.delete_dataset,
@@ -152,13 +158,13 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.import_data: gapic_v1.method.wrap_method(
-                self.import_data, default_timeout=5.0, client_info=_client_info,
+                self.import_data, default_timeout=5.0, client_info=client_info,
             ),
             self.export_data: gapic_v1.method.wrap_method(
-                self.export_data, default_timeout=5.0, client_info=_client_info,
+                self.export_data, default_timeout=5.0, client_info=client_info,
             ),
             self.get_annotation_spec: gapic_v1.method.wrap_method(
                 self.get_annotation_spec,
@@ -171,7 +177,7 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.get_table_spec: gapic_v1.method.wrap_method(
                 self.get_table_spec,
@@ -184,7 +190,7 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.list_table_specs: gapic_v1.method.wrap_method(
                 self.list_table_specs,
@@ -197,10 +203,10 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.update_table_spec: gapic_v1.method.wrap_method(
-                self.update_table_spec, default_timeout=5.0, client_info=_client_info,
+                self.update_table_spec, default_timeout=5.0, client_info=client_info,
             ),
             self.get_column_spec: gapic_v1.method.wrap_method(
                 self.get_column_spec,
@@ -213,7 +219,7 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.list_column_specs: gapic_v1.method.wrap_method(
                 self.list_column_specs,
@@ -226,13 +232,13 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.update_column_spec: gapic_v1.method.wrap_method(
-                self.update_column_spec, default_timeout=5.0, client_info=_client_info,
+                self.update_column_spec, default_timeout=5.0, client_info=client_info,
             ),
             self.create_model: gapic_v1.method.wrap_method(
-                self.create_model, default_timeout=5.0, client_info=_client_info,
+                self.create_model, default_timeout=5.0, client_info=client_info,
             ),
             self.get_model: gapic_v1.method.wrap_method(
                 self.get_model,
@@ -245,7 +251,7 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.list_models: gapic_v1.method.wrap_method(
                 self.list_models,
@@ -258,7 +264,7 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.delete_model: gapic_v1.method.wrap_method(
                 self.delete_model,
@@ -271,21 +277,21 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.deploy_model: gapic_v1.method.wrap_method(
-                self.deploy_model, default_timeout=5.0, client_info=_client_info,
+                self.deploy_model, default_timeout=5.0, client_info=client_info,
             ),
             self.undeploy_model: gapic_v1.method.wrap_method(
-                self.undeploy_model, default_timeout=5.0, client_info=_client_info,
+                self.undeploy_model, default_timeout=5.0, client_info=client_info,
             ),
             self.export_model: gapic_v1.method.wrap_method(
-                self.export_model, default_timeout=5.0, client_info=_client_info,
+                self.export_model, default_timeout=5.0, client_info=client_info,
             ),
             self.export_evaluated_examples: gapic_v1.method.wrap_method(
                 self.export_evaluated_examples,
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.get_model_evaluation: gapic_v1.method.wrap_method(
                 self.get_model_evaluation,
@@ -298,12 +304,12 @@ class AutoMlTransport(abc.ABC):
                     ),
                 ),
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
             self.list_model_evaluations: gapic_v1.method.wrap_method(
                 self.list_model_evaluations,
                 default_timeout=5.0,
-                client_info=_client_info,
+                client_info=client_info,
             ),
         }
 

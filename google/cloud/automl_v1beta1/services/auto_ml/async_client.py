@@ -59,7 +59,7 @@ from google.cloud.automl_v1beta1.types import video
 from google.protobuf import empty_pb2 as empty  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 
-from .transports.base import AutoMlTransport
+from .transports.base import AutoMlTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import AutoMlGrpcAsyncIOTransport
 from .client import AutoMlClient
 
@@ -87,13 +87,13 @@ class AutoMlAsyncClient:
     DEFAULT_ENDPOINT = AutoMlClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = AutoMlClient.DEFAULT_MTLS_ENDPOINT
 
-    table_spec_path = staticmethod(AutoMlClient.table_spec_path)
-
-    column_spec_path = staticmethod(AutoMlClient.column_spec_path)
+    dataset_path = staticmethod(AutoMlClient.dataset_path)
 
     model_path = staticmethod(AutoMlClient.model_path)
 
-    dataset_path = staticmethod(AutoMlClient.dataset_path)
+    column_spec_path = staticmethod(AutoMlClient.column_spec_path)
+
+    table_spec_path = staticmethod(AutoMlClient.table_spec_path)
 
     from_service_account_file = AutoMlClient.from_service_account_file
     from_service_account_json = from_service_account_file
@@ -108,6 +108,7 @@ class AutoMlAsyncClient:
         credentials: credentials.Credentials = None,
         transport: Union[str, AutoMlTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the auto ml client.
 
@@ -140,7 +141,10 @@ class AutoMlAsyncClient:
         """
 
         self._client = AutoMlClient(
-            credentials=credentials, transport=transport, client_options=client_options,
+            credentials=credentials,
+            transport=transport,
+            client_options=client_options,
+            client_info=client_info,
         )
 
     async def create_dataset(
@@ -209,7 +213,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_dataset,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -290,7 +294,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -372,7 +376,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -451,7 +455,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_dataset,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -551,7 +555,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -665,7 +669,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.import_data,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -771,7 +775,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.export_data,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -856,7 +860,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -944,7 +948,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1026,7 +1030,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1112,7 +1116,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_table_spec,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1196,7 +1200,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1278,7 +1282,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1358,7 +1362,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_column_spec,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1447,7 +1451,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_model,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1533,7 +1537,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1615,7 +1619,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1718,7 +1722,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1826,7 +1830,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.deploy_model,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1928,7 +1932,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.undeploy_model,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -2041,7 +2045,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.export_model,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -2159,7 +2163,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.export_evaluated_examples,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -2244,7 +2248,7 @@ class AutoMlAsyncClient:
                 ),
             ),
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -2321,7 +2325,7 @@ class AutoMlAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.list_model_evaluations,
             default_timeout=5.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -2344,11 +2348,11 @@ class AutoMlAsyncClient:
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("google-cloud-automl",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("AutoMlAsyncClient",)

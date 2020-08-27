@@ -36,7 +36,7 @@ from google.cloud.automl_v1.types import io
 from google.cloud.automl_v1.types import operations
 from google.cloud.automl_v1.types import prediction_service
 
-from .transports.base import PredictionServiceTransport
+from .transports.base import PredictionServiceTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import PredictionServiceGrpcAsyncIOTransport
 from .client import PredictionServiceClient
 
@@ -66,6 +66,7 @@ class PredictionServiceAsyncClient:
         credentials: credentials.Credentials = None,
         transport: Union[str, PredictionServiceTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the prediction service client.
 
@@ -98,7 +99,10 @@ class PredictionServiceAsyncClient:
         """
 
         self._client = PredictionServiceClient(
-            credentials=credentials, transport=transport, client_options=client_options,
+            credentials=credentials,
+            transport=transport,
+            client_options=client_options,
+            client_info=client_info,
         )
 
     async def predict(
@@ -241,7 +245,7 @@ class PredictionServiceAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.predict,
             default_timeout=60.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -447,7 +451,7 @@ class PredictionServiceAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.batch_predict,
             default_timeout=60.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -472,11 +476,11 @@ class PredictionServiceAsyncClient:
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("google-cloud-automl",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("PredictionServiceAsyncClient",)

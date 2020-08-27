@@ -24,14 +24,14 @@ def list_models(project_id):
     client = automl.AutoMlClient()
     # A resource that represents Google Cloud Platform location.
     project_location = client.location_path(project_id, "us-central1")
-    response = client.list_models(project_location, "")
+    response = client.list_models(parent=project_location, filter="")
 
     print("List of models:")
     for model in response:
         # Display the model information.
         if (
             model.deployment_state
-            == automl.enums.Model.DeploymentState.DEPLOYED
+            == automl.Model.DeploymentState.DEPLOYED
         ):
             deployment_state = "deployed"
         else:

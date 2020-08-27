@@ -32,12 +32,12 @@ def predict(project_id, model_id, content):
 
     # Supported mime_types: 'text/plain', 'text/html'
     # https://cloud.google.com/automl/docs/reference/rpc/google.cloud.automl.v1#textsnippet
-    text_snippet = automl.types.TextSnippet(
+    text_snippet = automl.TextSnippet(
         content=content, mime_type="text/plain"
     )
-    payload = automl.types.ExamplePayload(text_snippet=text_snippet)
+    payload = automl.ExamplePayload(text_snippet=text_snippet)
 
-    response = prediction_client.predict(model_full_id, payload)
+    response = prediction_client.predict(name=model_full_id, payload=payload)
 
     for annotation_payload in response.payload:
         print(

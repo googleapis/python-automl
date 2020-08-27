@@ -29,8 +29,8 @@ def dataset_id():
     client = automl.AutoMlClient()
     project_location = client.location_path(PROJECT_ID, "us-central1")
     display_name = "test_" + datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    metadata = automl.types.TextExtractionDatasetMetadata()
-    dataset = automl.types.Dataset(
+    metadata = automl.TextExtractionDatasetMetadata()
+    dataset = automl.Dataset(
         display_name=display_name, text_extraction_dataset_metadata=metadata
     )
     response = client.create_dataset(project_location, dataset)

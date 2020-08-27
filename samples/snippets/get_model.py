@@ -25,10 +25,10 @@ def get_model(project_id, model_id):
     client = automl.AutoMlClient()
     # Get the full path of the model.
     model_full_id = client.model_path(project_id, "us-central1", model_id)
-    model = client.get_model(model_full_id)
+    model = client.get_model(name=model_full_id)
 
     # Retrieve deployment state.
-    if model.deployment_state == automl.enums.Model.DeploymentState.DEPLOYED:
+    if model.deployment_state == automl.Model.DeploymentState.DEPLOYED:
         deployment_state = "deployed"
     else:
         deployment_state = "undeployed"

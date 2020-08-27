@@ -32,7 +32,7 @@ def list_model_evaluations(project_id, model_id):
     model_full_id = client.model_path(project_id, "us-central1", model_id)
 
     print("List of model evaluations:")
-    for evaluation in client.list_model_evaluations(model_full_id, ""):
+    for evaluation in client.list_model_evaluations(parent=model_full_id, filter=""):
         print("Model evaluation name: {}".format(evaluation.name))
         print(
             "Model annotation spec id: {}".format(

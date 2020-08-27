@@ -30,16 +30,16 @@ def create_dataset(project_id, display_name):
     # Types:
     # MultiLabel: Multiple labels are allowed for one example.
     # MultiClass: At most one label is allowed per example.
-    metadata = automl.types.TextClassificationDatasetMetadata(
-        classification_type=automl.enums.ClassificationType.MULTICLASS
+    metadata = automl.TextClassificationDatasetMetadata(
+        classification_type=automl.ClassificationType.MULTICLASS
     )
-    dataset = automl.types.Dataset(
+    dataset = automl.Dataset(
         display_name=display_name,
         text_classification_dataset_metadata=metadata,
     )
 
     # Create a dataset with the dataset metadata in the region.
-    response = client.create_dataset(project_location, dataset)
+    response = client.create_dataset(parent=project_location, dataset=dataset)
 
     created_dataset = response.result()
 

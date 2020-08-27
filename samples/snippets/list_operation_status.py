@@ -26,7 +26,7 @@ def list_operation_status(project_id):
     project_location = client.location_path(project_id, "us-central1")
     # List all the operations names available in the region.
     response = client.transport._operations_client.list_operations(
-        project_location, ""
+        parent=project_location, filter=""
     )
 
     print("List of operations:")

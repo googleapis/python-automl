@@ -25,7 +25,7 @@ def create_model(
     client = automl.AutoMlClient()
 
     # A resource that represents Google Cloud Platform loacation.
-    project_location = client.location_path(project_id, "us-central1")
+    project_location = f"projects/{project_id}/locations/us-central1"
     # Leave model unset to use the default base model provided by Google
     metadata = automl.types.VideoObjectTrackingModelMetadata()
     model = automl.types.Model(

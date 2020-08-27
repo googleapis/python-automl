@@ -27,7 +27,7 @@ def batch_predict(
     prediction_client = automl.PredictionServiceClient()
 
     # Get the full path of the model.
-    model_full_id = prediction_client.model_path(
+    model_full_id = automl.AutoMlClient.model_path(
         project_id, "us-central1", model_id
     )
 

@@ -23,7 +23,7 @@ def list_models(project_id):
 
     client = automl.AutoMlClient()
     # A resource that represents Google Cloud Platform location.
-    project_location = client.location_path(project_id, "us-central1")
+    project_location = f"projects/{project_id}/locations/us-central1"
     response = client.list_models(parent=project_location, filter="")
 
     print("List of models:")

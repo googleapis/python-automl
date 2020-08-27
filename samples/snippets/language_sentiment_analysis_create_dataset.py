@@ -25,7 +25,7 @@ def create_dataset(project_id, display_name):
     client = automl.AutoMlClient()
 
     # A resource that represents Google Cloud Platform location.
-    project_location = client.location_path(project_id, "us-central1")
+    project_location = f"projects/{project_id}/locations/us-central1"
 
     # Each dataset requires a sentiment score with a defined sentiment_max
     # value, for more information on TextSentimentDatasetMetadata, see:

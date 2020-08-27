@@ -27,7 +27,7 @@ BUCKET_ID = "{}-lcm".format(PROJECT_ID)
 @pytest.fixture(scope="function")
 def dataset_id():
     client = automl.AutoMlClient()
-    project_location = client.location_path(PROJECT_ID, "us-central1")
+    project_location = f"projects/{PROJECT_ID}/locations/us-central1"
     display_name = "test_" + datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     metadata = automl.TextExtractionDatasetMetadata()
     dataset = automl.Dataset(

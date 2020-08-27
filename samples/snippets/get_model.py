@@ -37,8 +37,6 @@ def get_model(project_id, model_id):
     print("Model name: {}".format(model.name))
     print("Model id: {}".format(model.name.split("/")[-1]))
     print("Model display name: {}".format(model.display_name))
-    print("Model create time:")
-    print("\tseconds: {}".format(model.create_time.seconds))
-    print("\tnanos: {}".format(model.create_time.nanos))
+    print("Model create time: {}".format(model.create_time))
     print("Model deployment state: {}".format(deployment_state))
     # [END automl_get_model]

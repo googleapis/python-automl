@@ -25,7 +25,7 @@ def create_dataset(project_id, display_name):
     client = automl.AutoMlClient()
 
     # A resource that represents Google Cloud Platform location.
-    project_location = client.location_path(project_id, "us-central1")
+    project_location = f"projects{project_id}/locations/us-central1"
     metadata = automl.TextExtractionDatasetMetadata()
     dataset = automl.Dataset(
         display_name=display_name, text_extraction_dataset_metadata=metadata

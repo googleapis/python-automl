@@ -38,9 +38,7 @@ def get_dataset(project_id, dataset_id):
     print("Dataset name: {}".format(dataset.name))
     print("Dataset id: {}".format(dataset.name.split("/")[-1]))
     print("Dataset display name: {}".format(dataset.display_name))
-    print("Dataset create time:")
-    print("\tseconds: {}".format(dataset.create_time.seconds))
-    print("\tnanos: {}".format(dataset.create_time.nanos))
+    print("Dataset create time: {}".format(dataset.create_time))
     # [END automl_language_sentiment_analysis_get_dataset]
     # [END automl_language_text_classification_get_dataset]
     # [END automl_translate_get_dataset]

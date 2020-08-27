@@ -26,7 +26,7 @@ def predict(project_id, model_id, file_path):
     prediction_client = automl.PredictionServiceClient()
 
     # Get the full path of the model.
-    model_full_id = prediction_client.model_path(
+    model_full_id = automl.AutoMlClient.model_path(
         project_id, "us-central1", model_id
     )
 

@@ -27,7 +27,7 @@ def set_endpoint(project_id):
 
     # A resource that represents Google Cloud Platform location.
     # project_id = 'YOUR_PROJECT_ID'
-    project_location = client.location_path(project_id, 'eu')
+    project_location = f"projects/{project_id}/locations/eu"
     # [END automl_set_endpoint]
 
     # List all the datasets available

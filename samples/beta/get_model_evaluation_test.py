@@ -31,9 +31,8 @@ def model_evaluation_id():
         parent=model_full_id,
         filter=""
     )
-    generator = client.list_model_evaluations(request=request).pages
-    page = next(generator)
-    evaluation = page.next()
+    evaluations = client.list_model_evaluations(request=request)
+    evaluation = next(iter(evaluations))
     model_evaluation_id = evaluation.name.split(
         "{}/modelEvaluations/".format(MODEL_ID)
     )[1].split("\n")[0]

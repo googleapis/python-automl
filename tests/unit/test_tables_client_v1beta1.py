@@ -75,10 +75,9 @@ class TestTablesClient(object):
         assert ds[0] == "some_dataset"
 
     def test_get_dataset_no_value(self):
-        dataset_actual = "dataset"
         client = self.tables_client({}, {})
         with pytest.raises(ValueError):
-            dataset = client.get_dataset()
+            client.get_dataset()
         client.auto_ml_client.get_dataset.assert_not_called()
 
     def test_get_dataset_name(self):
@@ -822,7 +821,7 @@ class TestTablesClient(object):
 
     def test_get_model_evaluation(self):
         client = self.tables_client({}, {})
-        ds = client.get_model_evaluation(model_evaluation_name="x")
+        client.get_model_evaluation(model_evaluation_name="x")
         client.auto_ml_client.get_model_evaluation.assert_called_with(name="x")
 
     def test_list_model_evaluations_empty(self):
@@ -1460,7 +1459,7 @@ class TestTablesClient(object):
             "google.cloud.automl_v1beta1.services.tables.tables_client.AutoMlClient"
         )
         with patch_auto_ml_client as MockAutoMlClient:
-            client = automl_v1beta1.TablesClient(credentials=credentials_mock)
+            automl_v1beta1.TablesClient(credentials=credentials_mock)
         _, auto_ml_client_kwargs = MockAutoMlClient.call_args
         assert "credentials" in auto_ml_client_kwargs
         assert auto_ml_client_kwargs["credentials"] == credentials_mock
@@ -1471,7 +1470,7 @@ class TestTablesClient(object):
             "google.cloud.automl_v1beta1.services.tables.tables_client.PredictionServiceClient"
         )
         with patch_prediction_client as MockPredictionClient:
-            client = automl_v1beta1.TablesClient(credentials=credentials_mock)
+            automl_v1beta1.TablesClient(credentials=credentials_mock)
         _, prediction_client_kwargs = MockPredictionClient.call_args
         assert "credentials" in prediction_client_kwargs
         assert prediction_client_kwargs["credentials"] == credentials_mock
@@ -1482,7 +1481,7 @@ class TestTablesClient(object):
             "google.cloud.automl_v1beta1.services.tables.tables_client.PredictionServiceClient"
         )
         with patch_prediction_client as MockPredictionClient:
-            client = automl_v1beta1.TablesClient(client_info=client_info_mock)
+            automl_v1beta1.TablesClient(client_info=client_info_mock)
         _, prediction_client_kwargs = MockPredictionClient.call_args
         assert "client_info" in prediction_client_kwargs
         assert prediction_client_kwargs["client_info"] == client_info_mock

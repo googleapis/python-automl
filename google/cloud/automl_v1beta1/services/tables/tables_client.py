@@ -2759,14 +2759,16 @@ class TablesClient(object):
         # https://github.com/googleapis/proto-plus-python/issues/104
         for v in values:
             row.values.append(v)
-    
+
         payload = data_items.ExamplePayload(row=row)
 
         params = None
         if feature_importance:
             params = {"feature_importance": "true"}
 
-        return self.prediction_client.predict(name=model.name, payload=payload, params=params, **kwargs)
+        return self.prediction_client.predict(
+            name=model.name, payload=payload, params=params, **kwargs
+        )
 
     def batch_predict(
         self,

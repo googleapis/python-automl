@@ -26,18 +26,23 @@ OPERATION_ID = None
 
 
 @pytest.fixture(scope="function", autouse=True)
-def model():
-    model_name = "test_{}".format(uuid.uuid4()).replace("-", "")[:32]
-    operation = video_classification_create_model.create_model(
-        PROJECT_ID, DATASET_ID, model_name
-    )
-    
+def teardown():
     yield
 
     # Cancel the training operation
-    operation.cancel()
+    client = automl.AutoMlClient()
+    client._transport.operations_client.cancel_operation(OPERATION_ID)
 
 
-def test_video_classification_create_model(capsys, model):
+def test_video_classification_create_model(capsys):
+    model_name = "test_{}".format(uuid.uuid4()).replace("-", "")[:32]
+    video_classification_create_model.create_model(
+        PROJECT_ID, DATASET_ID, model_name
+    )
+
     out, _ = capsys.readouterr()
     assert "Training started" in out
+
+    # Cancel the operation
+    global OPERATION_ID
+    OPERATION_ID = out.split("Training operation name: ")[1].split("\n")[0]

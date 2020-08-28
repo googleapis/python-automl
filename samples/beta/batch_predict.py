@@ -43,7 +43,7 @@ def batch_predict(
     request = automl.BatchPredictRequest(
         name=model_full_id,
         input_config=input_config,
-        output_config=output_config, 
+        output_config=output_config,
         params=params
     )
     response = prediction_client.batch_predict(

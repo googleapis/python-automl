@@ -238,7 +238,7 @@ class TablesClient(object):
                 )
             region = self.region
 
-        return self.auto_ml_client.location_path(project, region)
+        return f"projects/{project}/locations/{region}"
 
     # the returned metadata object doesn't allow for updating fields, so
     # we need to manually copy user-updated fields over

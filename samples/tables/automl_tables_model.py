@@ -98,7 +98,6 @@ def list_models(project_id, compute_region, filter_=None):
     # filter_ = 'DATASET_DISPLAY_NAME_HERE'
 
     from google.cloud import automl_v1beta1 as automl
-    from google.cloud.automl_v1beta1 import enums
 
     client = automl.TablesClient(project=project_id, region=compute_region)
 
@@ -108,7 +107,7 @@ def list_models(project_id, compute_region, filter_=None):
     print("List of models:")
     for model in response:
         # Retrieve deployment state.
-        if model.deployment_state == enums.Model.DeploymentState.DEPLOYED:
+        if model.deployment_state == automl.Model.DeploymentState.DEPLOYED:
             deployment_state = "deployed"
         else:
             deployment_state = "undeployed"
@@ -133,9 +132,7 @@ def list_models(project_id, compute_region, filter_=None):
                 metadata.train_cost_milli_node_hours
             )
         )
-        print("Model create time:")
-        print("\tseconds: {}".format(model.create_time.seconds))
-        print("\tnanos: {}".format(model.create_time.nanos))
+        print("Model create time: {}".format(model.create_time))
         print("Model deployment state: {}".format(deployment_state))
         print("\n")
 
@@ -154,7 +151,6 @@ def get_model(project_id, compute_region, model_display_name):
     # model_display_name = 'MODEL_DISPLAY_NAME_HERE'
 
     from google.cloud import automl_v1beta1 as automl
-    from google.cloud.automl_v1beta1 import enums
 
     client = automl.TablesClient(project=project_id, region=compute_region)
 
@@ -162,7 +158,7 @@ def get_model(project_id, compute_region, model_display_name):
     model = client.get_model(model_display_name=model_display_name)
 
     # Retrieve deployment state.
-    if model.deployment_state == enums.Model.DeploymentState.DEPLOYED:
+    if model.deployment_state == automl.Model.DeploymentState.DEPLOYED:
         deployment_state = "deployed"
     else:
         deployment_state = "undeployed"
@@ -185,9 +181,7 @@ def get_model(project_id, compute_region, model_display_name):
     print("Features of top importance:")
     for feat in feat_list[:feat_to_show]:
         print(feat)
-    print("Model create time:")
-    print("\tseconds: {}".format(model.create_time.seconds))
-    print("\tnanos: {}".format(model.create_time.nanos))
+    print("Model create time: {}".format(model.create_time))
     print("Model deployment state: {}".format(deployment_state))
 
     # [END automl_tables_get_model]

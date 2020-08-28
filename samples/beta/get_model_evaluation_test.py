@@ -27,7 +27,11 @@ MODEL_ID = os.environ["ENTITY_EXTRACTION_MODEL_ID"]
 def model_evaluation_id():
     client = automl.AutoMlClient()
     model_full_id = client.model_path(PROJECT_ID, "us-central1", MODEL_ID)
-    generator = client.list_model_evaluations(model_full_id, "").pages
+    request = automl.ListModelEvaluationsRequest(
+        parent=model_full_id,
+        filter=""
+    )
+    generator = client.list_model_evaluations(request=request).pages
     page = next(generator)
     evaluation = page.next()
     model_evaluation_id = evaluation.name.split(

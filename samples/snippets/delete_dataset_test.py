@@ -33,7 +33,7 @@ def dataset_id():
     dataset = automl.Dataset(
         display_name=display_name, text_extraction_dataset_metadata=metadata
     )
-    response = client.create_dataset(project_location, dataset)
+    response = client.create_dataset(parent=project_location, dataset=dataset)
     dataset_id = response.result().name.split("/")[-1]
 
     yield dataset_id

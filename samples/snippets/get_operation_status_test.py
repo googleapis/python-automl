@@ -26,7 +26,8 @@ PROJECT_ID = os.environ["AUTOML_PROJECT_ID"]
 def operation_id():
     client = automl.AutoMlClient()
     project_location = f"projects/{PROJECT_ID}/locations/us-central1"
-    generator = client.transport._operations_client.list_operations(
+
+    generator = client._transport.operations_client.list_operations(
         project_location, filter_=""
     ).pages
     page = next(generator)

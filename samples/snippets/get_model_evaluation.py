@@ -37,9 +37,7 @@ def get_model_evaluation(project_id, model_id, model_evaluation_id):
 
     print("Model evaluation name: {}".format(response.name))
     print("Model annotation spec id: {}".format(response.annotation_spec_id))
-    print("Create Time:")
-    print("\tseconds: {}".format(response.create_time.seconds))
-    print("\tnanos: {}".format(response.create_time.nanos / 1e9))
+    print("Create Time: {}".format(response.create_time))
     print(
         "Evaluation example count: {}".format(response.evaluated_example_count)
     )

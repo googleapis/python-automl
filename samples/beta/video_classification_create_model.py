@@ -27,16 +27,17 @@ def create_model(
     # A resource that represents Google Cloud Platform location.
     project_location = f"projects/{project_id}/locations/us-central1"
     # Leave model unset to use the default base model provided by Google
-    metadata = automl.types.VideoClassificationModelMetadata()
-    model = automl.types.Model(
+    metadata = automl.VideoClassificationModelMetadata()
+    model = automl.Model(
         display_name=display_name,
         dataset_id=dataset_id,
         video_classification_model_metadata=metadata,
     )
 
     # Create a model with the model metadata in the region.
-    response = client.create_model(project_location, model)
+    response = client.create_model(parent=project_location, model=model)
 
     print("Training operation name: {}".format(response.operation.name))
     print("Training started...")
 # [END automl_video_classification_create_model_beta]
+    return response

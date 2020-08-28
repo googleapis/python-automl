@@ -33,7 +33,7 @@ def deploy_model(project_id, model_id):
     )
 
     request = automl.DeployModelRequest(
-        model=model_full_id,
+        name=model_full_id,
         image_object_detection_model_deployment_metadata=metadata,
     )
     response = client.deploy_model(request=request)

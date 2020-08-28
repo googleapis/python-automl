@@ -25,8 +25,8 @@ def list_operation_status(project_id):
     # A resource that represents Google Cloud Platform location.
     project_location = f"projects/{project_id}/locations/us-central1"
     # List all the operations names available in the region.
-    response = client.transport._operations_client.list_operations(
-        parent=project_location, filter=""
+    response = client._transport.operations_client.list_operations(
+        name=project_location, filter_="", timeout=5
     )
 
     print("List of operations:")

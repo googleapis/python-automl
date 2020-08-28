@@ -79,7 +79,7 @@ def get_operation_status(operation_full_id):
     client = automl.TablesClient()
 
     # Get the latest state of a long-running operation.
-    op = client.auto_ml_client.transport._operations_client.get_operation(
+    op = client.auto_ml_client._transport.operations_client.get_operation(
         operation_full_id
     )
 

@@ -46,3 +46,4 @@ def create_model(project_id, dataset_id, display_name):
     print("Training operation name: {}".format(response.operation.name))
     print("Training started...")
     # [END automl_vision_object_detection_create_model]
+    return response

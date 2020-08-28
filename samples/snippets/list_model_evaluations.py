@@ -39,9 +39,7 @@ def list_model_evaluations(project_id, model_id):
                 evaluation.annotation_spec_id
             )
         )
-        print("Create Time:")
-        print("\tseconds: {}".format(evaluation.create_time.seconds))
-        print("\tnanos: {}".format(evaluation.create_time.nanos / 1e9))
+        print("Create Time: {}".format(evaluation.create_time))
         print(
             "Evaluation example count: {}".format(
                 evaluation.evaluated_example_count

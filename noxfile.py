@@ -74,6 +74,7 @@ def default(session):
 
     session.install("mock", "pytest", "pytest-cov")
     session.install("-e", ".[pandas,storage]")
+    session.install("proto-plus==1.8.1")
 
     # Run py.test against the unit tests.
     session.run(

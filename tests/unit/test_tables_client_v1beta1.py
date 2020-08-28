@@ -48,29 +48,31 @@ class TestTablesClient(object):
 
     def test_list_datasets_empty(self):
         client = self.tables_client(
-            {
+            client_attrs={
                 "list_datasets.return_value": [],
                 "location_path.return_value": LOCATION_PATH,
             },
-            {},
+            prediction_client_attrs={},
         )
         ds = client.list_datasets()
-        client.auto_ml_client.location_path.assert_called_with(PROJECT, REGION)
-        client.auto_ml_client.list_datasets.assert_called_with(parent=LOCATION_PATH)
+
+        request = automl_v1beta1.ListDatasetsRequest(parent=LOCATION_PATH)
+        client.auto_ml_client.list_datasets.assert_called_with(request=request)
         assert ds == []
 
     def test_list_datasets_not_empty(self):
         datasets = ["some_dataset"]
         client = self.tables_client(
-            {
+            client_attrs={
                 "list_datasets.return_value": datasets,
                 "location_path.return_value": LOCATION_PATH,
             },
-            {},
+            prediction_client_attrs={},
         )
         ds = client.list_datasets()
-        client.auto_ml_client.location_path.assert_called_with(PROJECT, REGION)
-        client.auto_ml_client.list_datasets.assert_called_with(parent=LOCATION_PATH)
+
+        request = automl_v1beta1.ListDatasetsRequest(parent=LOCATION_PATH)
+        client.auto_ml_client.list_datasets.assert_called_with(request=request)
         assert len(ds) == 1
         assert ds[0] == "some_dataset"
 
@@ -84,7 +86,9 @@ class TestTablesClient(object):
         dataset_actual = "dataset"
         client = self.tables_client({"get_dataset.return_value": dataset_actual}, {})
         dataset = client.get_dataset(dataset_name="my_dataset")
-        client.auto_ml_client.get_dataset.assert_called_with(name="my_dataset")
+        client.auto_ml_client.get_dataset.assert_called_with(
+            request=automl_v1beta1.GetDatasetRequest(name="my_dataset")
+        )
         assert dataset == dataset_actual
 
     def test_get_no_dataset(self):
@@ -93,7 +97,9 @@ class TestTablesClient(object):
         )
         with pytest.raises(exceptions.NotFound):
             client.get_dataset(dataset_name="my_dataset")
-        client.auto_ml_client.get_dataset.assert_called_with(name="my_dataset")
+        client.auto_ml_client.get_dataset.assert_called_with(
+            request=automl_v1beta1.GetDatasetRequest(name="my_dataset")
+        )
 
     def test_get_dataset_from_empty_list(self):
         client = self.tables_client({"list_datasets.return_value": []}, {})
@@ -142,12 +148,14 @@ class TestTablesClient(object):
             },
             {},
         )
-        metadata = {"metadata": "values"}
+        metadata = {"primary_table_spec_id": "1234"}
         dataset = client.create_dataset("name", metadata=metadata)
-        client.auto_ml_client.location_path.assert_called_with(PROJECT, REGION)
+
         client.auto_ml_client.create_dataset.assert_called_with(
-            parent=LOCATION_PATH,
-            dataset={"display_name": "name", "tables_dataset_metadata": metadata},
+            request=automl_v1beta1.CreateDatasetRequest(
+                parent=LOCATION_PATH,
+                dataset={"display_name": "name", "tables_dataset_metadata": metadata},
+            )
         )
         assert dataset.display_name == "name"
 
@@ -156,7 +164,9 @@ class TestTablesClient(object):
         dataset.configure_mock(name="name")
         client = self.tables_client({"delete_dataset.return_value": None}, {})
         client.delete_dataset(dataset=dataset)
-        client.auto_ml_client.delete_dataset.assert_called_with(name="name")
+        client.auto_ml_client.delete_dataset.assert_called_with(
+            request=automl_v1beta1.DeleteDatasetRequest(name="name")
+        )
 
     def test_delete_dataset_not_found(self):
         client = self.tables_client({"list_datasets.return_value": []}, {})
@@ -166,7 +176,9 @@ class TestTablesClient(object):
     def test_delete_dataset_name(self):
         client = self.tables_client({"delete_dataset.return_value": None}, {})
         client.delete_dataset(dataset_name="name")
-        client.auto_ml_client.delete_dataset.assert_called_with(name="name")
+        client.auto_ml_client.delete_dataset.assert_called_with(
+            request=automl_v1beta1.DeleteDatasetRequest(name="name")
+        )
 
     def test_export_not_found(self):
         client = self.tables_client({"list_datasets.return_value": []}, {})
@@ -179,14 +191,20 @@ class TestTablesClient(object):
         client = self.tables_client({"export_data.return_value": None}, {})
         client.export_data(dataset_name="name", gcs_output_uri_prefix="uri")
         client.auto_ml_client.export_data.assert_called_with(
-            name="name", output_config={"gcs_destination": {"output_uri_prefix": "uri"}}
+            request=automl_v1beta1.ExportDataRequest(
+                name="name",
+                output_config={"gcs_destination": {"output_uri_prefix": "uri"}},
+            )
         )
 
     def test_export_bq_uri(self):
         client = self.tables_client({"export_data.return_value": None}, {})
         client.export_data(dataset_name="name", bigquery_output_uri="uri")
         client.auto_ml_client.export_data.assert_called_with(
-            name="name", output_config={"bigquery_destination": {"output_uri": "uri"}}
+            request=automl_v1beta1.ExportDataRequest(
+                name="name",
+                output_config={"bigquery_destination": {"output_uri": "uri"}},
+            )
         )
 
     def test_import_not_found(self):
@@ -213,7 +231,9 @@ class TestTablesClient(object):
         client.gcs_client.ensure_bucket_exists.assert_called_with(PROJECT, REGION)
         client.gcs_client.upload_pandas_dataframe.assert_called_with(dataframe)
         client.auto_ml_client.import_data.assert_called_with(
-            name="name", input_config={"gcs_source": {"input_uris": ["uri"]}}
+            request=automl_v1beta1.ImportDataRequest(
+                name="name", input_config={"gcs_source": {"input_uris": ["uri"]}}
+            )
         )
 
     def test_import_pandas_dataframe_init_gcs(self):
@@ -240,34 +260,44 @@ class TestTablesClient(object):
             client.gcs_client.ensure_bucket_exists.assert_called_with(PROJECT, REGION)
             client.gcs_client.upload_pandas_dataframe.assert_called_with(dataframe)
             client.auto_ml_client.import_data.assert_called_with(
-                name="name", input_config={"gcs_source": {"input_uris": ["uri"]}}
+                request=automl_v1beta1.ImportDataRequest(
+                    name="name", input_config={"gcs_source": {"input_uris": ["uri"]}}
+                )
             )
 
     def test_import_gcs_uri(self):
         client = self.tables_client({"import_data.return_value": None}, {})
         client.import_data(dataset_name="name", gcs_input_uris="uri")
         client.auto_ml_client.import_data.assert_called_with(
-            name="name", input_config={"gcs_source": {"input_uris": ["uri"]}}
+            request=automl_v1beta1.ImportDataRequest(
+                name="name", input_config={"gcs_source": {"input_uris": ["uri"]}}
+            )
         )
 
     def test_import_gcs_uris(self):
         client = self.tables_client({"import_data.return_value": None}, {})
         client.import_data(dataset_name="name", gcs_input_uris=["uri", "uri"])
         client.auto_ml_client.import_data.assert_called_with(
-            name="name", input_config={"gcs_source": {"input_uris": ["uri", "uri"]}}
+            request=automl_v1beta1.ImportDataRequest(
+                name="name", input_config={"gcs_source": {"input_uris": ["uri", "uri"]}}
+            )
         )
 
     def test_import_bq_uri(self):
         client = self.tables_client({"import_data.return_value": None}, {})
         client.import_data(dataset_name="name", bigquery_input_uri="uri")
         client.auto_ml_client.import_data.assert_called_with(
-            name="name", input_config={"bigquery_source": {"input_uri": "uri"}}
+            request=automl_v1beta1.ImportDataRequest(
+                name="name", input_config={"bigquery_source": {"input_uri": "uri"}}
+            )
         )
 
     def test_list_table_specs(self):
         client = self.tables_client({"list_table_specs.return_value": None}, {})
         client.list_table_specs(dataset_name="name")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
 
     def test_list_table_specs_not_found(self):
         client = self.tables_client(
@@ -275,17 +305,23 @@ class TestTablesClient(object):
         )
         with pytest.raises(exceptions.NotFound):
             client.list_table_specs(dataset_name="name")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
 
     def test_get_table_spec(self):
         client = self.tables_client({}, {})
         client.get_table_spec("name")
-        client.auto_ml_client.get_table_spec.assert_called_with(name="name")
+        client.auto_ml_client.get_table_spec.assert_called_with(
+            request=automl_v1beta1.GetTableSpecRequest(name="name")
+        )
 
     def test_get_column_spec(self):
         client = self.tables_client({}, {})
         client.get_column_spec("name")
-        client.auto_ml_client.get_column_spec.assert_called_with(name="name")
+        client.auto_ml_client.get_column_spec.assert_called_with(
+            request=automl_v1beta1.GetColumnSpecRequest(name="name")
+        )
 
     def test_list_column_specs(self):
         table_spec_mock = mock.Mock()
@@ -299,171 +335,238 @@ class TestTablesClient(object):
             {},
         )
         client.list_column_specs(dataset_name="name")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
 
     def test_update_column_spec_not_found(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(type_code=automl_v1beta1.TypeCode.STRING),
         )
+
         client = self.tables_client(
-            {
+            client_attrs={
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
-            {},
+            prediction_client_attrs={},
         )
         with pytest.raises(exceptions.NotFound):
             client.update_column_spec(dataset_name="name", column_spec_name="column2")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_not_called()
 
     def test_update_column_spec_display_name_not_found(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(type_code=automl_v1beta1.TypeCode.STRING),
         )
         client = self.tables_client(
-            {
+            client_attrs={
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
-            {},
+            prediction_client_attrs={},
         )
         with pytest.raises(exceptions.NotFound):
             client.update_column_spec(
                 dataset_name="name", column_spec_display_name="column2"
             )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_not_called()
 
     def test_update_column_spec_name_no_args(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column/2", display_name="column", data_type=data_type_mock
+
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column/2",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(
+                type_code=automl_v1beta1.TypeCode.FLOAT64
+            ),
         )
+
         client = self.tables_client(
             {
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
             {},
         )
         client.update_column_spec(dataset_name="name", column_spec_name="column/2")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_called_with(
-            column_spec={"name": "column/2", "data_type": {"type_code": "type_code"}}
+            request=automl_v1beta1.UpdateColumnSpecRequest(
+                column_spec={
+                    "name": "column/2",
+                    "data_type": {"type_code": automl_v1beta1.TypeCode.FLOAT64},
+                }
+            )
         )
 
     def test_update_column_spec_no_args(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(
+                type_code=automl_v1beta1.TypeCode.FLOAT64
+            ),
         )
+
         client = self.tables_client(
             {
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
             {},
         )
         client.update_column_spec(
             dataset_name="name", column_spec_display_name="column"
         )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_called_with(
-            column_spec={"name": "column", "data_type": {"type_code": "type_code"}}
+            request=automl_v1beta1.UpdateColumnSpecRequest(
+                column_spec={
+                    "name": "column",
+                    "data_type": {"type_code": automl_v1beta1.TypeCode.FLOAT64},
+                }
+            )
         )
 
     def test_update_column_spec_nullable(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(
+                type_code=automl_v1beta1.TypeCode.FLOAT64
+            ),
         )
+
         client = self.tables_client(
             {
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
             {},
         )
         client.update_column_spec(
             dataset_name="name", column_spec_display_name="column", nullable=True
         )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_called_with(
-            column_spec={
-                "name": "column",
-                "data_type": {"type_code": "type_code", "nullable": True},
-            }
+            request=automl_v1beta1.UpdateColumnSpecRequest(
+                column_spec={
+                    "name": "column",
+                    "data_type": {
+                        "type_code": automl_v1beta1.TypeCode.FLOAT64,
+                        "nullable": True,
+                    },
+                }
+            )
         )
 
     def test_update_column_spec_type_code(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(
+                type_code=automl_v1beta1.TypeCode.FLOAT64
+            ),
         )
         client = self.tables_client(
             {
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
             {},
         )
         client.update_column_spec(
             dataset_name="name",
             column_spec_display_name="column",
-            type_code="type_code2",
+            type_code=automl_v1beta1.TypeCode.ARRAY,
         )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_called_with(
-            column_spec={"name": "column", "data_type": {"type_code": "type_code2"}}
+            request=automl_v1beta1.UpdateColumnSpecRequest(
+                column_spec={
+                    "name": "column",
+                    "data_type": {"type_code": automl_v1beta1.TypeCode.ARRAY},
+                }
+            )
         )
 
     def test_update_column_spec_type_code_nullable(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(
+                type_code=automl_v1beta1.TypeCode.FLOAT64
+            ),
         )
         client = self.tables_client(
             {
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
             {},
         )
@@ -471,30 +574,41 @@ class TestTablesClient(object):
             dataset_name="name",
             nullable=True,
             column_spec_display_name="column",
-            type_code="type_code2",
+            type_code=automl_v1beta1.TypeCode.ARRAY,
         )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_called_with(
-            column_spec={
-                "name": "column",
-                "data_type": {"type_code": "type_code2", "nullable": True},
-            }
+            request=automl_v1beta1.UpdateColumnSpecRequest(
+                column_spec={
+                    "name": "column",
+                    "data_type": {
+                        "type_code": automl_v1beta1.TypeCode.ARRAY,
+                        "nullable": True,
+                    },
+                }
+            )
         )
 
     def test_update_column_spec_type_code_nullable_false(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock = mock.Mock()
-        data_type_mock = mock.Mock(type_code="type_code")
-        column_spec_mock.configure_mock(
-            name="column", display_name="column", data_type=data_type_mock
+        column_spec = automl_v1beta1.ColumnSpec(
+            name="column",
+            display_name="column",
+            data_type=automl_v1beta1.DataType(
+                type_code=automl_v1beta1.TypeCode.FLOAT64
+            ),
         )
         client = self.tables_client(
             {
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [column_spec_mock],
+                "list_column_specs.return_value": [column_spec],
             },
             {},
         )
@@ -502,15 +616,24 @@ class TestTablesClient(object):
             dataset_name="name",
             nullable=False,
             column_spec_display_name="column",
-            type_code="type_code2",
+            type_code=automl_v1beta1.TypeCode.FLOAT64,
         )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_column_spec.assert_called_with(
-            column_spec={
-                "name": "column",
-                "data_type": {"type_code": "type_code2", "nullable": False},
-            }
+            request=automl_v1beta1.UpdateColumnSpecRequest(
+                column_spec={
+                    "name": "column",
+                    "data_type": {
+                        "type_code": automl_v1beta1.TypeCode.FLOAT64,
+                        "nullable": False,
+                    },
+                }
+            )
         )
 
     def test_set_target_column_table_not_found(self):
@@ -521,7 +644,9 @@ class TestTablesClient(object):
             client.set_target_column(
                 dataset_name="name", column_spec_display_name="column2"
             )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
         client.auto_ml_client.list_column_specs.assert_not_called()
         client.auto_ml_client.update_dataset.assert_not_called()
 
@@ -542,8 +667,12 @@ class TestTablesClient(object):
             client.set_target_column(
                 dataset_name="name", column_spec_display_name="column2"
             )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_dataset.assert_not_called()
 
     def test_set_target_column(self):
@@ -571,17 +700,23 @@ class TestTablesClient(object):
             {},
         )
         client.set_target_column(dataset_name="name", column_spec_display_name="column")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_dataset.assert_called_with(
-            dataset={
-                "name": "dataset",
-                "tables_dataset_metadata": {
-                    "target_column_spec_id": "1",
-                    "weight_column_spec_id": "2",
-                    "ml_use_column_spec_id": "3",
-                },
-            }
+            request=automl_v1beta1.UpdateDatasetRequest(
+                dataset={
+                    "name": "dataset",
+                    "tables_dataset_metadata": {
+                        "target_column_spec_id": "1",
+                        "weight_column_spec_id": "2",
+                        "ml_use_column_spec_id": "3",
+                    },
+                }
+            )
         )
 
     def test_set_weight_column_table_not_found(self):
@@ -594,7 +729,9 @@ class TestTablesClient(object):
             )
         except exceptions.NotFound:
             pass
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
         client.auto_ml_client.list_column_specs.assert_not_called()
         client.auto_ml_client.update_dataset.assert_not_called()
 
@@ -615,8 +752,12 @@ class TestTablesClient(object):
             client.set_weight_column(
                 dataset_name="name", column_spec_display_name="column2"
             )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_dataset.assert_not_called()
 
     def test_set_weight_column(self):
@@ -644,17 +785,23 @@ class TestTablesClient(object):
             {},
         )
         client.set_weight_column(dataset_name="name", column_spec_display_name="column")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_dataset.assert_called_with(
-            dataset={
-                "name": "dataset",
-                "tables_dataset_metadata": {
-                    "target_column_spec_id": "1",
-                    "weight_column_spec_id": "2",
-                    "ml_use_column_spec_id": "3",
-                },
-            }
+            request=automl_v1beta1.UpdateDatasetRequest(
+                dataset={
+                    "name": "dataset",
+                    "tables_dataset_metadata": {
+                        "target_column_spec_id": "1",
+                        "weight_column_spec_id": "2",
+                        "ml_use_column_spec_id": "3",
+                    },
+                }
+            )
         )
 
     def test_clear_weight_column(self):
@@ -671,14 +818,16 @@ class TestTablesClient(object):
         client = self.tables_client({"get_dataset.return_value": dataset_mock}, {})
         client.clear_weight_column(dataset_name="name")
         client.auto_ml_client.update_dataset.assert_called_with(
-            dataset={
-                "name": "dataset",
-                "tables_dataset_metadata": {
-                    "target_column_spec_id": "1",
-                    "weight_column_spec_id": None,
-                    "ml_use_column_spec_id": "3",
-                },
-            }
+            request=automl_v1beta1.UpdateDatasetRequest(
+                dataset={
+                    "name": "dataset",
+                    "tables_dataset_metadata": {
+                        "target_column_spec_id": "1",
+                        "weight_column_spec_id": None,
+                        "ml_use_column_spec_id": "3",
+                    },
+                }
+            )
         )
 
     def test_set_test_train_column_table_not_found(self):
@@ -689,7 +838,9 @@ class TestTablesClient(object):
             client.set_test_train_column(
                 dataset_name="name", column_spec_display_name="column2"
             )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
         client.auto_ml_client.list_column_specs.assert_not_called()
         client.auto_ml_client.update_dataset.assert_not_called()
 
@@ -710,8 +861,12 @@ class TestTablesClient(object):
             client.set_test_train_column(
                 dataset_name="name", column_spec_display_name="column2"
             )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_dataset.assert_not_called()
 
     def test_set_test_train_column(self):
@@ -741,17 +896,23 @@ class TestTablesClient(object):
         client.set_test_train_column(
             dataset_name="name", column_spec_display_name="column"
         )
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_dataset.assert_called_with(
-            dataset={
-                "name": "dataset",
-                "tables_dataset_metadata": {
-                    "target_column_spec_id": "1",
-                    "weight_column_spec_id": "2",
-                    "ml_use_column_spec_id": "3",
-                },
-            }
+            request=automl_v1beta1.UpdateDatasetRequest(
+                dataset={
+                    "name": "dataset",
+                    "tables_dataset_metadata": {
+                        "target_column_spec_id": "1",
+                        "weight_column_spec_id": "2",
+                        "ml_use_column_spec_id": "3",
+                    },
+                }
+            )
         )
 
     def test_clear_test_train_column(self):
@@ -768,14 +929,16 @@ class TestTablesClient(object):
         client = self.tables_client({"get_dataset.return_value": dataset_mock}, {})
         client.clear_test_train_column(dataset_name="name")
         client.auto_ml_client.update_dataset.assert_called_with(
-            dataset={
-                "name": "dataset",
-                "tables_dataset_metadata": {
-                    "target_column_spec_id": "1",
-                    "weight_column_spec_id": "2",
-                    "ml_use_column_spec_id": None,
-                },
-            }
+            request=automl_v1beta1.UpdateDatasetRequest(
+                dataset={
+                    "name": "dataset",
+                    "tables_dataset_metadata": {
+                        "target_column_spec_id": "1",
+                        "weight_column_spec_id": "2",
+                        "ml_use_column_spec_id": None,
+                    },
+                }
+            )
         )
 
     def test_set_time_column(self):
@@ -795,10 +958,16 @@ class TestTablesClient(object):
             {},
         )
         client.set_time_column(dataset_name="name", column_spec_display_name="column")
-        client.auto_ml_client.list_table_specs.assert_called_with(parent="name")
-        client.auto_ml_client.list_column_specs.assert_called_with(parent="table")
+        client.auto_ml_client.list_table_specs.assert_called_with(
+            request=automl_v1beta1.ListTableSpecsRequest(parent="name")
+        )
+        client.auto_ml_client.list_column_specs.assert_called_with(
+            request=automl_v1beta1.ListColumnSpecsRequest(parent="table")
+        )
         client.auto_ml_client.update_table_spec.assert_called_with(
-            table_spec={"name": "table", "time_column_spec_id": "3"}
+            request=automl_v1beta1.UpdateTableSpecRequest(
+                table_spec={"name": "table", "time_column_spec_id": "3"}
+            )
         )
 
     def test_clear_time_column(self):
@@ -816,18 +985,24 @@ class TestTablesClient(object):
         )
         client.clear_time_column(dataset_name="name")
         client.auto_ml_client.update_table_spec.assert_called_with(
-            table_spec={"name": "table", "time_column_spec_id": None}
+            request=automl_v1beta1.UpdateTableSpecRequest(
+                table_spec={"name": "table", "time_column_spec_id": None}
+            )
         )
 
     def test_get_model_evaluation(self):
         client = self.tables_client({}, {})
         client.get_model_evaluation(model_evaluation_name="x")
-        client.auto_ml_client.get_model_evaluation.assert_called_with(name="x")
+        client.auto_ml_client.get_model_evaluation.assert_called_with(
+            request=automl_v1beta1.GetModelEvaluationRequest(name="x")
+        )
 
     def test_list_model_evaluations_empty(self):
         client = self.tables_client({"list_model_evaluations.return_value": []}, {})
         ds = client.list_model_evaluations(model_name="model")
-        client.auto_ml_client.list_model_evaluations.assert_called_with(parent="model")
+        client.auto_ml_client.list_model_evaluations.assert_called_with(
+            request=automl_v1beta1.ListModelEvaluationsRequest(parent="model")
+        )
         assert ds == []
 
     def test_list_model_evaluations_not_empty(self):
@@ -840,7 +1015,9 @@ class TestTablesClient(object):
             {},
         )
         ds = client.list_model_evaluations(model_name="model")
-        client.auto_ml_client.list_model_evaluations.assert_called_with(parent="model")
+        client.auto_ml_client.list_model_evaluations.assert_called_with(
+            request=automl_v1beta1.ListModelEvaluationsRequest(parent="model")
+        )
         assert len(ds) == 1
         assert ds[0] == "eval"
 
@@ -853,8 +1030,10 @@ class TestTablesClient(object):
             {},
         )
         ds = client.list_models()
-        client.auto_ml_client.location_path.assert_called_with(PROJECT, REGION)
-        client.auto_ml_client.list_models.assert_called_with(parent=LOCATION_PATH)
+
+        client.auto_ml_client.list_models.assert_called_with(
+            request=automl_v1beta1.ListModelsRequest(parent=LOCATION_PATH)
+        )
         assert ds == []
 
     def test_list_models_not_empty(self):
@@ -867,8 +1046,10 @@ class TestTablesClient(object):
             {},
         )
         ds = client.list_models()
-        client.auto_ml_client.location_path.assert_called_with(PROJECT, REGION)
-        client.auto_ml_client.list_models.assert_called_with(parent=LOCATION_PATH)
+
+        client.auto_ml_client.list_models.assert_called_with(
+            request=automl_v1beta1.ListModelsRequest(parent=LOCATION_PATH)
+        )
         assert len(ds) == 1
         assert ds[0] == "some_model"
 
@@ -931,7 +1112,9 @@ class TestTablesClient(object):
         model.configure_mock(name="name")
         client = self.tables_client({"delete_model.return_value": None}, {})
         client.delete_model(model=model)
-        client.auto_ml_client.delete_model.assert_called_with(name="name")
+        client.auto_ml_client.delete_model.assert_called_with(
+            request=automl_v1beta1.DeleteModelRequest(name="name")
+        )
 
     def test_delete_model_not_found(self):
         client = self.tables_client({"list_models.return_value": []}, {})
@@ -941,7 +1124,9 @@ class TestTablesClient(object):
     def test_delete_model_name(self):
         client = self.tables_client({"delete_model.return_value": None}, {})
         client.delete_model(model_name="name")
-        client.auto_ml_client.delete_model.assert_called_with(name="name")
+        client.auto_ml_client.delete_model.assert_called_with(
+            request=automl_v1beta1.DeleteModelRequest(name="name")
+        )
 
     def test_deploy_model_no_args(self):
         client = self.tables_client({}, {})
@@ -952,7 +1137,9 @@ class TestTablesClient(object):
     def test_deploy_model(self):
         client = self.tables_client({}, {})
         client.deploy_model(model_name="name")
-        client.auto_ml_client.deploy_model.assert_called_with(name="name")
+        client.auto_ml_client.deploy_model.assert_called_with(
+            request=automl_v1beta1.DeployModelRequest(name="name")
+        )
 
     def test_deploy_model_not_found(self):
         client = self.tables_client({"list_models.return_value": []}, {})
@@ -963,7 +1150,9 @@ class TestTablesClient(object):
     def test_undeploy_model(self):
         client = self.tables_client({}, {})
         client.undeploy_model(model_name="name")
-        client.auto_ml_client.undeploy_model.assert_called_with(name="name")
+        client.auto_ml_client.undeploy_model.assert_called_with(
+            request=automl_v1beta1.UndeployModelRequest(name="name")
+        )
 
     def test_undeploy_model_not_found(self):
         client = self.tables_client({"list_models.return_value": []}, {})
@@ -989,32 +1178,37 @@ class TestTablesClient(object):
             "my_model", dataset_name="my_dataset", train_budget_milli_node_hours=1000
         )
         client.auto_ml_client.create_model.assert_called_with(
-            parent=LOCATION_PATH,
-            model={
-                "display_name": "my_model",
-                "dataset_id": "my_dataset",
-                "tables_model_metadata": {"train_budget_milli_node_hours": 1000},
-            },
+            request=automl_v1beta1.CreateModelRequest(
+                parent=LOCATION_PATH,
+                model={
+                    "display_name": "my_model",
+                    "dataset_id": "my_dataset",
+                    "tables_model_metadata": {"train_budget_milli_node_hours": 1000},
+                },
+            )
         )
 
     def test_create_model_include_columns(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock1 = mock.Mock()
-        column_spec_mock1.configure_mock(name="column/1", display_name="column1")
-        column_spec_mock2 = mock.Mock()
-        column_spec_mock2.configure_mock(name="column/2", display_name="column2")
+
+        column_spec_1 = automl_v1beta1.ColumnSpec(
+            name="column/1", display_name="column1"
+        )
+        column_spec_2 = automl_v1beta1.ColumnSpec(
+            name="column/2", display_name="column2"
+        )
+
         client = self.tables_client(
-            {
-                "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [
-                    column_spec_mock1,
-                    column_spec_mock2,
+            client_attrs={
+                "list_table_specs.return_value": [
+                    automl_v1beta1.TableSpec(name="table")
                 ],
+                "list_column_specs.return_value": [column_spec_1, column_spec_2],
                 "location_path.return_value": LOCATION_PATH,
             },
-            {},
+            prediction_client_attrs={},
         )
         client.create_model(
             "my_model",
@@ -1023,35 +1217,37 @@ class TestTablesClient(object):
             train_budget_milli_node_hours=1000,
         )
         client.auto_ml_client.create_model.assert_called_with(
-            parent=LOCATION_PATH,
-            model={
-                "display_name": "my_model",
-                "dataset_id": "my_dataset",
-                "tables_model_metadata": {
-                    "train_budget_milli_node_hours": 1000,
-                    "input_feature_column_specs": [column_spec_mock1],
-                },
-            },
+            request=automl_v1beta1.CreateModelRequest(
+                parent=LOCATION_PATH,
+                model=automl_v1beta1.Model(
+                    display_name="my_model",
+                    dataset_id="my_dataset",
+                    tables_model_metadata=automl_v1beta1.TablesModelMetadata(
+                        train_budget_milli_node_hours=1000,
+                        input_feature_column_specs=[column_spec_1],
+                    ),
+                ),
+            )
         )
 
     def test_create_model_exclude_columns(self):
         table_spec_mock = mock.Mock()
         # name is reserved in use of __init__, needs to be passed here
         table_spec_mock.configure_mock(name="table")
-        column_spec_mock1 = mock.Mock()
-        column_spec_mock1.configure_mock(name="column/1", display_name="column1")
-        column_spec_mock2 = mock.Mock()
-        column_spec_mock2.configure_mock(name="column/2", display_name="column2")
+
+        column_spec_1 = automl_v1beta1.ColumnSpec(
+            name="column/1", display_name="column1"
+        )
+        column_spec_2 = automl_v1beta1.ColumnSpec(
+            name="column/2", display_name="column2"
+        )
         client = self.tables_client(
-            {
+            client_attrs={
                 "list_table_specs.return_value": [table_spec_mock],
-                "list_column_specs.return_value": [
-                    column_spec_mock1,
-                    column_spec_mock2,
-                ],
+                "list_column_specs.return_value": [column_spec_1, column_spec_2],
                 "location_path.return_value": LOCATION_PATH,
             },
-            {},
+            prediction_client_attrs={},
         )
         client.create_model(
             "my_model",
@@ -1060,15 +1256,17 @@ class TestTablesClient(object):
             train_budget_milli_node_hours=1000,
         )
         client.auto_ml_client.create_model.assert_called_with(
-            parent=LOCATION_PATH,
-            model={
-                "display_name": "my_model",
-                "dataset_id": "my_dataset",
-                "tables_model_metadata": {
-                    "train_budget_milli_node_hours": 1000,
-                    "input_feature_column_specs": [column_spec_mock2],
-                },
-            },
+            request=automl_v1beta1.CreateModelRequest(
+                parent=LOCATION_PATH,
+                model=automl_v1beta1.Model(
+                    display_name="my_model",
+                    dataset_id="my_dataset",
+                    tables_model_metadata=automl_v1beta1.TablesModelMetadata(
+                        train_budget_milli_node_hours=1000,
+                        input_feature_column_specs=[column_spec_2],
+                    ),
+                ),
+            )
         )
 
     def test_create_model_invalid_hours_small(self):
@@ -1125,7 +1323,9 @@ class TestTablesClient(object):
         payload = data_items.ExamplePayload(row=row)
 
         client.prediction_client.predict.assert_called_with(
-            name="my_model", payload=payload, params=None
+            request=automl_v1beta1.PredictRequest(
+                name="my_model", payload=payload, params=None
+            )
         )
 
     def test_predict_from_dict(self):
@@ -1149,7 +1349,9 @@ class TestTablesClient(object):
         payload = data_items.ExamplePayload(row=row)
 
         client.prediction_client.predict.assert_called_with(
-            name="my_model", payload=payload, params=None
+            request=automl_v1beta1.PredictRequest(
+                name="my_model", payload=payload, params=None
+            )
         )
 
     def test_predict_from_dict_with_feature_importance(self):
@@ -1175,7 +1377,9 @@ class TestTablesClient(object):
         payload = data_items.ExamplePayload(row=row)
 
         client.prediction_client.predict.assert_called_with(
-            name="my_model", payload=payload, params={"feature_importance": "true"}
+            request=automl_v1beta1.PredictRequest(
+                name="my_model", payload=payload, params={"feature_importance": "true"}
+            )
         )
 
     def test_predict_from_dict_missing(self):
@@ -1199,7 +1403,9 @@ class TestTablesClient(object):
         payload = data_items.ExamplePayload(row=row)
 
         client.prediction_client.predict.assert_called_with(
-            name="my_model", payload=payload, params=None
+            request=automl_v1beta1.PredictRequest(
+                name="my_model", payload=payload, params=None
+            )
         )
 
     def test_predict_all_types(self):
@@ -1282,7 +1488,9 @@ class TestTablesClient(object):
         payload = data_items.ExamplePayload(row=row)
 
         client.prediction_client.predict.assert_called_with(
-            name="my_model", payload=payload, params=None
+            request=automl_v1beta1.PredictRequest(
+                name="my_model", payload=payload, params=None
+            )
         )
 
     def test_predict_from_array_missing(self):
@@ -1316,9 +1524,11 @@ class TestTablesClient(object):
         client.gcs_client.upload_pandas_dataframe.assert_called_with(dataframe)
 
         client.prediction_client.batch_predict.assert_called_with(
-            name="my_model",
-            input_config={"gcs_source": {"input_uris": ["gs://input"]}},
-            output_config={"gcs_destination": {"output_uri_prefix": "gs://output"}},
+            request=automl_v1beta1.BatchPredictRequest(
+                name="my_model",
+                input_config={"gcs_source": {"input_uris": ["gs://input"]}},
+                output_config={"gcs_destination": {"output_uri_prefix": "gs://output"}},
+            )
         )
 
     def test_batch_predict_pandas_dataframe_init_gcs(self):
@@ -1350,9 +1560,13 @@ class TestTablesClient(object):
             client.gcs_client.upload_pandas_dataframe.assert_called_with(dataframe)
 
             client.prediction_client.batch_predict.assert_called_with(
-                name="my_model",
-                input_config={"gcs_source": {"input_uris": ["gs://input"]}},
-                output_config={"gcs_destination": {"output_uri_prefix": "gs://output"}},
+                request=automl_v1beta1.BatchPredictRequest(
+                    name="my_model",
+                    input_config={"gcs_source": {"input_uris": ["gs://input"]}},
+                    output_config={
+                        "gcs_destination": {"output_uri_prefix": "gs://output"}
+                    },
+                )
             )
 
     def test_batch_predict_gcs(self):
@@ -1363,9 +1577,11 @@ class TestTablesClient(object):
             gcs_output_uri_prefix="gs://output",
         )
         client.prediction_client.batch_predict.assert_called_with(
-            name="my_model",
-            input_config={"gcs_source": {"input_uris": ["gs://input"]}},
-            output_config={"gcs_destination": {"output_uri_prefix": "gs://output"}},
+            request=automl_v1beta1.BatchPredictRequest(
+                name="my_model",
+                input_config={"gcs_source": {"input_uris": ["gs://input"]}},
+                output_config={"gcs_destination": {"output_uri_prefix": "gs://output"}},
+            )
         )
 
     def test_batch_predict_bigquery(self):
@@ -1376,9 +1592,11 @@ class TestTablesClient(object):
             bigquery_output_uri="bq://output",
         )
         client.prediction_client.batch_predict.assert_called_with(
-            name="my_model",
-            input_config={"bigquery_source": {"input_uri": "bq://input"}},
-            output_config={"bigquery_destination": {"output_uri": "bq://output"}},
+            request=automl_v1beta1.BatchPredictRequest(
+                name="my_model",
+                input_config={"bigquery_source": {"input_uri": "bq://input"}},
+                output_config={"bigquery_destination": {"output_uri": "bq://output"}},
+            )
         )
 
     def test_batch_predict_mixed(self):
@@ -1389,9 +1607,11 @@ class TestTablesClient(object):
             bigquery_output_uri="bq://output",
         )
         client.prediction_client.batch_predict.assert_called_with(
-            name="my_model",
-            input_config={"gcs_source": {"input_uris": ["gs://input"]}},
-            output_config={"bigquery_destination": {"output_uri": "bq://output"}},
+            request=automl_v1beta1.BatchPredictRequest(
+                name="my_model",
+                input_config={"gcs_source": {"input_uris": ["gs://input"]}},
+                output_config={"bigquery_destination": {"output_uri": "bq://output"}},
+            )
         )
 
     def test_batch_predict_missing_input_gcs_uri(self):

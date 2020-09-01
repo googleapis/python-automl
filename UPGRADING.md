@@ -137,6 +137,34 @@ response = client.batch_predict(
 ```
 
 
+The method `list_datasets` takes an argument `filter` instead of `filter_`.
+
+**Before**
+```py
+from google.cloud import automl
+
+project_id = "PROJECT_ID"
+
+client = automl.AutoMlClient()
+project_location = client.location_path(project_id, "us-central1")
+
+# List all the datasets available in the region.
+response = client.list_datasets(project_location, filter_="")
+```
+
+**After**
+```py
+from google.cloud import automl
+
+project_id = "PROJECT_ID"
+client = automl.AutoMlClient()
+# A resource that represents Google Cloud Platform location.
+project_location = f"projects/{project_id}/locations/us-central1"
+
+# List all the datasets available in the region.
+response = client.list_datasets(parent=project_location, filter="")
+```
+
 
 ## Enums and types
 

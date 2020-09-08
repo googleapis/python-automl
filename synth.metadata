@@ -1,26 +1,32 @@
 {
-  "updateTime": "2020-01-31T18:17:08.114692Z",
   "sources": [
     {
-      "generator": {
-        "name": "artman",
-        "version": "0.44.4",
-        "dockerImage": "googleapis/artman@sha256:19e945954fc960a4bdfee6cb34695898ab21a8cf0bac063ee39b91f00a1faec8"
+      "git": {
+        "name": ".",
+        "remote": "git@github.com:googleapis/python-automl.git",
+        "sha": "ec9cb308914fe2d5d19cf612c9a51a38ed77ee64"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "2717b8a1c762b26911b45ecc2e4ee01d98401b28",
-        "internalRef": "292555664"
+        "sha": "fb84629a56703d04f0b5304c4a9ade7313ebd92d",
+        "internalRef": "325339219"
       }
     },
     {
-      "template": {
-        "name": "python_split_library",
-        "origin": "synthtool.gcp",
-        "version": "2019.10.17"
+      "git": {
+        "name": "synthtool",
+        "remote": "https://github.com/googleapis/synthtool.git",
+        "sha": "5f2f711c91199ba2f609d3f06a2fe22aee4e5be3"
+      }
+    },
+    {
+      "git": {
+        "name": "synthtool",
+        "remote": "https://github.com/googleapis/synthtool.git",
+        "sha": "5f2f711c91199ba2f609d3f06a2fe22aee4e5be3"
       }
     }
   ],
@@ -31,8 +37,7 @@
         "apiName": "automl",
         "apiVersion": "v1beta1",
         "language": "python",
-        "generator": "gapic",
-        "config": "google/cloud/automl/artman_automl_v1beta1.yaml"
+        "generator": "bazel"
       }
     },
     {
@@ -41,8 +46,7 @@
         "apiName": "automl",
         "apiVersion": "v1",
         "language": "python",
-        "generator": "gapic",
-        "config": "google/cloud/automl/artman_automl_v1.yaml"
+        "generator": "bazel"
       }
     }
   ]

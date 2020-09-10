@@ -102,6 +102,7 @@ class TablesClient(object):
 
     def __init__(
         self,
+        *,
         project=None,
         region="us-central1",
         credentials=None,
@@ -142,17 +143,7 @@ class TablesClient(object):
                 default to. Most methods take `region` as an optional
                 parameter, and can override your choice of `region` supplied
                 here. Note, only `us-central1` is supported to-date.
-            transport (Union[~.AutoMlGrpcTransport, Callable[[~.Credentials, type], ~.AutoMlGrpcTransport]):
-                A transport instance, responsible for actually making the API
-                calls.  The default transport uses the gRPC protocol.  This
-                argument may also be a callable which returns a transport
-                instance. Callables will be sent the credentials as the first
-                argument and the default transport class as the second
-                argument.
-            channel (grpc.Channel): DEPRECATED. A ``Channel`` instance
-                through which to make calls. This argument is mutually exclusive
-                with ``credentials``; providing both will raise an exception.
-            credentials (google.auth.credentials.Credentials): The
+            credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify this application to the service. If none
                 are specified, the client will attempt to ascertain the
@@ -160,11 +151,17 @@ class TablesClient(object):
                 This argument is mutually exclusive with providing a
                 transport instance to ``transport``; doing so will raise
                 an exception.
-            client_config (dict): DEPRECATED. A dictionary of call options for
-                each method. If not specified, the default configuration is used.
+            client (Optional[google.automl_v1beta1.AutoMlClient]): An AutoMl Client
+                to use for requests.
+            prediction_client (Optional[google.automl_v1beta1.PredictionClient]): A
+                Prediction Client to use for requests.
+            gcs_client (Optional[google.automl_v1beta1.GcsClient]): A Storage client
+                to use for requests.
             client_options (Union[dict, google.api_core.client_options.ClientOptions]):
-                Client options used to set user options on the client. API Endpoint
-                should be set through client_options.
+                Custom options for the client.
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
+                The client info used to send a user-agent string along with	
+                API requests.
         """
         version = _GAPIC_LIBRARY_VERSION
         user_agent = "automl-tables-wrapper/{}".format(version)
@@ -220,7 +217,7 @@ class TablesClient(object):
                 )
             )
 
-    def __location_path(self, project=None, region=None):
+    def __location_path(self, *, project=None, region=None):
         if project is None:
             if self.project is None:
                 raise ValueError(
@@ -254,6 +251,7 @@ class TablesClient(object):
 
     def __dataset_from_args(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -279,6 +277,7 @@ class TablesClient(object):
 
     def __model_from_args(
         self,
+        *,
         model=None,
         model_display_name=None,
         model_name=None,
@@ -303,6 +302,7 @@ class TablesClient(object):
 
     def __dataset_name_from_args(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -331,6 +331,7 @@ class TablesClient(object):
 
     def __table_spec_name_from_args(
         self,
+        *,
         table_spec_index=0,
         dataset=None,
         dataset_display_name=None,
@@ -353,6 +354,7 @@ class TablesClient(object):
 
     def __model_name_from_args(
         self,
+        *,
         model=None,
         model_display_name=None,
         model_name=None,
@@ -402,6 +404,7 @@ class TablesClient(object):
 
     def __column_spec_name_from_args(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -411,7 +414,6 @@ class TablesClient(object):
         column_spec_display_name=None,
         project=None,
         region=None,
-        **kwargs,
     ):
         column_specs = self.list_column_specs(
             dataset=dataset,
@@ -421,7 +423,6 @@ class TablesClient(object):
             table_spec_index=table_spec_index,
             project=project,
             region=region,
-            **kwargs,
         )
         if column_spec_display_name is not None:
             column_specs = {s.display_name: s for s in column_specs}
@@ -489,7 +490,7 @@ class TablesClient(object):
 
         return method_kwargs
 
-    def list_datasets(self, project=None, region=None, **kwargs):
+    def list_datasets(self, *, project=None, region=None, **kwargs):
         """List all datasets in a particular project and region.
 
         Example:
@@ -542,6 +543,7 @@ class TablesClient(object):
 
     def get_dataset(
         self,
+        *,
         project=None,
         region=None,
         dataset_name=None,
@@ -606,12 +608,12 @@ class TablesClient(object):
 
         return self.__lookup_by_display_name(
             "dataset",
-            self.list_datasets(project, region, **kwargs),
+            self.list_datasets(project=project, region=region),
             dataset_display_name,
         )
 
     def create_dataset(
-        self, dataset_display_name, metadata={}, project=None, region=None, **kwargs
+        self, dataset_display_name, *, metadata={}, project=None, region=None, **kwargs
     ):
         """Create a dataset. Keep in mind, importing data is a separate step.
 
@@ -650,7 +652,7 @@ class TablesClient(object):
             ValueError: If required parameters are missing.
         """
         request = google.cloud.automl_v1beta1.CreateDatasetRequest(
-            parent=self.__location_path(project, region),
+            parent=self.__location_path(project=project, region=region),
             dataset={
                 "display_name": dataset_display_name,
                 "tables_dataset_metadata": metadata,
@@ -662,6 +664,7 @@ class TablesClient(object):
 
     def delete_dataset(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -727,7 +730,6 @@ class TablesClient(object):
                 dataset_display_name=dataset_display_name,
                 project=project,
                 region=region,
-                **kwargs,
             )
         # delete is idempotent
         except exceptions.NotFound:
@@ -741,6 +743,7 @@ class TablesClient(object):
 
     def import_data(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -868,6 +871,7 @@ class TablesClient(object):
 
     def export_data(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -958,7 +962,7 @@ class TablesClient(object):
             )
 
         req = google.cloud.automl_v1beta1.ExportDataRequest(
-            name=dataset_name, output_config=request, **kwargs
+            name=dataset_name, output_config=request
         )
 
         method_kwargs = self.__process_request_kwargs(req, **kwargs)
@@ -966,7 +970,7 @@ class TablesClient(object):
         self.__log_operation_info("Export data", op)
         return op
 
-    def get_table_spec(self, table_spec_name, project=None, region=None, **kwargs):
+    def get_table_spec(self, table_spec_name, *, project=None, region=None, **kwargs):
         """Gets a single table spec in a particular project and region.
 
         Example:
@@ -1011,6 +1015,7 @@ class TablesClient(object):
 
     def list_table_specs(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1084,7 +1089,7 @@ class TablesClient(object):
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
         return self.auto_ml_client.list_table_specs(request=request, **method_kwargs)
 
-    def get_column_spec(self, column_spec_name, project=None, region=None, **kwargs):
+    def get_column_spec(self, column_spec_name, *, project=None, region=None, **kwargs):
         """Gets a single column spec in a particular project and region.
 
         Example:
@@ -1130,6 +1135,7 @@ class TablesClient(object):
 
     def list_column_specs(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1229,6 +1235,7 @@ class TablesClient(object):
 
     def update_column_spec(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1364,6 +1371,7 @@ class TablesClient(object):
 
     def set_target_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1458,7 +1466,6 @@ class TablesClient(object):
             column_spec_display_name=column_spec_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
         column_spec_id = column_spec_name.rsplit("/", 1)[-1]
 
@@ -1468,7 +1475,6 @@ class TablesClient(object):
             dataset_display_name=dataset_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
         metadata = dataset.tables_dataset_metadata
         metadata = self.__update_metadata(
@@ -1484,6 +1490,7 @@ class TablesClient(object):
 
     def set_time_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1576,7 +1583,6 @@ class TablesClient(object):
             column_spec_display_name=column_spec_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
         column_spec_id = column_spec_name.rsplit("/", 1)[-1]
 
@@ -1601,6 +1607,7 @@ class TablesClient(object):
 
     def clear_time_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1682,6 +1689,7 @@ class TablesClient(object):
 
     def set_weight_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1801,6 +1809,7 @@ class TablesClient(object):
 
     def clear_weight_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1882,6 +1891,7 @@ class TablesClient(object):
 
     def set_test_train_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -1977,7 +1987,6 @@ class TablesClient(object):
             column_spec_display_name=column_spec_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
         column_spec_id = column_spec_name.rsplit("/", 1)[-1]
 
@@ -1987,7 +1996,6 @@ class TablesClient(object):
             dataset_display_name=dataset_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
         metadata = dataset.tables_dataset_metadata
         metadata = self.__update_metadata(
@@ -2003,6 +2011,7 @@ class TablesClient(object):
 
     def clear_test_train_column(
         self,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -2072,7 +2081,6 @@ class TablesClient(object):
             dataset_display_name=dataset_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
         metadata = dataset.tables_dataset_metadata
         metadata = self.__update_metadata(metadata, "ml_use_column_spec_id", None)
@@ -2084,7 +2092,7 @@ class TablesClient(object):
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
         return self.auto_ml_client.update_dataset(request=request, **method_kwargs)
 
-    def list_models(self, project=None, region=None, **kwargs):
+    def list_models(self, *, project=None, region=None, **kwargs):
         """List all models in a particular project and region.
 
         Example:
@@ -2136,6 +2144,7 @@ class TablesClient(object):
 
     def list_model_evaluations(
         self,
+        *,
         project=None,
         region=None,
         model=None,
@@ -2222,6 +2231,7 @@ class TablesClient(object):
     def create_model(
         self,
         model_display_name,
+        *,
         dataset=None,
         dataset_display_name=None,
         dataset_name=None,
@@ -2337,7 +2347,6 @@ class TablesClient(object):
             dataset_display_name=dataset_display_name,
             project=project,
             region=region,
-            **kwargs,
         )
 
         model_metadata["train_budget_milli_node_hours"] = train_budget_milli_node_hours
@@ -2353,7 +2362,6 @@ class TablesClient(object):
                 dataset=dataset,
                 dataset_name=dataset_name,
                 dataset_display_name=dataset_display_name,
-                **kwargs,
             )
         ]
 
@@ -2389,6 +2397,7 @@ class TablesClient(object):
 
     def delete_model(
         self,
+        *,
         model=None,
         model_display_name=None,
         model_name=None,
@@ -2466,7 +2475,7 @@ class TablesClient(object):
         return op
 
     def get_model_evaluation(
-        self, model_evaluation_name, project=None, region=None, **kwargs
+        self, model_evaluation_name, *, project=None, region=None, **kwargs
     ):
         """Gets a single evaluation model in a particular project and region.
 
@@ -2515,6 +2524,7 @@ class TablesClient(object):
 
     def get_model(
         self,
+        *,
         project=None,
         region=None,
         model_name=None,
@@ -2574,12 +2584,13 @@ class TablesClient(object):
             return self.auto_ml_client.get_model(name=model_name)
 
         return self.__lookup_by_display_name(
-            "model", self.list_models(project, region), model_display_name
+            "model", self.list_models(project=project, region=region), model_display_name
         )
 
     # TODO(jonathanskim): allow deployment from just model ID
     def deploy_model(
         self,
+        *,
         model=None,
         model_name=None,
         model_display_name=None,
@@ -2655,6 +2666,7 @@ class TablesClient(object):
 
     def undeploy_model(
         self,
+        *,
         model=None,
         model_name=None,
         model_display_name=None,
@@ -2730,6 +2742,7 @@ class TablesClient(object):
     def predict(
         self,
         inputs,
+        *,
         model=None,
         model_name=None,
         model_display_name=None,
@@ -2844,6 +2857,7 @@ class TablesClient(object):
 
     def batch_predict(
         self,
+        *,
         pandas_dataframe=None,
         bigquery_input_uri=None,
         bigquery_output_uri=None,

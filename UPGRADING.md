@@ -165,6 +165,56 @@ project_location = f"projects/{project_id}/locations/us-central1"
 response = client.list_datasets(parent=project_location, filter="")
 ```
 
+### Changes to v1beta1 Tables Client
+
+Optional arguments are now keyword-only arguments and *must* be passed by name.
+See [PEP 3102](https://www.python.org/dev/peps/pep-3102/).
+
+***Before**
+```py
+    def predict(
+        self,
+        inputs,
+        model=None,
+        model_name=None,
+        model_display_name=None,
+        feature_importance=False,
+        project=None,
+        region=None,
+        **kwargs
+    ):
+```
+
+**After**
+```py
+    def predict(
+        self,
+        inputs,
+        *,
+        model=None,
+        model_name=None,
+        model_display_name=None,
+        feature_importance=False,
+        project=None,
+        region=None,
+        **kwargs,
+    ):
+```
+
+**kwargs passed to methods must be either (1) kwargs on the underlying method (`retry`, `timeout`, or `metadata`) or (2) attributes of the request object.
+
+The following call is valid because `filter` is an attribute of `automl_v1beta1.ListDatasetsRequest`.
+
+```py
+from google.cloud import automl_v1beta1 as automl
+
+client = automl.TablesClient(project=project_id, region=compute_region)
+
+# List all the datasets available in the region by applying filter.
+response = client.list_datasets(filter=filter)
+```
+
+
 
 ## Enums and types
 

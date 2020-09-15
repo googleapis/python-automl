@@ -170,9 +170,8 @@ def get_model_evaluation(
     client = automl.AutoMlClient()
 
     # Get the full path of the model evaluation.
-    model_evaluation_full_id = client.model_evaluation_path(
-        project_id, compute_region, model_id, model_evaluation_id
-    )
+    model_path = client.model_path(project_id, compute_region, model_id)
+    model_evaluation_full_id = f"{model_path}/modelEvaluations/{model_evaluation_id}"
 
     # Get complete detail of the model evaluation.
     response = client.get_model_evaluation(name=model_evaluation_full_id)

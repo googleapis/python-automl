@@ -73,8 +73,8 @@ def list_models(project_id, compute_region, filter_):
     project_location = f"projects/{project_id}/locations/{compute_region}"
 
     # List all the models available in the region by applying filter.
-    request = automl.ListDatasetsRequest(parent=project_location, filter=filter_)
-    response = client.list_datasets(request=request)
+    request = automl.ListModelsRequest(parent=project_location, filter=filter_)
+    response = client.list_models(request=request)
 
     print("List of models:")
     for model in response:

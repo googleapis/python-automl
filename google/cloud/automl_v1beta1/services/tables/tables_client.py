@@ -2584,7 +2584,9 @@ class TablesClient(object):
             return self.auto_ml_client.get_model(name=model_name)
 
         return self.__lookup_by_display_name(
-            "model", self.list_models(project=project, region=region), model_display_name
+            "model",
+            self.list_models(project=project, region=region),
+            model_display_name,
         )
 
     # TODO(jonathanskim): allow deployment from just model ID

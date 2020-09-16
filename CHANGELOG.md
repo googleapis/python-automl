@@ -9,7 +9,7 @@
 
 ### ⚠ BREAKING CHANGES
 
-* move to microgen (#61)
+* move to microgen. See [Migration Guide](https://github.com/googleapis/python-automl/blob/release-v2.0.0/UPGRADING.md) (#61)
 
 ### Features
 

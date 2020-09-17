@@ -55,7 +55,7 @@ Supported Python Versions
 Python >= 3.6
 
 Unsupported Python Versions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Python == 2.7.
 
 The last version of this library compatible with Python 2.7 is google-cloud-automl==1.0.1.

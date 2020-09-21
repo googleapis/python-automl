@@ -74,7 +74,7 @@ def default(session):
 
     session.install("mock", "pytest", "pytest-cov")
     session.install("-e", ".[pandas,storage]")
-    session.install("proto-plus==1.8.1")
+    session.install("proto-plus==1.10.0.dev2")
 
     # Run py.test against the unit tests.
     session.run(
@@ -126,6 +126,7 @@ def system(session):
         "mock", "pytest", "google-cloud-testutils",
     )
     session.install("-e", ".[pandas,storage]")
+    session.install("proto-plus==1.10.0.dev2")
 
     # Run py.test against the system tests.
     if system_test_exists:

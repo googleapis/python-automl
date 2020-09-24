@@ -14,8 +14,6 @@
 
 import os
 
-from google.cloud import automl
-
 import language_text_classification_create_model
 
 PROJECT_ID = os.environ["AUTOML_PROJECT_ID"]

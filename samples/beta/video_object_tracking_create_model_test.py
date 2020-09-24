@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import os
-import uuid
 
 import video_object_tracking_create_model
 

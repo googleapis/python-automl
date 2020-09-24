@@ -15,8 +15,6 @@
 import os
 import uuid
 
-from google.cloud import automl_v1beta1 as automl
-
 import video_object_tracking_create_model
 
 PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]

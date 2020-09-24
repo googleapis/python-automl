@@ -29,4 +29,3 @@ def test_vision_classification_create_model(capsys):
         assert "Dataset does not exist." in out
     except Exception as e:
         assert "Dataset does not exist." in e.message
-

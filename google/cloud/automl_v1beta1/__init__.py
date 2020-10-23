@@ -17,8 +17,8 @@
 
 from .services.auto_ml import AutoMlClient
 from .services.prediction_service import PredictionServiceClient
-from .services.tables.gcs_client import GcsClient
-from .services.tables.tables_client import TablesClient
+from .tables.gcs_client import GcsClient
+from .tables.tables_client import TablesClient
 from .types.annotation_payload import AnnotationPayload
 from .types.annotation_spec import AnnotationSpec
 from .types.classification import ClassificationAnnotation
@@ -149,6 +149,7 @@ __all__ = (
     "AnnotationPayload",
     "AnnotationSpec",
     "ArrayStats",
+    "AutoMlClient",
     "BatchPredictInputConfig",
     "BatchPredictOperationMetadata",
     "BatchPredictOutputConfig",
@@ -227,7 +228,6 @@ __all__ = (
     "OutputConfig",
     "PredictRequest",
     "PredictResponse",
-    "PredictionServiceClient",
     "RegressionEvaluationMetrics",
     "Row",
     "StringStats",
@@ -269,5 +269,5 @@ __all__ = (
     "VideoObjectTrackingDatasetMetadata",
     "VideoObjectTrackingEvaluationMetrics",
     "VideoObjectTrackingModelMetadata",
-    "AutoMlClient",
+    "PredictionServiceClient",
 )

@@ -87,13 +87,13 @@ class AutoMlAsyncClient:
     DEFAULT_ENDPOINT = AutoMlClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = AutoMlClient.DEFAULT_MTLS_ENDPOINT
 
-    dataset_path = staticmethod(AutoMlClient.dataset_path)
-
-    table_spec_path = staticmethod(AutoMlClient.table_spec_path)
+    model_path = staticmethod(AutoMlClient.model_path)
 
     column_spec_path = staticmethod(AutoMlClient.column_spec_path)
 
-    model_path = staticmethod(AutoMlClient.model_path)
+    dataset_path = staticmethod(AutoMlClient.dataset_path)
+
+    table_spec_path = staticmethod(AutoMlClient.table_spec_path)
 
     from_service_account_file = AutoMlClient.from_service_account_file
     from_service_account_json = from_service_account_file

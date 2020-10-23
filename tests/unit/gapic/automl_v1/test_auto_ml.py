@@ -4929,31 +4929,6 @@ def test_auto_ml_grpc_lro_async_client():
     assert transport.operations_client is transport.operations_client
 
 
-def test_model_path():
-    project = "squid"
-    location = "clam"
-    model = "whelk"
-
-    expected = "projects/{project}/locations/{location}/models/{model}".format(
-        project=project, location=location, model=model,
-    )
-    actual = AutoMlClient.model_path(project, location, model)
-    assert expected == actual
-
-
-def test_parse_model_path():
-    expected = {
-        "project": "octopus",
-        "location": "oyster",
-        "model": "nudibranch",
-    }
-    path = AutoMlClient.model_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = AutoMlClient.parse_model_path(path)
-    assert expected == actual
-
-
 def test_dataset_path():
     project = "squid"
     location = "clam"
@@ -4976,6 +4951,31 @@ def test_parse_dataset_path():
 
     # Check that the path construction is reversible.
     actual = AutoMlClient.parse_dataset_path(path)
+    assert expected == actual
+
+
+def test_model_path():
+    project = "squid"
+    location = "clam"
+    model = "whelk"
+
+    expected = "projects/{project}/locations/{location}/models/{model}".format(
+        project=project, location=location, model=model,
+    )
+    actual = AutoMlClient.model_path(project, location, model)
+    assert expected == actual
+
+
+def test_parse_model_path():
+    expected = {
+        "project": "octopus",
+        "location": "oyster",
+        "model": "nudibranch",
+    }
+    path = AutoMlClient.model_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = AutoMlClient.parse_model_path(path)
     assert expected == actual
 
 

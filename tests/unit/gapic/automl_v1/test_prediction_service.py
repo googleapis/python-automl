@@ -106,12 +106,12 @@ def test_prediction_service_client_from_service_account_file(client_class):
     ) as factory:
         factory.return_value = creds
         client = client_class.from_service_account_file("dummy/file/path.json")
-        assert client.transport._credentials == creds
+        assert client._transport._credentials == creds
 
         client = client_class.from_service_account_json("dummy/file/path.json")
-        assert client.transport._credentials == creds
+        assert client._transport._credentials == creds
 
-        assert client.transport._host == "automl.googleapis.com:443"
+        assert client._transport._host == "automl.googleapis.com:443"
 
 
 def test_prediction_service_client_get_transport_class():
@@ -471,7 +471,7 @@ def test_predict(
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.predict), "__call__") as call:
+    with mock.patch.object(type(client._transport.predict), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = prediction_service.PredictResponse()
 
@@ -484,7 +484,6 @@ def test_predict(
         assert args[0] == prediction_service.PredictRequest()
 
     # Establish that the response is the type that we expect.
-
     assert isinstance(response, prediction_service.PredictResponse)
 
 
@@ -493,19 +492,17 @@ def test_predict_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_predict_async(
-    transport: str = "grpc_asyncio", request_type=prediction_service.PredictRequest
-):
+async def test_predict_async(transport: str = "grpc_asyncio"):
     client = PredictionServiceAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
+    request = prediction_service.PredictRequest()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.predict), "__call__") as call:
+    with mock.patch.object(type(client._client._transport.predict), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             prediction_service.PredictResponse()
@@ -517,15 +514,10 @@ async def test_predict_async(
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == prediction_service.PredictRequest()
+        assert args[0] == request
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, prediction_service.PredictResponse)
-
-
-@pytest.mark.asyncio
-async def test_predict_async_from_dict():
-    await test_predict_async(request_type=dict)
 
 
 def test_predict_field_headers():
@@ -537,7 +529,7 @@ def test_predict_field_headers():
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.predict), "__call__") as call:
+    with mock.patch.object(type(client._transport.predict), "__call__") as call:
         call.return_value = prediction_service.PredictResponse()
 
         client.predict(request)
@@ -564,7 +556,7 @@ async def test_predict_field_headers_async():
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.predict), "__call__") as call:
+    with mock.patch.object(type(client._client._transport.predict), "__call__") as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             prediction_service.PredictResponse()
         )
@@ -585,7 +577,7 @@ def test_predict_flattened():
     client = PredictionServiceClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.predict), "__call__") as call:
+    with mock.patch.object(type(client._transport.predict), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = prediction_service.PredictResponse()
 
@@ -636,7 +628,7 @@ async def test_predict_flattened_async():
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.predict), "__call__") as call:
+    with mock.patch.object(type(client._client._transport.predict), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = prediction_service.PredictResponse()
 
@@ -698,7 +690,7 @@ def test_batch_predict(
     request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.batch_predict), "__call__") as call:
+    with mock.patch.object(type(client._transport.batch_predict), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/spam")
 
@@ -719,19 +711,19 @@ def test_batch_predict_from_dict():
 
 
 @pytest.mark.asyncio
-async def test_batch_predict_async(
-    transport: str = "grpc_asyncio", request_type=prediction_service.BatchPredictRequest
-):
+async def test_batch_predict_async(transport: str = "grpc_asyncio"):
     client = PredictionServiceAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
+    request = prediction_service.BatchPredictRequest()
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.batch_predict), "__call__") as call:
+    with mock.patch.object(
+        type(client._client._transport.batch_predict), "__call__"
+    ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             operations_pb2.Operation(name="operations/spam")
@@ -743,15 +735,10 @@ async def test_batch_predict_async(
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == prediction_service.BatchPredictRequest()
+        assert args[0] == request
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, future.Future)
-
-
-@pytest.mark.asyncio
-async def test_batch_predict_async_from_dict():
-    await test_batch_predict_async(request_type=dict)
 
 
 def test_batch_predict_field_headers():
@@ -763,7 +750,7 @@ def test_batch_predict_field_headers():
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.batch_predict), "__call__") as call:
+    with mock.patch.object(type(client._transport.batch_predict), "__call__") as call:
         call.return_value = operations_pb2.Operation(name="operations/op")
 
         client.batch_predict(request)
@@ -790,7 +777,9 @@ async def test_batch_predict_field_headers_async():
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.batch_predict), "__call__") as call:
+    with mock.patch.object(
+        type(client._client._transport.batch_predict), "__call__"
+    ) as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             operations_pb2.Operation(name="operations/op")
         )
@@ -811,7 +800,7 @@ def test_batch_predict_flattened():
     client = PredictionServiceClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.batch_predict), "__call__") as call:
+    with mock.patch.object(type(client._transport.batch_predict), "__call__") as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/op")
 
@@ -878,7 +867,9 @@ async def test_batch_predict_flattened_async():
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(type(client.transport.batch_predict), "__call__") as call:
+    with mock.patch.object(
+        type(client._client._transport.batch_predict), "__call__"
+    ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = operations_pb2.Operation(name="operations/op")
 
@@ -980,7 +971,7 @@ def test_transport_instance():
         credentials=credentials.AnonymousCredentials(),
     )
     client = PredictionServiceClient(transport=transport)
-    assert client.transport is transport
+    assert client._transport is transport
 
 
 def test_transport_get_channel():
@@ -1016,7 +1007,7 @@ def test_transport_adc(transport_class):
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
     client = PredictionServiceClient(credentials=credentials.AnonymousCredentials(),)
-    assert isinstance(client.transport, transports.PredictionServiceGrpcTransport,)
+    assert isinstance(client._transport, transports.PredictionServiceGrpcTransport,)
 
 
 def test_prediction_service_base_transport_error():
@@ -1116,7 +1107,7 @@ def test_prediction_service_host_no_port():
             api_endpoint="automl.googleapis.com"
         ),
     )
-    assert client.transport._host == "automl.googleapis.com:443"
+    assert client._transport._host == "automl.googleapis.com:443"
 
 
 def test_prediction_service_host_with_port():
@@ -1126,7 +1117,7 @@ def test_prediction_service_host_with_port():
             api_endpoint="automl.googleapis.com:8000"
         ),
     )
-    assert client.transport._host == "automl.googleapis.com:8000"
+    assert client._transport._host == "automl.googleapis.com:8000"
 
 
 def test_prediction_service_grpc_transport_channel():
@@ -1242,7 +1233,7 @@ def test_prediction_service_grpc_lro_client():
     client = PredictionServiceClient(
         credentials=credentials.AnonymousCredentials(), transport="grpc",
     )
-    transport = client.transport
+    transport = client._transport
 
     # Ensure that we have a api-core operations client.
     assert isinstance(transport.operations_client, operations_v1.OperationsClient,)
@@ -1255,139 +1246,13 @@ def test_prediction_service_grpc_lro_async_client():
     client = PredictionServiceAsyncClient(
         credentials=credentials.AnonymousCredentials(), transport="grpc_asyncio",
     )
-    transport = client.transport
+    transport = client._client._transport
 
     # Ensure that we have a api-core operations client.
     assert isinstance(transport.operations_client, operations_v1.OperationsAsyncClient,)
 
     # Ensure that subsequent calls to the property send the exact same object.
     assert transport.operations_client is transport.operations_client
-
-
-def test_model_path():
-    project = "squid"
-    location = "clam"
-    model = "whelk"
-
-    expected = "projects/{project}/locations/{location}/models/{model}".format(
-        project=project, location=location, model=model,
-    )
-    actual = PredictionServiceClient.model_path(project, location, model)
-    assert expected == actual
-
-
-def test_parse_model_path():
-    expected = {
-        "project": "octopus",
-        "location": "oyster",
-        "model": "nudibranch",
-    }
-    path = PredictionServiceClient.model_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = PredictionServiceClient.parse_model_path(path)
-    assert expected == actual
-
-
-def test_common_billing_account_path():
-    billing_account = "cuttlefish"
-
-    expected = "billingAccounts/{billing_account}".format(
-        billing_account=billing_account,
-    )
-    actual = PredictionServiceClient.common_billing_account_path(billing_account)
-    assert expected == actual
-
-
-def test_parse_common_billing_account_path():
-    expected = {
-        "billing_account": "mussel",
-    }
-    path = PredictionServiceClient.common_billing_account_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = PredictionServiceClient.parse_common_billing_account_path(path)
-    assert expected == actual
-
-
-def test_common_folder_path():
-    folder = "winkle"
-
-    expected = "folders/{folder}".format(folder=folder,)
-    actual = PredictionServiceClient.common_folder_path(folder)
-    assert expected == actual
-
-
-def test_parse_common_folder_path():
-    expected = {
-        "folder": "nautilus",
-    }
-    path = PredictionServiceClient.common_folder_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = PredictionServiceClient.parse_common_folder_path(path)
-    assert expected == actual
-
-
-def test_common_organization_path():
-    organization = "scallop"
-
-    expected = "organizations/{organization}".format(organization=organization,)
-    actual = PredictionServiceClient.common_organization_path(organization)
-    assert expected == actual
-
-
-def test_parse_common_organization_path():
-    expected = {
-        "organization": "abalone",
-    }
-    path = PredictionServiceClient.common_organization_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = PredictionServiceClient.parse_common_organization_path(path)
-    assert expected == actual
-
-
-def test_common_project_path():
-    project = "squid"
-
-    expected = "projects/{project}".format(project=project,)
-    actual = PredictionServiceClient.common_project_path(project)
-    assert expected == actual
-
-
-def test_parse_common_project_path():
-    expected = {
-        "project": "clam",
-    }
-    path = PredictionServiceClient.common_project_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = PredictionServiceClient.parse_common_project_path(path)
-    assert expected == actual
-
-
-def test_common_location_path():
-    project = "whelk"
-    location = "octopus"
-
-    expected = "projects/{project}/locations/{location}".format(
-        project=project, location=location,
-    )
-    actual = PredictionServiceClient.common_location_path(project, location)
-    assert expected == actual
-
-
-def test_parse_common_location_path():
-    expected = {
-        "project": "oyster",
-        "location": "nudibranch",
-    }
-    path = PredictionServiceClient.common_location_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = PredictionServiceClient.parse_common_location_path(path)
-    assert expected == actual
 
 
 def test_client_withDEFAULT_CLIENT_INFO():

@@ -6514,28 +6514,30 @@ def test_parse_dataset_path():
     assert expected == actual
 
 
-def test_model_path():
+def test_table_spec_path():
     project = "squid"
     location = "clam"
-    model = "whelk"
+    dataset = "whelk"
+    table_spec = "octopus"
 
-    expected = "projects/{project}/locations/{location}/models/{model}".format(
-        project=project, location=location, model=model,
+    expected = "projects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}".format(
+        project=project, location=location, dataset=dataset, table_spec=table_spec,
     )
-    actual = AutoMlClient.model_path(project, location, model)
+    actual = AutoMlClient.table_spec_path(project, location, dataset, table_spec)
     assert expected == actual
 
 
-def test_parse_model_path():
+def test_parse_table_spec_path():
     expected = {
-        "project": "octopus",
-        "location": "oyster",
-        "model": "nudibranch",
+        "project": "oyster",
+        "location": "nudibranch",
+        "dataset": "cuttlefish",
+        "table_spec": "mussel",
     }
-    path = AutoMlClient.model_path(**expected)
+    path = AutoMlClient.table_spec_path(**expected)
 
     # Check that the path construction is reversible.
-    actual = AutoMlClient.parse_model_path(path)
+    actual = AutoMlClient.parse_table_spec_path(path)
     assert expected == actual
 
 
@@ -6574,30 +6576,28 @@ def test_parse_column_spec_path():
     assert expected == actual
 
 
-def test_table_spec_path():
+def test_model_path():
     project = "squid"
     location = "clam"
-    dataset = "whelk"
-    table_spec = "octopus"
+    model = "whelk"
 
-    expected = "projects/{project}/locations/{location}/datasets/{dataset}/tableSpecs/{table_spec}".format(
-        project=project, location=location, dataset=dataset, table_spec=table_spec,
+    expected = "projects/{project}/locations/{location}/models/{model}".format(
+        project=project, location=location, model=model,
     )
-    actual = AutoMlClient.table_spec_path(project, location, dataset, table_spec)
+    actual = AutoMlClient.model_path(project, location, model)
     assert expected == actual
 
 
-def test_parse_table_spec_path():
+def test_parse_model_path():
     expected = {
-        "project": "oyster",
-        "location": "nudibranch",
-        "dataset": "cuttlefish",
-        "table_spec": "mussel",
+        "project": "octopus",
+        "location": "oyster",
+        "model": "nudibranch",
     }
-    path = AutoMlClient.table_spec_path(**expected)
+    path = AutoMlClient.model_path(**expected)
 
     # Check that the path construction is reversible.
-    actual = AutoMlClient.parse_table_spec_path(path)
+    actual = AutoMlClient.parse_model_path(path)
     assert expected == actual
 
 

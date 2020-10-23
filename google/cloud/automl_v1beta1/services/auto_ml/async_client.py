@@ -91,9 +91,9 @@ class AutoMlAsyncClient:
 
     column_spec_path = staticmethod(AutoMlClient.column_spec_path)
 
-    dataset_path = staticmethod(AutoMlClient.dataset_path)
-
     table_spec_path = staticmethod(AutoMlClient.table_spec_path)
+
+    dataset_path = staticmethod(AutoMlClient.dataset_path)
 
     from_service_account_file = AutoMlClient.from_service_account_file
     from_service_account_json = from_service_account_file

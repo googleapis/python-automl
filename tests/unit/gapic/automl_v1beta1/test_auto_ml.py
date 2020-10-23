@@ -1079,8 +1079,8 @@ def test_list_datasets_pages():
             RuntimeError,
         )
         pages = list(client.list_datasets(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -1144,10 +1144,10 @@ async def test_list_datasets_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_datasets(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_datasets(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_update_dataset(
@@ -2711,8 +2711,8 @@ def test_list_table_specs_pages():
             RuntimeError,
         )
         pages = list(client.list_table_specs(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -2784,10 +2784,10 @@ async def test_list_table_specs_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_table_specs(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_table_specs(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_update_table_spec(
@@ -3494,8 +3494,8 @@ def test_list_column_specs_pages():
             RuntimeError,
         )
         pages = list(client.list_column_specs(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -3567,10 +3567,10 @@ async def test_list_column_specs_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_column_specs(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_column_specs(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_update_column_spec(
@@ -4455,8 +4455,8 @@ def test_list_models_pages():
             RuntimeError,
         )
         pages = list(client.list_models(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -4512,10 +4512,10 @@ async def test_list_models_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_models(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_models(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_delete_model(transport: str = "grpc", request_type=service.DeleteModelRequest):
@@ -6013,8 +6013,8 @@ def test_list_model_evaluations_pages():
             RuntimeError,
         )
         pages = list(client.list_model_evaluations(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -6098,10 +6098,10 @@ async def test_list_model_evaluations_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_model_evaluations(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_model_evaluations(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_credentials_transport_error():
@@ -6549,31 +6549,6 @@ def test_parse_column_spec_path():
     assert expected == actual
 
 
-def test_dataset_path():
-    project = "squid"
-    location = "clam"
-    dataset = "whelk"
-
-    expected = "projects/{project}/locations/{location}/datasets/{dataset}".format(
-        project=project, location=location, dataset=dataset,
-    )
-    actual = AutoMlClient.dataset_path(project, location, dataset)
-    assert expected == actual
-
-
-def test_parse_dataset_path():
-    expected = {
-        "project": "octopus",
-        "location": "oyster",
-        "dataset": "nudibranch",
-    }
-    path = AutoMlClient.dataset_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = AutoMlClient.parse_dataset_path(path)
-    assert expected == actual
-
-
 def test_table_spec_path():
     project = "squid"
     location = "clam"
@@ -6598,6 +6573,31 @@ def test_parse_table_spec_path():
 
     # Check that the path construction is reversible.
     actual = AutoMlClient.parse_table_spec_path(path)
+    assert expected == actual
+
+
+def test_dataset_path():
+    project = "squid"
+    location = "clam"
+    dataset = "whelk"
+
+    expected = "projects/{project}/locations/{location}/datasets/{dataset}".format(
+        project=project, location=location, dataset=dataset,
+    )
+    actual = AutoMlClient.dataset_path(project, location, dataset)
+    assert expected == actual
+
+
+def test_parse_dataset_path():
+    expected = {
+        "project": "octopus",
+        "location": "oyster",
+        "dataset": "nudibranch",
+    }
+    path = AutoMlClient.dataset_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = AutoMlClient.parse_dataset_path(path)
     assert expected == actual
 
 

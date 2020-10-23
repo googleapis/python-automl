@@ -74,7 +74,6 @@ def default(session):
 
     session.install("mock", "pytest", "pytest-cov")
     session.install("-e", ".[pandas,storage]")
-    session.install("proto-plus==1.8.1")
 
     # Run py.test against the unit tests.
     session.run(
@@ -152,12 +151,11 @@ def docs(session):
     """Build the docs for this library."""
 
     session.install("-e", ".[pandas,storage]")
-    session.install("sphinx<3.0.0", "alabaster", "recommonmark")
+    session.install("sphinx", "alabaster", "recommonmark")
 
     shutil.rmtree(os.path.join("docs", "_build"), ignore_errors=True)
     session.run(
         "sphinx-build",
-        "-W",  # warnings as errors
         "-T",  # show full traceback on exception
         "-N",  # no colors
         "-b",
@@ -174,40 +172,9 @@ def docfx(session):
     """Build the docfx yaml files for this library."""
 
     session.install("-e", ".[pandas,storage]")
-    session.install("sphinx<3.0.0", "alabaster", "recommonmark", "sphinx-docfx-yaml")
-
-    shutil.rmtree(os.path.join("docs", "_build"), ignore_errors=True)
-    session.run(
-        "sphinx-build",
-        "-T",  # show full traceback on exception
-        "-N",  # no colors
-        "-D",
-        (
-            "extensions=sphinx.ext.autodoc,"
-            "sphinx.ext.autosummary,"
-            "docfx_yaml.extension,"
-            "sphinx.ext.intersphinx,"
-            "sphinx.ext.coverage,"
-            "sphinx.ext.napoleon,"
-            "sphinx.ext.todo,"
-            "sphinx.ext.viewcode,"
-            "recommonmark"
-        ),
-        "-b",
-        "html",
-        "-d",
-        os.path.join("docs", "_build", "doctrees", ""),
-        os.path.join("docs", ""),
-        os.path.join("docs", "_build", "html", ""),
-    )
-
-
-@nox.session(python=DEFAULT_PYTHON_VERSION)
-def docfx(session):
-    """Build the docfx yaml files for this library."""
-
-    session.install("-e", ".[pandas,storage]")
-    session.install("sphinx<3.0.0", "alabaster", "recommonmark", "sphinx-docfx-yaml")
+    # sphinx-docfx-yaml supports up to sphinx version 1.5.5.
+    # https://github.com/docascode/sphinx-docfx-yaml/issues/97
+    session.install("sphinx==1.5.5", "alabaster", "recommonmark", "sphinx-docfx-yaml")
 
     shutil.rmtree(os.path.join("docs", "_build"), ignore_errors=True)
     session.run(

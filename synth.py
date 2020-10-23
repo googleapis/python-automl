@@ -68,9 +68,6 @@ python.py_samples(skip_readmes=True)
 
 s.move(templated_files)
 
-# TODO(busunkim): Use latest sphinx after microgenerator transition
-s.replace("noxfile.py", """['"]sphinx['"]""", '"sphinx<3.0.0"')
-# TODO(busunkim): Remove after microgenerator transition.
 # This is being added to AutoML because the proto comments are long and
 # regex replaces are a brittle temporary solution. 
 s.replace(

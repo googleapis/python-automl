@@ -56,6 +56,15 @@ s.replace(
     """__all__ = ("GcsClient", "TablesClient","""
 )
 
+s.replace(
+    "docs/automl_v1beta1/services.rst",
+    """(google\.cloud\.automl_v1beta1\.services\.prediction_service
+    :members:
+    :inherited-members:)""",
+    """\g<1>\n.. automodule:: google.cloud.automl_v1beta1.services.tables	
+    :members:	
+    :inherited-members:"""
+)
 
 # ----------------------------------------------------------------------------
 # Add templated files

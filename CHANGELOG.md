@@ -11,6 +11,8 @@
 
 * add text extraction health care option in create model ([#86](https://www.github.com/googleapis/python-automl/issues/86)) ([0233804](https://www.github.com/googleapis/python-automl/commit/0233804885846295508a5fc98929dba598172244))
 
+### Bug Fixes
+* **v1beta1**: Rename message attributes that conflict with built-ins. `type` ->`type_`, `min` -> `min_`, `max` -> `max_`
 
 ### Documentation
 

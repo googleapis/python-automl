@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "07d41a7e5cade45aba6f0d277c89722b48f2c956",
-        "internalRef": "339292950"
+        "sha": "24fb9e5d1f37110bfa198189c34324aa3fdb0896",
+        "internalRef": "339381689"
       }
     },
     {
@@ -98,6 +98,7 @@
     "CONTRIBUTING.rst",
     "LICENSE",
     "MANIFEST.in",
+    "automl-v1beta1-py.tar.gz",
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
     "docs/automl_v1/services.rst",

@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-automl.git",
-        "sha": "c1329dbb9f18f517f99f267d13db030abb820477"
+        "sha": "df22fd569124dfc3f9b2568656fb6cddc4bcb07b"
       }
     },
     {

@@ -26,7 +26,7 @@ compute_region = "us-central1"
 dataset_id = os.environ["TRANSLATION_DATASET_ID"]
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.slow
 def test_dataset_create_import_delete(capsys):
     # create dataset
     dataset_name = f"test_{uuid.uuid4().hex[:27]}"

@@ -23,7 +23,7 @@ import automl_translation_dataset
 
 project_id = os.environ["GOOGLE_CLOUD_PROJECT"]
 compute_region = "us-central1"
-dataset_id = os.environ["TRANSLATION_DATASET_ID"]
+dataset_id = "TRL3876092572857648864"
 
 
 @pytest.mark.slow

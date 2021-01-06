@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "6dae98144d466d4f985b926baec6208b01572f55",
-        "internalRef": "347459563"
+        "sha": "520682435235d9c503983a360a2090025aa47cd1",
+        "internalRef": "350246057"
       }
     },
     {
@@ -103,8 +103,12 @@
     "MANIFEST.in",
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
+    "docs/automl_v1/auto_ml.rst",
+    "docs/automl_v1/prediction_service.rst",
     "docs/automl_v1/services.rst",
     "docs/automl_v1/types.rst",
+    "docs/automl_v1beta1/auto_ml.rst",
+    "docs/automl_v1beta1/prediction_service.rst",
     "docs/automl_v1beta1/services.rst",
     "docs/automl_v1beta1/types.rst",
     "docs/conf.py",

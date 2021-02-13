@@ -39,9 +39,7 @@ def import_data(project_id, compute_region, dataset_id, path):
     client = automl.AutoMlClient()
 
     # Get the full path of the dataset.
-    dataset_full_id = client.dataset_path(
-        project_id, compute_region, dataset_id
-    )
+    dataset_full_id = client.dataset_path(project_id, compute_region, dataset_id)
 
     # Get the multiple Google Cloud Storage URIs
     input_uris = path.split(",")
@@ -70,9 +68,7 @@ def delete_dataset(project_id, compute_region, dataset_id):
     client = automl.AutoMlClient()
 
     # Get the full path of the dataset.
-    dataset_full_id = client.dataset_path(
-        project_id, compute_region, dataset_id
-    )
+    dataset_full_id = client.dataset_path(project_id, compute_region, dataset_id)
 
     # Delete a dataset.
     response = client.delete_dataset(name=dataset_full_id)
@@ -90,9 +86,7 @@ if __name__ == "__main__":
     )
     subparsers = parser.add_subparsers(dest="command")
 
-    import_data_parser = subparsers.add_parser(
-        "import_data", help=import_data.__doc__
-    )
+    import_data_parser = subparsers.add_parser("import_data", help=import_data.__doc__)
     import_data_parser.add_argument("dataset_id")
     import_data_parser.add_argument("path")
 

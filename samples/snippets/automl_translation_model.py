@@ -131,9 +131,7 @@ def get_operation_status(operation_full_id):
     client = automl.AutoMlClient()
 
     # Get the latest state of a long-running operation.
-    response = client._transport.operations_client.get_operation(
-        operation_full_id
-    )
+    response = client._transport.operations_client.get_operation(operation_full_id)
 
     print("Operation status: {}".format(response))
 
@@ -147,9 +145,7 @@ if __name__ == "__main__":
     )
     subparsers = parser.add_subparsers(dest="command")
 
-    get_model_parser = subparsers.add_parser(
-        "get_model", help=get_model.__doc__
-    )
+    get_model_parser = subparsers.add_parser("get_model", help=get_model.__doc__)
     get_model_parser.add_argument("model_id")
 
     get_operation_status_parser = subparsers.add_parser(
@@ -157,9 +153,7 @@ if __name__ == "__main__":
     )
     get_operation_status_parser.add_argument("operation_full_id")
 
-    list_models_parser = subparsers.add_parser(
-        "list_models", help=list_models.__doc__
-    )
+    list_models_parser = subparsers.add_parser("list_models", help=list_models.__doc__)
     list_models_parser.add_argument("filter", nargs="?", default="")
 
     delete_model_parser = subparsers.add_parser(

@@ -34,15 +34,15 @@ def test_import_dataset(capsys):
     # were valid.
     try:
         data = "gs://{}/sentiment-analysis/dataset.csv".format(BUCKET_ID)
-        automl_translation_dataset.import_data(PROJECT_ID, COMPUTE_REGION, DATASET_ID, data)
+        automl_translation_dataset.import_data(
+            PROJECT_ID, COMPUTE_REGION, DATASET_ID, data
+        )
         out, _ = capsys.readouterr()
         assert (
-            "The Dataset doesn't exist or is inaccessible for use with AutoMl."
-            in out
+            "The Dataset doesn't exist or is inaccessible for use with AutoMl." in out
         )
     except Exception as e:
         assert (
             "The Dataset doesn't exist or is inaccessible for use with AutoMl."
             in e.message
         )
-

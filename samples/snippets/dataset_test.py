@@ -15,9 +15,6 @@
 # limitations under the License.
 
 import os
-import uuid
-
-import pytest
 
 import automl_translation_dataset
 

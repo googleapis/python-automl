@@ -37,10 +37,10 @@ def preprocess_image(image_file_path, max_width, max_height):
     Args:
         image_file_path: Path to a local image for the prediction request.
         max_width: The max width for preprocessed images. The max width is 640
-            (1024) for AutoML Vision image classfiication (object detetion)
+            (1024) for AutoML Vision image classfication (object detetion)
             models.
         max_height: The max width for preprocessed images. The max height is  
-            480 (1024) for AutoML Vision image classfiication (object
+            480 (1024) for AutoML Vision image classfication (object
             detetion) models.
     Returns:
         The preprocessed encoded image bytes.

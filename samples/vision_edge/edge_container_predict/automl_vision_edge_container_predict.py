@@ -32,17 +32,20 @@ import json
 import requests
 
 def preprocess_image(image_file_path, max_width, max_height):
-    """Preprocesses input images for AutoML edge models.
+    """Preprocesses input images for AutoML Vision Edge models.
     
     Args:
         image_file_path: Path to a local image for the prediction request.
-        max_width: The max width for preprocessed images. The max width is 640 
-            (1024) for AutoML ICN (IOD) edge models.
+        max_width: The max width for preprocessed images. The max width is 640
+            (1024) for AutoML Vision image classfiication (object detetion)
+            models.
         max_height: The max width for preprocessed images. The max height is  
-            480 (1024) for AutoML ICN (IOD) edge models.
+            480 (1024) for AutoML Vision image classfiication (object
+            detetion) models.
     Returns:
         The preprocessed encoded image bytes.
     """
+    # cv2 is used to read, resize and encode images.
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 85]
     im = cv2.imread(image_file_path)
     [height, width, _] = im.shape
@@ -68,9 +71,10 @@ def container_predict(image_file_path, image_key, port_number=8501):
     Returns:
         The response of the prediction request.
     """
-    # AutoML edge models will preprocess the input image.
-    # The max width and height for AutoML ICN (IOD) edge models are 640*480
-    # (1024*1024). The example here is for ICN edge models.
+    # AutoML Vision Edge models will preprocess the input images.
+    # The max width and height for AutoML Vision image classification and
+    # object detection models are 640*480 and 1024*1024 separately. The 
+    # example here is for image classification models.
     encoded_image = preprocess_image(
         image_file_path=image_file_path, max_width=640, max_height=480)
 

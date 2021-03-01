@@ -37,11 +37,11 @@ def preprocess_image(image_file_path, max_width, max_height):
     Args:
         image_file_path: Path to a local image for the prediction request.
         max_width: The max width for preprocessed images. The max width is 640
-            (1024) for AutoML Vision image classfication (object detetion)
+            (1024) for AutoML Vision Image Classfication (Object Detection)
             models.
         max_height: The max width for preprocessed images. The max height is  
-            480 (1024) for AutoML Vision image classfication (object
-            detetion) models.
+            480 (1024) for AutoML Vision Image Classfication (Object
+            Detetion) models.
     Returns:
         The preprocessed encoded image bytes.
     """
@@ -72,9 +72,9 @@ def container_predict(image_file_path, image_key, port_number=8501):
         The response of the prediction request.
     """
     # AutoML Vision Edge models will preprocess the input images.
-    # The max width and height for AutoML Vision image classification and
-    # object detection models are 640*480 and 1024*1024 separately. The 
-    # example here is for image classification models.
+    # The max width and height for AutoML Vision Image Classification and
+    # Object Detection models are 640*480 and 1024*1024 separately. The 
+    # example here is for Image Classification models.
     encoded_image = preprocess_image(
         image_file_path=image_file_path, max_width=640, max_height=480)
 

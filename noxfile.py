@@ -95,7 +95,7 @@ def default(session):
 
     session.install("mock", "pytest", "pytest-cov", "-c", constraints_path)
 
-    session.install("-e", ".", "-c", constraints_path)
+    session.install("-e", ".[pandas,google-cloud-storage]", "-c", constraints_path)
 
     # Run py.test against the unit tests.
     session.run(
@@ -150,7 +150,7 @@ def system(session):
     # Install all test dependencies, then install this package into the
     # virtualenv's dist-packages.
     session.install("mock", "pytest", "google-cloud-testutils", "-c", constraints_path)
-    session.install("-e", ".", "-c", constraints_path)
+    session.install("-e", ".[pandas,google-cloud-storage]", "-c", constraints_path)
 
     # Run py.test against the system tests.
     if system_test_exists:

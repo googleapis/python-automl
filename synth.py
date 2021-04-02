@@ -37,7 +37,7 @@ for version in versions:
     )
 
 
-    s.move(library, excludes=["README.rst", "docs/index.rst", "setup.py"])
+    s.move(library, excludes=["README.rst", "docs/index.rst", "setup.py", "*.tar.gz"])
 
 # Add TablesClient and GcsClient to v1beta1
 s.replace(
@@ -61,8 +61,8 @@ s.replace(
     """(google\.cloud\.automl_v1beta1\.services\.prediction_service
     :members:
     :inherited-members:)""",
-    """\g<1>\n.. automodule:: google.cloud.automl_v1beta1.services.tables	
-    :members:	
+    """\g<1>\n.. automodule:: google.cloud.automl_v1beta1.services.tables
+    :members:
     :inherited-members:"""
 )
 
@@ -81,9 +81,9 @@ s.move(templated_files)
 s.replace("noxfile.py", """['"]sphinx['"]""", '"sphinx<3.0.0"')
 # TODO(busunkim): Remove after microgenerator transition.
 # This is being added to AutoML because the proto comments are long and
-# regex replaces are a brittle temporary solution. 
+# regex replaces are a brittle temporary solution.
 s.replace(
-"noxfile.py", 
+"noxfile.py",
 """'-W',  # warnings as errors
 \s+'-T',  \# show full traceback on exception""",
 """"-T",  # show full traceback on exception""")

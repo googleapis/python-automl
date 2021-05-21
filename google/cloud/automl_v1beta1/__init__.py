@@ -17,6 +17,8 @@
 from .services.auto_ml import AutoMlClient
 from .services.auto_ml import AutoMlAsyncClient
 from .services.prediction_service import PredictionServiceClient
+from .services.tables.gcs_client import GcsClient
+from .services.tables.tables_client import TablesClient
 from .services.prediction_service import PredictionServiceAsyncClient
 
 from .types.annotation_payload import AnnotationPayload

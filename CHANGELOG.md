@@ -12,15 +12,6 @@
 * enable self signed jwt for grpc ([#217](https://www.github.com/googleapis/python-automl/issues/217)) ([20a72aa](https://www.github.com/googleapis/python-automl/commit/20a72aa0524fabb855cfda8589dd3722e4c65bdd))
 
 
-### Documentation
-
-* add Samples section to CONTRIBUTING.rst ([#210](https://www.github.com/googleapis/python-automl/issues/210)) ([daddf45](https://www.github.com/googleapis/python-automl/commit/daddf45c93d18ed675c14be4c5504a748fa4b7bc))
-
-
-### Miscellaneous Chores
-
-* release as 2.4.2 ([#218](https://www.github.com/googleapis/python-automl/issues/218)) ([7ef30bf](https://www.github.com/googleapis/python-automl/commit/7ef30bf19424d970391a55ac26e7d7cbe54f0cc4))
-
 ### [2.4.1](https://www.github.com/googleapis/python-automl/compare/v2.4.0...v2.4.1) (2021-07-21)
 
 

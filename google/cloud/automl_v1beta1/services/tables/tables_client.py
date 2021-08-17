@@ -286,7 +286,7 @@ class TablesClient(object):
     ):
         if model is None and model_display_name is None and model_name is None:
             raise ValueError(
-                "One of 'model', 'model_name' or " "'model_display_name' must be set."
+                "One of 'model', 'model_name' or 'model_display_name' must be set."
             )
         # we prefer to make a live call here in the case that the
         # model object is out-of-date
@@ -363,7 +363,7 @@ class TablesClient(object):
     ):
         if model is None and model_display_name is None and model_name is None:
             raise ValueError(
-                "One of 'model', 'model_name' or " "'model_display_name' must be set."
+                "One of 'model', 'model_name' or 'model_display_name' must be set."
             )
 
         if model_name is None:
@@ -597,7 +597,7 @@ class TablesClient(object):
         """
         if dataset_name is None and dataset_display_name is None:
             raise ValueError(
-                "One of 'dataset_name' or " "'dataset_display_name' must be set."
+                "One of 'dataset_name' or 'dataset_display_name' must be set."
             )
 
         if dataset_name is not None:
@@ -2577,7 +2577,7 @@ class TablesClient(object):
         """
         if model_name is None and model_display_name is None:
             raise ValueError(
-                "One of 'model_name' or " "'model_display_name' must be set."
+                "One of 'model_name' or 'model_display_name' must be set."
             )
 
         if model_name is not None:
@@ -2981,7 +2981,7 @@ class TablesClient(object):
             input_request = {"bigquery_source": {"input_uri": bigquery_input_uri}}
         else:
             raise ValueError(
-                "One of 'gcs_input_uris'/'bigquery_input_uris' must" "be set"
+                "One of 'gcs_input_uris'/'bigquery_input_uris' must be set"
             )
 
         output_request = None

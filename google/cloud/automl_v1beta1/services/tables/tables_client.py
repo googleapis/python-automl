@@ -2576,9 +2576,7 @@ class TablesClient(object):
             ValueError: If required parameters are missing.
         """
         if model_name is None and model_display_name is None:
-            raise ValueError(
-                "One of 'model_name' or 'model_display_name' must be set."
-            )
+            raise ValueError("One of 'model_name' or 'model_display_name' must be set.")
 
         if model_name is not None:
             return self.auto_ml_client.get_model(name=model_name)

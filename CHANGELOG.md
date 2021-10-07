@@ -4,6 +4,15 @@
 
 [1]: https://pypi.org/project/google-cloud-automl/#history
 
+### [2.4.3](https://www.github.com/googleapis/python-automl/compare/v2.4.2...v2.4.3) (2021-10-07)
+
+
+### Bug Fixes
+
+* add 'dict' annotation type to 'request' ([a97f88b](https://www.github.com/googleapis/python-automl/commit/a97f88b2b13beb53088f3b94be674f31a93957ed))
+* flaky test, issue 223 ([#250](https://www.github.com/googleapis/python-automl/issues/250)) ([efb9d0b](https://www.github.com/googleapis/python-automl/commit/efb9d0b3eff27364764aa5d6dc7fa57c3d4825e5))
+* improper types in pagers generation ([5ae7bcf](https://www.github.com/googleapis/python-automl/commit/5ae7bcf39d4cd2733f46c0f38a47f92e676cfa45))
+
 ### [2.4.2](https://www.github.com/googleapis/python-automl/compare/v2.4.1...v2.4.2) (2021-07-27)
 
 

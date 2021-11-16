@@ -587,9 +587,7 @@ class TablesClient(object):
             )
 
         if dataset_name is not None:
-            request = google.cloud.automl_v1beta1.GetDatasetRequest(
-                name=dataset_name,
-            )
+            request = google.cloud.automl_v1beta1.GetDatasetRequest(name=dataset_name,)
             method_kwargs = self.__process_request_kwargs(request, **kwargs)
 
             return self.auto_ml_client.get_dataset(request=request, **method_kwargs)
@@ -723,9 +721,7 @@ class TablesClient(object):
         except exceptions.NotFound:
             return None
 
-        request = google.cloud.automl_v1beta1.DeleteDatasetRequest(
-            name=dataset_name,
-        )
+        request = google.cloud.automl_v1beta1.DeleteDatasetRequest(name=dataset_name,)
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
         op = self.auto_ml_client.delete_dataset(request=request, **method_kwargs)
         self.__log_operation_info("Delete dataset", op)
@@ -998,9 +994,7 @@ class TablesClient(object):
                 to a retryable error and retry attempts failed.
             ValueError: If required parameters are missing.
         """
-        request = google.cloud.automl_v1beta1.GetTableSpecRequest(
-            name=table_spec_name,
-        )
+        request = google.cloud.automl_v1beta1.GetTableSpecRequest(name=table_spec_name,)
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
 
         return self.auto_ml_client.get_table_spec(request=request, **method_kwargs)
@@ -2323,14 +2317,10 @@ class TablesClient(object):
                 "'train_budget_milli_node_hours' must be a value between 1,000 and 72,000 inclusive"
             )
 
-        if (
-            exclude_column_spec_names
-            not in [
-                None,
-                [],
-            ]
-            and include_column_spec_names not in [None, []]
-        ):
+        if exclude_column_spec_names not in [
+            None,
+            [],
+        ] and include_column_spec_names not in [None, []]:
             raise ValueError(
                 "Cannot set both 'exclude_column_spec_names' and 'include_column_spec_names'"
             )
@@ -2842,9 +2832,7 @@ class TablesClient(object):
             params = {"feature_importance": "true"}
 
         request = google.cloud.automl_v1beta1.PredictRequest(
-            name=model.name,
-            payload=payload,
-            params=params,
+            name=model.name, payload=payload, params=params,
         )
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
         return self.prediction_client.predict(request=request, **method_kwargs)

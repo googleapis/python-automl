@@ -38,12 +38,12 @@ _LOGGER = logging.getLogger(__name__)
 def to_proto_value(value):
     """translates a Python value to a google.protobuf.Value.
 
-  Args:
-  value: The Python value to be translated.
+    Args:
+    value: The Python value to be translated.
 
-  Returns:
-  Tuple of the translated google.protobuf.Value and error if any.
-  """
+    Returns:
+    Tuple of the translated google.protobuf.Value and error if any.
+    """
     # possible Python types (this is a Python3 module):
     # https://simplejson.readthedocs.io/en/latest/#encoders-and-decoders
     #   JSON              Python 2        Python 3
@@ -158,8 +158,8 @@ class TablesClient(object):
                 to use for requests.
             client_options (Union[dict, google.api_core.client_options.ClientOptions]):
                 Custom options for the client.
-            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
-                The client info used to send a user-agent string along with	
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):
+                The client info used to send a user-agent string along with
                 API requests.
         """
         version = _GAPIC_LIBRARY_VERSION
@@ -587,7 +587,9 @@ class TablesClient(object):
             )
 
         if dataset_name is not None:
-            request = google.cloud.automl_v1beta1.GetDatasetRequest(name=dataset_name,)
+            request = google.cloud.automl_v1beta1.GetDatasetRequest(
+                name=dataset_name,
+            )
             method_kwargs = self.__process_request_kwargs(request, **kwargs)
 
             return self.auto_ml_client.get_dataset(request=request, **method_kwargs)
@@ -721,7 +723,9 @@ class TablesClient(object):
         except exceptions.NotFound:
             return None
 
-        request = google.cloud.automl_v1beta1.DeleteDatasetRequest(name=dataset_name,)
+        request = google.cloud.automl_v1beta1.DeleteDatasetRequest(
+            name=dataset_name,
+        )
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
         op = self.auto_ml_client.delete_dataset(request=request, **method_kwargs)
         self.__log_operation_info("Delete dataset", op)
@@ -994,7 +998,9 @@ class TablesClient(object):
                 to a retryable error and retry attempts failed.
             ValueError: If required parameters are missing.
         """
-        request = google.cloud.automl_v1beta1.GetTableSpecRequest(name=table_spec_name,)
+        request = google.cloud.automl_v1beta1.GetTableSpecRequest(
+            name=table_spec_name,
+        )
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
 
         return self.auto_ml_client.get_table_spec(request=request, **method_kwargs)
@@ -1247,7 +1253,8 @@ class TablesClient(object):
             ...     project='my-project', region='us-central1')
             ...
             >>> client.update_column_spec(dataset_display_name='my_dataset',
-            ...     column_spec_display_name='Outcome', type_code='CATEGORY')
+            ...     column_spec_display_name='Outcome',
+            ...     type_code=automl_v1beta1.TypeCode.CATEGORY)
             ...
 
         Args:
@@ -2316,10 +2323,14 @@ class TablesClient(object):
                 "'train_budget_milli_node_hours' must be a value between 1,000 and 72,000 inclusive"
             )
 
-        if exclude_column_spec_names not in [
-            None,
-            [],
-        ] and include_column_spec_names not in [None, []]:
+        if (
+            exclude_column_spec_names
+            not in [
+                None,
+                [],
+            ]
+            and include_column_spec_names not in [None, []]
+        ):
             raise ValueError(
                 "Cannot set both 'exclude_column_spec_names' and 'include_column_spec_names'"
             )
@@ -2831,7 +2842,9 @@ class TablesClient(object):
             params = {"feature_importance": "true"}
 
         request = google.cloud.automl_v1beta1.PredictRequest(
-            name=model.name, payload=payload, params=params,
+            name=model.name,
+            payload=payload,
+            params=params,
         )
         method_kwargs = self.__process_request_kwargs(request, **kwargs)
         return self.prediction_client.predict(request=request, **method_kwargs)

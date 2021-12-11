@@ -16,9 +16,9 @@
 
 import os
 
-from google.cloud.automl_v1beta1 import Model
-
 import backoff
+
+from google.cloud.automl_v1beta1 import Model
 
 import automl_tables_model
 import automl_tables_predict

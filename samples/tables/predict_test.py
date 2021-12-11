@@ -19,11 +19,10 @@ import os
 from google.cloud.automl_v1beta1 import Model
 
 import backoff
+
 import automl_tables_model
 import automl_tables_predict
 import model_test
-
-
 
 PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
 REGION = "us-central1"

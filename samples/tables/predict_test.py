@@ -18,10 +18,11 @@ import os
 
 from google.cloud.automl_v1beta1 import Model
 
+import backoff
 import automl_tables_model
 import automl_tables_predict
 import model_test
-import backoff
+
 
 
 PROJECT = os.environ["GOOGLE_CLOUD_PROJECT"]
@@ -29,8 +30,10 @@ REGION = "us-central1"
 STATIC_MODEL = model_test.STATIC_MODEL
 MAX_TIMEOUT = 200
 
-@backoff.on_exception(wait_gen=lambda : iter([50, 150, MAX_TIMEOUT]), 
-exception=Exception, max_tries=3)
+
+@backoff.on_exception(
+    wait_gen=lambda: iter([50, 150, MAX_TIMEOUT]), exception=Exception, max_tries=3
+)
 def test_predict(capsys):
     inputs = {
         "Age": 31,

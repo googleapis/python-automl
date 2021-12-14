@@ -93,6 +93,7 @@ def default(session):
         "-c",
         constraints_path,
     )
+    session.install("backoff", "-c", constraints_path)
 
     session.install("-e", ".[pandas,storage]", "-c", constraints_path)
 

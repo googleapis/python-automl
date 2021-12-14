@@ -22,6 +22,8 @@ import string
 import time
 import unittest
 
+import backoff
+
 from google.cloud import automl_v1beta1
 from google.api_core import exceptions
 
@@ -29,8 +31,9 @@ from test_utils.vpcsc_config import vpcsc_config
 
 PROJECT = os.environ["PROJECT_ID"]
 REGION = "us-central1"
-MAX_WAIT_TIME_SECONDS = 30
+MAX_WAIT_TIME_SECONDS = 60
 MAX_SLEEP_TIME_SECONDS = 5
+BACKOFF_TIMEOUT = 240
 STATIC_DATASET = "test_dataset_do_not_delete"
 STATIC_MODEL = "test_model_do_not_delete"
 
@@ -87,6 +90,11 @@ class TestSystemTablesClient(object):
         client.delete_dataset(dataset=dataset)
 
     @vpcsc_config.skip_if_inside_vpcsc
+    @backoff.on_exception(
+        wait_gen=lambda: iter([MAX_WAIT_TIME_SECONDS, 120, BACKOFF_TIMEOUT]),
+        exception=Exception,
+        max_tries=3,
+    )
     def test_import_data(self):
         client = automl_v1beta1.TablesClient(project=PROJECT, region=REGION)
         display_name = _id("t_import")

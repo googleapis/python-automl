@@ -31,7 +31,7 @@ from test_utils.vpcsc_config import vpcsc_config
 
 PROJECT = os.environ["PROJECT_ID"]
 REGION = "us-central1"
-MAX_WAIT_TIME_SECONDS = [60, 120, 240]
+MAX_WAIT_TIME_SECONDS = [15, 30, 60]
 MAX_SLEEP_TIME_SECONDS = 5
 STATIC_DATASET = "test_dataset_do_not_delete"
 STATIC_MODEL = "test_model_do_not_delete"
@@ -49,12 +49,12 @@ def _id(name):
 
 
 class TestSystemTablesClient(object):
-    @backoff.on_exception(
-        wait_gen=lambda: iter(MAX_WAIT_TIME_SECONDS),
-        exception=Exception,
-        max_tries=len(MAX_WAIT_TIME_SECONDS),
-    )
-    def wait_for_lro(self, op):
+    def cancel_and_wait(self, op):
+        op.cancel()
+        for wait_time in MAX_WAIT_TIME_SECONDS:
+            time.sleep(wait_time)
+            if op.done():
+                return
         assert op.done()
 
     @vpcsc_config.skip_if_inside_vpcsc
@@ -94,8 +94,7 @@ class TestSystemTablesClient(object):
             dataset=dataset,
             gcs_input_uris="gs://cloud-ml-tables-data/bank-marketing.csv",
         )
-        # op.cancel()
-        self.wait_for_lro(op)
+        self.cancel_and_wait(op)
         client.delete_dataset(dataset=dataset)
 
     @vpcsc_config.skip_if_inside_vpcsc
@@ -107,8 +106,7 @@ class TestSystemTablesClient(object):
         op = client.import_data(
             project=PROJECT, dataset=dataset, pandas_dataframe=dataframe
         )
-        # op.cancel()
-        self.wait_for_lro(op)
+        self.cancel_and_wait(op)
         client.delete_dataset(dataset=dataset)
 
     def ensure_dataset_ready(self, client):
@@ -216,8 +214,7 @@ class TestSystemTablesClient(object):
         op = client.create_model(
             display_name, dataset=dataset, train_budget_milli_node_hours=1000
         )
-        op.cancel()
-        self.wait_for_lro(op)
+        self.cancel_and_wait(op)
         client.delete_model(model_display_name=display_name)
 
     @vpcsc_config.skip_if_inside_vpcsc

@@ -94,7 +94,7 @@ class TestSystemTablesClient(object):
             dataset=dataset,
             gcs_input_uris="gs://cloud-ml-tables-data/bank-marketing.csv",
         )
-        op.cancel()
+        # op.cancel()
         self.wait_for_lro(op)
         client.delete_dataset(dataset=dataset)
 
@@ -107,7 +107,7 @@ class TestSystemTablesClient(object):
         op = client.import_data(
             project=PROJECT, dataset=dataset, pandas_dataframe=dataframe
         )
-        op.cancel()
+        # op.cancel()
         self.wait_for_lro(op)
         client.delete_dataset(dataset=dataset)
 

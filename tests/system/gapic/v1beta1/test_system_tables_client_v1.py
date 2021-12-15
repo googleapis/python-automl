@@ -50,7 +50,7 @@ def _id(name):
 
 class TestSystemTablesClient(object):
     @backoff.on_exception(
-        wait_gen=lambda: MAX_WAIT_TIME_SECONDS,
+        wait_gen=lambda: iter(MAX_WAIT_TIME_SECONDS),
         exception=Exception,
         max_tries=len(MAX_WAIT_TIME_SECONDS),
     )

@@ -54,7 +54,7 @@ class TestSystemTablesClient(object):
         exception=Exception,
         max_tries=len(MAX_WAIT_TIME_SECONDS),
     )
-    def wait_on_lro(self, op):
+    def wait_for_lro(self, op):
         assert op.done()
 
     @vpcsc_config.skip_if_inside_vpcsc

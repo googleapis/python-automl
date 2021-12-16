@@ -53,8 +53,11 @@ class TestSystemTablesClient(object):
         op.cancel()
         for wait_time in MAX_WAIT_TIME_SECONDS:
             time.sleep(wait_time)
+            print(op.done())
+            print()
             if op.done():
                 return
+        print(op.done())
         assert op.done()
 
     @vpcsc_config.skip_if_inside_vpcsc

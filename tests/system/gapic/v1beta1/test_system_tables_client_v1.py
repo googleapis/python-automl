@@ -58,7 +58,7 @@ class TestSystemTablesClient(object):
                 return
             time.sleep(sleep_time)
             sleep_time = min(sleep_time * 2, MAX_SLEEP_TIME_SECONDS)
-        assert op.cancelled()
+        assert op.cancelled() or op.done()
 
     @vpcsc_config.skip_if_inside_vpcsc
     def test_list_datasets(self):
@@ -109,6 +109,8 @@ class TestSystemTablesClient(object):
         op = client.import_data(
             project=PROJECT, dataset=dataset, pandas_dataframe=dataframe
         )
+        result = await op.result()
+        print(result)
         self.cancel_and_wait(op)
         client.delete_dataset(dataset=dataset)
 

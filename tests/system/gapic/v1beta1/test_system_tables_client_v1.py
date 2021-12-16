@@ -109,8 +109,6 @@ class TestSystemTablesClient(object):
         op = client.import_data(
             project=PROJECT, dataset=dataset, pandas_dataframe=dataframe
         )
-        result = await op.result()
-        print(result)
         self.cancel_and_wait(op)
         client.delete_dataset(dataset=dataset)
 

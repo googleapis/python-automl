@@ -31,7 +31,7 @@ from test_utils.vpcsc_config import vpcsc_config
 
 PROJECT = os.environ["PROJECT_ID"]
 REGION = "us-central1"
-MAX_WAIT_TIME_SECONDS = [15, 30, 60]
+MAX_WAIT_TIME_SECONDS = 60
 MAX_SLEEP_TIME_SECONDS = 5
 STATIC_DATASET = "test_dataset_do_not_delete"
 STATIC_MODEL = "test_model_do_not_delete"
@@ -51,14 +51,14 @@ def _id(name):
 class TestSystemTablesClient(object):
     def cancel_and_wait(self, op):
         op.cancel()
-        for wait_time in MAX_WAIT_TIME_SECONDS:
-            time.sleep(wait_time)
-            print(op.done())
-            print()
-            if op.done():
+        start = time.time()
+        sleep_time = 1
+        while time.time() - start < MAX_WAIT_TIME_SECONDS:
+            if op.cancelled():
                 return
-        print(op.done())
-        assert op.done()
+            time.sleep(sleep_time)
+            sleep_time = min(sleep_time * 2, MAX_SLEEP_TIME_SECONDS)
+        assert op.cancelled()
 
     @vpcsc_config.skip_if_inside_vpcsc
     def test_list_datasets(self):

@@ -4,6 +4,14 @@
 
 [1]: https://pypi.org/project/google-cloud-automl/#history
 
+### [2.5.3](https://www.github.com/googleapis/python-automl/compare/v2.5.2...v2.5.3) (2022-01-09)
+
+
+### Documentation
+
+* fix docstring formatting ([#290](https://www.github.com/googleapis/python-automl/issues/290)) ([8014b6a](https://www.github.com/googleapis/python-automl/commit/8014b6af1559d5673f4bcf6a5f0c308a3fe24a9f))
+* Updated tables_client docstring ([#289](https://www.github.com/googleapis/python-automl/issues/289)) ([a504fb5](https://www.github.com/googleapis/python-automl/commit/a504fb5b4e986806ed6d96d93bbfcb0785207b6a))
+
 ### [2.5.2](https://www.github.com/googleapis/python-automl/compare/v2.5.1...v2.5.2) (2021-11-01)
 
 

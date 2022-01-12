@@ -68,7 +68,7 @@ class AnnotationPayload(proto.Message):
             to train the model in use.
         display_name (str):
             Output only. The value of
-            [display_name][google.cloud.automl.v1.AnnotationSpec.display_name]
+            [display_name][google.cloud.automl.v1p1beta.AnnotationSpec.display_name]
             when the model was trained. Because this field returns a
             value at model training time, for different models trained
             using the same dataset, the returned value could be

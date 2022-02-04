@@ -443,6 +443,31 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
         -  Text Sentiment - TextSnippet, content up 500 characters,
            UTF-8 encoded.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1beta1
+
+            def sample_predict():
+                # Create a client
+                client = automl_v1beta1.PredictionServiceClient()
+
+                # Initialize request argument(s)
+                payload = automl_v1beta1.ExamplePayload()
+                payload.image.image_bytes = b'image_bytes_blob'
+
+                request = automl_v1beta1.PredictRequest(
+                    name="name_value",
+                    payload=payload,
+                )
+
+                # Make the request
+                response = client.predict(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1beta1.types.PredictRequest, dict]):
                 The request object. Request message for
@@ -503,7 +528,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, payload, params])
         if request is not None and has_flattened_params:
@@ -572,6 +597,29 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
         -  Video Classification
         -  Video Object Tracking \* Text Extraction
         -  Tables
+
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1beta1
+
+            def sample_batch_predict():
+                # Create a client
+                client = automl_v1beta1.PredictionServiceClient()
+
+                # Initialize request argument(s)
+                request = automl_v1beta1.BatchPredictRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                operation = client.batch_predict(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
 
         Args:
             request (Union[google.cloud.automl_v1beta1.types.BatchPredictRequest, dict]):
@@ -704,7 +752,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, input_config, output_config, params])
         if request is not None and has_flattened_params:

@@ -502,6 +502,33 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> operation.Operation:
         r"""Creates a dataset.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_create_dataset():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                dataset = automl_v1.Dataset()
+                dataset.translation_dataset_metadata.source_language_code = "source_language_code_value"
+                dataset.translation_dataset_metadata.target_language_code = "target_language_code_value"
+
+                request = automl_v1.CreateDatasetRequest(
+                    parent="parent_value",
+                    dataset=dataset,
+                )
+
+                # Make the request
+                operation = client.create_dataset(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.CreateDatasetRequest, dict]):
                 The request object. Request message for
@@ -533,7 +560,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent, dataset])
         if request is not None and has_flattened_params:
@@ -590,6 +617,26 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> dataset.Dataset:
         r"""Gets a dataset.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_get_dataset():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.GetDatasetRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.get_dataset(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.GetDatasetRequest, dict]):
                 The request object. Request message for
@@ -616,7 +663,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -663,6 +710,25 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> pagers.ListDatasetsPager:
         r"""Lists datasets in a project.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_list_datasets():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.ListDatasetsRequest(
+                    parent="parent_value",
+                )
+
+                # Make the request
+                page_result = client.list_datasets(request=request)
+                for response in page_result:
+                    print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.ListDatasetsRequest, dict]):
                 The request object. Request message for
@@ -690,7 +756,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent])
         if request is not None and has_flattened_params:
@@ -744,6 +810,30 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> gca_dataset.Dataset:
         r"""Updates a dataset.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_update_dataset():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                dataset = automl_v1.Dataset()
+                dataset.translation_dataset_metadata.source_language_code = "source_language_code_value"
+                dataset.translation_dataset_metadata.target_language_code = "target_language_code_value"
+
+                request = automl_v1.UpdateDatasetRequest(
+                    dataset=dataset,
+                )
+
+                # Make the request
+                response = client.update_dataset(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.UpdateDatasetRequest, dict]):
                 The request object. Request message for
@@ -777,7 +867,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([dataset, update_mask])
         if request is not None and has_flattened_params:
@@ -832,6 +922,29 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         completes, and ``delete_details`` in the
         [metadata][google.longrunning.Operation.metadata] field.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_delete_dataset():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.DeleteDatasetRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                operation = client.delete_dataset(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.DeleteDatasetRequest, dict]):
                 The request object. Request message for
@@ -869,7 +982,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -934,6 +1047,33 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
            in the [response][google.longrunning.Operation.response]
            field when it completes.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_import_data():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                input_config = automl_v1.InputConfig()
+                input_config.gcs_source.input_uris = ['input_uris_value_1', 'input_uris_value_2']
+
+                request = automl_v1.ImportDataRequest(
+                    name="name_value",
+                    input_config=input_config,
+                )
+
+                # Make the request
+                operation = client.import_data(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.ImportDataRequest, dict]):
                 The request object. Request message for
@@ -980,7 +1120,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, input_config])
         if request is not None and has_flattened_params:
@@ -1041,6 +1181,33 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         [response][google.longrunning.Operation.response] field when it
         completes.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_export_data():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                output_config = automl_v1.OutputConfig()
+                output_config.gcs_destination.output_uri_prefix = "output_uri_prefix_value"
+
+                request = automl_v1.ExportDataRequest(
+                    name="name_value",
+                    output_config=output_config,
+                )
+
+                # Make the request
+                operation = client.export_data(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.ExportDataRequest, dict]):
                 The request object. Request message for
@@ -1085,7 +1252,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, output_config])
         if request is not None and has_flattened_params:
@@ -1142,6 +1309,26 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> annotation_spec.AnnotationSpec:
         r"""Gets an annotation spec.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_get_annotation_spec():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.GetAnnotationSpecRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.get_annotation_spec(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.GetAnnotationSpecRequest, dict]):
                 The request object. Request message for
@@ -1164,7 +1351,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
                 A definition of an annotation spec.
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -1216,6 +1403,29 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         are created for it: a global evaluation, and one evaluation for
         each annotation spec.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_create_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.CreateModelRequest(
+                    parent="parent_value",
+                )
+
+                # Make the request
+                operation = client.create_model(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.CreateModelRequest, dict]):
                 The request object. Request message for
@@ -1249,7 +1459,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent, model])
         if request is not None and has_flattened_params:
@@ -1306,6 +1516,26 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> model.Model:
         r"""Gets a model.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_get_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.GetModelRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.get_model(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.GetModelRequest, dict]):
                 The request object. Request message for
@@ -1328,7 +1558,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -1375,6 +1605,25 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> pagers.ListModelsPager:
         r"""Lists models.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_list_models():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.ListModelsRequest(
+                    parent="parent_value",
+                )
+
+                # Make the request
+                page_result = client.list_models(request=request)
+                for response in page_result:
+                    print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.ListModelsRequest, dict]):
                 The request object. Request message for
@@ -1402,7 +1651,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent])
         if request is not None and has_flattened_params:
@@ -1458,6 +1707,29 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         completes, and ``delete_details`` in the
         [metadata][google.longrunning.Operation.metadata] field.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_delete_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.DeleteModelRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                operation = client.delete_model(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.DeleteModelRequest, dict]):
                 The request object. Request message for
@@ -1495,7 +1767,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -1551,6 +1823,25 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> gca_model.Model:
         r"""Updates a model.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_update_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.UpdateModelRequest(
+                )
+
+                # Make the request
+                response = client.update_model(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.UpdateModelRequest, dict]):
                 The request object. Request message for
@@ -1582,7 +1873,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([model, update_mask])
         if request is not None and has_flattened_params:
@@ -1646,6 +1937,29 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         [response][google.longrunning.Operation.response] field when it
         completes.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_deploy_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.DeployModelRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                operation = client.deploy_model(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.DeployModelRequest, dict]):
                 The request object. Request message for
@@ -1683,7 +1997,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -1746,6 +2060,29 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         [response][google.longrunning.Operation.response] field when it
         completes.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_undeploy_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.UndeployModelRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                operation = client.undeploy_model(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.UndeployModelRequest, dict]):
                 The request object. Request message for
@@ -1783,7 +2120,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -1846,6 +2183,33 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         [response][google.longrunning.Operation.response] field when it
         completes.
 
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_export_model():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                output_config = automl_v1.ModelExportOutputConfig()
+                output_config.gcs_destination.output_uri_prefix = "output_uri_prefix_value"
+
+                request = automl_v1.ExportModelRequest(
+                    name="name_value",
+                    output_config=output_config,
+                )
+
+                # Make the request
+                operation = client.export_model(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.ExportModelRequest, dict]):
                 The request object. Request message for
@@ -1892,7 +2256,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, output_config])
         if request is not None and has_flattened_params:
@@ -1949,6 +2313,26 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
     ) -> model_evaluation.ModelEvaluation:
         r"""Gets a model evaluation.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_get_model_evaluation():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.GetModelEvaluationRequest(
+                    name="name_value",
+                )
+
+                # Make the request
+                response = client.get_model_evaluation(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.GetModelEvaluationRequest, dict]):
                 The request object. Request message for
@@ -1971,7 +2355,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
                 Evaluation results of a model.
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
@@ -2018,6 +2402,26 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListModelEvaluationsPager:
         r"""Lists model evaluations.
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_list_model_evaluations():
+                # Create a client
+                client = automl_v1.AutoMlClient()
+
+                # Initialize request argument(s)
+                request = automl_v1.ListModelEvaluationsRequest(
+                    parent="parent_value",
+                    filter="filter_value",
+                )
+
+                # Make the request
+                page_result = client.list_model_evaluations(request=request)
+                for response in page_result:
+                    print(response)
 
         Args:
             request (Union[google.cloud.automl_v1.types.ListModelEvaluationsRequest, dict]):
@@ -2067,7 +2471,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent, filter])
         if request is not None and has_flattened_params:

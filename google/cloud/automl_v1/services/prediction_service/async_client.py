@@ -260,6 +260,30 @@ class PredictionServiceAsyncClient:
         -  A row with column values matching the columns of the model,
            up to 5MB. Not available for FORECASTING ``prediction_type``.
 
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_predict():
+                # Create a client
+                client = automl_v1.PredictionServiceClient()
+
+                # Initialize request argument(s)
+                payload = automl_v1.ExamplePayload()
+                payload.image.image_bytes = b'image_bytes_blob'
+
+                request = automl_v1.PredictRequest(
+                    name="name_value",
+                    payload=payload,
+                )
+
+                # Make the request
+                response = client.predict(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.automl_v1.types.PredictRequest, dict]):
                 The request object. Request message for
@@ -327,7 +351,7 @@ class PredictionServiceAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, payload, params])
         if request is not None and has_flattened_params:
@@ -400,6 +424,36 @@ class PredictionServiceAsyncClient:
         -  AutoML Natural Language Entity Extraction
         -  AutoML Natural Language Sentiment Analysis
         -  AutoML Tables
+
+
+        .. code-block::
+
+            from google.cloud import automl_v1
+
+            def sample_batch_predict():
+                # Create a client
+                client = automl_v1.PredictionServiceClient()
+
+                # Initialize request argument(s)
+                input_config = automl_v1.BatchPredictInputConfig()
+                input_config.gcs_source.input_uris = ['input_uris_value_1', 'input_uris_value_2']
+
+                output_config = automl_v1.BatchPredictOutputConfig()
+                output_config.gcs_destination.output_uri_prefix = "output_uri_prefix_value"
+
+                request = automl_v1.BatchPredictRequest(
+                    name="name_value",
+                    input_config=input_config,
+                    output_config=output_config,
+                )
+
+                # Make the request
+                operation = client.batch_predict(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+                print(response)
 
         Args:
             request (Union[google.cloud.automl_v1.types.BatchPredictRequest, dict]):
@@ -533,7 +587,7 @@ class PredictionServiceAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-        # Sanity check: If we got a request object, we should *not* have
+        # Quick check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, input_config, output_config, params])
         if request is not None and has_flattened_params:

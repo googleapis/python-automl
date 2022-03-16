@@ -1,2 +1,11 @@
 releaseType: python
 handleGHRelease: true
+  # NOTE: this section is generated in owlbot_main()
+  # See https://github.com/googleapis/synthtool/blob/master/synthtool/languages/python.py
+  branches:
+  - branch: v1
+    handleGHRelease: true
+    releaseType: python
+  - branch: v0
+    handleGHRelease: true
+    releaseType: python

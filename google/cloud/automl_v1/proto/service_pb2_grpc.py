@@ -24,26 +24,26 @@ from google.longrunning import (
 class AutoMlStub(object):
     """AutoML Server API.
 
-  The resource names are assigned by the server.
-  The server never reuses names that it has created after the resources with
-  those names are deleted.
+    The resource names are assigned by the server.
+    The server never reuses names that it has created after the resources with
+    those names are deleted.
 
-  An ID of a resource is the last element of the item's resource name. For
-  `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`, then
-  the id for the item is `{dataset_id}`.
+    An ID of a resource is the last element of the item's resource name. For
+    `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`, then
+    the id for the item is `{dataset_id}`.
 
-  Currently the only supported `location_id` is "us-central1".
+    Currently the only supported `location_id` is "us-central1".
 
-  On any input that is documented to expect a string parameter in
-  snake_case or kebab-case, either of those cases is accepted.
-  """
+    On any input that is documented to expect a string parameter in
+    snake_case or kebab-case, either of those cases is accepted.
+    """
 
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.CreateDataset = channel.unary_unary(
             "/google.cloud.automl.v1.AutoMl/CreateDataset",
             request_serializer=google_dot_cloud_dot_automl__v1_dot_proto_dot_service__pb2.CreateDatasetRequest.SerializeToString,
@@ -139,139 +139,130 @@ class AutoMlStub(object):
 class AutoMlServicer(object):
     """AutoML Server API.
 
-  The resource names are assigned by the server.
-  The server never reuses names that it has created after the resources with
-  those names are deleted.
+    The resource names are assigned by the server.
+    The server never reuses names that it has created after the resources with
+    those names are deleted.
 
-  An ID of a resource is the last element of the item's resource name. For
-  `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`, then
-  the id for the item is `{dataset_id}`.
+    An ID of a resource is the last element of the item's resource name. For
+    `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`, then
+    the id for the item is `{dataset_id}`.
 
-  Currently the only supported `location_id` is "us-central1".
+    Currently the only supported `location_id` is "us-central1".
 
-  On any input that is documented to expect a string parameter in
-  snake_case or kebab-case, either of those cases is accepted.
-  """
+    On any input that is documented to expect a string parameter in
+    snake_case or kebab-case, either of those cases is accepted.
+    """
 
     def CreateDataset(self, request, context):
-        """Creates a dataset.
-    """
+        """Creates a dataset."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetDataset(self, request, context):
-        """Gets a dataset.
-    """
+        """Gets a dataset."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListDatasets(self, request, context):
-        """Lists datasets in a project.
-    """
+        """Lists datasets in a project."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def UpdateDataset(self, request, context):
-        """Updates a dataset.
-    """
+        """Updates a dataset."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def DeleteDataset(self, request, context):
         """Deletes a dataset and all of its contents.
-    Returns empty response in the
-    [response][google.longrunning.Operation.response] field when it completes,
-    and `delete_details` in the
-    [metadata][google.longrunning.Operation.metadata] field.
-    """
+        Returns empty response in the
+        [response][google.longrunning.Operation.response] field when it completes,
+        and `delete_details` in the
+        [metadata][google.longrunning.Operation.metadata] field.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ImportData(self, request, context):
-        """Imports data into a dataset.
-    """
+        """Imports data into a dataset."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ExportData(self, request, context):
         """Exports dataset's data to the provided output location.
-    Returns an empty response in the
-    [response][google.longrunning.Operation.response] field when it completes.
-    """
+        Returns an empty response in the
+        [response][google.longrunning.Operation.response] field when it completes.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetAnnotationSpec(self, request, context):
-        """Gets an annotation spec.
-    """
+        """Gets an annotation spec."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def CreateModel(self, request, context):
         """Creates a model.
-    Returns a Model in the [response][google.longrunning.Operation.response]
-    field when it completes.
-    When you create a model, several model evaluations are created for it:
-    a global evaluation, and one evaluation for each annotation spec.
-    """
+        Returns a Model in the [response][google.longrunning.Operation.response]
+        field when it completes.
+        When you create a model, several model evaluations are created for it:
+        a global evaluation, and one evaluation for each annotation spec.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetModel(self, request, context):
-        """Gets a model.
-    """
+        """Gets a model."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListModels(self, request, context):
-        """Lists models.
-    """
+        """Lists models."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def DeleteModel(self, request, context):
         """Deletes a model.
-    Returns `google.protobuf.Empty` in the
-    [response][google.longrunning.Operation.response] field when it completes,
-    and `delete_details` in the
-    [metadata][google.longrunning.Operation.metadata] field.
-    """
+        Returns `google.protobuf.Empty` in the
+        [response][google.longrunning.Operation.response] field when it completes,
+        and `delete_details` in the
+        [metadata][google.longrunning.Operation.metadata] field.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def UpdateModel(self, request, context):
-        """Updates a model.
-    """
+        """Updates a model."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def DeployModel(self, request, context):
         """Deploys a model. If a model is already deployed, deploying it with the
-    same parameters has no effect. Deploying with different parametrs
-    (as e.g. changing
+        same parameters has no effect. Deploying with different parametrs
+        (as e.g. changing
 
-    [node_number][google.cloud.automl.v1.ImageObjectDetectionModelDeploymentMetadata.node_number])
-    will reset the deployment state without pausing the model's availability.
+        [node_number][google.cloud.automl.v1.ImageObjectDetectionModelDeploymentMetadata.node_number])
+        will reset the deployment state without pausing the model's availability.
 
-    Only applicable for Text Classification, Image Object Detection; all other
-    domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection; all other
+        domains manage deployment automatically.
 
-    Returns an empty response in the
-    [response][google.longrunning.Operation.response] field when it completes.
-    """
+        Returns an empty response in the
+        [response][google.longrunning.Operation.response] field when it completes.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -279,39 +270,37 @@ class AutoMlServicer(object):
     def UndeployModel(self, request, context):
         """Undeploys a model. If the model is not deployed this method has no effect.
 
-    Only applicable for Text Classification, Image Object Detection;
-    all other domains manage deployment automatically.
+        Only applicable for Text Classification, Image Object Detection;
+        all other domains manage deployment automatically.
 
-    Returns an empty response in the
-    [response][google.longrunning.Operation.response] field when it completes.
-    """
+        Returns an empty response in the
+        [response][google.longrunning.Operation.response] field when it completes.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ExportModel(self, request, context):
         """Exports a trained, "export-able", model to a user specified Google Cloud
-    Storage location. A model is considered export-able if and only if it has
-    an export format defined for it in
-    [ModelExportOutputConfig][google.cloud.automl.v1.ModelExportOutputConfig].
+        Storage location. A model is considered export-able if and only if it has
+        an export format defined for it in
+        [ModelExportOutputConfig][google.cloud.automl.v1.ModelExportOutputConfig].
 
-    Returns an empty response in the
-    [response][google.longrunning.Operation.response] field when it completes.
-    """
+        Returns an empty response in the
+        [response][google.longrunning.Operation.response] field when it completes.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetModelEvaluation(self, request, context):
-        """Gets a model evaluation.
-    """
+        """Gets a model evaluation."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListModelEvaluations(self, request, context):
-        """Lists model evaluations.
-    """
+        """Lists model evaluations."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")

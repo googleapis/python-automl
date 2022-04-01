@@ -35,12 +35,12 @@ _LOGGER = logging.getLogger(__name__)
 def to_proto_value(value):
     """translates a Python value to a google.protobuf.Value.
 
-  Args:
-  value: The Python value to be translated.
+    Args:
+    value: The Python value to be translated.
 
-  Returns:
-  Tuple of the translated google.protobuf.Value and error if any.
-  """
+    Returns:
+    Tuple of the translated google.protobuf.Value and error if any.
+    """
     # possible Python types (this is a Python3 module):
     # https://simplejson.readthedocs.io/en/latest/#encoders-and-decoders
     #   JSON              Python 2        Python 3
@@ -183,8 +183,10 @@ class TablesClient(object):
             self.auto_ml_client = client
 
         if prediction_client is None:
-            self.prediction_client = gapic.prediction_service_client.PredictionServiceClient(
-                credentials=credentials, client_info=client_info_, **kwargs
+            self.prediction_client = (
+                gapic.prediction_service_client.PredictionServiceClient(
+                    credentials=credentials, client_info=client_info_, **kwargs
+                )
             )
         else:
             self.prediction_client = prediction_client

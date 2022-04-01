@@ -189,8 +189,10 @@ class PredictionServiceClient(object):
                     )
                 self.transport = transport
         else:
-            self.transport = prediction_service_grpc_transport.PredictionServiceGrpcTransport(
-                address=api_endpoint, channel=channel, credentials=credentials
+            self.transport = (
+                prediction_service_grpc_transport.PredictionServiceGrpcTransport(
+                    address=api_endpoint, channel=channel, credentials=credentials
+                )
             )
 
         if client_info is None:

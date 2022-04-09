@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -601,7 +601,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_create_dataset():
                 # Create a client
@@ -710,7 +710,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_get_dataset():
                 # Create a client
@@ -807,7 +807,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_list_datasets():
                 # Create a client
@@ -915,7 +915,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_update_dataset():
                 # Create a client
@@ -1023,7 +1023,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_delete_dataset():
                 # Create a client
@@ -1154,7 +1154,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_import_data():
                 # Create a client
@@ -1290,7 +1290,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_export_data():
                 # Create a client
@@ -1419,7 +1419,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_get_annotation_spec():
                 # Create a client
@@ -1512,7 +1512,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_get_table_spec():
                 # Create a client
@@ -1615,7 +1615,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_list_table_specs():
                 # Create a client
@@ -1723,7 +1723,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_update_table_spec():
                 # Create a client
@@ -1827,7 +1827,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_get_column_spec():
                 # Create a client
@@ -1922,7 +1922,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_list_column_specs():
                 # Create a client
@@ -2030,7 +2030,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_update_column_spec():
                 # Create a client
@@ -2132,7 +2132,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_create_model():
                 # Create a client
@@ -2250,7 +2250,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_get_model():
                 # Create a client
@@ -2343,7 +2343,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_list_models():
                 # Create a client
@@ -2455,7 +2455,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_delete_model():
                 # Create a client
@@ -2590,7 +2590,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_deploy_model():
                 # Create a client
@@ -2719,7 +2719,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_undeploy_model():
                 # Create a client
@@ -2849,7 +2849,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_export_model():
                 # Create a client
@@ -2996,7 +2996,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_export_evaluated_examples():
                 # Create a client
@@ -3128,7 +3128,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_get_model_evaluation():
                 # Create a client
@@ -3221,7 +3221,7 @@ class AutoMlClient(metaclass=AutoMlClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import automl_v1beta1
+                    from google.cloud import automl_v1beta1
 
             def sample_list_model_evaluations():
                 # Create a client

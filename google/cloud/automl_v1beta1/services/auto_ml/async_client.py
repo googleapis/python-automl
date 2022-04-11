@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -436,8 +436,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -545,8 +544,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -698,7 +696,6 @@ class AutoMlAsyncClient:
         completes, and ``delete_details`` in the
         [metadata][google.longrunning.Operation.metadata] field.
 
-
         .. code-block:: python
 
             from google.cloud import automl_v1beta1
@@ -784,8 +781,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -838,7 +834,6 @@ class AutoMlAsyncClient:
            parameter must be explicitly set. Returns an empty response
            in the [response][google.longrunning.Operation.response]
            field when it completes.
-
 
         .. code-block:: python
 
@@ -974,7 +969,6 @@ class AutoMlAsyncClient:
         an empty response in the
         [response][google.longrunning.Operation.response] field when it
         completes.
-
 
         .. code-block:: python
 
@@ -1171,8 +1165,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -1284,8 +1277,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -1393,8 +1385,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -1611,8 +1602,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -1720,8 +1710,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -1866,7 +1855,6 @@ class AutoMlAsyncClient:
         completes. When you create a model, several model evaluations
         are created for it: a global evaluation, and one evaluation for
         each annotation spec.
-
 
         .. code-block:: python
 
@@ -2052,8 +2040,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -2161,8 +2148,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -2209,7 +2195,6 @@ class AutoMlAsyncClient:
         [response][google.longrunning.Operation.response] field when it
         completes, and ``delete_details`` in the
         [metadata][google.longrunning.Operation.metadata] field.
-
 
         .. code-block:: python
 
@@ -2296,8 +2281,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),
@@ -2354,7 +2338,6 @@ class AutoMlAsyncClient:
         Returns an empty response in the
         [response][google.longrunning.Operation.response] field when it
         completes.
-
 
         .. code-block:: python
 
@@ -2484,7 +2467,6 @@ class AutoMlAsyncClient:
         [response][google.longrunning.Operation.response] field when it
         completes.
 
-
         .. code-block:: python
 
             from google.cloud import automl_v1beta1
@@ -2613,7 +2595,6 @@ class AutoMlAsyncClient:
         Returns an empty response in the
         [response][google.longrunning.Operation.response] field when it
         completes.
-
 
         .. code-block:: python
 
@@ -2760,7 +2741,6 @@ class AutoMlAsyncClient:
         Returns an empty response in the
         [response][google.longrunning.Operation.response] field when it
         completes.
-
 
         .. code-block:: python
 
@@ -2958,8 +2938,7 @@ class AutoMlAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=5.0,
             ),

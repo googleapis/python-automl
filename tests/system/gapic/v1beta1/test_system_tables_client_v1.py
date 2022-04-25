@@ -29,7 +29,7 @@ from test_utils.vpcsc_config import vpcsc_config
 
 PROJECT = os.environ["PROJECT_ID"]
 REGION = "us-central1"
-MAX_WAIT_TIME_SECONDS = 30
+MAX_WAIT_TIME_SECONDS = 120
 MAX_SLEEP_TIME_SECONDS = 5
 STATIC_DATASET = "test_dataset_do_not_delete"
 STATIC_MODEL = "test_model_do_not_delete"

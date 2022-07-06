@@ -7834,7 +7834,6 @@ def test_auto_ml_transport_auth_adc(transport_class):
     [
         transports.AutoMlGrpcTransport,
         transports.AutoMlGrpcAsyncIOTransport,
-        transports.AutoMlRestTransport,
     ],
 )
 def test_auto_ml_transport_auth_gdch_credentials(transport_class):

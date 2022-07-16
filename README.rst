@@ -1,22 +1,28 @@
 Python Client for Cloud AutoML API
 ==================================
+|ga| |pypi| |versions| 
 
-|stable| |pypi| |versions|
+🔔 **AutoML API Python Client is now available in Vertex AI. Please visit** `Vertex SDK for Python`_ **for the new Python Vertex AI client.** Vertex AI is our next generation AI Platform, with many new features that are unavailable in the current platform. `Migrate your resources to Vertex AI`_ to get the latest machine learning features, simplify end-to-end journeys, and productionize models with MLOps.
 
-`Cloud AutoML API`_: makes the power of machine learning available to you even if you have limited knowledge of machine learning. You can use AutoML to build on Google's machine learning capabilities to create your own custom machine learning models that are tailored to your business needs, and then integrate those models into your applications and web sites.
+The `Cloud AutoML API`_ is a suite of machine learning products that enables
+developers with limited machine learning expertise to train high-quality models
+specific to their business needs, by leveraging Google’s state-of-the-art
+transfer learning, and Neural Architecture Search technology.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
 
-.. |stable| image:: https://img.shields.io/badge/support-stable-gold.svg
-   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#stability-levels
+.. |ga| image:: https://img.shields.io/badge/support-ga-gold.svg
+   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#ga-support
 .. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-automl.svg
    :target: https://pypi.org/project/google-cloud-automl/
 .. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-automl.svg
    :target: https://pypi.org/project/google-cloud-automl/
-.. _Cloud AutoML API: https://cloud.google.com/automl/docs/
+.. _Vertex SDK for Python: https://github.com/googleapis/python-aiplatform
+.. _Cloud AutoML API: https://cloud.google.com/automl
 .. _Client Library Documentation: https://cloud.google.com/python/docs/reference/automl/latest
-.. _Product Documentation:  https://cloud.google.com/automl/docs/
+.. _Product Documentation:  https://cloud.google.com/automl
+.. _Migrate your resources to Vertex AI: https://cloud.google.com/vertex-ai/docs/start/migrating-to-vertex-ai
 
 Quick Start
 -----------
@@ -30,7 +36,7 @@ In order to use this library, you first need to go through the following steps:
 
 .. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
 .. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
-.. _Enable the Cloud AutoML API.:  https://cloud.google.com/automl/docs/
+.. _Enable the Cloud AutoML API.:  https://cloud.google.com/automl
 .. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
 
 Installation
@@ -47,25 +53,15 @@ dependencies.
 .. _`virtualenv`: https://virtualenv.pypa.io/en/latest/
 
 
-Code samples and snippets
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Code samples and snippets live in the `samples/` folder.
-
-
 Supported Python Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Our client libraries are compatible with all current [active](https://devguide.python.org/devcycle/#in-development-main-branch) and [maintenance](https://devguide.python.org/devcycle/#maintenance-branches) versions of
-Python.
-
-Python >= 3.7
+Python >= 3.6
 
 Unsupported Python Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Python <= 3.6
+Python == 2.7.
 
-If you are using an [end-of-life](https://devguide.python.org/devcycle/#end-of-life-branches)
-version of Python, we recommend that you update as soon as possible to an actively supported version.
+The last version of this library compatible with Python 2.7 is google-cloud-automl==1.0.1.
 
 
 Mac/Linux
@@ -89,15 +85,11 @@ Windows
     <your-env>\Scripts\activate
     <your-env>\Scripts\pip.exe install google-cloud-automl
 
+
 Next Steps
 ~~~~~~~~~~
 
 -  Read the `Client Library Documentation`_ for Cloud AutoML API
-   to see other available methods on the client.
--  Read the `Cloud AutoML API Product documentation`_ to learn
+   API to see other available methods on the client.
+-  Read the `Product documentation`_ to learn
    more about the product and see How-to Guides.
--  View this `README`_ to see the full list of Cloud
-   APIs that we cover.
-
-.. _Cloud AutoML API Product documentation:  https://cloud.google.com/automl/docs/
-.. _README: https://github.com/googleapis/google-cloud-python/blob/main/README.rst

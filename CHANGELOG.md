@@ -4,6 +4,31 @@
 
 [1]: https://pypi.org/project/google-cloud-automl/#history
 
+## [2.8.0](https://github.com/googleapis/python-automl/compare/v2.7.3...v2.8.0) (2022-07-19)
+
+
+### Features
+
+* add audience parameter ([51f21e1](https://github.com/googleapis/python-automl/commit/51f21e1afd39e8c9a159908b654bcabc73226b94))
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core>=1.32.0,>=2.8.0 ([#403](https://github.com/googleapis/python-automl/issues/403)) ([51f21e1](https://github.com/googleapis/python-automl/commit/51f21e1afd39e8c9a159908b654bcabc73226b94))
+* require python 3.7+ ([#405](https://github.com/googleapis/python-automl/issues/405)) ([8d762e6](https://github.com/googleapis/python-automl/commit/8d762e6490e41d279d38605adca710bb21994808))
+
+## [2.7.3](https://github.com/googleapis/python-automl/compare/v2.7.2...v2.7.3) (2022-06-07)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf <4.0.0dev ([#391](https://github.com/googleapis/python-automl/issues/391)) ([30cfcb2](https://github.com/googleapis/python-automl/commit/30cfcb2acd5ed43cdbd74610a87bde7eb23dec03))
+
+
+### Documentation
+
+* fix changelog header to consistent size ([#392](https://github.com/googleapis/python-automl/issues/392)) ([18952b3](https://github.com/googleapis/python-automl/commit/18952b306f91e49b89a3cb3b4022b0b6a8ed4eac))
+
 ## [2.7.2](https://github.com/googleapis/python-automl/compare/v2.7.1...v2.7.2) (2022-03-06)
 
 

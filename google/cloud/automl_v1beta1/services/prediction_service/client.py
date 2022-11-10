@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -62,7 +73,7 @@ class PredictionServiceClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[PredictionServiceTransport]:
         """Returns an appropriate transport class.
 
@@ -341,7 +352,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, PredictionServiceTransport, None] = None,
+        transport: Optional[Union[str, PredictionServiceTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -439,13 +450,13 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
 
     def predict(
         self,
-        request: Union[prediction_service.PredictRequest, dict] = None,
+        request: Optional[Union[prediction_service.PredictRequest, dict]] = None,
         *,
-        name: str = None,
-        payload: data_items.ExamplePayload = None,
-        params: Mapping[str, str] = None,
+        name: Optional[str] = None,
+        payload: Optional[data_items.ExamplePayload] = None,
+        params: Optional[MutableMapping[str, str]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> prediction_service.PredictResponse:
         r"""Perform an online prediction. The prediction result will be
@@ -520,7 +531,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
                 This corresponds to the ``payload`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            params (Mapping[str, str]):
+            params (MutableMapping[str, str]):
                 Additional domain-specific parameters, any string must
                 be up to 25000 characters long.
 
@@ -607,14 +618,14 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
 
     def batch_predict(
         self,
-        request: Union[prediction_service.BatchPredictRequest, dict] = None,
+        request: Optional[Union[prediction_service.BatchPredictRequest, dict]] = None,
         *,
-        name: str = None,
-        input_config: io.BatchPredictInputConfig = None,
-        output_config: io.BatchPredictOutputConfig = None,
-        params: Mapping[str, str] = None,
+        name: Optional[str] = None,
+        input_config: Optional[io.BatchPredictInputConfig] = None,
+        output_config: Optional[io.BatchPredictOutputConfig] = None,
+        params: Optional[MutableMapping[str, str]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Perform a batch prediction. Unlike the online
@@ -691,7 +702,7 @@ class PredictionServiceClient(metaclass=PredictionServiceClientMeta):
                 This corresponds to the ``output_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            params (Mapping[str, str]):
+            params (MutableMapping[str, str]):
                 Required. Additional domain-specific parameters for the
                 predictions, any string must be up to 25000 characters
                 long.

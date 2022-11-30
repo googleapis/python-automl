@@ -65,7 +65,7 @@ for library in s.get_staging_dirs(default_version):
     tables"""
         )
 
-    s.move([library], excludes=["**/gapic_version.py", "README.rst", "setup.py"])
+    s.move([library], excludes=["**/gapic_version.py", "README.rst", "setup.py", "testing/constraints-3.7.txt"])
 s.remove_staging_dirs()
 
 # ----------------------------------------------------------------------------
